@@ -74,6 +74,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/teo_doooor/"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook"
+      url: "https://www.facebook.com/teodor.kurtev92"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/TeodorK92"
@@ -82,7 +85,7 @@ footer:
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/teodorkurtev/"
+      url: "https://www.linkedin.com/in/teodorkurtev"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Teodor92"
@@ -91,7 +94,7 @@ footer:
       url: "https://stackoverflow.com/users/2109394/teodor-kurtev/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/teo_doooor/"
+      url: "https://www.instagram.com/teo_doooor"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/TeodorK92"
@@ -121,6 +124,15 @@ comments:
   provider: "disqus"
   disqus:
     shortname: "teodor-kurtev-personal"
+
+social:
+  type: Person
+  name:  Teodor Kurtev
+  links:
+    - "https://twitter.com/TeodorK92"
+    - "https://www.facebook.com/teodor.kurtev92"
+    - "https://www.instagram.com/teo_doooor"
+    - "https://www.linkedin.com/in/teodorkurtev"
 
 category_archive:
   type: liquid
