@@ -5,9 +5,9 @@ title: "Why am I?"
 
 Here's a quick summary of my experience thus far!
 
-## Work Experience
+## 👩🏼‍💻 Engineering Experience
 
-### **Moteefe** - **Senior Software Engineer** - Remote - _January 2022 - Present_
+### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Present)_
 
 As part of Moteefes' tech team, I was involved in:
 
@@ -18,15 +18,23 @@ As part of Moteefes' tech team, I was involved in:
 - Mentoring and sharing knowledge whenever possible.
 - All of the above was achieved via TypeScript, React, Node.js and deployed on AWS.
 
-### **Software University** - **Part-time Lecturer** - Sofia, Bulgaria - _May 2020 - Present_
+### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
 As a lecturer I take part in several courses organized by SoftUni like Programing Basics and Programing Fundamentals.
 
-### **News UK** - **Lead Software Engineer** - Sofia, Bulgaria - _August 2020 - January 2022_
+### **[Independent Contractor](https://teodorkurtev.com/)** - **Software Engineer** - _(Sept 2011 - Now)_
+
+Building variety of application using .NET, JavaScript/TypeScript/Node.js, and Python. Although most of my work has been focused on the web domain, I do take on projects for mobile and desktop applications. My work includes:
+
+- Translation of business needs into software requirements and finding out what the client, really needs (Requirements engineering).
+- Designing, implementation, testing, documentation and deployment of front-end and back-end software solutions.
+- Support of existing solutions.
+
+### **[News UK](https://www.news.co.uk/)** - **Lead Software Engineer** - Sofia, Bulgaria - _(Aug 2020 - Jan 2022)_
 
 I am part of the MAIN Technology Group, that deals with Monetization, Access and Identity. The majority of my work includes developing new capabilities for project using GoLang and AWS for Infrastructure, researching new solutions and collaborating with stakeholders, helping with recruitment and more.
 
-### **Synchronoss Technologies** - **Lead Software Engineer** - Sofia, Bulgaria - _October 2017 - August 2020_
+### **[Synchronoss Technologies](https://synchronoss.com/)** - **Lead Software Engineer** - Sofia, Bulgaria - _(Oct 2017 - Aug 2020)_
 
 As a Lead Software Engineer, my duties included:
 
@@ -36,15 +44,7 @@ As a Lead Software Engineer, my duties included:
 - Organize and take part in team activities like daily Stand-ups, Code Review sessions, etc.
 - Mentor junior developers and ensure there technological and business up-skilling goes smoothly.
 
-### **Independent Contractor** - **Software Engineer** - _September 2011 - Now_
-
-Building variety of application using .NET, JavaScript/TypeScript/Node.js, and Python. Although most of my work has been focused on the web domain, I do take on projects for mobile and desktop applications. My work includes:
-
-- Translation of business needs into software requirements and finding out what the client, really needs (Requirements engineering).
-- Designing, implementation, testing, documentation and deployment of front-end and back-end software solutions.
-- Support of existing solutions.
-
-### **Software Improvement Group(SIG)** - **Software Engineer/Researcher** - Amsterdam, The Netherlands - _January 2017 - August 2017_
+### **[Software Improvement Group(SIG)](https://www.softwareimprovementgroup.com/)** - **Software Engineer/Researcher** - Amsterdam, The Netherlands - _(Jan 2017 - Aug 2017)_
 
 My work consisted of:
 
@@ -53,7 +53,7 @@ My work consisted of:
 - Using R and Python for data analysis and visualization.
 - In the end there was a positive outcome of the research an the PoC project - desired metrics increased with 5% to 10%.
 
-### **EPAM** - **Software Engineer** - Sofia, Bulgaria - _March 2016 - August 2016_
+### **[EPAM](https://www.epam.com/)** - **Software Engineer** - Sofia, Bulgaria - _(Mar 2016 - Aug 2016)_
 
 During my work here:
 
@@ -61,50 +61,50 @@ During my work here:
 - Used the JavaScript Stack for front-end development - Agular.js, JQuery, Google Maps APls, etc.
 - Implemented processes to ensure code quality - static code analysis, CI, git branching strategies, code reviews.
 
-### **SBTech** - **Software Engineer** - Sofia, Bulgaria - _January 2015 - August 2015_
+### **[SBTech](https://www.sbtech.com/)** - **Software Engineer** - Sofia, Bulgaria - _(Jan 2015 - Aug 2015)_
 
 During my stay at the company, I was part of various project and activities:
 
 - Developed new front-end and back-end features for the mobile and tablet betting solutions using .NET and JavaScript and helped bring out the tablet solution initial release.
 - Took part in activities targeted at improving the quality of the code base - code reviews, Cl, and static code analysis, refactoring efforts.
 
-### **Software University** - **Software Engineer** - Sofia, Bulgaria - _October 2013 - February 2015_
+### **[Software University](https://softuni.bg/)** - **Software Engineer** - Sofia, Bulgaria - _(Oct 2013 - Feb 2015)_
 
 As the first developer at Software University - I was tasked with designing, developing and testing the core modules for the Software University Learning System (SULS). The work included:
 
 - Development of an electronic learning system from scratch- electronic payment, teamwork management, CMS capabilities, course management and a lot more.
 - Used technologies - .NET, ASP.NET MVC, Entity Framework, HTMLS, JavaScript, KendoUI etc.
 
-### **Telerik Academy** - **Trainee Software Engineer** - Sofia, Bulgaria - _September 2011 - October 2013_
+### **[Telerik Academy](https://www.telerikacademy.com/)** - **Trainee Software Engineer** - Sofia, Bulgaria - _(Sept 2011 - Oct 2013)_
 
 A fast paced introduction to software development, including
 
 - Practical introduction to technologies ranging from the C# and JavaScript to Frameworks like ASP.NET MVC, Angular.js, Kendo and WPF.
 - The education process had a key focus on high-quality code in compliance with the best practice in OOP - SOLID, DRY, YAGNI, etc.
 
-## Education
+## 📚 Education
 
-### **MSc Software Engineering** - **University of Amsterdam** - Amsterdam, The Netherlands - 5.9/6 GPA
+### **MSc Software Engineering** - **[University of Amsterdam](https://www.uva.nl/en)** - Amsterdam, The Netherlands - 5.9/6 GPA
 
 - An intense, one year, master program in software engineering.
 - The curriculum focuses on Source code analysis and transformation, Software Craftsmanship, Software Testing, and Software Process.
 - Scientific research and practical application have an essential place in the program.
 
-### **BSc Business Informatics** - **University of National and World Economy** - Sofia, Bulgaria - 5.5/6 GPA
+### **BSc Business Informatics** - **[University of National and World Economy](https://www.unwe.bg/en/)** - Sofia, Bulgaria - 5.5/6 GPA
 
 - A full time four year, Computer Since related bachelor program.
 - Topics covered included Programming, Algorithms, Computer Architectures, Operating Systems, Networks, Internet Technologies, Software Engineering, etc.
 
-### **Practical Software Engineer** - **Telerik Academy** - Sofia, Bulgaria - Graduated with excellence
+### **Practical Software Engineer** - **[Telerik Academy](https://www.telerikacademy.com/)** - Sofia, Bulgaria - Graduated with excellence
 
 - Highly intensive one-year coding boot camp concentrated on JavaScript, .NET and related technologies and topics.
 - The program had a specific focus on High Quality Code and how to apply it in practice.
 
-### **Entrepreneurship** - **9 Academy** - Sofia, Bulgaria
+### **Entrepreneurship** - **[9 Academy](https://9academy.com/)** - Sofia, Bulgaria
 
 A practical program that revolves around entrepreneurship, marketing, strategy, PR, HR and other aspects of a successful business organization.
 
-## Skills
+## 💻 Skills
 
 ### MEAN Stack
 
@@ -135,32 +135,28 @@ C#, ASP.NET MVC, ASP.NET WebAPI, ASP.NET SignalR, ASP.NET Core, LINQ, ADO.NET, E
 
 Self-motivation, Teamwork, Creativity, Communication, Decision Making, Time Management, Conflict Resolution, Leadership, Adaptability, Agile Methodologies.
 
-## Volunteer Work
+## 📌 Volunteering
 
-### **Mentor the Young** - **Mentor** - Sofia, Bulgaria
+### **[Mentor the Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria
 
 Sharing knowledge and experience, while helping young professionals with projects that influence their personal development and work skills.
 
-### **ABLE** - **Mentor** - Sofia, Bulgaria
+### **[ABLE](https://www.ablementor.bg/)** - **Mentor** - Sofia, Bulgaria
 
 Sharing knowledge and experience, while helping students with projects that influence their personal development.
 
-### **Telerik Academy** - **Mentor** - Sofia, Bulgaria
+### **[Telerik Academy](https://www.telerikacademy.com/)** - **Mentor** - Sofia, Bulgaria
 
 I was in charge of providing technical and career help to a group of mentees that were part of the Telerik Academy Alpha.
 
-### **Software University Foundation** - **Technical Writer** - Sofia, Bulgaria
+### **[Software University Foundation](https://softuni.foundation/)** - **Technical Writer** - Sofia, Bulgaria
 
 Wrote several chapters for the 'Introduction to Programming' books published by the Software University Foundation.
 
-### **EPAM** - **Lecturer and Assistant** - Sofia, Bulgaria
-
-Took part in the in-house developers trainings in various topics like Git, Pair programming, Git-Flow, T-SQL, Stored procedures, etc.
-
-### **Software University** - **Lecturer and Assistant** - Sofia, Bulgaria
+### **[Software University](https://softuni.bg/)** - **Lecturer and Assistant** - Sofia, Bulgaria
 
 I took part in the introductory courses in Java, C#, Web Fundamentals and Teamwork and Collaboration as a volunteer lecturer and assistant.
 
-### **Telerik Academy** - **Lecturer and Assistant** - Sofia, Bulgaria
+### **[Telerik Academy](https://www.telerikacademy.com/)** - **Lecturer and Assistant** - Sofia, Bulgaria
 
 I helped with the organizations of the C# Part 2 Workshops and assisted the students if they needed any help. Additionally, I was involved as an assistant in several of the C# and Web courses.
