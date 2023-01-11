@@ -1,6 +1,7 @@
 ---
 permalink: /
 title: "Why am I?"
+comments: false
 ---
 
 Here's a quick summary of my experience thus far!
