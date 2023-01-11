@@ -102,6 +102,7 @@ defaults:
       path: ""
       type: posts
     values:
+      show_date: true
       layout: single
       author_profile: true
       read_time: true
@@ -115,6 +116,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "teodor-kurtev-personal"
 
 category_archive:
   type: liquid
