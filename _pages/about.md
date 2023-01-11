@@ -1,7 +1,9 @@
 ---
 permalink: /
-title: "Curriculum Vitae"
+title: "Why am I?"
 ---
+
+Here's a quick summary of my experience thus far!
 
 ## Work Experience
 
