@@ -5,7 +5,7 @@ title: "Why am I?"
 
 Here's a quick summary of my experience thus far!
 
-## 👩🏼‍💻 Engineering Experience
+## 👨‍💻 Engineering Experience
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Present)_
 
