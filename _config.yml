@@ -23,6 +23,8 @@ twitter_username: TeodorK92
 github_username: Teodor92
 minimal_mistakes_skin: dark
 search: true
+url: "https://teodorkurtev.com"
+baseurl: "/"
 
 # Build settings
 markdown: kramdown
