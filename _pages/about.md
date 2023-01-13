@@ -4,7 +4,7 @@ title: "Who am I?"
 comments: false
 ---
 
-10+ years of experience in FullStack development has taught me that code is like a joke - if you have to explain it, it's not that good.😄 Specializing in JavaScript, TypeScript, GoLang, and .NET, I bring a unique blend of humor and intelligence to the table, ensuring that not only will your projects be completed on time and under budget, but they'll also make you laugh... hopefully in a good way.😅
+🚀 10+ years of experience in Full Stack development have taught me that code is like a joke - if you have to explain it, it's not that good. 😄 Specializing in JavaScript, TypeScript, GoLang, and .NET, I bring a unique blend of humor and intelligence to the table, ensuring that not only will your projects be completed on time and under budget, but they'll also make you laugh... hopefully in a good way. 😅
 
 ## 👨‍💻 Engineering Experience
 
@@ -17,7 +17,6 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 - Continuously monitoring and analyzing system metrics, troubleshoot issues and apply bug fixes or escalate when necessary.
 - Actively participating in internal code quality initiatives, and mentoring and sharing knowledge with team members to improve the overall development process.
 - All of the above was achieved via TypeScript, React, Node.js, and deployed on AWS.
-
 
 ### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
@@ -92,14 +91,18 @@ A fast-paced introduction to software development, including:
 
 ### **MSc Software Engineering** - **[University of Amsterdam](https://www.uva.nl/en)** - Amsterdam, The Netherlands - 5.9/6 GPA
 
-- An intense, one year, master program in software engineering.
-- The curriculum focuses on Source code analysis and transformation, Software Craftsmanship, Software Testing, and Software Process.
+During my MSc Software Engineering program at the University of Amsterdam, I gained a wide range of knowledge and skills in software engineering. Some of the highlights of my experience include:
+
+- An intense, one-year master program in software engineering.
+- The curriculum focuses on Source code analysis and transformation, Software Craftsmanship, Software Testing, and Software Processes.
 - Scientific research and practical application have an essential place in the program.
 
 ### **BSc Business Informatics** - **[University of National and World Economy](https://www.unwe.bg/en/)** - Sofia, Bulgaria - 5.5/6 GPA
 
-- A full time four year, Computer Since related bachelor program.
-- Topics covered included Programming, Algorithms, Computer Architectures, Operating Systems, Networks, Internet Technologies, Software Engineering, etc.
+During my BSc Business Informatics program at the University of National and World Economy, I gained a strong foundation in computer science and its applications in the business field. Some of the highlights of my experience include:
+
+- A full-time, four-year computer science-related bachelor program.
+- Topics covered included Programming, Algorithms, Computer Architecture, Operating Systems, Networks, Internet Technologies, Software Engineering, etc.
 
 ### **Practical Software Engineer** - **[Telerik Academy](https://www.telerikacademy.com/)** - Sofia, Bulgaria - Graduated with excellence
 
@@ -108,7 +111,7 @@ A fast-paced introduction to software development, including:
 
 ### **Entrepreneurship** - **[9 Academy](https://9academy.com/)** - Sofia, Bulgaria
 
-A practical program that revolves around entrepreneurship, marketing, strategy, PR, HR and other aspects of a successful business organization.
+A practical program that provides a comprehensive understanding of entrepreneurship, marketing, strategy, public relations, human resources, and other essential aspects of a successful business organization. The curriculum includes a mix of theoretical and hands-on learning opportunities, such as case studies, group projects, and guest lectures from industry experts. The program also emphasizes the importance of developing essential skills such as critical thinking, problem-solving, and communication in order to succeed in today's rapidly changing business environment. Additionally, the program also provides opportunities to gain real-world experience through internships, networking events, and business plan competitions.
 
 ## 💻 Skills
 
