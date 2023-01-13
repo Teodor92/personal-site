@@ -4,7 +4,7 @@ title: "Why am I?"
 comments: false
 ---
 
-Here's a quick summary of my experience thus far!
+10+ years of experience in FullStack development has taught me that code is like a joke - if you have to explain it, it's not that good.😄 Specializing in JavaScript, TypeScript, GoLang, and .NET, I bring a unique blend of humor and intelligence to the table, ensuring that not only will your projects be completed on time and under budget, but they'll also make you laugh... hopefully in a good way.😅
 
 ## 👨‍💻 Engineering Experience
 
