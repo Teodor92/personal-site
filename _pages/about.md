@@ -76,17 +76,17 @@ During my stay at the company, I was part of various project and activities:
 
 ### **[Software University](https://softuni.bg/)** - **Software Engineer** - Sofia, Bulgaria - _(Oct 2013 - Feb 2015)_
 
-As the first developer at Software University - I was tasked with designing, developing and testing the core modules for the Software University Learning System (SULS). The work included:
+As the first developer at Software University, I was tasked with designing, developing, and testing the core modules for the Software University Learning System (SULS). The work included:
 
-- Development of an electronic learning system from scratch- electronic payment, teamwork management, CMS capabilities, course management and a lot more.
-- Used technologies - .NET, ASP.NET MVC, Entity Framework, HTMLS, JavaScript, KendoUI etc.
+- Development of an electronic learning system from scratch, including electronic payment, teamwork management, CMS capabilities, course management, and more.
+- Technologies used: .NET, ASP.NET MVC, Entities Framework, HTML, JavaScript, KendoUI, etc.
 
 ### **[Telerik Academy](https://www.telerikacademy.com/)** - **Trainee Software Engineer** - Sofia, Bulgaria - _(Sept 2011 - Oct 2013)_
 
-A fast paced introduction to software development, including
+A fast-paced introduction to software development, including:
 
-- Practical introduction to technologies ranging from the C# and JavaScript to Frameworks like ASP.NET MVC, Angular.js, Kendo and WPF.
-- The education process had a key focus on high-quality code in compliance with the best practice in OOP - SOLID, DRY, YAGNI, etc.
+- Practical introduction to technologies ranging from C# and JavaScript to frameworks like ASP.NET MVC, Angular.js, Kendo, and WPF.
+- The education process had a key focus on high-quality code in compliance with the best practices in OOP such as SOLID, DRY, YAGNI, etc.
 
 ## 📚 Education
 
