@@ -10,57 +10,62 @@ comments: false
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Present)_
 
-As part of Moteefes' tech team, I was involved in:
+As a member of Moteefe's tech team, I played an instrumental role in the development, deployment and maintenance of several key features for the company. My responsibilities included:
 
-- Refining, defining, developing, testing, deploying and supporting several end to end features, like payment integrations with Stripe and PayPal/integrations with headless CMS systems, cart recovery emails, etc
-- Creating new Microservices and splitting existing ones.
-- Logging, monitoring and analyzing the metrics of our systems and applying bugfix or escalating the issues when needed.
-- Contributing to internal code quality initiatives.
-- Mentoring and sharing knowledge whenever possible.
-- All of the above was achieved via TypeScript, React, Node.js and deployed on AWS.
+- Refining, defining, developing, testing, deploying, and supporting several end-to-end features such as payment integrations with Stripe and PayPal, integration with headless CMS systems and cart recovery email functionality.
+- Creating new microservices and splitting existing ones to improve system performance and scalability.
+- Continuously monitoring and analyzing system metrics, troubleshoot issues and apply bug fixes or escalate when necessary.
+- Actively participating in internal code quality initiatives, and mentoring and sharing knowledge with team members to improve the overall development process.
+- All of the above was achieved via TypeScript, React, Node.js, and deployed on AWS.
+
 
 ### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
-As a lecturer I take part in several courses organized by SoftUni like Programing Basics and Programing Fundamentals.
+As a lecturer at SoftUni, I have the opportunity to share my knowledge and experience with students by leading several courses, including "Programming Basics" and "Programming Fundamentals." My goal is to provide students with a solid foundation in programming concepts, as well as practical skills that they can apply in real-world projects. I strive to make my lectures interactive, engaging and practical, and I also encourage students to ask questions and share their own experiences.
 
 ### **[Independent Contractor](https://teodorkurtev.com/)** - **Software Engineer** - _(Sept 2011 - Now)_
 
-Building variety of application using .NET, JavaScript/TypeScript/Node.js, and Python. Although most of my work has been focused on the web domain, I do take on projects for mobile and desktop applications. My work includes:
+As a software engineer, I have experience in building a wide range of applications using technologies such as .NET, JavaScript/TypeScript/Node.js, and GoLang. My expertise primarily lies in the web domain, however, I am open to all opportunities. My responsibilities include:
 
-- Translation of business needs into software requirements and finding out what the client, really needs (Requirements engineering).
-- Designing, implementation, testing, documentation and deployment of front-end and back-end software solutions.
-- Support of existing solutions.
+- Translating business needs into specific software requirements by working closely with clients to understand their needs.
+- Designing, implementing, testing, documenting, and deploying front-end and back-end software solutions.
+- Providing ongoing support for existing solutions to ensure smooth operation and optimal performance.
 
 ### **[News UK](https://www.news.co.uk/)** - **Lead Software Engineer** - Sofia, Bulgaria - _(Aug 2020 - Jan 2022)_
 
-I am part of the MAIN Technology Group, that deals with Monetization, Access and Identity. The majority of my work includes developing new capabilities for project using GoLang and AWS for Infrastructure, researching new solutions and collaborating with stakeholders, helping with recruitment and more.
+As a member of the MAIN Technology Group, I held a vital role in advancing the Monetization, Access, and Identity verticals. My primary responsibilities included:
+
+- Developing new capabilities for projects utilizing GoLang and AWS infrastructure.
+- Researching and evaluating new solutions to enhance project performance.
+- Collaborating with stakeholders to ensure project alignment with business objectives.
+- Supporting recruitment efforts to build a strong and capable team.
 
 ### **[Synchronoss Technologies](https://synchronoss.com/)** - **Lead Software Engineer** - Sofia, Bulgaria - _(Oct 2017 - Aug 2020)_
 
-As a Lead Software Engineer, my duties included:
+As a Lead Software Engineer, my key responsibilities included:
 
-- Created and implementing code standards and practices to ensure high code quality across all projects in the Bulgaria branch.
-- Organize work activities and ensure there are no blockers in my team.
-- Design, implement and test front-end and back-end features in several projects. MEAN was the software technology stack of choice for most project, although some of my duties included work on several .NET projects.
-- Organize and take part in team activities like daily Stand-ups, Code Review sessions, etc.
-- Mentor junior developers and ensure there technological and business up-skilling goes smoothly.
+- Developing and implementing code standards and practices to promote high code quality across all projects in the Bulgaria branch.
+- Managing and streamlining work activities to eliminate blockers and ensure smooth project execution.
+- Designing, implementing, and testing front-end and back-end features in multiple projects, with a primary focus on MEAN stack, but also including work on .NET projects.
+- Facilitating team activities such as daily Stand-ups and Code Review sessions.
+- Mentoring and providing guidance to junior developers to ensure their professional development and growth.
 
 ### **[Software Improvement Group(SIG)](https://www.softwareimprovementgroup.com/)** - **Software Engineer/Researcher** - Amsterdam, The Netherlands - _(Jan 2017 - Aug 2017)_
 
-My work consisted of:
+As a software engineer, my work included:
 
-- Finding a way to propose refactoring options for architecturally related code smells.
-- Implementing Visual Studio refactoring plugin using the .NET ecosystem and the Roslyn compiler.
-- Using R and Python for data analysis and visualization.
-- In the end there was a positive outcome of the research an the PoC project - desired metrics increased with 5% to 10%.
+- Investigating and proposing refactoring options for architecturally-related code smells to improve code quality and maintainability.
+- Developing a Visual Studio refactoring plugin utilizing the .NET ecosystem and the Roslyn compiler.
+- Utilizing R and Python for data analysis and visualization to gain insights and identify optimization opportunities.
+- Achieving positive outcomes from the research and the PoC project, with an increase in desired metrics by 5% to 10%.
 
 ### **[EPAM](https://www.epam.com/)** - **Software Engineer** - Sofia, Bulgaria - _(Mar 2016 - Aug 2016)_
 
-During my work here:
+As a software engineer, my work included:
 
-- Used the .NET Stack for back-end development - C#, MSSQL Server, EntityFramework, ASP.NET MVC, etc.
-- Used the JavaScript Stack for front-end development - Agular.js, JQuery, Google Maps APls, etc.
-- Implemented processes to ensure code quality - static code analysis, CI, git branching strategies, code reviews.
+- Utilizing the .NET Stack for back-end development, including C#, MSSQL Server, EntitiesFramework, and ASP.NET MVC.
+- Implementing front-end development with the JavaScript Stack, including Angular.js, JQuery, and Google Maps APIs.
+- Establishing processes to ensure code quality, including static code analysis, CI, git branching strategies, and code reviews.
 
 ### **[SBTech](https://www.sbtech.com/)** - **Software Engineer** - Sofia, Bulgaria - _(Jan 2015 - Aug 2015)_
 
