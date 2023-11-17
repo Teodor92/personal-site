@@ -20,7 +20,11 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 
 ### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
-As a lecturer at SoftUni, I have the opportunity to share my knowledge and experience with students by leading several courses, including "Programming Basics" and "Programming Fundamentals." My goal is to provide students with a solid foundation in programming concepts, as well as practical skills that they can apply in real-world projects. I strive to make my lectures interactive, engaging and practical, and I also encourage students to ask questions and share their own experiences.
+As a lecturer at SoftUni, some of my key responsibilities, included:
+
+- Lead "Programming Basics," "Programming Fundamentals," and "Programming Advanced" courses at Software University, delivering interactive lectures for a comprehensive understanding.
+- Provide practical insights and foster skill development to equip students with applicable programming expertise across foundational and advanced levels.
+- Extend support beyond class by offering supplementary reading materials, resources, and guidance for students to self-develop. Facilitate their independent growth with curated content to deepen their understanding of programming concepts.
 
 ### **[Mentor The Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria/Remote - _(Sept 2022 - Present)_
 
