@@ -16,7 +16,7 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 - Creating new microservices and splitting existing ones to improve system performance and scalability.
 - Continuously monitoring and analyzing system metrics, troubleshoot issues and apply bug fixes or escalate when necessary.
 - Actively participating in internal code quality initiatives, and mentoring and sharing knowledge with team members to improve the overall development process.
-- All of the above was achieved via TypeScript, React, Node.js, and deployed on AWS.
+- All of the above was achieved via TypeScript, React, Nest.js, Node.js, and deployed on AWS.
 
 ### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
