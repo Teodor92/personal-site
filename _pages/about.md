@@ -15,8 +15,8 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 - Refining, defining, developing, testing, deploying, and supporting several end-to-end features such as payment integrations with Stripe and PayPal, integration with headless CMS systems and cart recovery email functionality.
 - Creating new microservices and splitting existing ones to improve system performance and scalability.
 - Continuously monitoring and analyzing system metrics, troubleshoot issues and apply bug fixes or escalate when necessary.
-- Actively participating in internal code quality initiatives, and mentoring and sharing knowledge with team members to improve the overall development process.
-- All of the above was achieved via TypeScript, React, Nest.js, Node.js, and deployed on AWS.
+- Actively participating in internal code quality initiatives, mentoring and sharing knowledge with team members to improve the overall development process.
+- All the above was achieved via TypeScript, React, Nest.js, Node.js, and deployed on AWS.
 
 ### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
 
@@ -28,7 +28,12 @@ As a lecturer at SoftUni, some of my key responsibilities, included:
 
 ### **[Mentor The Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria/Remote - _(Sept 2022 - Present)_
 
-Sharing knowledge and experience, while helping young professionals with projects that influence their personal development and work skills.
+As a mentor at Mentor The Young, I am responsible for:
+
+- Providing personalized guidance in Software Engineering through one-on-one sessions, addressing specific needs and goals.
+- Assisting in setting achievable goals, monitoring progress, and offer constructive feedback for continuous improvement.
+- Sharing practical knowledge and industry experience to help mentees navigate challenges and make informed decisions.
+- Facilitating regular meetings to discuss progress, address concerns, and ensure alignment with mentees' objectives.
 
 ### **[Independent Contractor](https://teodorkurtev.com/)** - **Software Engineer** - _(Sept 2011 - Now)_
 
