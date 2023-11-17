@@ -47,7 +47,7 @@ As a software engineer, I have experience in building a wide range of applicatio
 
 As a member of the MAIN Technology Group, I held a vital role in advancing the Monetization, Access, and Identity verticals. My primary responsibilities included:
 
-- Developing new capabilities for projects utilizing GoLang and AWS infrastructure.
+- Developing new capabilities for projects utilizing GoLang and AWS as infrastructure.
 - Researching and evaluating new solutions to enhance project performance.
 - Collaborating with stakeholders to ensure project alignment with business objectives.
 - Supporting recruitment efforts to build a strong and capable team.
@@ -57,6 +57,7 @@ As a member of the MAIN Technology Group, I held a vital role in advancing the M
 As a Lead Software Engineer, my key responsibilities included:
 
 - Developing and implementing code standards and practices to promote high code quality across all projects in the Bulgaria branch.
+- Building out the team by participating in the recruitment process.
 - Managing and streamlining work activities to eliminate blockers and ensure smooth project execution.
 - Designing, implementing, and testing front-end and back-end features in multiple projects, with a primary focus on MEAN stack, but also including work on .NET projects.
 - Facilitating team activities such as daily Stand-ups and Code Review sessions.
@@ -66,7 +67,7 @@ As a Lead Software Engineer, my key responsibilities included:
 
 As a software engineer, my work included:
 
-- Investigating and proposing refactoring options for architecturally-related code smells to improve code quality and maintainability.
+- Investigating and proposing refactoring options for architecturally related code smells to improve code quality and maintainability.
 - Developing a Visual Studio refactoring plugin utilizing the .NET ecosystem and the Roslyn compiler.
 - Utilizing R and Python for data analysis and visualization to gain insights and identify optimization opportunities.
 - Achieving positive outcomes from the research and the PoC project, with an increase in desired metrics by 5% to 10%.
