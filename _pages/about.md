@@ -22,6 +22,10 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 
 As a lecturer at SoftUni, I have the opportunity to share my knowledge and experience with students by leading several courses, including "Programming Basics" and "Programming Fundamentals." My goal is to provide students with a solid foundation in programming concepts, as well as practical skills that they can apply in real-world projects. I strive to make my lectures interactive, engaging and practical, and I also encourage students to ask questions and share their own experiences.
 
+### **[Mentor The Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria/Remote - _(Sept 2022 - Present)_
+
+Sharing knowledge and experience, while helping young professionals with projects that influence their personal development and work skills.
+
 ### **[Independent Contractor](https://teodorkurtev.com/)** - **Software Engineer** - _(Sept 2011 - Now)_
 
 As a software engineer, I have experience in building a wide range of applications using technologies such as .NET, JavaScript/TypeScript/Node.js, and GoLang. My expertise primarily lies in the web domain, however, I am open to all opportunities. My responsibilities include:
@@ -125,7 +129,7 @@ GoLang, echo, go-jet, ginko, gomega, logrus, zap, etc.
 
 ### Infrastructure, Databases, Storage and Standards
 
-Amazon Web Services (Lambda, ECR, SQS, SNS, SES, etc.), Docker, MySQL/MariaDB, Microsoft SQL Server, MongoDB, Redis, Consul, SQL, T-SQL, XML, JSON, JSON Schema, OpenAPI, OAuht2, OIDC.
+Amazon Web Services (Lambda, ECR, SQS, SNS, SES, etc.), Docker, MySQL/MariaDB, Microsoft SQL Server, MongoDB, Redis, Consul, SQL, T-SQL, XML, JSON, JSON Schema, OpenAPI, OAuht2, OIDC, REST, GraphQL.
 
 ### Computer Science Concepts
 
@@ -142,13 +146,9 @@ C#, ASP.NET MVC, ASP.NET WebAPI, ASP.NET SignalR, ASP.NET Core, LINQ, ADO.NET, E
 
 ### Soft Skills
 
-Self-motivation, Teamwork, Creativity, Communication, Decision Making, Time Management, Conflict Resolution, Leadership, Adaptability, Agile Methodologies.
+Mentoring, Self-motivation, Teamwork, Creativity, Communication, Decision Making, Time Management, Conflict Resolution, Leadership, Adaptability, Agile Methodologies.
 
 ## 📌 Volunteering
-
-### **[Mentor the Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria
-
-Sharing knowledge and experience, while helping young professionals with projects that influence their personal development and work skills.
 
 ### **[ABLE](https://www.ablementor.bg/)** - **Mentor** - Sofia, Bulgaria
 
@@ -161,10 +161,6 @@ I was in charge of providing technical and career help to a group of mentees tha
 ### **[Software University Foundation](https://softuni.foundation/)** - **Technical Writer** - Sofia, Bulgaria
 
 Wrote several chapters for the 'Introduction to Programming' books published by the Software University Foundation.
-
-### **[Software University](https://softuni.bg/)** - **Lecturer and Assistant** - Sofia, Bulgaria
-
-I took part in the introductory courses in Java, C#, Web Fundamentals and Teamwork and Collaboration as a volunteer lecturer and assistant.
 
 ### **[Telerik Academy](https://www.telerikacademy.com/)** - **Lecturer and Assistant** - Sofia, Bulgaria
 
