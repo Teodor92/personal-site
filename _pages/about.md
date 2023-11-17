@@ -123,10 +123,6 @@ During my BSc Business Informatics program at the University of National and Wor
 - Highly intensive one-year coding boot camp concentrated on JavaScript, .NET and related technologies and topics.
 - The program had a specific focus on High Quality Code and how to apply it in practice.
 
-### **Entrepreneurship** - **[9 Academy](https://9academy.com/)** - Sofia, Bulgaria
-
-A practical program that provides a comprehensive understanding of entrepreneurship, marketing, strategy, public relations, human resources, and other essential aspects of a successful business organization. The curriculum includes a mix of theoretical and hands-on learning opportunities, such as case studies, group projects, and guest lectures from industry experts. The program also emphasizes the importance of developing essential skills such as critical thinking, problem-solving, and communication in order to succeed in today's rapidly changing business environment. Additionally, the program also provides opportunities to gain real-world experience through internships, networking events, and business plan competitions.
-
 ## 💻 Skills
 
 ### MEAN Stack
