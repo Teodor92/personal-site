@@ -10,7 +10,7 @@ comments: false
 
 ## 📧 How can you reach me?
 
-📫 At teodor.ivanov92@gmail.com
+Drop an email at **teodor.ivanov92@gmail.com** 😊
 
 ## 👨‍💻 Engineering Experience
 
