@@ -4,7 +4,24 @@ title: "Who am I?"
 comments: false
 ---
 
+## ❓ Who am I?
+
 🚀 10+ years of experience in Full Stack development have taught me that code is like a joke - if you have to explain it, it's not that good. 😄 Specializing in JavaScript and TypeScript and have experience in GoLang and .NET! I bring a unique blend of humor and intelligence to the table, ensuring that not only will your projects be completed on time and under budget, but they'll also make you laugh... hopefully in a good way. 😅
+
+## 📧 How can you reach me?
+
+📫 At teodor.ivanov92@gmail.com
+
+Or connectct with me on:
+
+<p align="left">
+<a href="https://linkedin.com/in/teodorkurtev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="teodorkurtev" height="30" width="40" /></a>
+<a href="https://stackoverflow.com/users/2109394" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="2109394" height="30" width="40" /></a>
+<a href="https://fb.com/teodor.kurtev92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="teodor.kurtev92" height="30" width="40" /></a>
+<a href="https://instagram.com/teo_doooor" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="teo_doooor" height="30" width="40" /></a>
+<a href="https://github.com/Teodor92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="Teodor92" height="30" width="40" /></a>
+</p>
+
 
 ## 👨‍💻 Engineering Experience
 
@@ -171,3 +188,13 @@ Wrote several chapters for the 'Introduction to Programming' books published by 
 ### **[Telerik Academy](https://www.telerikacademy.com/)** - **Lecturer and Assistant** - Sofia, Bulgaria
 
 I helped with the organizations of the C# Part 2 Workshops and assisted the students if they needed any help. Additionally, I was involved as an assistant in several of the C# and Web courses.
+
+## Interests and Hobbies
+
+- 📚 Reading
+- 🎮 Gaming
+- 🌱 Gardening
+- 🏠 Smart home automation
+- 🏃‍♂️ Running
+- 🏋️‍♂️ Fitness
+- ⛰️ Mountain hiking
