@@ -12,17 +12,6 @@ comments: false
 
 📫 At teodor.ivanov92@gmail.com
 
-Or connectct with me on:
-
-<p align="left">
-<a href="https://linkedin.com/in/teodorkurtev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="teodorkurtev" height="30" width="40" /></a>
-<a href="https://github.com/Teodor92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="Teodor92" height="30" width="40" /></a>
-<a href="https://stackoverflow.com/users/2109394" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="2109394" height="30" width="40" /></a>
-<a href="https://fb.com/teodor.kurtev92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="teodor.kurtev92" height="30" width="40" /></a>
-<a href="https://instagram.com/teo_doooor" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="teo_doooor" height="30" width="40" /></a>
-</p>
-
-
 ## 👨‍💻 Engineering Experience
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Present)_
