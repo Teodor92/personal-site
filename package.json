@@ -1,0 +1,17 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "My personal site - teodorkurtev.com",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "author": "Teodor Kurtev",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3"
+  }
+}
