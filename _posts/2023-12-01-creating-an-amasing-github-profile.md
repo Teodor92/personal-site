@@ -1,7 +1,10 @@
 ---
 title: "How to create an amazing Github profile!"
 date: 2023-12-01T15:34:30-04:00
+teaser: 
 comments: true
+header:
+  teaser: "assets/images/creating-an-amazing-github-profile/awesome-github-profile-tumb.png"
 categories:
   - blog
 tags:
