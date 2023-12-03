@@ -13,7 +13,7 @@ tags:
   - Markdown
 ---
 
-So you want to create an amazing Github profile? Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!
+So you want to create an amazing Github profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!
 
 ## What is Github?
 
@@ -49,16 +49,29 @@ After you've included everything you should have something like this:
 
 ## Showcasing your Projects
 
+Now that you have a great profile, don't forget to select the repositories that you are most proud of and pin them to your profile!
+
+Here's a simple example of how the finished product might look like:
+
+![Pined repositories](/assets/images/creating-an-amazing-github-profile/pined-repos.png)
+
+Also, don't forget to add a description to your pinned repositories. This will help people understand what they are looking at and why it's important! You can do that from inside the repo itself:
+
+![Pined repositories](/assets/images/creating-an-amazing-github-profile/add-repo-description.png)
+
 ## Creating a Personal README
 
 A few year ago, Github introduced a new feature - the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on. You can also include links to your social media accounts or other websites that you want people to check out. This is a great way to show off your personality and let people know who you are.
 
 Let's explore some awesome tools that allow use to generate some amazing personal READMES!
 
-- https://rahuldkjain.github.io/gh-profile-readme-generator/
-- TODO: Add a bunch more resources
+- [https://rahuldkjain.github.io/gh-profile-readme-generator/](https://rahuldkjain.github.io/gh-profile-readme-generator/)
+- [https://gprm.itsvg.in/](https://gprm.itsvg.in/)
+
+Or you can just do it from scratch! Be creating, have fun and show your personality!
 
 ## Creating a Portfolio Website
 
-TODO:
+Do you want to go a step further? Why not create a personal website that can host you CV? Or portfolio? Blog? Or why not everything?
 
+This very easily achievable using GitHub pages and Jekyll. My personal favorite is the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme. It's easy to use, looks great and has a ton of features. You can see it in action on my personal website - [https://teodorkurtev.com/](https://teodorkurtev.com/). (a.k.a. the website you are currently on 😆)
