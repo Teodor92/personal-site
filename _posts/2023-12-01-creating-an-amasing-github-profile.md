@@ -13,7 +13,7 @@ tags:
   - Markdown
 ---
 
-So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd. Let's get started!
+So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd and get the most out of GitHub! Let's get started!
 
 ## What is GitHub?
 
@@ -47,6 +47,8 @@ Another great way to improve your profile is to contribute to open source softwa
 
 ## Fill in all of the relevant information
 
+![Fill info](/assets/images/creating-an-amazing-github-profile/fill-info.jpg)
+
 You want to make sure that you have all of the relevant information on your profile. This includes your name, location, and contact information. You should also include a link to your resume or portfolio website if you have one. If you don't have a resume or portfolio website, then it's a good idea to create one so that potential employers can learn more about you and what you do. You should include a link to your LinkedIn profile if you have one. About other social networks - it's up to you. I personally include them them, but I don't think that it's a must.
 
 Additionally, work on a short description that you can use a bio. This should be a short paragraph that describes who you are and what you do.
@@ -71,20 +73,30 @@ Also, don't forget to add a description and tags to all of your repositories. Th
 
 ## Creating a Personal README
 
-A few year ago, GitHub introduced a new feature - the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on. You can also include links to your social media accounts or other websites that you want people to check out. This is a great way to show off your personality and let people know who you are.
+A few year ago, GitHub introduced a new feature - the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on. You can also include links to your social media accounts or other websites that you want people to check out. This is a great way to show off your personality and let people know who you are. If need more info about the feature, take a look at [this article](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
 
 Let's explore some awesome tools that allow use to generate some amazing personal READMES!
 
 - [https://rahuldkjain.github.io/gh-profile-readme-generator/](https://rahuldkjain.github.io/gh-profile-readme-generator/)
 - [https://gprm.itsvg.in/](https://gprm.itsvg.in/)
 
+Also, take a look at [this video](https://www.youtube.com/watch?v=n6d4KHSKqGk) for even more ideas:
+
 Or you can just do it from scratch! Be creating, have fun and show your personality!
 
-## Creating a Portfolio Website
+## Follow repositories and people that you are interested in
+
+![Follow](/assets/images/creating-an-amazing-github-profile/follow.jpeg)
+
+Another great way to improve your profile is to follow repositories and people that you are interested in. This will help you stay up-to-date with what's going on in the world of software development. You can also use this feature to find new projects to work on or people to collaborate with. If you're not sure where to start, try following some of the most popular repositories on GitHub. You can also follow people who are working on projects that interest you. This will help you stay up-to-date with what they're working on and give you a chance to collaborate with them in the future.
+
+## Bonus Tip: Creating a Portfolio Website
 
 Do you want to go a step further? Why not create a personal website that can host you CV? Or portfolio? Blog? Or why not everything?
 
 This very easily achievable using GitHub pages and Jekyll. My personal favorite is the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme. It's easy to use, looks great and has a ton of features. You can see it in action on my personal website - [https://teodorkurtev.com/](https://teodorkurtev.com/). (a.k.a. the website you are currently on 😆)
+
+It's free for hosting and the only that you need to pay for (if you want to) is the domain name. You can get one for as low as 10$ per year. I personally use [Namecheap](https://www.namecheap.com/) for all of my domains.
 
 ## Conclusion
 
