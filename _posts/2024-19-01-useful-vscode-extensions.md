@@ -13,7 +13,7 @@ tags:
   - tools
 ---
 
-![GitHub profile](/assets/images/useful-vscode-extensions/vscode-extensions-tumbnail.jpeg)
+![GitHub profile](/assets/images/useful-vscode-extensions/vscode-extensions-thumb.jpeg)
 
 This is a list of 17 useful VSCode extensions that I use on a daily basis! 😄 These are in alphabetical order, not in order of importance, nor preference.
 
