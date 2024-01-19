@@ -2,6 +2,9 @@
 title: "Useful VSCode extensions"
 date: 2024-01-18T15:34:30-04:00
 comments: true
+teaser: "This is a list of useful VSCode extensions that I use on a daily basis - take a look. You might find something useful!"
+header:
+  teaser: "assets/images/useful-vscode-extensions/vscode-extensions.jpeg"
 categories:
   - blog
 tags:
@@ -9,6 +12,8 @@ tags:
   - vscode
   - tools
 ---
+
+![GitHub profile](/assets/images/useful-vscode-extensions/vscode-extensions-tumbnail.jpeg)
 
 This is a list of useful VSCode extensions that I use on a daily basis! 😄 These are in alphabetical order, not in order of importance, nor preference.
 
