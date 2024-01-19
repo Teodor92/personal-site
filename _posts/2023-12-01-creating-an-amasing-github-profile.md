@@ -1,7 +1,7 @@
 ---
 title: "How to create an amazing GitHub profile!"
 date: 2023-12-01T15:34:30-04:00
-# teaser: "So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd. Let's get started!"
+teaser: "So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd. Let's get started!"
 comments: true
 header:
   teaser: "assets/images/creating-an-amazing-github-profile/awesome-github-profile-tumb.png"
