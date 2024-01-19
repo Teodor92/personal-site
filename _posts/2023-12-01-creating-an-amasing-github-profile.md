@@ -1,37 +1,37 @@
 ---
-title: "How to create an amazing Github profile!"
+title: "How to create an amazing GitHub profile!"
 date: 2023-12-01T15:34:30-04:00
-teaser: "So you want to create an amazing Github profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!"
+teaser: "So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd. Let's get started!"
 comments: true
 header:
   teaser: "assets/images/creating-an-amazing-github-profile/awesome-github-profile-tumb.png"
 categories:
   - blog
 tags:
-  - Github
+  - GitHub
   - profile
   - Markdown
 ---
 
-So you want to create an amazing Github profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!
+So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing GitHub profile that will make you stand out from the crowd. Let's get started!
 
 ## What is GitHub?
 
-![Github profile](/assets/images/creating-an-amazing-github-profile/github.avif)
+![GitHub profile](/assets/images/creating-an-amazing-github-profile/github.avif)
 
-Github is a website that allows you to host your code and collaborate with others. It's also a great place to showcase your work, which can be helpful when applying for jobs or internships.
+GitHub is a website that allows you to host your code and collaborate with others. It's also a great place to showcase your work, which can be helpful when applying for jobs or internships.
 
 ## Learning Markdown
 
-The first thing you will need to do is learn Markdown. Markdown is a markup language that allows you to format text in a way that is easy for humans to read and write. It's also the language used by Github, so it's important to learn how to use it. But don't worry! It's not as hard as it sounds. In fact, it's pretty easy once you get the hang of it.
+The first thing you will need to do is learn Markdown. Markdown is a markup language that allows you to format text in a way that is easy for humans to read and write. It's also the language used by GitHub, so it's important to learn how to use it. But don't worry! It's not as hard as it sounds. In fact, it's pretty easy once you get the hang of it.
 
-TODO: Add a link to another article about a collection of MD tutorials
+Where to start? Just use the official [GitHub guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)!
 
 ## Create Open Source software
 
-![Github profile](/assets/images/creating-an-amazing-github-profile/create-code.avif)
+![GitHub profile](/assets/images/creating-an-amazing-github-profile/create-code.avif)
 
-The best thing for your profile is to do some actual software contribution. But let's say that for now you don't have the time or the skills to do that. What can you do? Well the simplest thing would be to build some personal projects and host the code on Github. You are doing a course in Automation testing? Add the test suit that you've created to Github an appropriate README. What is an appropriate README? Well, let's see. Here are some excellent examples:
+The best thing for your profile is to do some actual software contribution. But let's say that for now you don't have the time or the skills to do that. What can you do? Well the simplest thing would be to build some personal projects and host the code on GitHub. You are doing a course in Automation testing? Add the test suit that you've created to GitHub an appropriate README. What is an appropriate README? Well, let's see. Here are some excellent examples:
 
 - [An excellent template you can use on your project](https://github.com/othneildrew/Best-README-Template)
 - [Great pointers about how to write a README](https://www.makeareadme.com/)
@@ -41,7 +41,7 @@ But the end of the day you want your README to convey all the needed information
 
 ## Contribute to Open Source software
 
-![Github profile](/assets/images/creating-an-amazing-github-profile/open-source.avif)
+![GitHub profile](/assets/images/creating-an-amazing-github-profile/open-source.avif)
 
 Another great way to improve your profile is to contribute to open source software. This can be done in many ways, but the easiest way is to find a project that you are interested in and start contributing. You can do this by fixing bugs, adding features, or even just writing documentation. If you're not sure where to start, there are plenty of resources available online that will help you get started. For example, [this article](https://opensource.guide/how-to-contribute/) has some great tips on how to get started with open source contributions.
 
@@ -55,7 +55,7 @@ Moreover, choose an appropriate profile image - something that shows your face a
 
 After you've included everything you should have something like this:
 
-![Github profile](/assets/images/creating-an-amazing-github-profile/example-profile.png)
+![GitHub profile](/assets/images/creating-an-amazing-github-profile/example-profile.png)
 
 ## Showcasing your Projects
 
@@ -71,7 +71,7 @@ Also, don't forget to add a description and tags to all of your repositories. Th
 
 ## Creating a Personal README
 
-A few year ago, Github introduced a new feature - the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on. You can also include links to your social media accounts or other websites that you want people to check out. This is a great way to show off your personality and let people know who you are.
+A few year ago, GitHub introduced a new feature - the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on. You can also include links to your social media accounts or other websites that you want people to check out. This is a great way to show off your personality and let people know who you are.
 
 Let's explore some awesome tools that allow use to generate some amazing personal READMES!
 
@@ -85,3 +85,7 @@ Or you can just do it from scratch! Be creating, have fun and show your personal
 Do you want to go a step further? Why not create a personal website that can host you CV? Or portfolio? Blog? Or why not everything?
 
 This very easily achievable using GitHub pages and Jekyll. My personal favorite is the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme. It's easy to use, looks great and has a ton of features. You can see it in action on my personal website - [https://teodorkurtev.com/](https://teodorkurtev.com/). (a.k.a. the website you are currently on 😆)
+
+## Conclusion
+
+In conclusion, creating an amazing GitHub profile is not as hard as it sounds. It just takes some time and effort to make sure that you have all of the relevant information on your profile. If you follow these steps, then you should be able to create an amazing GitHub profile that will help you stand out from the crowd. Good luck!
