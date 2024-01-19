@@ -1,7 +1,7 @@
 ---
 title: "How to create an amazing Github profile!"
 date: 2023-12-01T15:34:30-04:00
-teaser: 
+teaser: "So you want to create an amazing Github profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!"
 comments: true
 header:
   teaser: "assets/images/creating-an-amazing-github-profile/awesome-github-profile-tumb.png"
@@ -15,7 +15,9 @@ tags:
 
 So you want to create an amazing Github profile? 🤔 Well, you've come to the right place! In this article, I will show you how to create an amazing Github profile that will make you stand out from the crowd. Let's get started!
 
-## What is Github?
+## What is GitHub?
+
+![Github profile](/assets/images/creating-an-amazing-github-profile/github.avif)
 
 Github is a website that allows you to host your code and collaborate with others. It's also a great place to showcase your work, which can be helpful when applying for jobs or internships.
 
@@ -25,7 +27,9 @@ The first thing you will need to do is learn Markdown. Markdown is a markup lang
 
 TODO: Add a link to another article about a collection of MD tutorials
 
-## Contributing to Open Source
+## Create Open Source software
+
+![Github profile](/assets/images/creating-an-amazing-github-profile/create-code.avif)
 
 The best thing for your profile is to do some actual software contribution. But let's say that for now you don't have the time or the skills to do that. What can you do? Well the simplest thing would be to build some personal projects and host the code on Github. You are doing a course in Automation testing? Add the test suit that you've created to Github an appropriate README. What is an appropriate README? Well, let's see. Here are some excellent examples:
 
@@ -35,13 +39,19 @@ The best thing for your profile is to do some actual software contribution. But 
 
 But the end of the day you want your README to convey all the needed information, but also to be easy to read and understand. So, don't be afraid to use images, gifs, and other media to make it more appealing!
 
+## Contribute to Open Source software
+
+![Github profile](/assets/images/creating-an-amazing-github-profile/open-source.avif)
+
+Another great way to improve your profile is to contribute to open source software. This can be done in many ways, but the easiest way is to find a project that you are interested in and start contributing. You can do this by fixing bugs, adding features, or even just writing documentation. If you're not sure where to start, there are plenty of resources available online that will help you get started. For example, [this article](https://opensource.guide/how-to-contribute/) has some great tips on how to get started with open source contributions.
+
 ## Fill in all of the relevant information
 
-You want to make sure that you have all of the relevant information on your profile. This includes your name, location, and contact information. You should also include a link to your resume or portfolio website if you have one. If you don't have a resume or portfolio website, then it's a good idea to create one so that potential employers can learn more about you and what you do. Additionally, you should include a link to your LinkedIn profile if you have one. About other social networks - it's up to you. I personally include them them, but I don't think that it's a must.
+You want to make sure that you have all of the relevant information on your profile. This includes your name, location, and contact information. You should also include a link to your resume or portfolio website if you have one. If you don't have a resume or portfolio website, then it's a good idea to create one so that potential employers can learn more about you and what you do. You should include a link to your LinkedIn profile if you have one. About other social networks - it's up to you. I personally include them them, but I don't think that it's a must.
 
 Additionally, work on a short description that you can use a bio. This should be a short paragraph that describes who you are and what you do.
 
-Additionally, choose an appropriate profile image - something that shows your face and is not too distracting. Avoid fitness selfies, drunk bar photos or anything of that sorts - all and all, use common sense - if the picture is not something that you want to show your potential employer, don't use it. You want to look professional and approachable.
+Moreover, choose an appropriate profile image - something that shows your face and is not too distracting. Avoid fitness selfies, drunk bar photos or anything of that sorts - all and all, use common sense - if the picture is not something that you want to show your potential employer, don't use it. You want to look professional and approachable.
 
 After you've included everything you should have something like this:
 
@@ -55,7 +65,7 @@ Here's a simple example of how the finished product might look like:
 
 ![Pined repositories](/assets/images/creating-an-amazing-github-profile/pined-repos.png)
 
-Also, don't forget to add a description to your pinned repositories. This will help people understand what they are looking at and why it's important! You can do that from inside the repo itself:
+Also, don't forget to add a description and tags to all of your repositories. This will help people understand what they are looking at and why it's important! You can do that from inside the repo itself:
 
 ![Pined repositories](/assets/images/creating-an-amazing-github-profile/add-repo-description.png)
 
