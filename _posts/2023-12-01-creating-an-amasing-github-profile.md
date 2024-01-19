@@ -90,6 +90,8 @@ Or you can just do it from scratch! Be creating, have fun and show your personal
 
 Another great way to improve your profile is to follow repositories and people that you are interested in. This will help you stay up-to-date with what's going on in the world of software development. You can also use this feature to find new projects to work on or people to collaborate with. If you're not sure where to start, try following some of the most popular repositories on GitHub. You can also follow people who are working on projects that interest you. This will help you stay up-to-date with what they're working on and give you a chance to collaborate with them in the future.
 
+For example you can follow the [Facebook React](https://github.com/facebook/react) repository if you are interesting in React development. Or you can follow the [SeleniumHQ repository](https://github.com/SeleniumHQ/selenium) if you are interested in Test automation.
+
 ## Bonus Tip: Creating a Portfolio Website
 
 Do you want to go a step further? Why not create a personal website that can host you CV? Or portfolio? Blog? Or why not everything?
