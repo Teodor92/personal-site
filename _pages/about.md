@@ -12,7 +12,7 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 
 ## 👨‍💻 Engineering Experience
 
-### **[Deel](https://moteefe.com/)** - **Team Lead** - Remote - _(Jan 2024 - Present)_
+### **[Deel](https://www.deel.com/)** - **Team Lead** - Remote - _(Jan 2024 - Present)_
 
 As a Team Lead at Deel, I am current leading the Pricing, Billing and Invoicing teams.
 
