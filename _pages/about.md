@@ -15,14 +15,14 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 ### **[Deel](https://www.deel.com/)** - **Engineering Manager** - Remote - _(Jan 2024 - Present)_
 
 - Led the development of critical FinTech features, including designing a new billing framework, implementing a
-robust invoicing architecture to ensure compliance and consistency, and scoping and delivering a new pricing
-engine for accurate and scalable pricing logic.
+  robust invoicing architecture to ensure compliance and consistency, and scoping and delivering a new pricing
+  engine for accurate and scalable pricing logic.
 - Led refactoring of billing and invoicing systems, improving efficiency, scalability and ease of use.
 - Managed career development for 13 direct reports to foster growth and performance.
 - Oversaw critical business features delivery, contributing to $2M in monthly revenue.
 - Optimized internal processes to reduce distractions and increase engineer productivity.
 - Collaborated with Product Managers, Product Operations Managers, Engineering Directors and other
-stakeholders to define and achieve quarterly OKRs.
+  stakeholders to define and achieve quarterly OKRs.
 - Conducted 70+ interviews and established 4 new teams to support business growth.
 - All the above was achieved via TypeScript, React, Nest.js, Node.js, PostgreSQL and deployed on AWS.
 
