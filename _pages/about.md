@@ -12,7 +12,11 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 
 ## 👨‍💻 Engineering Experience
 
-### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Present)_
+### **[Deel](https://moteefe.com/)** - **Team Lead** - Remote - _(Jan 2024 - Present)_
+
+As a Team Lead at Deel, I am current leading the Pricing, Billing and Invoicing teams.
+
+### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Jan 2024)_
 
 As a member of Moteefe's tech team, I played an instrumental role in the development, deployment and maintenance of several key features for the company. My responsibilities included:
 
@@ -22,7 +26,7 @@ As a member of Moteefe's tech team, I played an instrumental role in the develop
 - Actively participating in internal code quality initiatives, mentoring and sharing knowledge with team members to improve the overall development process.
 - All the above was achieved via TypeScript, React, Nest.js, Node.js, and deployed on AWS.
 
-### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - Present)_
+### **[Software University](https://softuni.bg/)** - **Part-time Lecturer** - Remote - _(May 2020 - April 2024)_
 
 As a lecturer at SoftUni, some of my key responsibilities, included:
 
@@ -30,7 +34,7 @@ As a lecturer at SoftUni, some of my key responsibilities, included:
 - Provide practical insights and foster skill development to equip students with applicable programming expertise across foundational and advanced levels.
 - Extend support beyond class by offering supplementary reading materials, resources, and guidance for students to self-develop. Facilitate their independent growth with curated content to deepen their understanding of programming concepts.
 
-### **[Mentor The Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria/Remote - _(Sept 2022 - Present)_
+### **[Mentor The Young](https://www.mentortheyoung.com/)** - **Mentor** - Sofia, Bulgaria/Remote - _(Sept 2022 - Jan 2024)_
 
 As a mentor at Mentor The Young, I am responsible for:
 
