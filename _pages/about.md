@@ -14,7 +14,9 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 
 ### **[Deel](https://www.deel.com/)** - **Engineering Team Lead** - Remote - _(Jan 2024 - Present)_
 
-As a Team Lead at Deel, I am current leading the Pricing, Billing and Invoicing teams.
+As a team lead, I guide the Pricing, Invoicing, and Billing teams to drive the development of critical features that ensure compliant billing, accurate invoicing, and centralized pricing logic. I oversee all aspects of team management, from career development and performance assessment of engineers to hiring and onboarding new talent.
+
+My focus is on fostering a collaborative environment where we can efficiently organize and deliver high-quality solutions on schedule. I also prioritize tracking and addressing technical debt to maintain sustainable and scalable systems.
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Jan 2024)_
 
