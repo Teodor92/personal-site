@@ -4,7 +4,7 @@ title: "Who am I❓"
 comments: false
 ---
 
-🚀 10+ years of experience in Full Stack development have taught me that code is like a joke - if you have to explain it, it's not that good. 😄 Specializing in JavaScript and TypeScript and have experience in GoLang and .NET! I bring a unique blend of humor and intelligence to the table, ensuring that not only will your projects be completed on time and under budget, but they'll also make you laugh... hopefully in a good way. 😅
+🚀 After 10+ years in Full Stack development, I've come to see code as a bit like a good joke—if you have to explain it, it’s just not quite right! 😄 Along with deep expertise in JavaScript, TypeScript, MERN, GoLang, and AWS, I've had the rewarding experience of leading and building teams from scratch, creating strong, dynamic groups that bring projects to life and solve tough challenges together.
 
 ## 📧 How can you reach me?
 
