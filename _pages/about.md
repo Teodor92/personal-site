@@ -12,11 +12,14 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 
 ## 👨‍💻 Engineering Experience
 
-### **[Deel](https://www.deel.com/)** - **Engineering Team Lead** - Remote - _(Jan 2024 - Present)_
+### **[Deel](https://www.deel.com/)** - **Engineering Manager** - Remote - _(Jan 2024 - Present)_
 
-As a team lead, I guide the Pricing, Invoicing, and Billing teams to drive the development of critical features that ensure compliant billing, accurate invoicing, and centralized pricing logic. I oversee all aspects of team management, from career development and performance assessment of engineers to hiring and onboarding new talent.
-
-My focus is on fostering a collaborative environment where we can efficiently organize and deliver high-quality solutions on schedule. I also prioritize tracking and addressing technical debt to maintain sustainable and scalable systems.
+- Conducted 70+ interviews and established 4 new teams to support business growth.
+- Managed career development for 13 direct reports to foster growth and performance.
+- Led refactoring of billing and invoicing systems, improving efficiency and scalability.
+- Streamlined Quote-to-Cash processes to enhance operational workflows.
+- Optimized internal processes to reduce distractions and increase engineer productivity.
+- Collaborated with Product Managers and Engineering Directors to define and achieve quarterly OKRs.
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Jan 2024)_
 
