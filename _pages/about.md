@@ -19,7 +19,8 @@ Drop an email at **[teodor.ivanov92@gmail.com](mailto:teodor.ivanov92@gmail.com)
 - Led refactoring of billing and invoicing systems, improving efficiency and scalability.
 - Streamlined Quote-to-Cash processes to enhance operational workflows.
 - Optimized internal processes to reduce distractions and increase engineer productivity.
-- Collaborated with Product Managers and Engineering Directors to define and achieve quarterly OKRs.
+- Collaborated with Product Managers, Product Operations Managers, Engineering Directors and other stakeholders to define and achieve quarterly OKRs.
+- All the above was achieved via TypeScript, React, Nest.js, Node.js, PostgreSQL and deployed on AWS.
 
 ### **[Moteefe](https://moteefe.com/)** - **Senior Software Engineer** - Remote - _(Jan 2022 - Jan 2024)_
 
