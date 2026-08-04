@@ -1,12 +1,8 @@
 ---
 title: "17 useful extensions for Visual Studio Code"
-date: 2024-01-18T15:34:30-04:00
-teaser: "This is a list of useful VSCode extensions that I use on a daily basis - take a look. You might find something useful!"
-comments: true
-header:
-  teaser: "assets/images/useful-vscode-extensions/vscode-extensions-thumb.jpeg"
-categories:
-  - blog
+description: "This is a list of useful VSCode extensions that I use on a daily basis - take a look. You might find something useful!"
+pubDate: 2024-01-18T15:34:30-04:00
+heroImage: "/assets/images/useful-vscode-extensions/vscode-extensions-thumb.jpeg"
 tags:
   - extensions
   - vscode

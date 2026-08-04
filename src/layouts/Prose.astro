@@ -1,0 +1,18 @@
+---
+// Layout for plain markdown pages (uses.md, now.md).
+import Base from './Base.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Base title={`${frontmatter.title} | Teodor Kurtev`} description={frontmatter.description}>
+  <h1>{frontmatter.title}</h1>
+  <slot />
+</Base>

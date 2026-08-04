@@ -1,0 +1,55 @@
+---
+import { site } from '../data/site';
+
+// Inline SVG paths (Simple Icons / Feather outlines), no icon-font dependency.
+const icons: Record<string, string> = {
+  github:
+    'M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.35.95.1-.74.4-1.25.72-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.15c0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z',
+  linkedin:
+    'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z',
+  stackoverflow:
+    'M18.99 21.6v-6.42h2.13v8.55H1.88v-8.55h2.13v6.42h14.98zM6.22 14.4l.44-2.08 10.45 2.2-.44 2.08-10.45-2.2zm1.38-4.96.9-1.93 9.68 4.51-.9 1.93-9.68-4.51zm2.69-4.7L11.9 3.1l8.2 6.83-1.61 1.64-8.2-6.83zM15.6 0l6.36 8.55-1.7 1.27L13.9 1.27 15.6 0zM6.17 19.47v-2.13h10.68v2.13H6.17z',
+  email:
+    'M1.5 4.5h21a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 18V6a1.5 1.5 0 0 1 1.5-1.5zm10.5 8.85L2.4 6.75V18h19.2V6.75L12 13.35zM3.3 6l8.7 5.85L20.7 6H3.3z',
+};
+---
+
+<ul class="socials">
+  {
+    site.socials.map(({ label, url, icon }) => (
+      <li>
+        <a href={url} aria-label={label} title={label} rel="me noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={icons[icon]} />
+          </svg>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .socials {
+    display: flex;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--fg-muted);
+  }
+
+  .socials a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

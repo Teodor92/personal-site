@@ -1,0 +1,85 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { site } from '../data/site';
+
+const nav = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'CV', href: '/cv/' },
+  { label: 'Uses', href: '/uses/' },
+  { label: 'Now', href: '/now/' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<header>
+  <nav aria-label="Main">
+    <a class="home" href="/">{site.name}</a>
+    <div class="links">
+      {
+        nav.map(({ label, href }) => (
+          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+            {label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav {
+    width: min(100% - 2.5rem, var(--wide-width));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+  }
+
+  .home {
+    font-weight: 650;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+
+  .home:hover {
+    text-decoration: none;
+    color: var(--accent);
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .links a {
+    color: var(--fg-muted);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  .links a:hover,
+  .links a[aria-current='page'] {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  .links a[aria-current='page'] {
+    color: var(--accent);
+  }
+
+  @media (max-width: 480px) {
+    .links {
+      gap: 0.9rem;
+    }
+  }
+</style>

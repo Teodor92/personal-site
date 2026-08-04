@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../data/site';
+import { roles } from '../data/cv';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const highlights = roles.filter((r) => r.highlight);
+---
+
+<Base title="Teodor Kurtev — Senior AI Software Engineer">
+  <section class="hero">
+    <img src={site.avatar} alt="" width="96" height="96" />
+    <div>
+      <h1>{site.name}</h1>
+      <p class="role">{site.role}</p>
+      <p class="pitch">{site.pitch}</p>
+      <SocialLinks />
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Currently</p>
+    <ul class="highlights">
+      {
+        highlights.map((r) => (
+          <li>
+            <strong>
+              {r.title} · <a href={r.url}>{r.company}</a>
+            </strong>
+            <span class="muted"> — {r.period}</span>
+            <p class="muted">{r.bullets[0]}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p><a href="/cv/">Full CV →</a></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recent writing</p>
+    <PostList posts={posts} />
+    <p class="all-posts"><a href="/blog/">All posts →</a></p>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero img {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    margin-bottom: 0.15rem;
+  }
+
+  .role {
+    color: var(--accent);
+    font-weight: 550;
+    margin-bottom: 0.75rem;
+  }
+
+  .pitch {
+    color: var(--fg-muted);
+    max-width: 36rem;
+  }
+
+  section + section {
+    margin-top: 3rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .highlights p {
+    margin: 0.2rem 0 0;
+  }
+
+  .all-posts {
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 540px) {
+    .hero {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+  }
+</style>

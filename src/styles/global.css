@@ -1,0 +1,228 @@
+/* ---------------------------------------------------------------------------
+   teodorkurtev.com — clean & typographic design system
+   One accent color, custom-property theming, light + dark via [data-theme].
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg: #fdfdfc;
+  --bg-raised: #f4f4f2;
+  --fg: #1a1c1e;
+  --fg-muted: #5a6069;
+  --fg-faint: #8b919a;
+  --border: #e4e4e0;
+  --accent: #0d66d0;
+  --accent-hover: #0a52a8;
+  --code-bg: #f0f0ee;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Type scale (fluid) */
+  --text-sm: 0.875rem;
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.35rem, 1.2rem + 0.7vw, 1.6rem);
+  --text-2xl: clamp(1.7rem, 1.45rem + 1.2vw, 2.1rem);
+  --text-3xl: clamp(2.1rem, 1.7rem + 1.9vw, 2.75rem);
+
+  --content-width: 42rem;
+  --wide-width: 52rem;
+}
+
+[data-theme='dark'] {
+  --bg: #101214;
+  --bg-raised: #1a1d20;
+  --fg: #e8eaed;
+  --fg-muted: #a2a9b3;
+  --fg-faint: #6e747d;
+  --border: #2a2e33;
+  --accent: #5aa2f0;
+  --accent-hover: #82b9f5;
+  --code-bg: #1c2024;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  width: min(100% - 2.5rem, var(--content-width));
+  margin-inline: auto;
+  flex: 1;
+  padding-block: 2.5rem 5rem;
+}
+
+main.wide {
+  width: min(100% - 2.5rem, var(--wide-width));
+}
+
+/* ------------------------------- Typography ----------------------------- */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-xl);
+  margin-top: 2.5em;
+  margin-bottom: 0.6em;
+}
+
+h3 {
+  font-size: var(--text-lg);
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1.1em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+small,
+.muted {
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-block: 2.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.1rem;
+  color: var(--fg-muted);
+  margin-block: 1.4rem;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+pre {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  margin-block: 1.4rem;
+  line-height: 1.55;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: var(--text-sm);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-block: 1.4rem;
+  font-size: var(--text-sm);
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background: var(--bg-raised);
+}
+
+/* ------------------------------ Utilities ------------------------------- */
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--fg-faint);
+}
+
+.card {
+  display: block;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  transition: border-color 0.15s ease;
+}
+
+a.card {
+  color: inherit;
+}
+
+a.card:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import Comments from '../components/Comments.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  minutesRead?: string;
+}
+
+const { post, minutesRead } = Astro.props;
+const { title, description, pubDate, heroImage, tags } = post.data;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage} article>
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <p class="meta">
+        <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
+        {minutesRead && <span> · {minutesRead}</span>}
+      </p>
+      {
+        tags.length > 0 && (
+          <ul class="tags">
+            {tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+    <slot />
+  </article>
+  <Comments />
+</Base>
+
+<style>
+  article > header {
+    margin-bottom: 2.5rem;
+  }
+
+  .meta {
+    color: var(--fg-faint);
+    font-size: var(--text-sm);
+    margin: 0.75rem 0 0;
+  }
+
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0.9rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tags li {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fg-muted);
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.65rem;
+  }
+</style>
