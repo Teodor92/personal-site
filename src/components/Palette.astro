@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const items = [
@@ -145,7 +145,7 @@ const items = [
     if (!visible.length) return;
     const current = Math.max(
       0,
-      visible.findIndex((a) => a.dataset.active === 'true')
+      visible.findIndex((a) => a.dataset.active === 'true'),
     );
     visible.forEach((a) => delete a.dataset.active);
     const next = (current + moveSelection + visible.length) % visible.length;

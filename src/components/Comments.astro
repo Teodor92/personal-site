@@ -46,7 +46,7 @@ const enabled = GISCUS.repoId !== '' && GISCUS.categoryId !== '';
     const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
     iframe?.contentWindow?.postMessage(
       { giscus: { setConfig: { theme: (e as CustomEvent).detail } } },
-      'https://giscus.app'
+      'https://giscus.app',
     );
   });
 </script>

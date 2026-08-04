@@ -131,7 +131,7 @@ const ogImage = new URL(image, site.url);
                 }
               }
             },
-            { threshold: 0.1 }
+            { threshold: 0.1 },
           );
           revealed.forEach((el) => io.observe(el));
         }
