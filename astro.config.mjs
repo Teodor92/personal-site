@@ -11,7 +11,6 @@ export default defineConfig({
   redirects: {
     // Old Jekyll archive routes — low traffic, point at the blog index
     '/year-archive/': '/blog/',
-    '/tags/': '/blog/',
     '/categories/': '/blog/',
     // jekyll-sitemap emitted /sitemap.xml; @astrojs/sitemap emits /sitemap-index.xml
     '/sitemap.xml': '/sitemap-index.xml',
