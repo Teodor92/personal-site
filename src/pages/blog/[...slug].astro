@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import getReadingTime from 'reading-time';
+import Post from '../../layouts/Post.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  // post.id is the filename slug — identical to the old Jekyll URLs.
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const minutesRead = getReadingTime(post.body ?? '').text;
+---
+
+<Post post={post} minutesRead={minutesRead}>
+  <Content />
+</Post>

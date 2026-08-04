@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import { roles, education, skills, volunteering, interests } from '../data/cv';
+import { site } from '../data/site';
+---
+
+<Base title="CV | Teodor Kurtev" wide>
+  <h1>Curriculum Vitae</h1>
+  <p class="muted contact">
+    {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a>
+  </p>
+
+  <h2>Experience</h2>
+  <div class="timeline">
+    {
+      roles.map((role) => (
+        <article>
+          <header>
+            <h3>
+              {role.title} · <a href={role.url}>{role.company}</a>
+            </h3>
+            <p class="muted">
+              {role.period}
+              {role.location && ` · ${role.location}`}
+            </p>
+          </header>
+          {role.intro && <p class="intro">{role.intro}</p>}
+          <ul>
+            {role.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+
+  <h2>Education</h2>
+  <div class="timeline">
+    {
+      education.map((e) => (
+        <article>
+          <header>
+            <h3>
+              {e.degree} · <a href={e.url}>{e.school}</a>
+            </h3>
+            <p class="muted">
+              {e.location} · {e.note}
+            </p>
+          </header>
+          <p>{e.details}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <h2>Skills</h2>
+  <dl class="skills">
+    {
+      skills.map((s) => (
+        <>
+          <dt>{s.group}</dt>
+          <dd class="muted">{s.items}</dd>
+        </>
+      ))
+    }
+  </dl>
+
+  <h2>Volunteering</h2>
+  <div class="timeline">
+    {
+      volunteering.map((v) => (
+        <article>
+          <header>
+            <h3>
+              {v.role} · <a href={v.url}>{v.org}</a>
+            </h3>
+          </header>
+          <p>{v.details}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <h2>Interests</h2>
+  <p>{interests.join(' · ')}</p>
+</Base>
+
+<style>
+  .contact {
+    margin-top: 0.4rem;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 2rem;
+    border-left: 2px solid var(--border);
+    padding-left: 1.5rem;
+  }
+
+  .timeline article {
+    position: relative;
+  }
+
+  .timeline article::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.5rem - 6px);
+    top: 0.5em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .timeline h3 {
+    margin: 0;
+  }
+
+  .timeline header p {
+    margin: 0.15rem 0 0.6rem;
+  }
+
+  .intro {
+    margin-bottom: 0.6rem;
+  }
+
+  .timeline ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .timeline li + li {
+    margin-top: 0.3rem;
+  }
+
+  .skills dt {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .skills dd {
+    margin: 0.2rem 0 0;
+  }
+</style>
