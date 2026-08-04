@@ -15,7 +15,7 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage} article>
+<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage?.src} article>
   <div id="progress-bar" aria-hidden="true"></div>
   <article>
     <header>
