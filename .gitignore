@@ -1,7 +1,7 @@
-_site
-.sass-cache
-.jekyll-metadata
-Gemfile.lock
+# Astro
+dist/
+.astro/
+
 .DS_Store
 
 # Logs
