@@ -1,0 +1,52 @@
+---
+// giscus comments (GitHub Discussions).
+// SETUP REQUIRED before this renders: enable Discussions on the repo,
+// install the giscus app (github.com/apps/giscus), then paste the repoId
+// and categoryId from https://giscus.app below. Until then the section
+// is skipped entirely.
+const GISCUS = {
+  repo: 'Teodor92/personal-site',
+  repoId: '', // TODO(owner): from giscus.app
+  category: 'Blog comments',
+  categoryId: '', // TODO(owner): from giscus.app
+};
+
+const enabled = GISCUS.repoId !== '' && GISCUS.categoryId !== '';
+---
+
+{
+  enabled && (
+    <section class="comments" data-repo-id={GISCUS.repoId}>
+      <hr />
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo={GISCUS.repo}
+        data-repo-id={GISCUS.repoId}
+        data-category={GISCUS.category}
+        data-category-id={GISCUS.categoryId}
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async
+      />
+    </section>
+  )
+}
+
+<script>
+  // Keep giscus in sync with the site theme toggle.
+  window.addEventListener('theme-change', (e) => {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme: (e as CustomEvent).detail } } },
+      'https://giscus.app'
+    );
+  });
+</script>

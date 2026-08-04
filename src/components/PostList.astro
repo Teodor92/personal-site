@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<ul class="post-list">
+  {
+    posts.map((post) => (
+      <li>
+        <a class="card" href={`/blog/${post.id}/`}>
+          <div class="meta">
+            <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+          </div>
+          <h3>{post.data.title}</h3>
+          <p class="muted">{post.data.description}</p>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .meta {
+    font-size: var(--text-sm);
+    color: var(--fg-faint);
+    margin-bottom: 0.25rem;
+  }
+
+  h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  p {
+    margin: 0;
+  }
+</style>

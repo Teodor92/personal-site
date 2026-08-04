@@ -1,0 +1,31 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="inner">
+    <small>© {year} {site.name} · <a href="/feed.xml">RSS</a></small>
+    <SocialLinks />
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+  }
+
+  .inner {
+    width: min(100% - 2.5rem, var(--wide-width));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.5rem;
+    flex-wrap: wrap;
+  }
+</style>
