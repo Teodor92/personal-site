@@ -1,8 +1,10 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Palette from '../components/Palette.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -49,12 +51,22 @@ const ogImage = new URL(image, site.url);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Theme init before CSS paints: no flash of wrong theme. -->
+    <ClientRouter />
+
+    <!-- Theme init before CSS paints: no flash of wrong theme.
+         Re-applied after every view transition (astro:after-swap fires
+         before the new page paints). -->
     <script is:inline>
-      const theme =
-        localStorage.getItem('theme') ??
-        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.dataset.theme = theme;
+      (() => {
+        const apply = () => {
+          const theme =
+            localStorage.getItem('theme') ??
+            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.dataset.theme = theme;
+        };
+        apply();
+        document.addEventListener('astro:after-swap', apply);
+      })();
     </script>
 
     <!-- Google Analytics -->
@@ -75,5 +87,79 @@ const ogImage = new URL(image, site.url);
       <slot />
     </main>
     <Footer />
+    <Palette />
+
+    <script>
+      // ---- Global interactions. Bound once; view transitions swap the DOM,
+      // ---- so per-element work re-runs on astro:page-load and clicks are
+      // ---- delegated from document instead of bound to nodes.
+
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+      // Theme toggle (delegated).
+      document.addEventListener('click', (e) => {
+        const target = e.target as Element;
+        if (!target.closest('#theme-toggle')) return;
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        window.dispatchEvent(new CustomEvent('theme-change', { detail: next }));
+      });
+
+      // Copy buttons on code blocks (delegated).
+      document.addEventListener('click', async (e) => {
+        const btn = (e.target as Element).closest<HTMLButtonElement>('.copy-code');
+        if (!btn) return;
+        const code = btn.parentElement?.querySelector('code')?.textContent ?? '';
+        await navigator.clipboard.writeText(code);
+        btn.dataset.copied = 'true';
+        setTimeout(() => delete btn.dataset.copied, 1600);
+      });
+
+      function initPage() {
+        // Scroll reveals.
+        const revealed = document.querySelectorAll('[data-reveal]:not(.is-visible)');
+        if (reduceMotion.matches) {
+          revealed.forEach((el) => el.classList.add('is-visible'));
+        } else {
+          const io = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  io.unobserve(entry.target);
+                }
+              }
+            },
+            { threshold: 0.1 }
+          );
+          revealed.forEach((el) => io.observe(el));
+        }
+
+        // Inject copy buttons.
+        document.querySelectorAll('pre:not(:has(.copy-code))').forEach((pre) => {
+          const btn = document.createElement('button');
+          btn.className = 'copy-code';
+          btn.type = 'button';
+          btn.ariaLabel = 'Copy code';
+          pre.appendChild(btn);
+        });
+
+        // Reading progress bar (post pages mark <body> via .has-progress article).
+        const bar = document.getElementById('progress-bar');
+        const article = document.querySelector('article');
+        if (bar && article) {
+          const update = () => {
+            const total = article.scrollHeight - innerHeight;
+            const done = Math.min(Math.max(-article.getBoundingClientRect().top, 0), total);
+            bar.style.transform = `scaleX(${total > 0 ? done / total : 0})`;
+          };
+          addEventListener('scroll', update, { passive: true });
+          update();
+        }
+      }
+
+      document.addEventListener('astro:page-load', initPage);
+    </script>
   </body>
 </html>

@@ -1,0 +1,205 @@
+---
+// ⌘K / Ctrl+K command palette: filterable navigation over pages and posts.
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const items = [
+  { label: 'Home', href: '/', group: 'Pages' },
+  { label: 'Blog', href: '/blog/', group: 'Pages' },
+  { label: 'CV', href: '/cv/', group: 'Pages' },
+  { label: 'Uses', href: '/uses/', group: 'Pages' },
+  { label: 'Now', href: '/now/', group: 'Pages' },
+  { label: 'Tags', href: '/tags/', group: 'Pages' },
+  ...posts.map((p) => ({ label: p.data.title, href: `/blog/${p.id}/`, group: 'Posts' })),
+];
+---
+
+<dialog id="palette" aria-label="Command palette">
+  <input
+    id="palette-input"
+    type="text"
+    placeholder="Jump to…"
+    autocomplete="off"
+    spellcheck="false"
+  />
+  <ul id="palette-list">
+    {
+      items.map(({ label, href, group }) => (
+        <li>
+          <a href={href} data-group={group}>
+            <span class="group-tag">{group}</span>
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="hint"><kbd>↑↓</kbd> navigate · <kbd>↵</kbd> open · <kbd>esc</kbd> close</p>
+</dialog>
+
+<style>
+  dialog {
+    width: min(100% - 2rem, 34rem);
+    margin: 12vh auto 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    color: var(--fg);
+    box-shadow: 0 20px 60px rgb(0 0 0 / 0.25);
+  }
+
+  dialog::backdrop {
+    background: rgb(0 0 0 / 0.35);
+    backdrop-filter: blur(2px);
+  }
+
+  input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    padding: 0.9rem 1.1rem;
+    outline: none;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+
+  li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    color: var(--fg);
+    font-size: var(--text-sm);
+  }
+
+  li a:hover,
+  li a[aria-selected='true'] {
+    background: var(--bg-raised);
+    text-decoration: none;
+  }
+
+  li a[aria-selected='true'] {
+    outline: 1px solid var(--accent);
+  }
+
+  li[hidden] {
+    display: none;
+  }
+
+  .group-tag {
+    font-size: 0.7rem;
+    color: var(--fg-faint);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .hint {
+    margin: 0;
+    padding: 0.55rem 1.1rem;
+    border-top: 1px solid var(--border);
+    color: var(--fg-faint);
+    font-size: 0.75rem;
+  }
+
+  kbd {
+    font-family: var(--font-mono);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0 0.3em;
+  }
+</style>
+
+<script>
+  // Palette state is derived from the DOM each time, so it survives view
+  // transitions without re-binding (listeners live on document/window).
+  const getDialog = () => document.getElementById('palette') as HTMLDialogElement | null;
+
+  function filterAndSelect(query: string, moveSelection = 0) {
+    const dialog = getDialog();
+    if (!dialog) return;
+    const links = [...dialog.querySelectorAll<HTMLAnchorElement>('#palette-list a')];
+    const q = query.trim().toLowerCase();
+    const visible: HTMLAnchorElement[] = [];
+    for (const a of links) {
+      const match = !q || a.textContent!.toLowerCase().includes(q);
+      (a.parentElement as HTMLElement).hidden = !match;
+      a.removeAttribute('aria-selected');
+      if (match) visible.push(a);
+    }
+    if (!visible.length) return;
+    const current = Math.max(
+      0,
+      visible.findIndex((a) => a.dataset.active === 'true')
+    );
+    visible.forEach((a) => delete a.dataset.active);
+    const next = (current + moveSelection + visible.length) % visible.length;
+    visible[next].dataset.active = 'true';
+    visible[next].setAttribute('aria-selected', 'true');
+    visible[next].scrollIntoView({ block: 'nearest' });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const dialog = getDialog();
+    if (!dialog) return;
+
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (dialog.open) {
+        dialog.close();
+      } else {
+        dialog.showModal();
+        const input = dialog.querySelector('input')!;
+        input.value = '';
+        input.focus();
+        filterAndSelect('');
+      }
+      return;
+    }
+
+    if (!dialog.open) return;
+
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      filterAndSelect(dialog.querySelector('input')!.value, e.key === 'ArrowDown' ? 1 : -1);
+    } else if (e.key === 'Enter') {
+      const active = dialog.querySelector<HTMLAnchorElement>('a[aria-selected="true"]');
+      if (active) {
+        e.preventDefault();
+        dialog.close();
+        active.click();
+      }
+    }
+  });
+
+  document.addEventListener('input', (e) => {
+    const input = e.target as HTMLElement;
+    if (input.id === 'palette-input') {
+      filterAndSelect((input as HTMLInputElement).value);
+    }
+  });
+
+  // Close when a palette link is chosen or the backdrop is clicked.
+  document.addEventListener('click', (e) => {
+    const dialog = getDialog();
+    if (!dialog?.open) return;
+    const target = e.target as Element;
+    if (target.closest('#palette-list a')) dialog.close();
+    else if (target === dialog) dialog.close();
+  });
+</script>

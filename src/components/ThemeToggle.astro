@@ -1,6 +1,7 @@
 ---
 // Flips [data-theme] on <html> and persists the choice.
-// Initial theme is set by the inline head script in Base.astro.
+// Click handling is delegated in Base.astro (survives view transitions);
+// initial theme comes from the inline head script there.
 ---
 
 <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -48,6 +49,10 @@
     background: transparent;
     color: var(--fg-muted);
     cursor: pointer;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.25s ease;
   }
 
   button:hover {
@@ -55,25 +60,36 @@
     border-color: var(--fg-faint);
   }
 
+  button:active {
+    transform: rotate(40deg) scale(0.9);
+  }
+
+  svg {
+    transition:
+      transform 0.35s ease,
+      opacity 0.25s ease;
+  }
+
   .moon {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
   }
 
   :global([data-theme='dark']) .sun {
-    display: none;
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
   }
 
   :global([data-theme='dark']) .moon {
-    display: block;
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    button,
+    svg {
+      transition: none;
+    }
   }
 </style>
-
-<script>
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
-    // Let embedded widgets (giscus) follow the site theme.
-    window.dispatchEvent(new CustomEvent('theme-change', { detail: next }));
-  });
-</script>
