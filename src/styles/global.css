@@ -8,7 +8,7 @@
   --bg-raised: #f4f4f2;
   --fg: #1a1c1e;
   --fg-muted: #5a6069;
-  --fg-faint: #8b919a;
+  --fg-faint: #667079;
   --border: #e4e4e0;
   --accent: #0d66d0;
   --accent-hover: #0a52a8;
@@ -34,7 +34,7 @@
   --bg-raised: #1a1d20;
   --fg: #e8eaed;
   --fg-muted: #a2a9b3;
-  --fg-faint: #6e747d;
+  --fg-faint: #8f97a2;
   --border: #2a2e33;
   --accent: #5aa2f0;
   --accent-hover: #82b9f5;
@@ -252,20 +252,21 @@ a.card:hover {
   box-shadow: 0 6px 20px rgb(0 0 0 / 0.4);
 }
 
-/* Animated underline for prose links */
+/* Inline links are underlined by default (a11y: color alone must not be the
+   only distinction) and thicken on hover. */
 main p a,
-main li a {
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-size: 0% 1.5px;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: background-size 0.25s ease;
+main li a,
+footer small a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-thickness 0.15s ease;
 }
 
 main p a:hover,
-main li a:hover {
-  text-decoration: none;
-  background-size: 100% 1.5px;
+main li a:hover,
+footer small a:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* Reading progress bar (element lives in Post.astro) */

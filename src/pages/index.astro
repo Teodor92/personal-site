@@ -30,7 +30,7 @@ const highlights = roles.filter((r) => r.highlight);
   </section>
 
   <section data-reveal>
-    <p class="eyebrow">Currently</p>
+    <h2 class="eyebrow">Currently</h2>
     <ul class="highlights">
       {
         highlights.map((r) => (
@@ -48,7 +48,7 @@ const highlights = roles.filter((r) => r.highlight);
   </section>
 
   <section data-reveal>
-    <p class="eyebrow">Recent writing</p>
+    <h2 class="eyebrow">Recent writing</h2>
     <PostList posts={posts} />
     <p class="all-posts"><a href="/blog/">All posts →</a></p>
   </section>
@@ -87,6 +87,7 @@ const highlights = roles.filter((r) => r.highlight);
   }
 
   .eyebrow {
+    margin-top: 0;
     margin-bottom: 1rem;
   }
 
