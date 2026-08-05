@@ -6,10 +6,16 @@ import { personSchema } from '../data/schema';
 ---
 
 <Base title="CV | Teodor Kurtev" wide image="/og/cv.png" schema={personSchema}>
-  <h1>Curriculum Vitae</h1>
-  <p class="muted contact">
-    {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a>
-  </p>
+  <div class="cv-top">
+    <div>
+      <h1>Curriculum Vitae</h1>
+      <p class="muted contact">
+        {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a
+        >
+      </p>
+    </div>
+    <button id="print-cv" type="button">Download PDF</button>
+  </div>
 
   <h2>Experience</h2>
   <div class="timeline">
@@ -113,9 +119,73 @@ import { personSchema } from '../data/schema';
   <p>{interests.join(' · ')}</p>
 </Base>
 
+<script>
+  // Closed <details> content doesn't print. Open everything before printing
+  // (button or ⌘P) and restore afterwards.
+  let touched: HTMLDetailsElement[] = [];
+
+  function openAll() {
+    touched = [...document.querySelectorAll<HTMLDetailsElement>('details:not([open])')];
+    touched.forEach((d) => (d.open = true));
+  }
+
+  function restore() {
+    touched.forEach((d) => (d.open = false));
+    touched = [];
+  }
+
+  window.addEventListener('beforeprint', openAll);
+  window.addEventListener('afterprint', restore);
+
+  document.addEventListener('click', (e) => {
+    if ((e.target as Element).closest('#print-cv')) {
+      window.print(); // beforeprint handler opens the details
+    }
+  });
+</script>
+
 <style>
+  .cv-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
   .contact {
     margin-top: 0.4rem;
+  }
+
+  #print-cv {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--fg-muted);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  #print-cv:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  @media print {
+    #print-cv {
+      display: none;
+    }
+
+    .timeline {
+      border-left-width: 1px;
+      gap: 1.2rem;
+    }
   }
 
   .timeline {
