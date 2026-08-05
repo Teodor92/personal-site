@@ -1,77 +1,98 @@
 ---
-title: "17 useful extensions for Visual Studio Code"
-description: "This is a list of useful VSCode extensions that I use on a daily basis - take a look. You might find something useful!"
+title: '17 useful extensions for Visual Studio Code'
+description: 'The 17 VSCode extensions I use every day: GitLens, CodeSnap, Peacock, TODO Tree and more, with a quick reference table. You might find something useful!'
 pubDate: 2024-01-18T15:34:30-04:00
-heroImage: "../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg"
+updatedDate: 2026-08-05T12:00:00+03:00
+heroImage: '../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg'
 tags:
   - extensions
   - vscode
   - tools
 ---
 
-![GitHub profile](../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg)
+![Visual Studio Code extensions banner](../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg)
 
-This is a list of 17 useful VSCode extensions that I use on a daily basis! 😄 These are in alphabetical order, not in order of importance, nor preference.
+This is a list of 17 useful VSCode extensions that I use on a daily basis! 😄 They're in no particular order, so give the whole list a scan. Here's the quick reference:
+
+| Extension                 | What it does                                 |
+| ------------------------- | -------------------------------------------- |
+| EmojiSense                | Emoji autocomplete while writing             |
+| Code Spell Checker        | Catches typos in code and docs               |
+| CodeSnap                  | Pretty screenshots of your code              |
+| EditorConfig for VS Code  | Consistent editor settings per project       |
+| Git History               | Browse the history of your repo              |
+| gitignore                 | Generates .gitignore files per language      |
+| GitLens                   | Supercharged Git inside the editor           |
+| Path Intellisense         | Autocompletes file paths                     |
+| Peacock                   | Color-codes your workspaces                  |
+| TODO Highlight            | Highlights TODO/FIXME in code                |
+| TODO Tree                 | All your TODOs in one tree view              |
+| Trailing Spaces           | Shows and removes trailing whitespace        |
+| Version Lens              | Shows if dependencies are up to date         |
+| vscode-pdf                | Read PDFs inside VSCode                      |
+| WSL                       | VSCode inside Windows Subsystem for Linux    |
+| XML Tools                 | XML editing and formatting                   |
+| YAML                      | YAML language support                        |
 
 ## 1. EmojiSense
 
-[EmojiSense](https://marketplace.visualstudio.com/items?itemName=bierner.emojisense) is a great extension that allows you to use emojis whole write documents or articles! Example: 😄
+[EmojiSense](https://marketplace.visualstudio.com/items?itemName=bierner.emojisense) is a great extension that allows you to use emojis while you write documents or articles! Example: 😄
 
 ## 2. Code Spell Checker
 
-[Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) is a great extension that allows you to check your spelling while you write docs, articles, code or anything else! It's a great tool if you constantly make typos like me! 😅
+[Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) checks your spelling while you write docs, articles, code or anything else! It's a great tool if you constantly make typos like me! 😅
 
-## 3. Code Snap
+## 3. CodeSnap
 
-Need some fancy screenshots of your code? [Code Snap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) is the extension for you! It allows you to take screenshots of your code and share it with others!
+Need some fancy screenshots of your code? [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) lets you take beautiful shots of any snippet and share them with others!
 
 ## 4. EditorConfig for VS Code
 
-Tired of constantly having to set the same settings for each project? [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) is the extension for you! It allows you to set the same settings for each project, so you don't have to do it manually! Don't know what an `.editorconfig` file is? Check out [this article](https://editorconfig.org/)!
+[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) applies the same editor settings to every project automatically, so you don't have to do it manually. Don't know what an `.editorconfig` file is? Check out [the EditorConfig docs](https://editorconfig.org/)!
 
-## 5. GitHistory
+## 5. Git History
 
-Want to see who broke the last build? [GitHistory](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) got you covered! It allows you to see the history of your project and who made what changes.
+Want to see who broke the last build? [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) has you covered! It shows the history of your project and who changed what.
 
 ## 6. gitignore
 
-Tired of having to manually create a `.gitignore` file? [gitignore](https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore) is the extension for you! It allows you to create a `.gitignore` file for your project, based on the language you are using!
+[gitignore](https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore) generates a `.gitignore` file for your project based on the language you are using, so you never have to write one by hand again.
 
 ## 7. GitLens
 
-Adds a ton of features to VSCode's Git capabilities! [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) allows you to see who made what changes, when, and why! It also allows you to see the history of your project, and much more!
+[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) adds a ton of features to VSCode's Git capabilities: who made what changes, when, and why, right in the editor. Of everything on this list, this is the one I'd install first.
 
 ## 8. Path Intellisense
 
-Tired of having to manually type out the path to a file? [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) makes your life easier by allowing you to autocomplete paths to files!
+[Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) autocompletes paths to files as you type. Small thing, saves you all day long.
 
 ## 9. Peacock
 
-Using multiple workspaces and need to differentiate between them? [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) allows you to change the color of your workspace! You don't know what a workspace is? Check out [this article](https://code.visualstudio.com/docs/editor/workspaces)!
+Using multiple workspaces and need to tell them apart at a glance? [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) colors each workspace differently. Not sure what a workspace is? Check out [VS Code's workspace docs](https://code.visualstudio.com/docs/editor/workspaces)!
 
 ## 10. TODO Highlight
 
-Need to keep track of your TODOs? [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight) allows you to highlight your TODOs, FIXMEs, and more!
+[TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight) makes your TODOs, FIXMEs and friends impossible to miss by highlighting them in the code.
 
 ## 11. TODO Tree
 
-Need to keep track of your TODOs but want to see them as a tree structure for your whole project? [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) allows you to see your TODOs in a tree view!
+[TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) collects every TODO across your whole project into a single tree view. Pairs perfectly with TODO Highlight!
 
 ## 12. Trailing Spaces
 
-You want to see unnecessary trailing spaces? [Trailing Spaces](https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces) allows you to see them and remove them!
+[Trailing Spaces](https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces) shows unnecessary trailing whitespace and removes it in one command.
 
 ## 13. Version Lens
 
-Tired of having to manually check if your dependencies are up to date? [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) allows you to see if your dependencies are up to date, and if not, it allows you to update them!
+[Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) shows whether your dependencies are up to date, right inside `package.json`, and lets you update them in place.
 
 ## 14. vscode-pdf
 
-Want to read some PDFs in VSCode? [vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf) allows you to do just that!
+Want to read PDFs without leaving the editor? [vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf) does exactly that!
 
 ## 15. WSL
 
-Using WSL and want to use VSCode? [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) allows you to use VSCode with WSL! What is WSL you may ask? Check out [this article](https://docs.microsoft.com/en-us/windows/wsl/about)!
+[WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) lets you use VSCode with the Windows Subsystem for Linux. New to WSL? Check out [Microsoft's WSL overview](https://learn.microsoft.com/en-us/windows/wsl/about)!
 
 ## 16. XML Tools
 
@@ -79,8 +100,8 @@ Need to edit XML files? [XML Tools](https://marketplace.visualstudio.com/items?i
 
 ## 17. YAML
 
-And what about YML? [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) got you covered!
+And what about YML? [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) has you covered!
 
 ## Conclusion
 
-These are the extensions that I use on a daily basis! I hope you found some of them useful! If you have any suggestions, feel free to leave a comment below! 😄
+These are the extensions I use on a daily basis! I hope you found some of them useful! 😄 They're all part of my day-to-day setup, which you can see in full on my [uses page](/uses/). And if you're polishing your developer presence beyond the editor, my guide to [creating an amazing GitHub profile](/blog/creating-an-amasing-github-profile/) pairs well with this list.

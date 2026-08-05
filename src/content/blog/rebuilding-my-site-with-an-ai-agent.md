@@ -1,6 +1,6 @@
 ---
 title: 'How I rebuilt my personal site with an AI agent in a day'
-description: 'My site ran on the same Jekyll theme since 2019. Then I sat down with an AI coding agent for a day, and we rebuilt it from scratch, shipped it with zero downtime, and I mostly just made decisions. Here is how it went. 🚀'
+description: 'My site ran on the same Jekyll theme since 2019. Then I spent a day rebuilding it with an AI coding agent and shipped it with zero downtime. Here is how it went. 🚀'
 pubDate: 2026-08-05T12:00:00+03:00
 tags:
   - AI
@@ -27,7 +27,7 @@ Three things genuinely surprised me along the way.
 
 ## The speed 🏎️
 
-The whole thing (new stack, new design, landing page, restructured CV, blog migration, dark mode, RSS, sitemap, deploy pipeline) happened in **a day**, in the gaps around normal life. Not a weekend project stretched across a month. A day.
+The whole thing (new stack, new design, landing page, [restructured CV](/cv/), blog migration, dark mode, RSS, sitemap, deploy pipeline) happened in **a day**, in the gaps around normal life. Not a weekend project stretched across a month. A day.
 
 And it kept going after that. The following days added view transitions, a ⌘K command palette, generated social cards, tag pages, an accessibility pass, and a print-friendly CV. Each one was a "hey, could we…" that turned into a shipped feature within the hour.
 
@@ -41,10 +41,10 @@ It wasn't unsupervised, though, and honestly that's what made it work. Plan appr
 
 This is the part I didn't expect. The details I'd normally skip on a personal project (because life is short and it's just my site) all got done:
 
-- **Old URLs preserved exactly**, including a typo'd blog slug from 2023 that's now lovingly enshrined forever, because breaking inbound links to fix a typo is a bad trade.
+- **Old URLs preserved exactly**, including [a typo'd blog slug from 2023](/blog/creating-an-amasing-github-profile/) that's now lovingly enshrined forever, because breaking inbound links to fix a typo is a bad trade.
 - **Images optimized**: the build dropped from 11MB to 5.9MB; one 1.2MB thumbnail became a 225KB webp.
 - **Social cards generated at build time**: sharing a post used to attach a 1.6MB PNG; now it's a branded 51KB card.
-- **Accessibility fixed with numbers**: I ran a Lighthouse audit and it flagged low-contrast text. The agent measured the actual WCAG ratios (3.12:1, failing), picked new colours (4.96:1, passing), then scanned every page of the site for the same class of issue and found one more I hadn't noticed.
+- **Accessibility fixed with numbers**: I ran a Lighthouse audit and it flagged low-contrast text. The agent measured the actual [WCAG contrast ratios](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) (3.12:1, failing), picked new colours (4.96:1, passing), then scanned every page of the site for the same class of issue and found one more I hadn't noticed.
 
 That last one captures the dynamic well: **I caught the problem, it fixed the problem everywhere.** Neither of us would have done as good a job alone.
 
