@@ -20,6 +20,11 @@ export const roles: Role[] = [
     // NOTE: intentionally generic — no internal project/client specifics.
     bullets: [
       'Designing and building AI-powered features across YuLife’s employer portal and insurance platform, from scoping through production.',
+      'Building full-stack features end to end with AI-first tooling — Claude Code, OpenAI Codex and Cursor.',
+      'Developing custom Claude Code skills and agentic workflows to automate engineering and business processes.',
+      'Building evaluation pipelines and quality gates for LLM-powered features — acceptance test cases, scoring rubrics and regression evals.',
+      'Optimizing cost, latency and reliability of LLM features through model selection, prompt/context engineering and guardrails.',
+      'Automating internal processes with trigger.dev background jobs and workflows.',
       'Authoring engineering architecture decision records and contributing to platform-wide engineering standards.',
       'Leading demos and knowledge-sharing sessions across engineering squads.',
       'Working with TypeScript, React, Node.js, LLM-based services and AWS.',
@@ -228,7 +233,7 @@ export const skills = [
   {
     group: 'AI / LLM',
     items:
-      'LLM-powered product features, prompt engineering, retrieval-augmented generation, evaluation pipelines, Claude and OpenAI APIs',
+      'LLM-powered product features, Claude Code (custom skills, agentic workflows), OpenAI Codex, Cursor, trigger.dev, prompt/context engineering, retrieval-augmented generation, evaluation pipelines, Claude and OpenAI APIs',
   },
   {
     group: 'Go',
