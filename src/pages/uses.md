@@ -11,6 +11,7 @@ The tools I use day to day. Inspired by [uses.tech](https://uses.tech/).
 - [Claude Code](https://claude.com/claude-code) — agentic coding in the terminal; I also build custom skills and workflows with it.
 - [Cursor](https://cursor.com/) — AI-first editor.
 - [OpenAI Codex](https://openai.com/codex/) — OpenAI's coding agent.
+- [opencode](https://opencode.ai/) — open-source AI coding agent in the terminal.
 - ChatGPT and Claude apps for research, thinking and everything in between.
 - Gemini's Nano Banana models for image generation.
 
@@ -24,7 +25,11 @@ The tools I use day to day. Inspired by [uses.tech](https://uses.tech/).
 
 ## Terminal
 
-- [iTerm2](https://iterm2.com/) with zsh.
+- [iTerm2](https://iterm2.com/) with zsh, [oh-my-zsh](https://ohmyz.sh/) and the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) prompt.
+- [tmux](https://github.com/tmux/tmux) for terminal sessions.
+- The toolbelt: [ripgrep](https://github.com/BurntSushi/ripgrep), [jq](https://jqlang.github.io/jq/), [gh](https://cli.github.com/) & [glab](https://gitlab.com/gitlab-org/cli), and [commitizen](https://commitizen-tools.github.io/commitizen/) to keep commits conventional.
+- Version managers for everything: [nvm](https://github.com/nvm-sh/nvm), [rbenv](https://github.com/rbenv/rbenv), [tfenv](https://github.com/tfutils/tfenv).
+- [Homebrew](https://brew.sh/) holding it all together.
 
 ## Hardware
 
