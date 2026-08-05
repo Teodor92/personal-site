@@ -341,6 +341,57 @@ pre:hover .copy-code,
   }
 }
 
+/* ------------------------------- Print ---------------------------------- */
+
+@media print {
+  /* Always print light, whatever the on-screen theme. */
+  :root,
+  [data-theme='dark'] {
+    --bg: #ffffff;
+    --bg-raised: #ffffff;
+    --fg: #000000;
+    --fg-muted: #333333;
+    --fg-faint: #555555;
+    --border: #bbbbbb;
+    --accent: #0d47a1;
+    --accent-hover: #0d47a1;
+    --code-bg: #f5f5f5;
+  }
+
+  header,
+  footer,
+  #theme-toggle,
+  #palette,
+  #progress-bar,
+  .copy-code {
+    display: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  main {
+    width: 100%;
+    padding-block: 0;
+  }
+
+  a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  article {
+    break-inside: avoid;
+  }
+
+  a.card {
+    box-shadow: none;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
