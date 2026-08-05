@@ -13,8 +13,8 @@ import { site } from '../data/site';
   <h2>Experience</h2>
   <div class="timeline">
     {
-      roles.map((role) => (
-        <article>
+      roles.slice(0, 4).map((role) => (
+        <article data-reveal>
           <header>
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
@@ -30,6 +30,32 @@ import { site } from '../data/site';
               <li>{b}</li>
             ))}
           </ul>
+        </article>
+      ))
+    }
+    {
+      roles.slice(4).map((role) => (
+        <article data-reveal>
+          <details>
+            <summary>
+              <h3>
+                {role.title} · <span class="company">{role.company}</span>
+              </h3>
+              <p class="muted">
+                {role.period}
+                {role.location && ` · ${role.location}`}
+              </p>
+            </summary>
+            <p class="muted org-link">
+              <a href={role.url}>{role.company} ↗</a>
+            </p>
+            {role.intro && <p class="intro">{role.intro}</p>}
+            <ul>
+              {role.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </details>
         </article>
       ))
     }
@@ -132,6 +158,36 @@ import { site } from '../data/site';
 
   .timeline li + li {
     margin-top: 0.3rem;
+  }
+
+  details summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary h3 {
+    display: inline;
+  }
+
+  details summary h3::after {
+    content: ' +';
+    color: var(--fg-faint);
+  }
+
+  details[open] summary h3::after {
+    content: ' –';
+  }
+
+  details summary:hover h3 {
+    color: var(--accent);
+  }
+
+  .org-link {
+    margin: 0.4rem 0;
   }
 
   .skills dt {

@@ -2,14 +2,14 @@
 title: "17 useful extensions for Visual Studio Code"
 description: "This is a list of useful VSCode extensions that I use on a daily basis - take a look. You might find something useful!"
 pubDate: 2024-01-18T15:34:30-04:00
-heroImage: "/assets/images/useful-vscode-extensions/vscode-extensions-thumb.jpeg"
+heroImage: "../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg"
 tags:
   - extensions
   - vscode
   - tools
 ---
 
-![GitHub profile](/assets/images/useful-vscode-extensions/vscode-extensions-thumb.jpeg)
+![GitHub profile](../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg)
 
 This is a list of 17 useful VSCode extensions that I use on a daily basis! 😄 These are in alphabetical order, not in order of importance, nor preference.
 

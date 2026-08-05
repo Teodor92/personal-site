@@ -4,15 +4,16 @@ import { glob } from 'astro/loaders';
 const blog = defineCollection({
   // Filenames are the slugs — they must match the old Jekyll URLs exactly.
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.array(z.string()).default([]),
-    draft: z.boolean().default(false),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      heroImage: image().optional(),
+      tags: z.array(z.string()).default([]),
+      draft: z.boolean().default(false),
+    }),
 });
 
 export const collections = { blog };

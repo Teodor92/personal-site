@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = new Map<string, string>(); // lowercased slug -> display casing
+  for (const post of posts) {
+    for (const tag of post.data.tags) tags.set(tag.toLowerCase(), tag);
+  }
+  return [...tags.entries()].map(([slug, display]) => ({
+    params: { tag: slug },
+    props: { display },
+  }));
+}
+
+const { tag } = Astro.params;
+const { display } = Astro.props;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter((post) => post.data.tags.some((t) => t.toLowerCase() === tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Base title={`#${display} | Teodor Kurtev`} description={`Blog posts tagged ${display}.`}>
+  <h1>#{display}</h1>
+  <p class="muted intro">
+    {posts.length} post{posts.length === 1 ? '' : 's'} · <a href="/tags/">all tags</a>
+  </p>
+  <PostList posts={posts} />
+</Base>
+
+<style>
+  .intro {
+    margin-bottom: 2rem;
+  }
+</style>

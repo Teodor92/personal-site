@@ -15,7 +15,8 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage} article>
+<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage?.src} article>
+  <div id="progress-bar" aria-hidden="true"></div>
   <article>
     <header>
       <h1>{title}</h1>
@@ -27,7 +28,9 @@ const fmt = (d: Date) =>
         tags.length > 0 && (
           <ul class="tags">
             {tags.map((tag) => (
-              <li>{tag}</li>
+              <li>
+                <a href={`/tags/${tag.toLowerCase()}/`}>{tag}</a>
+              </li>
             ))}
           </ul>
         )
@@ -58,7 +61,8 @@ const fmt = (d: Date) =>
     gap: 0.4rem;
   }
 
-  .tags li {
+  .tags li a {
+    display: inline-block;
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--fg-muted);
@@ -66,5 +70,12 @@ const fmt = (d: Date) =>
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 0.1rem 0.65rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .tags li a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
   }
 </style>

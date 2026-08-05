@@ -5,7 +5,7 @@ import { site } from '../data/site';
 // Served at /feed.xml — same path jekyll-feed used, so subscribers keep working.
 export async function GET(context) {
   const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
   return rss({

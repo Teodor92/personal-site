@@ -218,6 +218,113 @@ a.card:hover {
   border-color: var(--accent);
 }
 
+/* --------------------------- Interactions ------------------------------- */
+
+/* Scroll reveal: elements start hidden, .is-visible animates them in.
+   With reduced motion the class is applied immediately (see Base.astro). */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card hover lift */
+a.card {
+  transition:
+    border-color 0.15s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+a.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.07);
+}
+
+[data-theme='dark'] a.card:hover {
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.4);
+}
+
+/* Animated underline for prose links */
+main p a,
+main li a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease;
+}
+
+main p a:hover,
+main li a:hover {
+  text-decoration: none;
+  background-size: 100% 1.5px;
+}
+
+/* Reading progress bar (element lives in Post.astro) */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  z-index: 10;
+}
+
+/* Copy-code button, injected by Base.astro */
+pre {
+  position: relative;
+}
+
+.copy-code {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+pre:hover .copy-code,
+.copy-code:focus-visible {
+  opacity: 1;
+}
+
+.copy-code::after {
+  content: '⧉';
+  font-size: 0.9rem;
+}
+
+.copy-code[data-copied]::after {
+  content: '✓';
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  a.card,
+  main p a,
+  main li a {
+    transition: none;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
