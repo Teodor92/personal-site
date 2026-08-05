@@ -1,6 +1,6 @@
 ---
 title: 'How I rebuilt my personal site with an AI agent in a day'
-description: 'My site ran on the same Jekyll theme since 2019. Then I spent a day rebuilding it with an AI coding agent and shipped it with zero downtime. Here is how it went. 🚀'
+description: 'My site ran on the same Jekyll theme since 2019. Then I spent a day rebuilding it with an AI coding agent and shipped it with zero downtime. 🚀'
 pubDate: 2026-08-05T12:00:00+03:00
 tags:
   - AI
