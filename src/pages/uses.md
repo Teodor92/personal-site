@@ -28,8 +28,8 @@ The tools I use day to day. Inspired by [uses.tech](https://uses.tech/).
 
 ## Hardware
 
-- **MacBook Pro** — the main development machine.
+- **MacBook Pro** (M1 Pro, 10-core, 16GB) — the main development machine.
 - **PC station** — for the heavier lifting (and the chill city-building games).
-- **NAS server** — storage and self-hosted services.
+- **NAS server** ("NAS-Boy" 👋) — [Unraid](https://unraid.net/) on an i7-9700K / Gigabyte Z390 Aorus Pro with 32GB DDR4, 5× 8TB Seagate IronWolf drives (~40TB raw) and a dual-SSD cache pool. Storage plus a fleet of self-hosted Docker services.
 - **HomeLab mini PC** — runs the smart home experiments and whatever I'm tinkering with this month.
 - Desk: external monitors, a mechanical keyboard and a standing desk.
