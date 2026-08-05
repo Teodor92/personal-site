@@ -10,9 +10,16 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+// OG cards are generated per page in src/pages/og/[...route].ts, keyed by
+// the lowercased title ('uses', 'now').
+const ogImage = `/og/${frontmatter.title.toLowerCase()}.png`;
 ---
 
-<Base title={`${frontmatter.title} | Teodor Kurtev`} description={frontmatter.description}>
+<Base
+  title={`${frontmatter.title} | Teodor Kurtev`}
+  description={frontmatter.description}
+  image={ogImage}
+>
   <h1>{frontmatter.title}</h1>
   <slot />
 </Base>
