@@ -13,6 +13,7 @@ interface Props {
   image?: string;
   article?: boolean;
   wide?: boolean;
+  schema?: object;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   image = site.avatar,
   article = false,
   wide = false,
+  schema,
 } = Astro.props;
 
 // Canonical with trailing slash, matching the old Jekyll URLs.
@@ -38,6 +40,8 @@ const ogImage = new URL(image, site.url);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title={site.name} href="/feed.xml" />
     <meta name="generator" content={Astro.generator} />
 
@@ -50,6 +54,8 @@ const ogImage = new URL(image, site.url);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
     <ClientRouter />
 

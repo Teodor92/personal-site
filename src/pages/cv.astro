@@ -2,9 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { roles, education, skills, volunteering, interests } from '../data/cv';
 import { site } from '../data/site';
+import { personSchema } from '../data/schema';
 ---
 
-<Base title="CV | Teodor Kurtev" wide>
+<Base title="CV | Teodor Kurtev" wide image="/og/cv.png" schema={personSchema}>
   <h1>Curriculum Vitae</h1>
   <p class="muted contact">
     {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a>

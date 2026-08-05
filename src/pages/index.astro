@@ -5,6 +5,7 @@ import PostList from '../components/PostList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { site } from '../data/site';
 import { roles } from '../data/cv';
+import { personSchema } from '../data/schema';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -13,7 +14,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 const highlights = roles.filter((r) => r.highlight);
 ---
 
-<Base title="Teodor Kurtev — Senior AI Software Engineer">
+<Base
+  title="Teodor Kurtev — Senior AI Software Engineer"
+  image="/og/index.png"
+  schema={personSchema}
+>
   <section class="hero">
     <img src={site.avatar} alt="" width="96" height="96" />
     <div>

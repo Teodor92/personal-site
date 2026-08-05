@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Comments from '../components/Comments.astro';
+import { site } from '../data/site';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -9,13 +10,31 @@ interface Props {
 }
 
 const { post, minutesRead } = Astro.props;
-const { title, description, pubDate, heroImage, tags } = post.data;
+const { title, description, pubDate, updatedDate, heroImage, tags } = post.data;
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  ...(heroImage && { image: new URL(heroImage.src, site.url).toString() }),
+  author: { '@type': 'Person', name: site.name, url: site.url },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, site.url).toString(),
+};
 ---
 
-<Base title={`${title} | Teodor Kurtev`} description={description} image={heroImage?.src} article>
+<Base
+  title={`${title} | Teodor Kurtev`}
+  description={description}
+  image={`/og/blog/${post.id}.png`}
+  article
+  schema={schema}
+>
   <div id="progress-bar" aria-hidden="true"></div>
   <article>
     <header>
