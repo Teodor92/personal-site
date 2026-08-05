@@ -81,6 +81,8 @@ const ogImage = new URL(image, site.url);
     <script is:inline define:vars={{ gaId: site.gaId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
+        // gtag.js requires the Arguments object; a rest-param array breaks it.
+        // eslint-disable-next-line prefer-rest-params
         dataLayer.push(arguments);
       }
       gtag('js', new Date());

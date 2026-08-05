@@ -14,9 +14,10 @@ npm run dev       # dev server at http://localhost:4321
 npm run build     # static build to dist/
 npm run preview   # serve the built site
 npm run check     # astro check — type-checks .astro files and content schemas
+npm run lint      # eslint (flat config, correctness rules only — Prettier owns style)
 ```
 
-There is no test suite or linter beyond `astro check`.
+There is no test suite. CI (PRs) runs prettier --check, lint, check and build; the pre-commit hook runs prettier --write and eslint on staged files.
 
 ## Architecture
 
