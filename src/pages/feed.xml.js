@@ -4,7 +4,7 @@ import { getCollection, render } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { site } from '../data/site';
 
-// Served at /feed.xml — same path jekyll-feed used, so subscribers keep working.
+// Served at /feed.xml, the same path jekyll-feed used, so subscribers keep working.
 // Items carry the full post HTML (rendered via the container API so optimized
 // image URLs are correct), made absolute and sanitized for feed readers.
 export async function GET(context) {
@@ -43,7 +43,7 @@ export async function GET(context) {
   }
 
   return rss({
-    title: `${site.name} — Blog`,
+    title: `${site.name} · Blog`,
     description: site.description,
     site: context.site,
     items,

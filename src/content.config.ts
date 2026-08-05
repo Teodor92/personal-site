@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  // Filenames are the slugs — they must match the old Jekyll URLs exactly.
+  // Filenames are the slugs; they must match the old Jekyll URLs exactly.
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({

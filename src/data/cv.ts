@@ -17,12 +17,12 @@ export const roles: Role[] = [
     location: 'Remote',
     period: 'May 2025 – Present',
     highlight: true,
-    // NOTE: intentionally generic — no internal project/client specifics.
+    // NOTE: intentionally generic, no internal project/client specifics.
     bullets: [
       'Designing and building AI-powered features across YuLife’s employer portal and insurance platform, from scoping through production.',
-      'Building full-stack features end to end with AI-first tooling — Claude Code, OpenAI Codex and Cursor.',
+      'Building full-stack features end to end with AI-first tooling: Claude Code, OpenAI Codex and Cursor.',
       'Developing custom Claude Code skills and agentic workflows to automate engineering and business processes.',
-      'Building evaluation pipelines and quality gates for LLM-powered features — acceptance test cases, scoring rubrics and regression evals.',
+      'Building evaluation pipelines and quality gates for LLM-powered features: acceptance test cases, scoring rubrics and regression evals.',
       'Optimizing cost, latency and reliability of LLM features through model selection, prompt/context engineering and guardrails.',
       'Automating internal processes with trigger.dev background jobs and workflows.',
       'Authoring engineering architecture decision records and contributing to platform-wide engineering standards.',

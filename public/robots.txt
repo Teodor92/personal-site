@@ -1,4 +1,4 @@
-# AI training / scraping crawlers — opted out.
+# AI training / scraping crawlers: opted out.
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: OAI-SearchBot
@@ -19,7 +19,7 @@ User-agent: cohere-ai
 User-agent: Diffbot
 Disallow: /
 
-# Everyone else (incl. regular search engines) — welcome.
+# Everyone else (incl. regular search engines): welcome.
 User-agent: *
 Allow: /
 
