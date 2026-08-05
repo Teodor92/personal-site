@@ -3,9 +3,11 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
+  /** Card title heading level — pick so the page's heading order has no gaps. */
+  headingLevel?: 'h2' | 'h3';
 }
 
-const { posts } = Astro.props;
+const { posts, headingLevel: Heading = 'h3' } = Astro.props;
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -19,7 +21,7 @@ const fmt = (d: Date) =>
           <div class="meta">
             <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
           </div>
-          <h3>{post.data.title}</h3>
+          <Heading class="title">{post.data.title}</Heading>
           <p class="muted">{post.data.description}</p>
         </a>
       </li>
@@ -41,7 +43,8 @@ const fmt = (d: Date) =>
     margin-bottom: 0.25rem;
   }
 
-  h3 {
+  .title {
+    font-size: var(--text-lg);
     margin: 0 0 0.35rem;
   }
 
