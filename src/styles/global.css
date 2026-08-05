@@ -269,6 +269,21 @@ footer small a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Links inside headings (e.g. CV company names) also need a non-color cue:
+   accent-on-heading-text is under 3:1 in dark mode. */
+main :is(h2, h3, h4) a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Standalone link collections opt out of the prose underline: cards and tag
+   pills are whole-block links distinguished by borders, not color. */
+a.card,
+a.card:hover {
+  text-decoration: none;
+}
+
 /* Reading progress bar (element lives in Post.astro) */
 #progress-bar {
   position: fixed;
