@@ -7,7 +7,7 @@ export const site = {
   url: 'https://teodorkurtev.com',
   description:
     'Personal site and blog of Teodor Kurtev, Senior AI Software Engineer, writing about AI-assisted engineering, tooling and teams.',
-  gaId: 'G-36DYRPWC2M',
+  cfAnalyticsToken: '17476ee016ba4519a0abad0663853a5e',
   avatar: '/assets/images/bio-photo.jpg',
   socials: [
     { label: 'GitHub', url: 'https://github.com/Teodor92', icon: 'github' },

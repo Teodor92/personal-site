@@ -82,19 +82,13 @@ const ogImage = new URL(image, site.url);
       })();
     </script>
 
-    <!-- Google Analytics -->
-    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}
-    ></script>
-    <script is:inline define:vars={{ gaId: site.gaId }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        // gtag.js requires the Arguments object; a rest-param array breaks it.
-        // eslint-disable-next-line prefer-rest-params
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', gaId);
-    </script>
+    <!-- Cloudflare Web Analytics: cookieless, no consent banner needed. The
+         beacon's SPA mode tracks ClientRouter navigations via the history API. -->
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={JSON.stringify({ token: site.cfAnalyticsToken })}></script>
   </head>
   <body>
     <Header />
