@@ -70,9 +70,9 @@ export const roles: Role[] = [
     location: 'Remote',
     period: 'May 2020 – Apr 2024',
     bullets: [
-      'Led the “Programming Basics”, “Programming Fundamentals” and “Programming Advanced” courses, delivering interactive lectures for a comprehensive understanding.',
-      'Provided practical insights and fostered skill development to equip students with applicable programming expertise across foundational and advanced levels.',
-      'Extended support beyond class with supplementary reading materials, resources and guidance for independent growth.',
+      'Led the “Programming Basics”, “Programming Fundamentals” and “Programming Advanced” courses.',
+      'Taught practical, hands-on programming from first steps through advanced coursework.',
+      'Supported students beyond class with reading materials and guidance for independent study.',
     ],
   },
   {
@@ -82,9 +82,8 @@ export const roles: Role[] = [
     location: 'Sofia, Bulgaria / Remote',
     period: 'Sept 2022 – Jan 2024',
     bullets: [
-      'Provided personalized guidance in software engineering through one-on-one sessions, addressing specific needs and goals.',
-      'Assisted in setting achievable goals, monitoring progress and offering constructive feedback for continuous improvement.',
-      'Shared practical knowledge and industry experience to help mentees navigate challenges and make informed decisions.',
+      'Mentored engineers in one-on-one sessions, tailoring guidance to each mentee’s goals.',
+      'Helped mentees set achievable goals, track progress and act on feedback.',
     ],
   },
   {
@@ -96,9 +95,9 @@ export const roles: Role[] = [
     intro:
       'Building a wide range of applications with .NET, JavaScript/TypeScript/Node.js and Go, primarily in the web domain.',
     bullets: [
-      'Translate business needs into specific software requirements by working closely with clients.',
-      'Design, implement, test, document and deploy front-end and back-end software solutions.',
-      'Provide ongoing support for existing solutions to ensure smooth operation and optimal performance.',
+      'Work directly with clients to turn business needs into software requirements.',
+      'Design, build, test and deploy front-end and back-end solutions.',
+      'Provide ongoing support for delivered systems.',
     ],
   },
   {
@@ -112,8 +111,8 @@ export const roles: Role[] = [
     bullets: [
       'Developed new capabilities for projects built in Go on AWS.',
       'Researched and evaluated new solutions to improve project performance.',
-      'Collaborated with stakeholders to ensure project alignment with business objectives.',
-      'Supported recruitment efforts to build a strong and capable team.',
+      'Worked with stakeholders to keep projects aligned with business goals.',
+      'Supported recruitment for the Sofia engineering team.',
     ],
   },
   {
@@ -123,12 +122,12 @@ export const roles: Role[] = [
     location: 'Sofia, Bulgaria',
     period: 'Oct 2017 – Aug 2020',
     bullets: [
-      'Developed and implemented code standards and practices to promote high code quality across all projects in the Bulgaria branch.',
-      'Built out the team by participating in the recruitment process.',
-      'Managed and streamlined work activities to eliminate blockers and ensure smooth project execution.',
-      'Designed, implemented and tested front-end and back-end features across multiple projects, primarily MEAN stack plus .NET work.',
-      'Facilitated team activities such as daily stand-ups and code-review sessions.',
-      'Mentored junior developers to support their professional development and growth.',
+      'Set the code standards and practices used across all projects in the Bulgaria branch.',
+      'Helped grow the team through recruitment.',
+      'Ran day-to-day delivery, clearing blockers across projects.',
+      'Designed, built and tested front-end and back-end features across multiple projects, primarily MEAN stack plus .NET.',
+      'Ran daily stand-ups and code-review sessions.',
+      'Mentored junior developers.',
     ],
   },
   {
@@ -138,10 +137,10 @@ export const roles: Role[] = [
     location: 'Amsterdam, The Netherlands',
     period: 'Jan 2017 – Aug 2017',
     bullets: [
-      'Investigated and proposed refactoring options for architecturally related code smells to improve code quality and maintainability.',
-      'Developed a Visual Studio refactoring plugin utilizing the .NET ecosystem and the Roslyn compiler.',
-      'Utilized R and Python for data analysis and visualization to identify optimization opportunities.',
-      'Achieved positive outcomes from the research and PoC project, with an increase in desired metrics by 5–10%.',
+      'Researched refactoring options for architectural code smells.',
+      'Developed a Visual Studio refactoring plugin using .NET and the Roslyn compiler.',
+      'Used R and Python for data analysis and visualization.',
+      'The research PoC improved the target quality metrics by 5–10%.',
     ],
   },
   {
@@ -151,9 +150,9 @@ export const roles: Role[] = [
     location: 'Sofia, Bulgaria',
     period: 'Mar 2016 – Aug 2016',
     bullets: [
-      'Utilized the .NET stack for back-end development: C#, MS SQL Server, Entity Framework and ASP.NET MVC.',
+      'Built back-end features with C#, MS SQL Server, Entity Framework and ASP.NET MVC.',
       'Implemented front-end features with Angular.js, jQuery and the Google Maps APIs.',
-      'Established processes to ensure code quality: static code analysis, CI, git branching strategies and code reviews.',
+      'Established code-quality processes: static analysis, CI, branching strategy and code reviews.',
     ],
   },
   {
@@ -164,7 +163,7 @@ export const roles: Role[] = [
     period: 'Jan 2015 – Aug 2015',
     bullets: [
       'Developed new front-end and back-end features for the mobile and tablet betting solutions using .NET and JavaScript, helping bring the tablet solution to its initial release.',
-      'Took part in code quality initiatives: code reviews, CI, static code analysis and refactoring efforts.',
+      'Took part in code-quality initiatives: code reviews, CI, static analysis and refactoring.',
     ],
   },
   {
@@ -260,8 +259,7 @@ export const volunteering = [
     org: 'ABLE',
     url: 'https://www.ablementor.bg/',
     role: 'Mentor',
-    details:
-      'Sharing knowledge and experience while helping students with projects that influence their personal development.',
+    details: 'Helping students with projects that shape their personal development.',
   },
   {
     org: 'Telerik Academy',
