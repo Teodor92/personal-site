@@ -2,11 +2,11 @@ export const site = {
   name: 'Teodor Kurtev',
   role: 'Senior AI Software Engineer at YuLife',
   pitch:
-    'Full-stack engineer and engineering leader with 10+ years across TypeScript, Node.js, Go and .NET, currently building AI-powered features for insurance that inspires healthier living.',
+    'I build AI-powered product features: agentic workflows, LLM evals and the unglamorous engineering that makes them reliable. Behind that sit 10+ years of full-stack development and engineering leadership.',
   email: 'teodor.ivanov92@gmail.com',
   url: 'https://teodorkurtev.com',
   description:
-    'Personal site and blog of Teodor Kurtev, Senior AI Software Engineer, writing about software engineering, tooling and teams.',
+    'Personal site and blog of Teodor Kurtev, Senior AI Software Engineer, writing about AI-assisted engineering, tooling and teams.',
   gaId: 'G-36DYRPWC2M',
   avatar: '/assets/images/bio-photo.jpg',
   socials: [
