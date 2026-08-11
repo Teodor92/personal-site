@@ -10,9 +10,10 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { cvFileBase } from '../src/data/cv-filename.mjs';
 
 const root = fileURLToPath(new URL('../dist/', import.meta.url));
-const output = path.join(root, 'cv.pdf');
+const output = path.join(root, `${cvFileBase}.pdf`);
 
 const MIME = {
   '.avif': 'image/avif',

@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { roles, education, skills, volunteering, interests } from '../data/cv';
 import { site } from '../data/site';
 import { personSchema } from '../data/schema';
+import { cvFileBase } from '../data/cv-filename.mjs';
 ---
 
 <Base title="CV | Teodor Kurtev" wide image="/og/cv.png" schema={personSchema}>
@@ -15,8 +16,8 @@ import { personSchema } from '../data/schema';
       </p>
     </div>
     <div class="downloads">
-      <a href="/cv.pdf">Download PDF</a>
-      <a href="/cv.docx">Download DOCX</a>
+      <a href={`/${cvFileBase}.pdf`}>Download PDF</a>
+      <a href={`/${cvFileBase}.docx`}>Download DOCX</a>
     </div>
   </div>
 
@@ -124,7 +125,7 @@ import { personSchema } from '../data/schema';
 
 <script>
   // Closed <details> content doesn't print. Open everything when the reader hits
-  // ⌘P and restore afterwards. (/cv.pdf is generated separately at build time —
+  // ⌘P and restore afterwards. (The downloadable PDF is generated separately at build time —
   // Chromium's print-to-PDF doesn't fire these events, so that script opens the
   // details itself; see scripts/generate-cv-pdf.mjs.)
   let touched: HTMLDetailsElement[] = [];

@@ -24,8 +24,9 @@ import {
 } from 'docx';
 import { roles, education, skills, volunteering, interests } from '../src/data/cv';
 import { site } from '../src/data/site';
+import { cvFileBase } from '../src/data/cv-filename.mjs';
 
-const output = fileURLToPath(new URL('../dist/cv.docx', import.meta.url));
+const output = fileURLToPath(new URL(`../dist/${cvFileBase}.docx`, import.meta.url));
 
 const FONT = 'Calibri';
 const INK = '1A1A1A';
