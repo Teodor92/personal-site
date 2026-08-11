@@ -18,12 +18,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Expanded from withastro/action@v3 (which bundles install + build +
+      # upload) so the CV PDF can be generated after the build and shipped
+      # inside the same Pages artifact.
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build and upload Pages artifact
-        uses: withastro/action@v3
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Generate dist/cv.pdf
+        run: npm run build:pdf
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build

@@ -14,7 +14,7 @@ import { personSchema } from '../data/schema';
         >
       </p>
     </div>
-    <button id="print-cv" type="button">Download PDF</button>
+    <a id="download-cv" href="/cv.pdf">Download PDF</a>
   </div>
 
   <h2>Experience</h2>
@@ -120,8 +120,10 @@ import { personSchema } from '../data/schema';
 </Base>
 
 <script>
-  // Closed <details> content doesn't print. Open everything before printing
-  // (button or ⌘P) and restore afterwards.
+  // Closed <details> content doesn't print. Open everything when the reader hits
+  // ⌘P and restore afterwards. (/cv.pdf is generated separately at build time —
+  // Chromium's print-to-PDF doesn't fire these events, so that script opens the
+  // details itself; see scripts/generate-cv-pdf.mjs.)
   let touched: HTMLDetailsElement[] = [];
 
   function openAll() {
@@ -136,12 +138,6 @@ import { personSchema } from '../data/schema';
 
   window.addEventListener('beforeprint', openAll);
   window.addEventListener('afterprint', restore);
-
-  document.addEventListener('click', (e) => {
-    if ((e.target as Element).closest('#print-cv')) {
-      window.print(); // beforeprint handler opens the details
-    }
-  });
 </script>
 
 <style>
@@ -157,28 +153,28 @@ import { personSchema } from '../data/schema';
     margin-top: 0.4rem;
   }
 
-  #print-cv {
+  /* Styled as the button it replaced; it now points at the build-time PDF. */
+  #download-cv {
     border: 1px solid var(--border);
     border-radius: 8px;
-    background: transparent;
     color: var(--fg-muted);
-    font: inherit;
     font-size: var(--text-sm);
     font-weight: 500;
     padding: 0.45rem 0.9rem;
-    cursor: pointer;
+    text-decoration: none;
     transition:
       color 0.15s ease,
       border-color 0.15s ease;
   }
 
-  #print-cv:hover {
+  #download-cv:hover {
     color: var(--accent);
     border-color: var(--accent);
+    text-decoration: none;
   }
 
   @media print {
-    #print-cv {
+    #download-cv {
       display: none;
     }
 
