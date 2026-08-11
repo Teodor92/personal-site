@@ -2,7 +2,7 @@
 title: 'My homelab runs on MCP: an AI agent with real hands'
 description: 'Giving an AI agent real hands on my homelab: MCP servers for Home Assistant, Unraid and UniFi, a private plugin marketplace and self-hosted secrets.'
 pubDate: 2026-08-12T12:00:00+03:00
-draft: true
+draft: false
 tags:
   - AI
   - Claude Code
