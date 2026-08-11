@@ -14,7 +14,10 @@ import { personSchema } from '../data/schema';
         >
       </p>
     </div>
-    <a id="download-cv" href="/cv.pdf">Download PDF</a>
+    <div class="downloads">
+      <a href="/cv.pdf">Download PDF</a>
+      <a href="/cv.docx">Download DOCX</a>
+    </div>
   </div>
 
   <h2>Experience</h2>
@@ -153,8 +156,15 @@ import { personSchema } from '../data/schema';
     margin-top: 0.4rem;
   }
 
-  /* Styled as the button it replaced; it now points at the build-time PDF. */
-  #download-cv {
+  /* Wraps so the two links stay together when .cv-top breaks onto two rows. */
+  .downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Styled as the button they replaced; they point at the build-time artifacts. */
+  .downloads a {
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--fg-muted);
@@ -162,19 +172,20 @@ import { personSchema } from '../data/schema';
     font-weight: 500;
     padding: 0.45rem 0.9rem;
     text-decoration: none;
+    white-space: nowrap;
     transition:
       color 0.15s ease,
       border-color 0.15s ease;
   }
 
-  #download-cv:hover {
+  .downloads a:hover {
     color: var(--accent);
     border-color: var(--accent);
     text-decoration: none;
   }
 
   @media print {
-    #download-cv {
+    .downloads {
       display: none;
     }
 

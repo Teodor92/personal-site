@@ -32,6 +32,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      # Cheap and browserless, so it runs before the Chromium download.
+      - name: Generate dist/cv.docx
+        run: npm run build:docx
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
       - name: Generate dist/cv.pdf

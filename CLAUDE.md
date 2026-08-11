@@ -12,6 +12,7 @@ An [Astro](https://astro.build) static site — the personal site/blog at `teodo
 npm install
 npm run dev       # dev server at http://localhost:4321
 npm run build     # static build to dist/
+npm run build:docx # builds dist/cv.docx from src/data/cv.ts via the docx package (tsx)
 npm run build:pdf # renders dist/cv/ to dist/cv.pdf (needs: npx playwright install chromium)
 npm run preview   # serve the built site
 npm run check     # astro check — type-checks .astro files and content schemas
@@ -23,7 +24,7 @@ There is no test suite. CI (PRs) runs prettier --check, lint, check and build; t
 ## Architecture
 
 - **Content collection**: blog posts live in `src/content/blog/*.md`, schema in `src/content.config.ts`. **Filenames are URL slugs** and two of them intentionally preserve old Jekyll URLs — `creating-an-amasing-github-profile.md` keeps its historical misspelling; do not rename existing post files.
-- **CV as data**: `src/data/cv.ts` holds roles/education/skills/volunteering, rendered by `src/pages/cv.astro`. Roles flagged `highlight: true` also appear on the homepage. Edit the data, not the markup. `/cv.pdf` is not committed — `scripts/generate-cv-pdf.mjs` prints the built `/cv/` page with headless Chromium after `astro build`, and the deploy workflow runs it so the PDF ships in every Pages artifact.
+- **CV as data**: `src/data/cv.ts` holds roles/education/skills/volunteering, rendered by `src/pages/cv.astro`. Roles flagged `highlight: true` also appear on the homepage. Edit the data, not the markup. Two download artifacts are generated at build time and not committed: `scripts/generate-cv-pdf.mjs` prints the built `/cv/` page with headless Chromium to `dist/cv.pdf`, and `scripts/generate-cv-docx.ts` composes `dist/cv.docx` from the data itself (Word styles + real bullets, for ATS parsers) — never from the HTML. Both run after `astro build` in the deploy workflow, so they ship in every Pages artifact.
 - **Site metadata** (name, role, socials, GA id, avatar path): `src/data/site.ts`.
 - **Theming**: CSS custom properties in `src/styles/global.css` (`:root` light, `[data-theme='dark']` overrides). The theme is set pre-paint by an `is:inline` script in `src/layouts/Base.astro` — keep that inline or dark mode will flash. `ThemeToggle` dispatches a `theme-change` window event that `Comments.astro` listens to.
 - **Comments**: `src/components/Comments.astro` is a giscus embed that renders nothing until `repoId`/`categoryId` are filled in (requires enabling GitHub Discussions + the giscus app).
