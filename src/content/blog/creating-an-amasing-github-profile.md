@@ -5,9 +5,7 @@ pubDate: 2023-12-01T15:34:30-04:00
 updatedDate: 2026-08-05T12:00:00+03:00
 heroImage: '../../assets/blog/creating-an-amazing-github-profile/awesome-github-profile-tumb.png'
 tags:
-  - GitHub
-  - profile
-  - Markdown
+  - tooling
 ---
 
 So you want to create an amazing GitHub profile? 🤔 Well, you've come to the right place! In this article, I will show you how to build a GitHub profile that will make you stand out from the crowd and get the most out of GitHub! Let's get started!

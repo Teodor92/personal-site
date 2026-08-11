@@ -12,6 +12,9 @@ interface Props {
   description?: string;
   image?: string;
   article?: boolean;
+  /** ISO 8601 — only meaningful alongside `article`. */
+  publishedTime?: string;
+  updatedTime?: string;
   wide?: boolean;
   schema?: object;
 }
@@ -21,6 +24,8 @@ const {
   description = site.description,
   image = site.avatar,
   article = false,
+  publishedTime,
+  updatedTime,
   wide = false,
   schema,
 } = Astro.props;
@@ -50,6 +55,8 @@ const ogImage = new URL(image, site.url);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    {article && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {article && updatedTime && <meta property="article:modified_time" content={updatedTime} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { slugify } from '../../utils/slug';
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
 const counts = new Map<string, number>();
@@ -16,7 +17,7 @@ const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeComp
     {
       tags.map(([tag, count]) => (
         <li>
-          <a href={`/tags/${tag.toLowerCase()}/`}>
+          <a href={`/tags/${slugify(tag)}/`}>
             {tag} <span class="count">{count}</span>
           </a>
         </li>

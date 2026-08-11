@@ -1,11 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { site } from '../data/site';
 import { roles } from '../data/cv';
 import { personSchema } from '../data/schema';
+// Rendered at 96px; astro:assets emits webp at 1x/2x instead of the 1536px
+// original (which stays in public/ for the og:image and JSON-LD Person schema).
+import avatar from '../assets/bio-photo.jpg';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -20,7 +24,15 @@ const highlights = roles.filter((r) => r.highlight);
   schema={personSchema}
 >
   <section class="hero">
-    <img src={site.avatar} alt="" width="96" height="96" />
+    <Image
+      src={avatar}
+      alt={site.name}
+      width={96}
+      height={96}
+      densities={[1, 2]}
+      format="webp"
+      loading="eager"
+    />
     <div>
       <h1>{site.name}</h1>
       <p class="role">{site.role}</p>

@@ -1,15 +1,17 @@
+# Policy in one line: no training on this site, yes to retrieval and AI search.
+#
+# Blocked below: crawlers that harvest pages to train models or resell scraped
+# content. Deliberately NOT blocked: user-triggered fetchers and AI search
+# indexers (ChatGPT-User, OAI-SearchBot, Claude-User, Claude-SearchBot,
+# PerplexityBot, Perplexity-User) — they answer a person's question and link
+# back, so they're treated like any other search engine.
+
 # AI training / scraping crawlers: opted out.
 User-agent: GPTBot
-User-agent: ChatGPT-User
-User-agent: OAI-SearchBot
 User-agent: ClaudeBot
-User-agent: Claude-User
-User-agent: Claude-SearchBot
 User-agent: anthropic-ai
 User-agent: Google-Extended
 User-agent: Applebot-Extended
-User-agent: PerplexityBot
-User-agent: Perplexity-User
 User-agent: CCBot
 User-agent: Bytespider
 User-agent: Amazonbot
@@ -19,8 +21,9 @@ User-agent: cohere-ai
 User-agent: Diffbot
 Disallow: /
 
-# Everyone else (incl. regular search engines): welcome.
+# Everyone else (search engines, AI search and user-triggered retrieval): welcome.
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 Sitemap: https://teodorkurtev.com/sitemap-index.xml

@@ -5,9 +5,7 @@ pubDate: 2024-01-18T15:34:30-04:00
 updatedDate: 2026-08-05T12:00:00+03:00
 heroImage: '../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg'
 tags:
-  - extensions
-  - vscode
-  - tools
+  - tooling
 ---
 
 ![Visual Studio Code extensions banner](../../assets/blog/useful-vscode-extensions/vscode-extensions-thumb.jpeg)

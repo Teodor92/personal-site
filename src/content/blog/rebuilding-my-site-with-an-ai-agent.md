@@ -5,7 +5,6 @@ pubDate: 2026-08-05T12:00:00+03:00
 tags:
   - AI
   - Claude Code
-  - Astro
 ---
 
 The website you're reading this on ran on the same Jekyll theme from 2019 until a couple of days ago. It was fine. It was also, let's be honest, a bit rough: a 200-line CV dumped on the homepage, a stock theme look, and a Ruby toolchain that had quietly stopped working on my machine somewhere along the way. 😅

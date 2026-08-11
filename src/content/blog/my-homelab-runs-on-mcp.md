@@ -6,8 +6,6 @@ draft: false
 tags:
   - AI
   - Claude Code
-  - MCP
-  - Homelab
 ---
 
 Most people use AI assistants to _talk about_ their infrastructure. Mine can actually touch it.

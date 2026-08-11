@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Comments from '../components/Comments.astro';
 import { site } from '../data/site';
+import { slugify } from '../utils/slug';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -49,6 +50,8 @@ const schema = [
   description={description}
   image={`/og/blog/${post.id}.png`}
   article
+  publishedTime={pubDate.toISOString()}
+  updatedTime={updatedDate?.toISOString()}
   schema={schema}
 >
   <div id="progress-bar" aria-hidden="true"></div>
@@ -64,7 +67,7 @@ const schema = [
           <ul class="tags">
             {tags.map((tag) => (
               <li>
-                <a href={`/tags/${tag.toLowerCase()}/`}>{tag}</a>
+                <a href={`/tags/${slugify(tag)}/`}>{tag}</a>
               </li>
             ))}
           </ul>
