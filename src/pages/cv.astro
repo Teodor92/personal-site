@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { roles, education, skills, volunteering, interests } from '../data/cv';
+import { roles, education, skills, volunteering, interests, summary } from '../data/cv';
 import { site } from '../data/site';
 import { personSchema } from '../data/schema';
 import { cvFileBase } from '../data/cv-filename.mjs';
@@ -9,10 +9,9 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 <Base title="CV | Teodor Kurtev" wide image="/og/cv.png" schema={personSchema}>
   <div class="cv-top">
     <div>
-      <h1>Curriculum Vitae</h1>
+      <h1>{site.name}</h1>
       <p class="meta contact">
-        {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a
-        >
+        Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
     </div>
     <div class="downloads">
@@ -21,7 +20,16 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     </div>
   </div>
 
-  <h2>Experience</h2>
+  <p class="summary">{summary}</p>
+
+  <nav class="toc" aria-label="On this page">
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#volunteering">Volunteering</a>
+  </nav>
+
+  <h2 id="experience">Experience</h2>
   <div class="timeline">
     {
       roles.slice(0, 4).map((role) => (
@@ -47,20 +55,18 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     {
       roles.slice(4).map((role) => (
         <article>
-          <details>
-            <summary>
-              <h3>
-                {role.title} · <span class="company">{role.company}</span>
-              </h3>
-              <p class="meta">
-                {role.period}
-                {role.location && ` · ${role.location}`}
-              </p>
-            </summary>
-            <p class="meta org-link">
-              <a href={role.url}>{role.company} ↗</a>
+          <header>
+            <h3>
+              {role.title} · <a href={role.url}>{role.company}</a>
+            </h3>
+            <p class="meta">
+              {role.period}
+              {role.location && ` · ${role.location}`}
             </p>
-            {role.intro && <p class="intro">{role.intro}</p>}
+          </header>
+          {role.intro && <p class="intro">{role.intro}</p>}
+          <details>
+            <summary>Show details</summary>
             <ul>
               {role.bullets.map((b) => (
                 <li>{b}</li>
@@ -72,7 +78,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
   </div>
 
-  <h2>Education</h2>
+  <h2 id="education">Education</h2>
   <div class="timeline">
     {
       education.map((e) => (
@@ -91,7 +97,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
   </div>
 
-  <h2>Skills</h2>
+  <h2 id="skills">Skills</h2>
   <dl class="skills">
     {
       skills.map((s) => (
@@ -103,7 +109,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
   </dl>
 
-  <h2>Volunteering</h2>
+  <h2 id="volunteering">Volunteering</h2>
   <div class="timeline">
     {
       volunteering.map((v) => (
@@ -157,6 +163,26 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     margin-top: 0.4rem;
   }
 
+  .summary {
+    margin-top: 1.25rem;
+    max-width: 46rem;
+  }
+
+  /* Wrapping row of small jump links to the four sections below. */
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    font-size: var(--text-sm);
+    margin-bottom: 0.5rem;
+  }
+
+  .toc a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
   /* Wraps so the two links stay together when .cv-top breaks onto two rows. */
   .downloads {
     display: flex;
@@ -186,7 +212,9 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   }
 
   @media print {
-    .downloads {
+    .downloads,
+    .toc,
+    details summary {
       display: none;
     }
 
@@ -243,34 +271,20 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     margin-top: 0.3rem;
   }
 
+  /* Keeps the native disclosure triangle: it carries the open/closed state. */
   details summary {
     cursor: pointer;
-    list-style: none;
+    color: var(--fg-muted);
+    font-size: var(--text-sm);
+    width: fit-content;
   }
 
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  details summary h3 {
-    display: inline;
-  }
-
-  details summary h3::after {
-    content: ' +';
-    color: var(--fg-faint);
-  }
-
-  details[open] summary h3::after {
-    content: ' –';
-  }
-
-  details summary:hover h3 {
+  details summary:hover {
     color: var(--accent);
   }
 
-  .org-link {
-    margin: 0.4rem 0;
+  details[open] summary {
+    margin-bottom: 0.5rem;
   }
 
   .skills dt {
@@ -280,5 +294,16 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   .skills dd {
     margin: 0.2rem 0 0;
+  }
+
+  /* Narrow screens can't spare 1.5rem to the left of the timeline. */
+  @media (max-width: 540px) {
+    .timeline {
+      padding-left: 1rem;
+    }
+
+    .timeline article::before {
+      left: calc(-1rem - 6px);
+    }
   }
 </style>

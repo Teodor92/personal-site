@@ -22,7 +22,7 @@ import {
   TextRun,
   convertInchesToTwip,
 } from 'docx';
-import { roles, education, skills, volunteering, interests } from '../src/data/cv';
+import { roles, education, skills, volunteering, interests, summary } from '../src/data/cv';
 import { site } from '../src/data/site';
 import { cvFileBase } from '../src/data/cv-filename.mjs';
 
@@ -70,6 +70,8 @@ const header = [
       }),
     ],
   }),
+  // Same opening paragraph as the web CV.
+  new Paragraph({ text: summary, spacing: { before: 200, after: 80 } }),
 ];
 
 const experience = roles.flatMap((role) => [

@@ -6,7 +6,7 @@ const posts = await getCollection('blog', ({ data }) => !data.draft);
 
 const pages: Record<string, { title: string; description: string }> = {
   index: { title: site.name, description: site.role },
-  cv: { title: 'Curriculum Vitae', description: `${site.name} · ${site.role}` },
+  cv: { title: `${site.name} · CV`, description: site.role },
   blog: { title: 'Blog', description: 'Writing about software engineering, tooling and teams.' },
   tags: { title: 'Tags', description: 'Blog posts by tag.' },
   uses: { title: 'Uses', description: 'The tools, editor setup and hardware I use day to day.' },
