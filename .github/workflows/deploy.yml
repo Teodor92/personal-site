@@ -30,15 +30,40 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      # Same gates as the PR workflow: master is pushed to directly, so this is
+      # the only place they run for most changes.
+      - name: Check formatting
+        run: npx prettier --check .
+      - name: Lint
+        run: npm run lint
+      - name: Type-check
+        run: npm run check
       - name: Build
         run: npm run build
       # Cheap and browserless, so it runs before the Chromium download.
       - name: Generate dist/cv.docx
         run: npm run build:docx
+      - name: Resolve Playwright version
+        id: playwright
+        run: |
+          version=$(node -p "require('./package-lock.json').packages['node_modules/playwright'].version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.playwright.outputs.version }}
+      # Still runs on a cache hit: it is a no-op for the browser itself but
+      # installs the shared libraries Chromium needs, which are not cached.
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
       - name: Generate dist/cv.pdf
         run: npm run build:pdf
+      # After the PDF so the smoke suite covers the artifact that ships. The
+      # Playwright webServer previews the existing dist/ rather than rebuilding
+      # it, so the generated PDF and DOCX survive into the upload below.
+      - name: Smoke tests
+        run: npm test
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
