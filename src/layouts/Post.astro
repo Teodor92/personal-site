@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
-import Comments from '../components/Comments.astro';
 import { site } from '../data/site';
 import { slugify } from '../utils/slug';
 
@@ -87,7 +86,6 @@ const schema = [
     </header>
     <slot />
   </article>
-  <Comments />
 </Base>
 
 <style>

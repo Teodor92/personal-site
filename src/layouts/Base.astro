@@ -109,7 +109,6 @@ const ogImage = new URL(image, site.url);
         const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = next;
         localStorage.setItem('theme', next);
-        window.dispatchEvent(new CustomEvent('theme-change', { detail: next }));
       });
 
       // Copy buttons on code blocks (delegated).
