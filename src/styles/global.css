@@ -123,8 +123,18 @@ a:hover {
   text-decoration: underline;
 }
 
-small,
+small {
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+}
+
+/* Colour only: for de-emphasised prose that still needs to read at body size. */
 .muted {
+  color: var(--fg-muted);
+}
+
+/* Dates, periods, locations, contact lines — small *and* quiet. */
+.meta {
   color: var(--fg-muted);
   font-size: var(--text-sm);
 }

@@ -10,7 +10,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   <div class="cv-top">
     <div>
       <h1>Curriculum Vitae</h1>
-      <p class="muted contact">
+      <p class="meta contact">
         {site.name} · Senior AI Software Engineer · <a href={`mailto:${site.email}`}>{site.email}</a
         >
       </p>
@@ -30,7 +30,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
             </h3>
-            <p class="muted">
+            <p class="meta">
               {role.period}
               {role.location && ` · ${role.location}`}
             </p>
@@ -52,12 +52,12 @@ import { cvFileBase } from '../data/cv-filename.mjs';
               <h3>
                 {role.title} · <span class="company">{role.company}</span>
               </h3>
-              <p class="muted">
+              <p class="meta">
                 {role.period}
                 {role.location && ` · ${role.location}`}
               </p>
             </summary>
-            <p class="muted org-link">
+            <p class="meta org-link">
               <a href={role.url}>{role.company} ↗</a>
             </p>
             {role.intro && <p class="intro">{role.intro}</p>}
@@ -81,7 +81,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
             <h3>
               {e.degree} · <a href={e.url}>{e.school}</a>
             </h3>
-            <p class="muted">
+            <p class="meta">
               {e.location} · {e.note}
             </p>
           </header>

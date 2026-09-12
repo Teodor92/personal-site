@@ -26,7 +26,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 <Base title={`#${display} | Teodor Kurtev`} description={`Blog posts tagged ${display}.`}>
   <h1>#{display}</h1>
-  <p class="muted intro">
+  <p class="meta intro">
     {posts.length} post{posts.length === 1 ? '' : 's'} · <a href="/tags/">all tags</a>
   </p>
   <PostList posts={posts} headingLevel="h2" />
