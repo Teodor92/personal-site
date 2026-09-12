@@ -1,10 +1,20 @@
 version: 2
 updates:
+  # One grouped PR per ecosystem per week — the backlog of single-package PRs
+  # was never going to be merged one at a time on a site this small.
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      npm:
+        patterns:
+          - '*'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      actions:
+        patterns:
+          - '*'
