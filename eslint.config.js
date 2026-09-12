@@ -7,7 +7,7 @@ import globals from 'globals';
 // Correctness-focused config: the recommended tiers only, no stylistic rules
 // (Prettier owns formatting; eslint-config-prettier keeps them from clashing).
 export default tseslint.config(
-  { ignores: ['dist/', '.astro/', 'node_modules/'] },
+  { ignores: ['dist/', '.astro/', 'node_modules/', 'test-results/', 'playwright-report/'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,

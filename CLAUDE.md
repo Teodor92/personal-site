@@ -15,11 +15,12 @@ npm run build     # static build to dist/
 npm run build:docx # builds the CV .docx from src/data/cv.ts via the docx package (tsx)
 npm run build:pdf # renders dist/cv/ to the CV .pdf (needs: npx playwright install chromium)
 npm run preview   # serve the built site
+npm test          # playwright smoke tests (builds first only if dist/ is empty)
 npm run check     # astro check — type-checks .astro files and content schemas
 npm run lint      # eslint (flat config, correctness rules only — Prettier owns style)
 ```
 
-There is no test suite. CI (PRs) runs prettier --check, lint, check and build; the pre-commit hook runs prettier --write and eslint on staged files.
+`npm test` is a small Playwright smoke suite (`tests/`, chromium only) covering the print stylesheet the CV PDF depends on, 320px overflow, the skip link, no-JS rendering, post structured data and the active nav cue. Its `webServer` only rebuilds when `dist/` is empty — `astro build` wipes `dist/`, which is also where the generated CV PDF and DOCX live. CI (PRs) and the deploy workflow both run prettier --check, lint, check, build and the tests; the pre-commit hook runs prettier --write and eslint on staged files.
 
 ## Architecture
 

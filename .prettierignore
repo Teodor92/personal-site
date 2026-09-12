@@ -1,5 +1,7 @@
 dist/
 .astro/
 node_modules/
+test-results/
+playwright-report/
 package-lock.json
 src/content/blog/
