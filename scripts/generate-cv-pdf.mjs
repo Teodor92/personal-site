@@ -67,8 +67,12 @@ async function generate() {
   });
 
   const url = `http://127.0.0.1:${server.address().port}/cv/`;
-  const browser = await chromium.launch();
+  // The launch lives *inside* the try: if Chromium is missing or fails to start,
+  // the finally still closes the server, so the process exits instead of hanging
+  // on a listening socket that keeps the event loop alive.
+  let browser;
   try {
+    browser = await chromium.launch();
     const page = await browser.newPage();
     const response = await page.goto(url, { waitUntil: 'load' });
     if (!response?.ok()) throw new Error(`GET ${url} responded ${response?.status()}`);
@@ -93,7 +97,7 @@ async function generate() {
       margin: { top: '14mm', bottom: '14mm', left: '12mm', right: '12mm' },
     });
   } finally {
-    await browser.close();
+    await browser?.close();
     await new Promise((resolve) => server.close(resolve));
   }
 
