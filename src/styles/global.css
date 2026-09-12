@@ -358,8 +358,14 @@ pre:hover .copy-code,
     --code-bg: #f5f5f5;
   }
 
-  header,
-  footer,
+  @page {
+    margin: 1.5cm;
+  }
+
+  /* Site chrome only — scoped to direct children of <body> so the <header>
+     elements that wrap CV role and blog post headings keep printing. */
+  body > header,
+  body > footer,
   #theme-toggle,
   #palette,
   #progress-bar,
@@ -383,8 +389,10 @@ pre:hover .copy-code,
     text-decoration: none;
   }
 
-  article {
-    break-inside: avoid;
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
   }
 
   a.card {
