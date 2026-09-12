@@ -13,7 +13,7 @@ export const roles: Role[] = [
   {
     company: 'YuLife',
     url: 'https://yulife.com/',
-    title: 'Senior AI Software Engineer',
+    title: 'Senior Applied AI Software Engineer',
     location: 'Remote',
     period: 'May 2025 – Present',
     highlight: true,
@@ -193,7 +193,7 @@ export const roles: Role[] = [
 ];
 
 export const summary =
-  'Senior AI Software Engineer with 10+ years across full-stack development and engineering leadership. Currently building AI-powered product features at YuLife: agentic workflows, LLM evaluation pipelines and the platform engineering that keeps them reliable. Previously an Engineering Manager at Deel leading billing and invoicing teams, and a lead engineer at News UK and Synchronoss.';
+  'Senior Applied AI Software Engineer with 10+ years across full-stack development and engineering leadership. Currently building AI-powered product features at YuLife: agentic workflows, LLM evaluation pipelines and the platform engineering that keeps them reliable. Previously an Engineering Manager at Deel leading billing and invoicing teams, and a lead engineer at News UK and Synchronoss.';
 
 export const education = [
   {

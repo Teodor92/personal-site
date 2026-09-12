@@ -36,7 +36,7 @@ const MUTED = '555555';
 const section = (text: string) =>
   new Paragraph({ text, heading: HeadingLevel.HEADING_1, spacing: { before: 360, after: 120 } });
 
-// One entry's title line: "Senior AI Software Engineer · YuLife".
+// One entry's title line: "Senior Applied AI Software Engineer · YuLife".
 const entry = (text: string) =>
   new Paragraph({ text, heading: HeadingLevel.HEADING_2, spacing: { before: 220, after: 0 } });
 

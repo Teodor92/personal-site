@@ -7,7 +7,7 @@ export const personSchema = {
   name: site.name,
   url: site.url,
   email: `mailto:${site.email}`,
-  jobTitle: 'Senior AI Software Engineer',
+  jobTitle: 'Senior Applied AI Software Engineer',
   worksFor: { '@type': 'Organization', name: 'YuLife', url: 'https://yulife.com/' },
   image: new URL(site.avatar, site.url).toString(),
   sameAs: site.socials.filter((s) => s.icon !== 'email').map((s) => s.url),
