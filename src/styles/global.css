@@ -202,14 +202,6 @@ th {
 
 /* ------------------------------ Utilities ------------------------------- */
 
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--fg-faint);
-}
-
 .card {
   display: block;
   padding: 1.25rem 1.4rem;

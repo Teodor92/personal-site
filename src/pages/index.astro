@@ -42,7 +42,7 @@ const highlights = roles.filter((r) => r.highlight);
   </section>
 
   <section>
-    <h2 class="eyebrow">Recent roles</h2>
+    <h2>Recent roles</h2>
     <ul class="highlights">
       {
         highlights.map((r) => (
@@ -60,7 +60,7 @@ const highlights = roles.filter((r) => r.highlight);
   </section>
 
   <section>
-    <h2 class="eyebrow">Recent writing</h2>
+    <h2>Recent writing</h2>
     <PostList posts={posts} />
     <p class="all-posts"><a href="/blog/">All posts →</a></p>
   </section>
@@ -98,7 +98,8 @@ const highlights = roles.filter((r) => r.highlight);
     margin-top: 3rem;
   }
 
-  .eyebrow {
+  section h2 {
+    font-size: var(--text-lg);
     margin-top: 0;
     margin-bottom: 1rem;
   }
