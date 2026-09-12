@@ -10,6 +10,11 @@ updates:
       npm:
         patterns:
           - '*'
+    ignore:
+      # astro check and typescript-eslint need the TS 6 programmatic API;
+      # TS 7 breaks both (withastro/roadmap#1321). Lift when they support it.
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
