@@ -22,7 +22,7 @@ jobs:
       # upload) so the CV PDF can be generated after the build and shipped
       # inside the same Pages artifact.
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
