@@ -220,21 +220,6 @@ a.card:hover {
 
 /* --------------------------- Interactions ------------------------------- */
 
-/* Scroll reveal: elements start hidden, .is-visible animates them in.
-   With reduced motion the class is applied immediately (see Base.astro). */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
-}
-
 /* Card hover lift */
 a.card {
   transition:
@@ -333,7 +318,10 @@ pre:hover .copy-code,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal],
+  html {
+    scroll-behavior: auto;
+  }
+
   a.card,
   main p a,
   main li a {
@@ -371,12 +359,6 @@ pre:hover .copy-code,
   #progress-bar,
   .copy-code {
     display: none !important;
-  }
-
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
   }
 
   main {

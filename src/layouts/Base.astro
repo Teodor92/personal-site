@@ -103,8 +103,6 @@ const ogImage = new URL(image, site.url);
       // ---- so per-element work re-runs on astro:page-load and clicks are
       // ---- delegated from document instead of bound to nodes.
 
-      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-
       // Theme toggle (delegated).
       document.addEventListener('click', (e) => {
         const target = e.target as Element;
@@ -126,25 +124,6 @@ const ogImage = new URL(image, site.url);
       });
 
       function initPage() {
-        // Scroll reveals.
-        const revealed = document.querySelectorAll('[data-reveal]:not(.is-visible)');
-        if (reduceMotion.matches) {
-          revealed.forEach((el) => el.classList.add('is-visible'));
-        } else {
-          const io = new IntersectionObserver(
-            (entries) => {
-              for (const entry of entries) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-visible');
-                  io.unobserve(entry.target);
-                }
-              }
-            },
-            { threshold: 0.1 },
-          );
-          revealed.forEach((el) => io.observe(el));
-        }
-
         // Inject copy buttons.
         document.querySelectorAll('pre:not(:has(.copy-code))').forEach((pre) => {
           const btn = document.createElement('button');
