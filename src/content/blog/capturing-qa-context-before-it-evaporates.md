@@ -3,7 +3,7 @@ title: 'Capturing QA context before it evaporates'
 description: 'How I got developers to write down flags, setup steps and gotchas while they still knew them, and piped those notes onto the Jira ticket when QA needs them.'
 pubDate: 2026-09-12T12:00:00+03:00
 heroImage: '../../assets/blog/capturing-qa-context-before-it-evaporates/qa-notes-og.png'
-draft: true
+draft: false
 tags:
   - AI
   - Claude Code
