@@ -65,16 +65,23 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     color: var(--fg-muted);
     font-size: var(--text-sm);
     font-weight: 500;
+    /* Grows the tap target to ~40px; the negative margin cancels the padding in
+       the flex layout, so the header keeps its height. */
+    padding-block: 0.5rem;
+    margin-block: -0.5rem;
   }
 
-  .links a:hover,
-  .links a[aria-current='page'] {
+  .links a:hover {
     color: var(--fg);
     text-decoration: none;
   }
 
+  /* The current page needs a cue that survives without colour. */
   .links a[aria-current='page'] {
     color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
   }
 
   @media (max-width: 480px) {

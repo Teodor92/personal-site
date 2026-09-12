@@ -90,8 +90,9 @@ const ogImage = new URL(image, site.url);
       data-cf-beacon={JSON.stringify({ token: site.cfAnalyticsToken })}></script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <Header />
-    <main class:list={[{ wide }]}>
+    <main id="main" class:list={[{ wide }]}>
       <slot />
     </main>
     <Footer />
