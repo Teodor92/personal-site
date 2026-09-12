@@ -18,10 +18,10 @@ const fmt = (d: Date) =>
     posts.map((post) => (
       <li>
         <a class="card" href={`/blog/${post.id}/`}>
+          <Heading class="title">{post.data.title}</Heading>
           <div class="meta">
             <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
           </div>
-          <Heading class="title">{post.data.title}</Heading>
           <p class="muted">{post.data.description}</p>
         </a>
       </li>
@@ -37,13 +37,13 @@ const fmt = (d: Date) =>
     gap: 1rem;
   }
 
-  .meta {
-    margin-bottom: 0.25rem;
-  }
-
   .title {
     font-size: var(--text-lg);
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.2rem;
+  }
+
+  .meta {
+    margin-bottom: 0.35rem;
   }
 
   p {

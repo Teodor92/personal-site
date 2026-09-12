@@ -16,6 +16,10 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = post.data;
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 
+// Only worth showing when it lands on a different calendar day to publication.
+const updatedOn =
+  updatedDate && updatedDate.toDateString() !== pubDate.toDateString() ? updatedDate : undefined;
+
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -61,6 +65,13 @@ const schema = [
       <p class="meta">
         <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
         {minutesRead && <span> · {minutesRead}</span>}
+        {
+          updatedOn && (
+            <span>
+              {' · '}Updated <time datetime={updatedOn.toISOString()}>{fmt(updatedOn)}</time>
+            </span>
+          )
+        }
       </p>
       {
         tags.length > 0 && (

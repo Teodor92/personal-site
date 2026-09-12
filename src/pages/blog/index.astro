@@ -15,11 +15,16 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 >
   <h1>Blog</h1>
   <p class="muted intro">Writing about AI-assisted engineering, tooling and teams.</p>
+  <p class="meta browse"><a href="/tags/">Browse by topic →</a></p>
   <PostList posts={posts} headingLevel="h2" />
 </Base>
 
 <style>
   .intro {
+    margin-bottom: 0.35rem;
+  }
+
+  .browse {
     margin-bottom: 2rem;
   }
 </style>
