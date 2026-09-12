@@ -232,6 +232,12 @@ input:focus-visible,
   outline-offset: 2px;
 }
 
+/* The skip link focuses <main> programmatically; a ring around the whole page
+   body would be noise, and the skip link itself is the visible cue. */
+main:focus-visible {
+  outline: none;
+}
+
 /* Cards already have a border to carry the cue, so hug it rather than ring it. */
 a.card:focus-visible {
   outline-offset: 0;
