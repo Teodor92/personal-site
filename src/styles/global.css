@@ -1,18 +1,30 @@
 /* ---------------------------------------------------------------------------
    teodorkurtev.com: clean & typographic design system
-   One accent color, custom-property theming, light + dark via [data-theme].
+   Teal primary + coral secondary, custom-property theming, light + dark via
+   [data-theme]. Text colours are AA against --bg, --bg-raised and
+   --accent-soft in both themes; the gradient is for decoration and large text.
 --------------------------------------------------------------------------- */
 
 :root {
-  --bg: #fdfdfc;
-  --bg-raised: #f4f4f2;
-  --fg: #1a1c1e;
-  --fg-muted: #5a6069;
-  --fg-faint: #667079;
-  --border: #e4e4e0;
-  --accent: #0d66d0;
-  --accent-hover: #0a52a8;
-  --code-bg: #f0f0ee;
+  --bg: #fbfdfc;
+  --bg-raised: #eef6f4;
+  --fg: #13201e;
+  --fg-muted: #4a5b58;
+  --fg-faint: #5b6d69;
+  --border: #d8e5e2;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-2: #c2410c;
+  --accent-cool: #0e7490;
+  --accent-soft: #e3f3f0;
+  --code-bg: #eef4f2;
+  --gradient: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 100%);
+  /* Teal and coral are near-complementary, so blending them across large text
+     goes muddy mid-way; headline text stays in the teal → cyan family. */
+  --gradient-text: linear-gradient(100deg, var(--accent) 0%, var(--accent-cool) 100%);
+  --glow-1: rgb(20 184 166 / 0.14);
+  --glow-2: rgb(249 115 22 / 0.1);
+  --shadow-accent: 0 8px 24px rgb(15 118 110 / 0.14);
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -30,15 +42,21 @@
 }
 
 [data-theme='dark'] {
-  --bg: #101214;
-  --bg-raised: #1a1d20;
-  --fg: #e8eaed;
-  --fg-muted: #a2a9b3;
-  --fg-faint: #8f97a2;
-  --border: #2a2e33;
-  --accent: #5aa2f0;
-  --accent-hover: #82b9f5;
-  --code-bg: #1c2024;
+  --bg: #0c1413;
+  --bg-raised: #14201e;
+  --fg: #e6efed;
+  --fg-muted: #a0b4b0;
+  --fg-faint: #8aa19c;
+  --border: #24332f;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-2: #fb923c;
+  --accent-cool: #38bdf8;
+  --accent-soft: #12302c;
+  --code-bg: #13201e;
+  --glow-1: rgb(45 212 191 / 0.12);
+  --glow-2: rgb(251 146 60 / 0.08);
+  --shadow-accent: 0 8px 28px rgb(45 212 191 / 0.12);
 }
 
 * {
@@ -56,7 +74,12 @@ html[data-theme='dark'] {
 }
 
 body {
-  background: var(--bg);
+  /* Two soft colour washes at the top of every page, fading into --bg. Painted
+     on <body> rather than a pseudo-element so they can never cause overflow. */
+  background:
+    radial-gradient(48rem 26rem at 12% -6rem, var(--glow-1), transparent 70%),
+    radial-gradient(40rem 24rem at 92% -4rem, var(--glow-2), transparent 70%), var(--bg);
+  background-repeat: no-repeat;
   color: var(--fg);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -139,6 +162,10 @@ small {
   font-size: var(--text-sm);
 }
 
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
 hr {
   border: 0;
   border-top: 1px solid var(--border);
@@ -152,10 +179,16 @@ img {
 }
 
 blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 1.1rem;
+  border-left: 3px solid;
+  border-image: linear-gradient(var(--accent), var(--accent-2)) 1;
+  background: var(--accent-soft);
+  padding: 0.8rem 1.1rem;
   color: var(--fg-muted);
   margin-block: 1.4rem;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
 }
 
 code {
@@ -276,11 +309,7 @@ a.card {
 
 a.card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.07);
-}
-
-[data-theme='dark'] a.card:hover {
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.4);
+  box-shadow: var(--shadow-accent);
 }
 
 /* Inline links are underlined by default (a11y: color alone must not be the
@@ -298,6 +327,7 @@ main p a:hover,
 main li a:hover,
 footer small a:hover {
   text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent-2);
 }
 
 /* Links inside headings (e.g. CV company names) also need a non-color cue:
@@ -322,7 +352,7 @@ a.card:hover {
   left: 0;
   width: 100%;
   height: 3px;
-  background: var(--accent);
+  background: var(--gradient);
   transform: scaleX(0);
   transform-origin: 0 0;
   z-index: 10;
@@ -387,9 +417,20 @@ pre:hover .copy-code,
     --fg-muted: #333333;
     --fg-faint: #555555;
     --border: #bbbbbb;
-    --accent: #0d47a1;
-    --accent-hover: #0d47a1;
+    --accent: #0f5f58;
+    --accent-hover: #0f5f58;
+    --accent-2: #0f5f58;
+    --accent-cool: #0f5f58;
+    --accent-soft: #ffffff;
     --code-bg: #f5f5f5;
+    --gradient: none;
+    --gradient-text: none;
+    --glow-1: transparent;
+    --glow-2: transparent;
+  }
+
+  body {
+    background: #ffffff;
   }
 
   @page {

@@ -111,17 +111,19 @@ const schema = [
     display: inline-block;
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--fg-muted);
-    background: var(--bg-raised);
-    border: 1px solid var(--border);
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
     border-radius: 999px;
     padding: 0.1rem 0.65rem;
-    transition: border-color 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
 
   .tags li a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-2);
+    color: var(--accent-2);
     text-decoration: none;
   }
 </style>

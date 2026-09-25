@@ -48,8 +48,16 @@ const icons: Record<string, string> = {
     color: var(--fg-muted);
   }
 
+  .socials a {
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
   .socials a:hover {
     color: var(--accent);
     border-color: var(--accent);
+    background: var(--accent-soft);
   }
 </style>

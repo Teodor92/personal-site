@@ -208,6 +208,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   .downloads a:hover {
     color: var(--accent);
     border-color: var(--accent);
+    background: var(--accent-soft);
     text-decoration: none;
   }
 
@@ -228,10 +229,12 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
   }
 
+  /* The rail fades teal → coral top to bottom. */
   .timeline {
     display: grid;
     gap: 2rem;
     border-left: 2px solid var(--border);
+    border-image: linear-gradient(var(--accent), var(--accent-2)) 1;
     padding-left: 1.5rem;
   }
 
@@ -248,6 +251,8 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     height: 10px;
     border-radius: 50%;
     background: var(--accent);
+    background-image: var(--gradient);
+    box-shadow: 0 0 0 3px var(--bg);
   }
 
   .timeline h3 {
@@ -294,6 +299,13 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   .skills dd {
     margin: 0.2rem 0 0;
+  }
+
+  /* Print the rail in the plain grey border colour, not the gradient. */
+  @media print {
+    .timeline {
+      border-image-source: none;
+    }
   }
 
   /* Narrow screens can't spare 1.5rem to the left of the timeline. */

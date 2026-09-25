@@ -26,21 +26,21 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     description: page.description,
     logo: { path: './public/icon-192.png', size: [76] },
     bgGradient: [
-      [16, 18, 20],
-      [26, 29, 32],
+      [12, 20, 19],
+      [20, 32, 30],
     ],
-    border: { color: [90, 162, 240], width: 14, side: 'inline-start' },
+    border: { color: [45, 212, 191], width: 14, side: 'inline-start' },
     padding: 72,
     font: {
       title: {
         size: 60,
         weight: 'Bold',
-        color: [232, 234, 237],
+        color: [230, 239, 237],
         lineHeight: 1.2,
       },
       description: {
         size: 28,
-        color: [162, 169, 179],
+        color: [160, 180, 176],
         lineHeight: 1.5,
       },
     },

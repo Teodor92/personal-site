@@ -30,8 +30,10 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 </header>
 
 <style>
+  /* A thin teal→coral rule instead of a grey border. */
   header {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid;
+    border-image: var(--gradient) 1;
   }
 
   nav {
@@ -80,6 +82,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .links a[aria-current='page'] {
     color: var(--accent);
     text-decoration: underline;
+    text-decoration-color: var(--accent-2);
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
   }

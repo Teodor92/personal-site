@@ -66,18 +66,25 @@ const ogImage = new URL(image, site.url);
     <ClientRouter />
 
     <!-- Theme init before CSS paints: no flash of wrong theme.
+         localStorage 'theme' holds an explicit 'light' / 'dark' choice; no
+         entry means follow the OS. [data-theme] is the resolved theme the CSS
+         keys off; [data-theme-pref] is the choice, which the toggle displays.
          Re-applied after every view transition (astro:after-swap fires
-         before the new page paints). -->
+         before the new page paints) and whenever the OS setting changes. -->
     <script is:inline>
       (() => {
+        const dark = matchMedia('(prefers-color-scheme: dark)');
         const apply = () => {
-          const theme =
-            localStorage.getItem('theme') ??
-            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          document.documentElement.dataset.theme = theme;
+          const stored = localStorage.getItem('theme');
+          const pref = stored === 'light' || stored === 'dark' ? stored : 'system';
+          const root = document.documentElement;
+          root.dataset.themePref = pref;
+          root.dataset.theme = pref === 'system' ? (dark.matches ? 'dark' : 'light') : pref;
         };
+        window.__applyTheme = apply;
         apply();
         document.addEventListener('astro:after-swap', apply);
+        dark.addEventListener('change', apply);
       })();
     </script>
 
@@ -102,13 +109,16 @@ const ogImage = new URL(image, site.url);
       // ---- so per-element work re-runs on astro:page-load and clicks are
       // ---- delegated from document instead of bound to nodes.
 
-      // Theme toggle (delegated).
+      // Theme toggle (delegated): light → dark → system → light.
       document.addEventListener('click', (e) => {
         const target = e.target as Element;
         if (!target.closest('#theme-toggle')) return;
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
-        localStorage.setItem('theme', next);
+        const order = ['light', 'dark', 'system'];
+        const current = document.documentElement.dataset.themePref ?? 'system';
+        const next = order[(order.indexOf(current) + 1) % order.length];
+        if (next === 'system') localStorage.removeItem('theme');
+        else localStorage.setItem('theme', next);
+        (window as Window & { __applyTheme?: () => void }).__applyTheme?.();
       });
 
       // Copy buttons on code blocks (delegated).
