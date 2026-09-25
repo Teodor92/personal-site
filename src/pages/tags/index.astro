@@ -13,7 +13,7 @@ const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeComp
 
 <Base title="Tags | Teodor Kurtev" description="Blog posts by tag." image="/og/tags.png">
   <h1>Tags</h1>
-  <ul class="tag-cloud">
+  <ul class="tag-cloud fill-cycle">
     {
       tags.map(([tag, count]) => (
         <li>
@@ -39,27 +39,36 @@ const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeComp
   .tag-cloud a {
     text-decoration: none;
     display: inline-block;
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border: 2px solid var(--ink);
     border-radius: 999px;
-    padding: 0.25rem 0.9rem;
-    background: var(--accent-soft);
-    color: var(--accent);
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 0.3rem 1rem;
+    background: var(--fill);
+    color: var(--on-fill);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     transition:
-      border-color 0.15s ease,
-      color 0.15s ease,
-      transform 0.15s ease;
+      transform 0.12s ease,
+      box-shadow 0.12s ease;
   }
 
   .tag-cloud a:hover {
-    border-color: var(--accent-2);
-    color: var(--accent-2);
+    background: var(--fill);
+    color: var(--on-fill);
     text-decoration: none;
-    transform: translateY(-1px);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--ink);
   }
 
+  .tag-cloud a:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  /* Sits on a bright fill in both themes, so it stays ink-black. */
   .count {
-    color: var(--fg-faint);
+    color: var(--on-fill);
+    font-weight: 700;
+    margin-left: 0.15rem;
   }
 </style>

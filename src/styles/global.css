@@ -1,32 +1,47 @@
 /* ---------------------------------------------------------------------------
-   teodorkurtev.com: clean & typographic design system
-   Teal primary + coral secondary, custom-property theming, light + dark via
-   [data-theme]. Text colours are AA against --bg, --bg-raised and
-   --accent-soft in both themes; the gradient is for decoration and large text.
+   teodorkurtev.com: neo-brutalist design system
+   Thick ink outlines, hard offset shadows, flat bright fills on cream.
+   Light + dark via [data-theme]. In dark mode the ink flips to off-white and
+   the brights move from fills into shadows, so large surfaces stay dark.
+
+   Contrast rules (AA, checked): body text colours clear 4.5:1 against --bg and
+   --bg-raised in both themes; text sitting ON a bright fill is always
+   --on-fill (black) or --fg-muted (light theme only), never --accent.
 --------------------------------------------------------------------------- */
 
 :root {
-  --bg: #fbfdfc;
-  --bg-raised: #eef6f4;
-  --fg: #13201e;
-  --fg-muted: #4a5b58;
-  --fg-faint: #5b6d69;
-  --border: #d8e5e2;
-  --accent: #0f766e;
-  --accent-hover: #115e59;
-  --accent-2: #c2410c;
-  --accent-cool: #0e7490;
-  --accent-soft: #e3f3f0;
-  --code-bg: #eef4f2;
-  --gradient: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 100%);
-  /* Teal and coral are near-complementary, so blending them across large text
-     goes muddy mid-way; headline text stays in the teal → cyan family. */
-  --gradient-text: linear-gradient(100deg, var(--accent) 0%, var(--accent-cool) 100%);
-  --glow-1: rgb(20 184 166 / 0.14);
-  --glow-2: rgb(249 115 22 / 0.1);
-  --shadow-accent: 0 8px 24px rgb(15 118 110 / 0.14);
+  --bg: #fffbea;
+  --bg-raised: #ffffff;
+  --fg: #000000;
+  --fg-muted: #333333;
+  --fg-faint: #333333;
+  --ink: #000000;
+  --border: var(--ink);
+  --accent: #1d3fe0;
+  --accent-hover: #0d2bb5;
+  --on-fill: #000000;
+  --code-bg: #ffefa8;
+  --pre-bg: #16161a;
+  --dot: rgb(0 0 0 / 0.09);
+
+  /* The four brights. Lists opt into cycling through them with .fill-cycle. */
+  --yellow: #ffde59;
+  --pink: #ff6b9d;
+  --cyan: #5ce1e6;
+  --green: #7ed957;
+  --fill: var(--yellow);
+
+  /* Heading marker: a thick underline painted behind the lower half of each
+     line of text (underlines render beneath glyphs). */
+  --mark: var(--yellow);
+  --mark-thickness: 0.4em;
+  --mark-offset: -0.28em;
+
+  --bw: 3px;
+  --radius: 10px;
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* Type scale (fluid) */
@@ -35,28 +50,30 @@
   --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
   --text-xl: clamp(1.35rem, 1.2rem + 0.7vw, 1.6rem);
   --text-2xl: clamp(1.7rem, 1.45rem + 1.2vw, 2.1rem);
-  --text-3xl: clamp(2.1rem, 1.7rem + 1.9vw, 2.75rem);
+  --text-3xl: clamp(2.2rem, 1.7rem + 2.3vw, 3.1rem);
 
   --content-width: 42rem;
   --wide-width: 52rem;
 }
 
 [data-theme='dark'] {
-  --bg: #0c1413;
-  --bg-raised: #14201e;
-  --fg: #e6efed;
-  --fg-muted: #a0b4b0;
-  --fg-faint: #8aa19c;
-  --border: #24332f;
-  --accent: #2dd4bf;
-  --accent-hover: #5eead4;
-  --accent-2: #fb923c;
-  --accent-cool: #38bdf8;
-  --accent-soft: #12302c;
-  --code-bg: #13201e;
-  --glow-1: rgb(45 212 191 / 0.12);
-  --glow-2: rgb(251 146 60 / 0.08);
-  --shadow-accent: 0 8px 28px rgb(45 212 191 / 0.12);
+  --bg: #141414;
+  --bg-raised: #222222;
+  --fg: #fffbea;
+  --fg-muted: #cfcbbd;
+  --fg-faint: #b5b1a3;
+  --ink: #fffbea;
+  --accent: #ffde59;
+  --accent-hover: #ff8fb5;
+  --code-bg: #2c2c2c;
+  --pre-bg: #0b0b0d;
+  --dot: rgb(255 251 234 / 0.07);
+
+  /* A yellow marker under off-white text would fail contrast, so in dark the
+     marker drops below the baseline and turns pink. */
+  --mark: var(--pink);
+  --mark-thickness: 0.16em;
+  --mark-offset: 0.18em;
 }
 
 * {
@@ -74,12 +91,10 @@ html[data-theme='dark'] {
 }
 
 body {
-  /* Two soft colour washes at the top of every page, fading into --bg. Painted
-     on <body> rather than a pseudo-element so they can never cause overflow. */
-  background:
-    radial-gradient(48rem 26rem at 12% -6rem, var(--glow-1), transparent 70%),
-    radial-gradient(40rem 24rem at 92% -4rem, var(--glow-2), transparent 70%), var(--bg);
-  background-repeat: no-repeat;
+  /* Dot-grid paper. Painted on <body>, so it can never cause overflow. */
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.4px);
+  background-size: 24px 24px;
   color: var(--fg);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -107,9 +122,10 @@ h1,
 h2,
 h3,
 h4 {
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  font-weight: 650;
+  font-family: var(--font-display);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 700;
   text-wrap: balance;
 }
 
@@ -121,6 +137,15 @@ h2 {
   font-size: var(--text-xl);
   margin-top: 2.5em;
   margin-bottom: 0.6em;
+}
+
+/* Marker-pen highlight on section headings in prose, per line of text. */
+main h2 {
+  text-decoration: underline;
+  text-decoration-color: var(--mark);
+  text-decoration-thickness: var(--mark-thickness);
+  text-underline-offset: var(--mark-offset);
+  text-decoration-skip-ink: none;
 }
 
 h3 {
@@ -163,12 +188,13 @@ small {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: var(--yellow);
+  color: var(--on-fill);
 }
 
 hr {
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: var(--bw) solid var(--ink);
   margin-block: 2.5rem;
 }
 
@@ -179,12 +205,19 @@ img {
 }
 
 blockquote {
-  border-left: 3px solid;
-  border-image: linear-gradient(var(--accent), var(--accent-2)) 1;
-  background: var(--accent-soft);
-  padding: 0.8rem 1.1rem;
-  color: var(--fg-muted);
-  margin-block: 1.4rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cyan);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 0.9rem 1.2rem;
+  color: var(--on-fill);
+  margin-block: 1.6rem;
+}
+
+[data-theme='dark'] blockquote {
+  background: var(--bg-raised);
+  color: var(--fg);
+  box-shadow: 5px 5px 0 var(--cyan);
 }
 
 blockquote > :last-child {
@@ -199,14 +232,20 @@ code {
   border-radius: 4px;
 }
 
+/* Code blocks are dark slabs in both themes: the Shiki theme is github-dark. */
 pre {
-  background: var(--code-bg) !important;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: var(--pre-bg) !important;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 5px 5px 0 var(--ink);
   padding: 1rem 1.2rem;
   overflow-x: auto;
-  margin-block: 1.4rem;
+  margin-block: 1.6rem;
   line-height: 1.55;
+}
+
+[data-theme='dark'] pre {
+  box-shadow: 5px 5px 0 var(--pink);
 }
 
 pre code {
@@ -220,37 +259,93 @@ table {
   width: 100%;
   margin-block: 1.4rem;
   font-size: var(--text-sm);
+  border: var(--bw) solid var(--ink);
 }
 
 th,
 td {
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 
 th {
-  background: var(--bg-raised);
+  background: var(--yellow);
+  color: var(--on-fill);
 }
 
 /* ------------------------------ Utilities ------------------------------- */
 
+/* Children cycle yellow → pink → cyan → green via --fill. */
+.fill-cycle > :nth-child(4n + 1) {
+  --fill: var(--yellow);
+}
+
+.fill-cycle > :nth-child(4n + 2) {
+  --fill: var(--pink);
+}
+
+.fill-cycle > :nth-child(4n + 3) {
+  --fill: var(--cyan);
+}
+
+.fill-cycle > :nth-child(4n + 4) {
+  --fill: var(--green);
+}
+
+/* Cards: bright fill + ink shadow in light; dark surface + bright shadow in
+   dark. Hover lifts into the shadow, press pushes down onto it. */
 .card {
+  --card-shadow: var(--ink);
   display: block;
   padding: 1.25rem 1.4rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
-  transition: border-color 0.15s ease;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--fill);
+  color: var(--on-fill);
+  box-shadow: 5px 5px 0 var(--card-shadow);
+}
+
+.card .muted,
+.card .meta {
+  color: var(--fg-muted);
+}
+
+[data-theme='dark'] .card {
+  --card-shadow: var(--fill);
+  background: var(--bg-raised);
+  color: var(--fg);
 }
 
 a.card {
-  color: inherit;
+  color: var(--on-fill);
 }
 
-a.card:hover {
+[data-theme='dark'] a.card {
+  color: var(--fg);
+}
+
+/* Shared "chunky button" treatment for small controls (toggle, socials, CV
+   downloads): ink outline, hard shadow, press-in on :active. */
+.brutal-btn {
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
   text-decoration: none;
-  border-color: var(--accent);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 /* ------------------------------- Focus ---------------------------------- */
@@ -261,20 +356,14 @@ button:focus-visible,
 summary:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* The skip link focuses <main> programmatically; a ring around the whole page
    body would be noise, and the skip link itself is the visible cue. */
 main:focus-visible {
   outline: none;
-}
-
-/* Cards already have a border to carry the cue, so hug it rather than ring it. */
-a.card:focus-visible {
-  outline-offset: 0;
-  border-color: var(--accent);
 }
 
 /* First tab stop on every page: jump past the header straight to <main>.
@@ -290,51 +379,58 @@ a.card:focus-visible {
   position: fixed;
   top: 0.75rem;
   left: 0.75rem;
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--yellow);
+  color: var(--on-fill);
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
   padding: 0.6rem 1rem;
   border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
 }
 
 /* --------------------------- Interactions ------------------------------- */
 
-/* Card hover lift */
 a.card {
   transition:
-    border-color 0.15s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
 a.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-accent);
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--card-shadow);
+}
+
+a.card:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--card-shadow);
 }
 
 /* Inline links are underlined by default (a11y: color alone must not be the
-   only distinction) and thicken on hover. */
+   only distinction); on hover they get a highlighter block. */
 main p a,
 main li a,
 footer small a {
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 3px;
-  transition: text-decoration-thickness 0.15s ease;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
 }
 
 main p a:hover,
 main li a:hover,
 footer small a:hover {
-  text-decoration-thickness: 2px;
-  text-decoration-color: var(--accent-2);
+  background: var(--yellow);
+  color: var(--on-fill);
 }
 
-/* Links inside headings (e.g. CV company names) also need a non-color cue:
-   accent-on-heading-text is under 3:1 in dark mode. */
+/* Links inside headings (e.g. CV company names) also need a non-color cue. */
 main :is(h2, h3, h4) a {
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
 
@@ -343,6 +439,12 @@ main :is(h2, h3, h4) a {
 a.card,
 a.card:hover {
   text-decoration: none;
+  background-color: var(--fill);
+}
+
+[data-theme='dark'] a.card,
+[data-theme='dark'] a.card:hover {
+  background-color: var(--bg-raised);
 }
 
 /* Reading progress bar (element lives in Post.astro) */
@@ -351,8 +453,9 @@ a.card:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: var(--gradient);
+  height: 6px;
+  background: var(--pink);
+  border-bottom: 2px solid #000;
   transform: scaleX(0);
   transform-origin: 0 0;
   z-index: 10;
@@ -369,10 +472,10 @@ pre {
   right: 0.5rem;
   width: 1.9rem;
   height: 1.9rem;
-  border: 1px solid var(--border);
+  border: 2px solid #000;
   border-radius: 6px;
-  background: var(--bg);
-  color: var(--fg-muted);
+  background: var(--yellow);
+  color: #000;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -390,7 +493,6 @@ pre:hover .copy-code,
 
 .copy-code[data-copied]::after {
   content: '✓';
-  color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -399,16 +501,24 @@ pre:hover .copy-code,
   }
 
   a.card,
+  .brutal-btn,
   main p a,
   main li a {
     transition: none;
+  }
+
+  a.card:hover,
+  a.card:active,
+  .brutal-btn:hover,
+  .brutal-btn:active {
+    transform: none;
   }
 }
 
 /* ------------------------------- Print ---------------------------------- */
 
 @media print {
-  /* Always print light, whatever the on-screen theme. */
+  /* Always print plain black on white, whatever the on-screen theme. */
   :root,
   [data-theme='dark'] {
     --bg: #ffffff;
@@ -416,25 +526,25 @@ pre:hover .copy-code,
     --fg: #000000;
     --fg-muted: #333333;
     --fg-faint: #555555;
+    --ink: #000000;
     --border: #bbbbbb;
-    --accent: #0f5f58;
-    --accent-hover: #0f5f58;
-    --accent-2: #0f5f58;
-    --accent-cool: #0f5f58;
-    --accent-soft: #ffffff;
+    --accent: #000000;
+    --accent-hover: #000000;
     --code-bg: #f5f5f5;
-    --gradient: none;
-    --gradient-text: none;
-    --glow-1: transparent;
-    --glow-2: transparent;
-  }
-
-  body {
-    background: #ffffff;
+    --pre-bg: #f5f5f5;
+    --yellow: #ffffff;
+    --pink: #ffffff;
+    --cyan: #ffffff;
+    --green: #ffffff;
+    --mark: transparent;
   }
 
   @page {
     margin: 1.5cm;
+  }
+
+  body {
+    background: #ffffff;
   }
 
   /* Site chrome only — scoped to direct children of <body> so the <header>
@@ -463,7 +573,9 @@ pre:hover .copy-code,
     break-after: avoid;
   }
 
-  a.card {
+  a.card,
+  pre,
+  blockquote {
     box-shadow: none;
   }
 }

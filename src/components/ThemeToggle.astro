@@ -6,7 +6,7 @@
 // picked by CSS from that attribute, so nothing here needs re-binding.
 ---
 
-<button id="theme-toggle" type="button">
+<button id="theme-toggle" class="brutal-btn" type="button">
   <svg
     class="icon light"
     width="16"
@@ -65,28 +65,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent);
+    width: 2.1rem;
+    height: 2.1rem;
+    background: var(--cyan);
+    color: var(--on-fill);
     cursor: pointer;
-    transition:
-      color 0.15s ease,
-      border-color 0.15s ease,
-      box-shadow 0.2s ease,
-      transform 0.25s ease;
   }
 
   button:hover {
-    color: var(--accent-2);
-    border-color: var(--accent-2);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 18%, transparent);
-  }
-
-  button:active {
-    transform: rotate(40deg) scale(0.9);
+    background: var(--pink);
   }
 
   .icon {

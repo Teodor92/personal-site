@@ -15,8 +15,8 @@ import { cvFileBase } from '../data/cv-filename.mjs';
       </p>
     </div>
     <div class="downloads">
-      <a href={`/${cvFileBase}.pdf`}>Download PDF</a>
-      <a href={`/${cvFileBase}.docx`}>Download DOCX</a>
+      <a class="brutal-btn" href={`/${cvFileBase}.pdf`}>Download PDF</a>
+      <a class="brutal-btn" href={`/${cvFileBase}.docx`}>Download DOCX</a>
     </div>
   </div>
 
@@ -30,7 +30,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </nav>
 
   <h2 id="experience">Experience</h2>
-  <div class="timeline">
+  <div class="timeline fill-cycle">
     {
       roles.slice(0, 4).map((role) => (
         <article>
@@ -79,7 +79,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </div>
 
   <h2 id="education">Education</h2>
-  <div class="timeline">
+  <div class="timeline fill-cycle">
     {
       education.map((e) => (
         <article>
@@ -110,7 +110,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </dl>
 
   <h2 id="volunteering">Volunteering</h2>
-  <div class="timeline">
+  <div class="timeline fill-cycle">
     {
       volunteering.map((v) => (
         <article>
@@ -192,24 +192,21 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   /* Styled as the button they replaced; they point at the build-time artifacts. */
   .downloads a {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--fg-muted);
+    background: var(--yellow);
+    color: var(--on-fill);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.45rem 0.9rem;
     text-decoration: none;
     white-space: nowrap;
-    transition:
-      color 0.15s ease,
-      border-color 0.15s ease;
+  }
+
+  .downloads a + a {
+    background: var(--pink);
   }
 
   .downloads a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: var(--accent-soft);
-    text-decoration: none;
+    color: var(--on-fill);
   }
 
   @media print {
@@ -229,12 +226,11 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
   }
 
-  /* The rail fades teal → coral top to bottom. */
+  /* --border is ink on screen and light grey in print. */
   .timeline {
     display: grid;
     gap: 2rem;
-    border-left: 2px solid var(--border);
-    border-image: linear-gradient(var(--accent), var(--accent-2)) 1;
+    border-left: var(--bw) solid var(--border);
     padding-left: 1.5rem;
   }
 
@@ -245,14 +241,14 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   .timeline article::before {
     content: '';
     position: absolute;
-    left: calc(-1.5rem - 6px);
-    top: 0.5em;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    background-image: var(--gradient);
-    box-shadow: 0 0 0 3px var(--bg);
+    /* 14px square centred on the 3px rail: 1.5px + 7px left of the padding edge. */
+    left: calc(-1.5rem - 8.5px);
+    top: 0.35em;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 2px solid var(--ink);
+    background: var(--fill);
   }
 
   .timeline h3 {
@@ -301,10 +297,10 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     margin: 0.2rem 0 0;
   }
 
-  /* Print the rail in the plain grey border colour, not the gradient. */
+  /* Print the markers as solid ink squares (the brights print white). */
   @media print {
-    .timeline {
-      border-image-source: none;
+    .timeline article::before {
+      background: #000000;
     }
   }
 
@@ -315,7 +311,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
 
     .timeline article::before {
-      left: calc(-1rem - 6px);
+      left: calc(-1rem - 8.5px);
     }
   }
 </style>

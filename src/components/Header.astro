@@ -30,10 +30,14 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 </header>
 
 <style>
-  /* A thin teal→coral rule instead of a grey border. */
   header {
-    border-bottom: 2px solid;
-    border-image: var(--gradient) 1;
+    background: var(--yellow);
+    border-bottom: var(--bw) solid var(--ink);
+  }
+
+  /* In dark the bar is a dark slab; the brights stay in the accents. */
+  :global([data-theme='dark']) header {
+    background: var(--bg-raised);
   }
 
   nav {
@@ -47,14 +51,17 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   }
 
   .home {
-    font-weight: 650;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
     color: var(--fg);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   .home:hover {
-    text-decoration: none;
-    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    color: var(--fg);
   }
 
   .links {
@@ -64,9 +71,9 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   }
 
   .links a {
-    color: var(--fg-muted);
+    color: var(--fg);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     /* Grows the tap target to ~40px; the negative margin cancels the padding in
        the flex layout, so the header keeps its height. */
     padding-block: 0.5rem;
@@ -75,21 +82,33 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 
   .links a:hover {
     color: var(--fg);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
   }
 
   /* The current page needs a cue that survives without colour. */
   .links a[aria-current='page'] {
-    color: var(--accent);
+    color: var(--fg);
     text-decoration: underline;
-    text-decoration-color: var(--accent-2);
-    text-decoration-thickness: 2px;
+    text-decoration-color: var(--ink);
+    text-decoration-thickness: 3px;
     text-underline-offset: 6px;
+  }
+
+  /* Pink cue for the current page in dark, where the bar isn't yellow. */
+  :global([data-theme='dark']) .links a[aria-current='page'] {
+    text-decoration-color: var(--pink);
   }
 
   @media (max-width: 480px) {
     .links {
       gap: 0.9rem;
+    }
+
+    .home {
+      font-size: var(--text-base);
+      line-height: 1.2;
     }
   }
 </style>

@@ -14,11 +14,11 @@ const icons: Record<string, string> = {
 };
 ---
 
-<ul class="socials">
+<ul class="socials fill-cycle">
   {
     site.socials.map(({ label, url, icon }) => (
       <li>
-        <a href={url} aria-label={label} title={label} rel="me noopener">
+        <a class="brutal-btn" href={url} aria-label={label} title={label} rel="me noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d={icons[icon]} />
           </svg>
@@ -31,7 +31,7 @@ const icons: Record<string, string> = {
 <style>
   .socials {
     display: flex;
-    gap: 0.6rem;
+    gap: 0.7rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -41,23 +41,15 @@ const icons: Record<string, string> = {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--fg-muted);
+    width: 2.35rem;
+    height: 2.35rem;
+    background: var(--bg-raised);
+    color: var(--fg);
   }
 
-  .socials a {
-    transition:
-      color 0.15s ease,
-      border-color 0.15s ease,
-      background-color 0.15s ease;
-  }
-
+  /* Each button takes its own bright from .fill-cycle on hover. */
   .socials a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: var(--accent-soft);
+    background: var(--fill);
+    color: var(--on-fill);
   }
 </style>

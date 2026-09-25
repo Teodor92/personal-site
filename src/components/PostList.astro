@@ -13,7 +13,7 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 
-<ul class="post-list">
+<ul class="post-list fill-cycle">
   {
     posts.map((post) => (
       <li>
@@ -34,7 +34,7 @@ const fmt = (d: Date) =>
     list-style: none;
     padding: 0;
     display: grid;
-    gap: 1rem;
+    gap: 1.4rem;
   }
 
   .title {

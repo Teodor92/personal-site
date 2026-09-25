@@ -43,7 +43,7 @@ const highlights = roles.filter((r) => r.highlight);
 
   <section>
     <h2>Recent roles</h2>
-    <ul class="highlights">
+    <ul class="highlights fill-cycle">
       {
         highlights.map((r) => (
           <li>
@@ -74,35 +74,32 @@ const highlights = roles.filter((r) => r.highlight);
     margin-bottom: 3.5rem;
   }
 
-  /* Gradient ring: the padding lets the background show around the photo. */
+  /* Photo as a tilted polaroid-ish tile with a pink hard shadow. */
   .hero img {
-    border-radius: 50%;
+    border-radius: 14px;
     flex-shrink: 0;
-    padding: 3px;
-    background: var(--gradient);
-    box-shadow: var(--shadow-accent);
+    border: var(--bw) solid var(--ink);
+    box-shadow: 6px 6px 0 var(--pink);
+    transform: rotate(-3deg);
   }
 
   .hero h1 {
     margin-bottom: 0.15rem;
   }
 
-  /* Gradient name; both ends are AA against --bg in each theme. Plain --fg
-     where background-clip: text is unsupported. */
-  @supports (background-clip: text) or (-webkit-background-clip: text) {
-    .hero h1 {
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      width: fit-content;
-    }
-  }
-
+  /* Sticker-style role badge. */
   .role {
-    color: var(--accent);
-    font-weight: 550;
-    margin-bottom: 0.75rem;
+    display: inline-block;
+    background: var(--cyan);
+    color: var(--on-fill);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 0.2rem 0.65rem;
+    margin: 0.5rem 0 1rem;
+    transform: rotate(-1deg);
   }
 
   .pitch {
@@ -120,15 +117,16 @@ const highlights = roles.filter((r) => r.highlight);
     margin-bottom: 1rem;
   }
 
-  /* Short gradient bar under each section heading. */
-  section h2::after {
-    content: '';
-    display: block;
-    width: 2.5rem;
-    height: 3px;
-    margin-top: 0.4rem;
-    border-radius: 999px;
-    background: var(--gradient);
+  /* Section headings as yellow label tabs instead of the prose marker. */
+  section h2 {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--on-fill);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 0.1rem 0.6rem;
+    text-decoration: none;
   }
 
   .highlights {
@@ -138,20 +136,18 @@ const highlights = roles.filter((r) => r.highlight);
     gap: 1.1rem;
   }
 
+  /* Each role hangs off a thick bar in its own bright. */
+  .highlights li {
+    border-left: 6px solid var(--fill);
+    padding-left: 1rem;
+  }
+
   .highlights p {
     margin: 0.2rem 0 0;
   }
 
   .all-posts {
     margin-top: 1.25rem;
-  }
-
-  /* The gradient is a transparent-text trick; print it as plain ink. */
-  @media print {
-    .hero h1 {
-      background: none;
-      color: var(--fg);
-    }
   }
 
   @media (max-width: 540px) {
