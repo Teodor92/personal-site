@@ -148,6 +148,11 @@ main h2 {
   text-decoration-skip-ink: none;
 }
 
+/* Card titles are h2s on list pages; the card is already the emphasis. */
+.card :is(h2, h3) {
+  text-decoration: none;
+}
+
 h3 {
   font-size: var(--text-lg);
   margin-top: 1.8em;
@@ -202,6 +207,13 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+/* Images in post bodies get the same framed-and-shadowed treatment as cards. */
+article img {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 5px 5px 0 var(--ink);
 }
 
 blockquote {
@@ -575,7 +587,8 @@ pre:hover .copy-code,
 
   a.card,
   pre,
-  blockquote {
+  blockquote,
+  article img {
     box-shadow: none;
   }
 }

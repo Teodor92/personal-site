@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0f766e"/>
-  <text x="16" y="21" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">TK</text>
-  <rect x="8" y="24.5" width="16" height="2.5" rx="1.25" fill="#fb923c"/>
+  <rect x="4" y="4" width="27" height="27" rx="5" fill="#000"/>
+  <rect x="1.5" y="1.5" width="26" height="26" rx="5" fill="#ffde59" stroke="#000" stroke-width="2.5"/>
+  <text x="14.5" y="19.6" font-family="'Space Grotesk',ui-sans-serif,system-ui,sans-serif" font-size="13" font-weight="700" fill="#000" text-anchor="middle" letter-spacing="-0.4">TK</text>
 </svg>

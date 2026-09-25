@@ -24,24 +24,29 @@ export const { getStaticPaths, GET } = await OGImageRoute({
   getImageOptions: (_path, page) => ({
     title: page.title,
     description: page.description,
-    logo: { path: './public/icon-192.png', size: [76] },
-    bgGradient: [
-      [12, 20, 19],
-      [20, 32, 30],
-    ],
-    border: { color: [45, 212, 191], width: 14, side: 'inline-start' },
+    logo: { path: './public/icon-192.png', size: [96] },
+    // Neo-brutalist card: cream paper, thick pink edge, black type.
+    bgGradient: [[255, 251, 234]],
+    border: { color: [255, 107, 157], width: 28, side: 'inline-start' },
     padding: 72,
+    // Same faces as the site: Space Grotesk headings, Inter body.
+    fonts: [
+      './node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2',
+      './node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',
+    ],
     font: {
       title: {
-        size: 60,
+        size: 68,
         weight: 'Bold',
-        color: [230, 239, 237],
-        lineHeight: 1.2,
+        color: [0, 0, 0],
+        lineHeight: 1.15,
+        families: ['Space Grotesk'],
       },
       description: {
-        size: 28,
-        color: [160, 180, 176],
+        size: 30,
+        color: [51, 51, 51],
         lineHeight: 1.5,
+        families: ['Inter'],
       },
     },
   }),
