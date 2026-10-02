@@ -4,7 +4,8 @@ import getReadingTime from 'reading-time';
 import Post from '../../layouts/Post.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  // Drafts get a page in dev so they can be previewed; production builds skip them.
+  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
   // post.id is the filename slug, identical to the old Jekyll URLs.
   return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
