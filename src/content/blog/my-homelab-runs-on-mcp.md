@@ -70,65 +70,77 @@ And yes, the agent helped build its own credential system, including the backup:
 The whole chain, in one picture:
 
 <figure>
-  <svg viewBox="0 0 720 585" role="img" aria-labelledby="mcp-diagram-title mcp-diagram-desc" style="width:100%;height:auto;font-family:var(--font-sans)">
-    <title id="mcp-diagram-title">How the homelab MCP setup fits together</title>
-    <desc id="mcp-diagram-desc">Claude Code installs a plugin from a private marketplace on the NAS. The plugin defines MCP servers, each launched through an infisical run wrapper that fetches secrets from the Infisical vault. The MCP servers expose tools over JSON-RPC to control Home Assistant, Unraid, UniFi, n8n and Uptime Kuma.</desc>
-    <defs>
-      <marker id="mcp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--fg-muted)"></path>
-      </marker>
-    </defs>
-    <g stroke="var(--border)" fill="var(--bg-raised)">
-      <rect x="210" y="20" width="300" height="68" rx="8"></rect>
-      <rect x="185" y="136" width="350" height="68" rx="8"></rect>
-      <rect x="195" y="252" width="330" height="68" rx="8"></rect>
-      <rect x="560" y="252" width="140" height="68" rx="8" stroke="var(--accent)"></rect>
-      <rect x="60" y="368" width="600" height="88" rx="8"></rect>
-      <rect x="60" y="504" width="600" height="64" rx="8"></rect>
-    </g>
-    <g fill="var(--fg)" font-size="15" font-weight="600" text-anchor="middle">
-      <text x="360" y="48">Claude Code</text>
-      <text x="360" y="162">Private plugin marketplace</text>
-      <text x="360" y="278">infisical run wrapper</text>
-      <text x="630" y="278">Infisical</text>
-      <text x="360" y="392">MCP servers</text>
-      <text x="360" y="530">Home Assistant · Unraid · UniFi · n8n · Uptime Kuma</text>
-    </g>
-    <g fill="var(--fg-muted)" font-size="13" text-anchor="middle">
-      <text x="360" y="70">on any of my machines</text>
-      <text x="360" y="184">Forgejo, self-hosted on the NAS</text>
-      <text x="360" y="300">launches each server, secrets injected</text>
-      <text x="630" y="300">secrets vault</text>
-      <text x="360" y="550">the actual lab</text>
-    </g>
-    <g fill="var(--code-bg)" stroke="var(--border)">
-      <rect x="117" y="408" width="88" height="32" rx="6"></rect>
-      <rect x="221" y="408" width="84" height="32" rx="6"></rect>
-      <rect x="321" y="408" width="70" height="32" rx="6"></rect>
-      <rect x="407" y="408" width="60" height="32" rx="6"></rect>
-      <rect x="483" y="408" width="120" height="32" rx="6"></rect>
-    </g>
-    <g fill="var(--fg)" font-size="13" text-anchor="middle" style="font-family:var(--font-mono)">
-      <text x="161" y="428">ha-mcp</text>
-      <text x="263" y="428">unraid</text>
-      <text x="356" y="428">unifi</text>
-      <text x="437" y="428">n8n</text>
-      <text x="543" y="428">uptime-kuma</text>
-    </g>
-    <g stroke="var(--fg-muted)" fill="none" marker-end="url(#mcp-arrow)">
-      <line x1="360" y1="88" x2="360" y2="130"></line>
-      <line x1="360" y1="204" x2="360" y2="246"></line>
-      <line x1="360" y1="320" x2="360" y2="362"></line>
-      <line x1="360" y1="456" x2="360" y2="498"></line>
-      <line x1="558" y1="286" x2="531" y2="286" stroke="var(--accent)" stroke-dasharray="4 4"></line>
-    </g>
-    <g fill="var(--fg-muted)" font-size="12.5" text-anchor="start">
-      <text x="372" y="113">installs the plugin</text>
-      <text x="372" y="229">plugin defines the MCP servers</text>
-      <text x="372" y="345">starts the servers</text>
-      <text x="372" y="481">tools over JSON-RPC</text>
-    </g>
-  </svg>
+<svg viewBox="0 0 720 524" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mcp-diagram-title mcp-diagram-desc" class="hl" style="width:100%;height:auto;display:block">
+  <title id="mcp-diagram-title">How the homelab MCP setup fits together</title>
+  <style>.hl-zone { fill: none; stroke-width: 2; stroke-dasharray: 6 4; } .hl-outline, .hl-focal { stroke-width: 3; } .hl-outline-thin { stroke-width: 1.5; } .hl-arrow { fill: none; stroke-width: 2; } .hl-arrow-accent { fill: none; stroke-width: 2; stroke-dasharray: 5 4; } .hl-chip { stroke-width: 1.5; } .hl-eyebrow { font-size: 8px; font-weight: 500; letter-spacing: 0.14em; } .hl-arrowlabel { font-size: 7.5px; font-weight: 500; letter-spacing: 0.06em; } .hl-name { font-size: 15px; font-weight: 600; } .hl-name-sm { font-size: 14px; } .hl-sub { font-size: 11px; } .hl-chiptext { font-size: 10px; } .hl-legend { font-size: 11px; } .hl-rule { stroke-width: 1; }  .hl-mask { fill: var(--bg); } .hl-zone { stroke: var(--fg-muted); opacity: 0.6; } .hl-eyebrow, .hl-arrowlabel { fill: var(--fg-muted); font-family: var(--font-mono); } .hl-arrowlabel-accent { fill: var(--accent); } .hl-arrow { stroke: var(--ink); } .hl-arrowhead { fill: var(--ink); } .hl-arrow-accent { stroke: var(--accent); } .hl-arrowhead-accent { fill: var(--accent); } .hl-shadow-me, .hl-shadow-lab { fill: var(--ink); } .hl-fill-me, .hl-swatch-me { fill: var(--yellow); } .hl-fill-lab, .hl-swatch-lab { fill: var(--cyan); } .hl-outline, .hl-outline-thin { stroke: var(--ink); } .hl-focal { stroke: var(--accent); } .hl-chip { fill: var(--bg-raised); stroke: var(--ink); } .hl-chiptext { fill: var(--on-fill); font-family: var(--font-mono); } .hl-name { fill: var(--on-fill); font-family: var(--font-sans); } .hl-sub { fill: var(--on-fill); opacity: 0.8; font-family: var(--font-sans); } .hl-legend { fill: var(--fg); font-family: var(--font-sans); } .hl-rule { stroke: var(--fg); opacity: 0.15; } [data-theme='dark'] .hl-fill-me, [data-theme='dark'] .hl-fill-lab { fill: var(--bg-raised); } [data-theme='dark'] .hl-shadow-me { fill: var(--yellow); } [data-theme='dark'] .hl-shadow-lab { fill: var(--cyan); } [data-theme='dark'] .hl-name, [data-theme='dark'] .hl-chiptext { fill: var(--fg); } [data-theme='dark'] .hl-sub { fill: var(--fg-muted); opacity: 1; } [data-theme='dark'] .hl-chip { fill: var(--bg); stroke: var(--fg); }</style>
+  <desc id="mcp-diagram-desc">Claude Code installs a plugin from a private marketplace on the NAS. The plugin defines MCP servers, each launched through an infisical run wrapper that fetches secrets from the Infisical vault. The MCP servers expose tools over JSON-RPC to control Home Assistant, Unraid, UniFi, n8n and Uptime Kuma.</desc>
+  <defs>
+    <marker id="hl-arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="10" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,4 L0,8 z" class="hl-arrowhead"/></marker>
+    <marker id="hl-arrow-accent" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="10" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,4 L0,8 z" class="hl-arrowhead-accent"/></marker>
+  </defs>
+  <rect x="24" y="24" width="352" height="432" rx="12" class="hl-zone"/>
+  <rect x="36" y="16" width="128" height="16" rx="2" class="hl-mask"/>
+  <text x="44" y="27" class="hl-eyebrow">ANY OF MY MACHINES</text>
+  <rect x="392" y="24" width="304" height="432" rx="12" class="hl-zone"/>
+  <rect x="404" y="16" width="176" height="16" rx="2" class="hl-mask"/>
+  <text x="412" y="27" class="hl-eyebrow">SELF-HOSTED IN THE HOMELAB</text>
+  <line x1="352" y1="96" x2="414" y2="96" class="hl-arrow" marker-end="url(#hl-arrow)"/>
+  <path d="M 544,128 V 158 Q 544,166 536,166 H 208 Q 200,166 200,174 V 202" class="hl-arrow" marker-end="url(#hl-arrow)"/>
+  <line x1="416" y1="236" x2="354" y2="236" class="hl-arrow-accent" marker-end="url(#hl-arrow-accent)"/>
+  <line x1="200" y1="268" x2="200" y2="342" class="hl-arrow" marker-end="url(#hl-arrow)"/>
+  <line x1="352" y1="390" x2="414" y2="390" class="hl-arrow" marker-end="url(#hl-arrow)"/>
+  <rect x="360" y="76" width="52" height="12" rx="2" class="hl-mask"/>
+  <text x="386" y="85" text-anchor="middle" class="hl-arrowlabel">INSTALLS</text>
+  <rect x="344" y="146" width="80" height="12" rx="2" class="hl-mask"/>
+  <text x="384" y="155" text-anchor="middle" class="hl-arrowlabel">SERVER CONFIG</text>
+  <rect x="360" y="216" width="48" height="12" rx="2" class="hl-mask"/>
+  <text x="384" y="225" text-anchor="middle" class="hl-arrowlabel hl-arrowlabel-accent">SECRETS</text>
+  <rect x="208" y="300" width="36" height="12" rx="2" class="hl-mask"/>
+  <text x="226" y="309" text-anchor="middle" class="hl-arrowlabel">STARTS</text>
+  <rect x="360" y="370" width="52" height="12" rx="2" class="hl-mask"/>
+  <text x="386" y="379" text-anchor="middle" class="hl-arrowlabel">JSON-RPC</text>
+  <rect x="52" y="68" width="304" height="64" rx="10" class="hl-shadow-me"/>
+  <rect x="48" y="64" width="304" height="64" rx="10" class="hl-fill-me hl-outline"/>
+  <text x="64" y="103" class="hl-name">Claude Code</text>
+  <rect x="420" y="68" width="256" height="64" rx="10" class="hl-shadow-lab"/>
+  <rect x="416" y="64" width="256" height="64" rx="10" class="hl-fill-lab hl-outline"/>
+  <text x="432" y="93" class="hl-name hl-name-sm">Private plugin marketplace</text>
+  <text x="432" y="112" class="hl-sub">Forgejo, self-hosted on the NAS</text>
+  <rect x="52" y="208" width="304" height="64" rx="10" class="hl-shadow-me"/>
+  <rect x="48" y="204" width="304" height="64" rx="10" class="hl-fill-me hl-outline"/>
+  <text x="64" y="233" class="hl-name">infisical run wrapper</text>
+  <text x="64" y="252" class="hl-sub">launches each server, secrets injected</text>
+  <rect x="420" y="208" width="256" height="64" rx="10" class="hl-shadow-lab"/>
+  <rect x="416" y="204" width="256" height="64" rx="10" class="hl-fill-lab hl-focal"/>
+  <text x="432" y="233" class="hl-name">Infisical</text>
+  <text x="432" y="252" class="hl-sub">secrets vault</text>
+  <rect x="52" y="348" width="304" height="92" rx="10" class="hl-shadow-me"/>
+  <rect x="48" y="344" width="304" height="92" rx="10" class="hl-fill-me hl-outline"/>
+  <text x="64" y="372" class="hl-name">MCP servers</text>
+  <rect x="62" y="388" width="52" height="28" rx="6" class="hl-chip"/>
+  <text x="88" y="406" text-anchor="middle" class="hl-chiptext">ha-mcp</text>
+  <rect x="118" y="388" width="52" height="28" rx="6" class="hl-chip"/>
+  <text x="144" y="406" text-anchor="middle" class="hl-chiptext">unraid</text>
+  <rect x="174" y="388" width="48" height="28" rx="6" class="hl-chip"/>
+  <text x="198" y="406" text-anchor="middle" class="hl-chiptext">unifi</text>
+  <rect x="226" y="388" width="32" height="28" rx="6" class="hl-chip"/>
+  <text x="242" y="406" text-anchor="middle" class="hl-chiptext">n8n</text>
+  <rect x="262" y="388" width="84" height="28" rx="6" class="hl-chip"/>
+  <text x="304" y="406" text-anchor="middle" class="hl-chiptext">uptime-kuma</text>
+  <rect x="420" y="348" width="256" height="92" rx="10" class="hl-shadow-lab"/>
+  <rect x="416" y="344" width="256" height="92" rx="10" class="hl-fill-lab hl-outline"/>
+  <text x="432" y="374" class="hl-name hl-name-sm">Home Assistant · Unraid ·</text>
+  <text x="432" y="394" class="hl-name hl-name-sm">UniFi · n8n · Uptime Kuma</text>
+  <text x="432" y="416" class="hl-sub">the actual lab</text>
+  <line x1="24" y1="476" x2="696" y2="476" class="hl-rule"/>
+  <text x="24" y="504" class="hl-eyebrow">LEGEND</text>
+  <rect x="104" y="492" width="16" height="16" rx="3" class="hl-swatch-me hl-outline-thin"/>
+  <text x="128" y="504" class="hl-legend">Runs on my machine</text>
+  <rect x="288" y="492" width="16" height="16" rx="3" class="hl-swatch-lab hl-outline-thin"/>
+  <text x="312" y="504" class="hl-legend">Self-hosted in the homelab</text>
+  <line x1="508" y1="500" x2="536" y2="500" class="hl-arrow-accent" marker-end="url(#hl-arrow-accent)"/>
+  <text x="548" y="504" class="hl-legend">Credential path</text>
+</svg>
   <figcaption>From terminal to lab: delivery via the plugin marketplace, credentials via the vault.</figcaption>
 </figure>
 

@@ -60,60 +60,101 @@ In the first post, every server in the plugin's `.mcp.json` carried its own copy
 So the launcher now drops the client secret before `infisical run` starts, and runs the server under `env -u INFISICAL_TOKEN`. The server gets the homelab secrets it actually needs, and nothing that could fetch more. We didn't trust the script to be right about this: the agent checked the live processes with `ps -E`, and the wrapper held only the short-lived token while the server held **no Infisical credential at all**.
 
 <figure>
-  <svg viewBox="0 0 720 470" role="img" aria-labelledby="creds-diagram-title creds-diagram-desc" style="width:100%;height:auto;font-family:var(--font-sans)">
-    <title id="creds-diagram-title">Where the Infisical credential lives, before and after</title>
-    <desc id="creds-diagram-desc">Before: a Token Auth token in settings reaches the launcher, the infisical run wrapper and the MCP server itself. After: a never-expiring client secret stops at the launcher, the wrapper holds only a short-lived access token, and the MCP server receives only the homelab secrets it needs.</desc>
-    <g fill="var(--fg)" font-size="15" font-weight="600" text-anchor="middle">
-      <text x="270" y="30">Before (Token Auth)</text>
-      <text x="560" y="30">After (Universal Auth)</text>
+<svg data-diagram="architecture-delta" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hd-credentials-title hd-credentials-desc" class="hd" style="width:100%;height:auto;display:block">
+  <title id="hd-credentials-title">Where the Infisical credential lives, before and after</title>
+  <style>.hd-outline, .hd-focal { stroke-width: 3; } .hd-outline-thin { stroke-width: 1.5; } .hd-swatch-focal { fill: none; stroke-width: 3; } .hd-arrow { fill: none; stroke-width: 2; } .hd-tag { fill: none; stroke-width: 1; } .hd-tagtext { font-size: 8px; font-weight: 500; letter-spacing: 0.04em; } .hd-name { font-size: 12.5px; font-weight: 600; } .hd-sub, .hd-sub-mono { font-size: 10.5px; } .hd-panel { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; } .hd-eyebrow { font-size: 8px; font-weight: 500; letter-spacing: 0.14em; } .hd-ledger { font-size: 10.5px; } .hd-ledger-head { font-weight: 600; } .hd-legend, .hd-legend-mono { font-size: 11px; } .hd-rule { stroke-width: 1; }  .hd-shadow, .hd-shadow-bad, .hd-shadow-good { fill: var(--ink); } .hd-fill { fill: var(--bg-raised); } .hd-fill-bad, .hd-swatch-bad { fill: var(--pink); } .hd-fill-good, .hd-swatch-good { fill: var(--green); } .hd-outline, .hd-outline-thin { stroke: var(--ink); } .hd-focal, .hd-swatch-focal { stroke: var(--accent); } .hd-arrow { stroke: var(--fg-muted); } .hd-arrowtip { fill: var(--fg-muted); } .hd-tag { stroke: var(--on-fill); opacity: 0.55; } .hd-tagtext, .hd-sub-mono, .hd-legend-mono, .hd-eyebrow { font-family: var(--font-mono); } .hd-tagtext, .hd-name { fill: var(--on-fill); } .hd-name, .hd-sub, .hd-ledger, .hd-legend { font-family: var(--font-sans); } .hd-sub, .hd-sub-mono { fill: var(--on-fill); opacity: 0.8; } .hd-panel { fill: var(--fg); font-family: var(--font-display); } .hd-eyebrow, .hd-ledger { fill: var(--fg-muted); } .hd-ledger-head, .hd-legend, .hd-legend-mono { fill: var(--fg); } .hd-rule { stroke: var(--fg); opacity: 0.15; } [data-theme='dark'] .hd-fill, [data-theme='dark'] .hd-fill-bad, [data-theme='dark'] .hd-fill-good { fill: var(--bg-raised); } [data-theme='dark'] .hd-shadow { fill: var(--cyan); } [data-theme='dark'] .hd-shadow-bad { fill: var(--pink); } [data-theme='dark'] .hd-shadow-good { fill: var(--green); } [data-theme='dark'] .hd-tagtext, [data-theme='dark'] .hd-name { fill: var(--fg); } [data-theme='dark'] .hd-sub, [data-theme='dark'] .hd-sub-mono { fill: var(--fg-muted); opacity: 1; } [data-theme='dark'] .hd-tag { stroke: var(--fg); }</style>
+  <desc id="hd-credentials-desc">Before: a Token Auth token in settings reaches the launcher, the infisical run wrapper and the MCP server itself. After: a never-expiring client secret stops at the launcher, the wrapper holds only a short-lived access token, and the MCP server receives only the homelab secrets it needs.</desc>
+  <defs><marker id="hd-arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="hd-arrowtip"/></marker></defs>
+  <text x="20" y="52" class="hd-panel">Before (Token Auth)</text>
+  <text x="272" y="52" class="hd-eyebrow">CHANGES</text>
+  <text x="468" y="52" class="hd-panel">After (Universal Auth)</text>
+  <g data-snapshot="before" data-grid="248 348 4" transform="translate(12 72)">
+    <path data-kind="relationship" data-object-id="r-settings-launcher" data-status="unchanged" data-signature="flow=credential" data-from="settings" data-to="launcher" d="M124 80 V104" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <path data-kind="relationship" data-object-id="r-launcher-wrapper" data-status="unchanged" data-signature="flow=credential" data-from="launcher" data-to="wrapper" d="M124 168 V192" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <path data-kind="relationship" data-object-id="r-wrapper-mcp" data-status="unchanged" data-signature="flow=credential" data-from="wrapper" data-to="mcp" d="M124 256 V280" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <g data-kind="component" data-object-id="settings" data-status="changed" data-signature="credential=vault-token;expiry=90-days">
+      <rect x="12" y="20" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="16" width="232" height="64" rx="10" class="hd-fill hd-outline"/>
+      <rect x="20" y="26" width="80" height="14" rx="2" class="hd-tag"/>
+      <text x="60" y="36" text-anchor="middle" class="hd-tagtext">settings.json</text>
+      <text x="20" y="56" class="hd-name">vault token</text>
+      <text x="20" y="72" class="hd-sub">expires in 90 days</text>
     </g>
-    <g fill="var(--fg-muted)" font-size="13" font-weight="600" text-anchor="start">
-      <text x="10" y="92">settings.json</text>
-      <text x="10" y="192">launcher</text>
-      <text x="10" y="292">infisical run</text>
-      <text x="10" y="392">MCP server</text>
+    <g data-kind="component" data-object-id="launcher" data-status="changed" data-signature="behaviour=pass-through">
+      <rect x="12" y="108" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="104" width="232" height="64" rx="10" class="hd-fill hd-outline"/>
+      <rect x="20" y="114" width="56" height="14" rx="2" class="hd-tag"/>
+      <text x="48" y="124" text-anchor="middle" class="hd-tagtext">launcher</text>
+      <text x="20" y="144" class="hd-name">passes it through</text>
+      <text x="20" y="160" class="hd-sub">nothing stripped</text>
     </g>
-    <g stroke="var(--border)" fill="var(--bg-raised)">
-      <rect x="140" y="60" width="260" height="56" rx="8"></rect>
-      <rect x="140" y="160" width="260" height="56" rx="8"></rect>
-      <rect x="140" y="260" width="260" height="56" rx="8"></rect>
-      <rect x="430" y="60" width="260" height="56" rx="8"></rect>
-      <rect x="430" y="160" width="260" height="56" rx="8"></rect>
-      <rect x="430" y="260" width="260" height="56" rx="8"></rect>
+    <g data-kind="component" data-object-id="wrapper" data-status="changed" data-signature="holds=vault-token">
+      <rect x="12" y="196" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="192" width="232" height="64" rx="10" class="hd-fill hd-outline"/>
+      <rect x="20" y="202" width="80" height="14" rx="2" class="hd-tag"/>
+      <text x="60" y="212" text-anchor="middle" class="hd-tagtext">infisical run</text>
+      <text x="20" y="232" class="hd-name">vault token</text>
+      <text x="20" y="248" class="hd-sub">fetches the homelab secrets</text>
     </g>
-    <rect x="140" y="360" width="260" height="56" rx="8" fill="var(--pink)" stroke="var(--ink)"></rect>
-    <rect x="430" y="360" width="260" height="56" rx="8" fill="var(--green)" stroke="var(--ink)"></rect>
-    <g fill="var(--fg)" font-size="13" text-anchor="middle">
-      <text x="270" y="84">vault token</text>
-      <text x="270" y="184">passes it through</text>
-      <text x="270" y="284">vault token</text>
-      <text x="560" y="84">client ID + secret</text>
-      <text x="560" y="184">logs in, drops the secret</text>
-      <text x="560" y="284">short-lived token only</text>
+    <g data-kind="component" data-object-id="mcp" data-status="changed" data-signature="receives=homelab-secrets-and-vault-token">
+      <rect x="12" y="284" width="232" height="64" rx="10" class="hd-shadow-bad"/>
+      <rect data-role="bounds" x="8" y="280" width="232" height="64" rx="10" class="hd-fill-bad hd-outline"/>
+      <rect x="20" y="290" width="64" height="14" rx="2" class="hd-tag"/>
+      <text x="52" y="300" text-anchor="middle" class="hd-tagtext">MCP server</text>
+      <text x="20" y="320" class="hd-name">homelab secrets + vault token</text>
+      <text x="20" y="336" class="hd-sub">third-party code sees the key</text>
     </g>
-    <g fill="var(--fg-muted)" font-size="12" text-anchor="middle">
-      <text x="270" y="104">expires in 90 days</text>
-      <text x="270" y="204">nothing stripped</text>
-      <text x="270" y="304">fetches the homelab secrets</text>
-      <text x="560" y="104">never expires</text>
-      <text x="560" y="204">bin/with-infisical</text>
-      <text x="560" y="304">fetches the homelab secrets</text>
+  </g>
+  <g data-snapshot="after" data-grid="248 348 4" transform="translate(460 72)">
+    <path data-kind="relationship" data-object-id="r-settings-launcher" data-status="unchanged" data-signature="flow=credential" data-from="settings" data-to="launcher" d="M124 80 V104" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <path data-kind="relationship" data-object-id="r-launcher-wrapper" data-status="unchanged" data-signature="flow=credential" data-from="launcher" data-to="wrapper" d="M124 168 V192" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <path data-kind="relationship" data-object-id="r-wrapper-mcp" data-status="unchanged" data-signature="flow=credential" data-from="wrapper" data-to="mcp" d="M124 256 V280" class="hd-arrow" marker-end="url(#hd-arrowhead)"/>
+    <g data-kind="component" data-object-id="settings" data-status="changed" data-signature="credential=client-id-and-secret;expiry=never">
+      <rect x="12" y="20" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="16" width="232" height="64" rx="10" class="hd-fill hd-outline"/>
+      <rect x="20" y="26" width="80" height="14" rx="2" class="hd-tag"/>
+      <text x="60" y="36" text-anchor="middle" class="hd-tagtext">settings.json</text>
+      <text x="20" y="56" class="hd-name">client ID + secret</text>
+      <text x="20" y="72" class="hd-sub">never expires</text>
     </g>
-    <g fill="var(--on-fill)" font-size="13" text-anchor="middle">
-      <text x="270" y="384" font-weight="600">homelab secrets + vault token</text>
-      <text x="270" y="404">third-party code sees the key</text>
-      <text x="560" y="384" font-weight="600">homelab secrets only</text>
-      <text x="560" y="404">no Infisical credential</text>
+    <g data-kind="component" data-object-id="launcher" data-status="changed" data-signature="behaviour=login-and-drop-secret">
+      <rect x="12" y="108" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="104" width="232" height="64" rx="10" class="hd-fill hd-focal"/>
+      <rect x="20" y="114" width="56" height="14" rx="2" class="hd-tag"/>
+      <text x="48" y="124" text-anchor="middle" class="hd-tagtext">launcher</text>
+      <text x="20" y="144" class="hd-name">logs in, drops the secret</text>
+      <text x="20" y="160" class="hd-sub-mono">bin/with-infisical</text>
     </g>
-    <g stroke="var(--fg-muted)" fill="none">
-      <line x1="270" y1="116" x2="270" y2="156"></line>
-      <line x1="270" y1="216" x2="270" y2="256"></line>
-      <line x1="270" y1="316" x2="270" y2="356"></line>
-      <line x1="560" y1="116" x2="560" y2="156"></line>
-      <line x1="560" y1="216" x2="560" y2="256"></line>
-      <line x1="560" y1="316" x2="560" y2="356"></line>
+    <g data-kind="component" data-object-id="wrapper" data-status="changed" data-signature="holds=short-lived-token">
+      <rect x="12" y="196" width="232" height="64" rx="10" class="hd-shadow"/>
+      <rect data-role="bounds" x="8" y="192" width="232" height="64" rx="10" class="hd-fill hd-outline"/>
+      <rect x="20" y="202" width="80" height="14" rx="2" class="hd-tag"/>
+      <text x="60" y="212" text-anchor="middle" class="hd-tagtext">infisical run</text>
+      <text x="20" y="232" class="hd-name">short-lived token only</text>
+      <text x="20" y="248" class="hd-sub">fetches the homelab secrets</text>
     </g>
-  </svg>
+    <g data-kind="component" data-object-id="mcp" data-status="changed" data-signature="receives=homelab-secrets">
+      <rect x="12" y="284" width="232" height="64" rx="10" class="hd-shadow-good"/>
+      <rect data-role="bounds" x="8" y="280" width="232" height="64" rx="10" class="hd-fill-good hd-outline"/>
+      <rect x="20" y="290" width="64" height="14" rx="2" class="hd-tag"/>
+      <text x="52" y="300" text-anchor="middle" class="hd-tagtext">MCP server</text>
+      <text x="20" y="320" class="hd-name">homelab secrets only</text>
+      <text x="20" y="336" class="hd-sub">no Infisical credential</text>
+    </g>
+  </g>
+  <text data-change="CHANGED" data-target="settings" x="272" y="110" class="hd-ledger"><tspan class="hd-ledger-head">CHANGED settings.json</tspan><tspan x="272" dy="15">90-day vault token →</tspan><tspan x="272" dy="14">client ID + secret</tspan></text>
+  <text data-change="CHANGED" data-target="launcher" x="272" y="198" class="hd-ledger"><tspan class="hd-ledger-head">CHANGED launcher</tspan><tspan x="272" dy="15">passes the token through →</tspan><tspan x="272" dy="14">logs in, drops the secret</tspan></text>
+  <text data-change="CHANGED" data-target="wrapper" x="272" y="286" class="hd-ledger"><tspan class="hd-ledger-head">CHANGED infisical run</tspan><tspan x="272" dy="15">vault token →</tspan><tspan x="272" dy="14">short-lived token only</tspan></text>
+  <text data-change="CHANGED" data-target="mcp" x="272" y="374" class="hd-ledger"><tspan class="hd-ledger-head">CHANGED MCP server</tspan><tspan x="272" dy="15">secrets + vault token →</tspan><tspan x="272" dy="14">homelab secrets only</tspan></text>
+  <line x1="12" y1="440" x2="708" y2="440" class="hd-rule"/>
+  <text x="12" y="464" class="hd-eyebrow">LEGEND</text>
+  <rect x="84" y="452" width="16" height="16" rx="3" class="hd-swatch-bad hd-outline-thin"/>
+  <text x="108" y="464" class="hd-legend">third-party code sees the key</text>
+  <rect x="300" y="452" width="16" height="16" rx="3" class="hd-swatch-good hd-outline-thin"/>
+  <text x="324" y="464" class="hd-legend">no Infisical credential</text>
+  <rect x="484" y="452" width="16" height="16" rx="3" class="hd-swatch-focal"/>
+  <text x="508" y="464" class="hd-legend-mono">bin/with-infisical</text>
+</svg>
   <figcaption style="font-size:var(--text-sm);color:var(--fg-muted);text-align:center;margin-top:0.5rem">The credential used to stop nowhere. Now each layer holds only what it needs.</figcaption>
 </figure>
 
