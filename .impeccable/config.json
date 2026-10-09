@@ -1,0 +1,15 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": ["src/components/CareerTrack.astro"],
+        "createdAt": "2026-10-09T20:23:08.009Z",
+        "reason": "agent triage: .now is a zero-width playhead line drawn with border-left, not an accent tab on a card"
+      }
+    ]
+  }
+}
