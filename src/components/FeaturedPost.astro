@@ -1,0 +1,93 @@
+---
+// The one post the homepage leads its writing with: a wide card that shows
+// the post's hero image (usually its architecture diagram) as evidence.
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { pillarLabels } from '../data/pillars';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, heroImage, pillar } = post.data;
+const date = pubDate.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a class="card featured" href={`/blog/${post.id}/`}>
+  {
+    heroImage && (
+      <Image
+        src={heroImage}
+        alt=""
+        widths={[480, 760, 1200]}
+        sizes="(max-width: 46rem) 100vw, 42rem"
+        format="webp"
+      />
+    )
+  }
+  <div class="body">
+    <h3 class="title">{title}</h3>
+    <div class="meta">
+      <time datetime={pubDate.toISOString()}>{date}</time>
+      {pillar && <span class="pillar">{pillarLabels[pillar]}</span>}
+    </div>
+    <p class="muted">{description}</p>
+  </div>
+</a>
+
+<style>
+  /* Cyan, so it never matches the yellow first card of the list below. */
+  .featured {
+    --fill: var(--cyan);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Crop to the diagram; the image's own title repeats the card's. */
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2.75;
+    object-fit: cover;
+    object-position: 50% 100%;
+    border-bottom: var(--bw) solid var(--ink);
+  }
+
+  .body {
+    padding: 1.25rem 1.4rem 1.35rem;
+  }
+
+  .title {
+    font-size: var(--text-xl);
+    margin: 0 0 0.3rem;
+    text-wrap: pretty;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .pillar {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    padding: 0 0.35rem;
+    border: 2px solid currentColor;
+    border-radius: 4px;
+  }
+
+  p {
+    margin: 0;
+    max-width: 38rem;
+  }
+</style>

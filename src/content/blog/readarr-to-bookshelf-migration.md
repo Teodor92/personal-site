@@ -7,6 +7,7 @@ tags:
   - homelab
   - AI
   - Claude Code
+pillar: homelab
 ---
 
 Readarr was the one app in my media stack I kept meaning to deal with. The Servarr team [retired the project](https://github.com/Readarr/Readarr#announcement-retirement-of-readarr) and archived it in June 2025, because its metadata service had become unusable and nobody had the time to rebuild it. Without metadata, Readarr can no longer search for or match books. I'd flagged it as dead weight in an audit of my stack and planned to switch it off.

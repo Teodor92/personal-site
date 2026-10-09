@@ -13,6 +13,10 @@ const blog = defineCollection({
       heroImage: image().optional(),
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
+      // Homepage curation: which of the two content pillars a post belongs to,
+      // and the one post shown as the featured build.
+      pillar: z.enum(['ai', 'homelab']).optional(),
+      featured: z.boolean().default(false),
     }),
 });
 

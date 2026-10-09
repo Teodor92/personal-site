@@ -8,6 +8,8 @@ tags:
   - AI
   - Claude Code
   - tooling
+pillar: ai
+featured: true
 ---
 
 Every ticket that reaches QA carries an invisible gap. The developer who built it knows which feature flag to enable, which migration to run first, and which edge case nearly broke them on Tuesday. The QA engineer picking it up knows none of that. They chase the developer on Slack, dig through merge requests, or test blind and file a bug that turns out to be a missing flag.

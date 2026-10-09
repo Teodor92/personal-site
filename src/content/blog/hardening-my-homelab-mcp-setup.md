@@ -6,6 +6,7 @@ draft: false
 tags:
   - AI
   - Claude Code
+pillar: homelab
 ---
 
 In [the first post about my homelab](/blog/my-homelab-runs-on-mcp/) I called the secrets vault a single point of failure _on purpose_: if the Infisical CLI isn't authenticated, every MCP server fails together, loudly. I'll take one loud failure mode over five quiet ones, I said.

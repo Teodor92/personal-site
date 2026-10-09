@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { pillarLabels } from '../data/pillars';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -21,6 +22,7 @@ const fmt = (d: Date) =>
           <Heading class="title">{post.data.title}</Heading>
           <div class="meta">
             <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+            {post.data.pillar && <span class="pillar">{pillarLabels[post.data.pillar]}</span>}
           </div>
           <p class="muted">{post.data.description}</p>
         </a>
@@ -37,13 +39,29 @@ const fmt = (d: Date) =>
     gap: 1.4rem;
   }
 
+  /* Pretty, not balanced: balance squeezed long titles into ~60% of the card. */
   .title {
     font-size: var(--text-lg);
     margin: 0 0 0.2rem;
+    text-wrap: pretty;
   }
 
   .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.6rem;
     margin-bottom: 0.35rem;
+  }
+
+  /* Pillar sticker, after the date (never as an eyebrow over the title). */
+  .pillar {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    padding: 0 0.35rem;
+    border: 2px solid currentColor;
+    border-radius: 4px;
   }
 
   p {

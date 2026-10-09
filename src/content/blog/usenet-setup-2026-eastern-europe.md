@@ -6,6 +6,7 @@ tags:
   - homelab
   - AI
   - Claude Code
+pillar: homelab
 ---
 
 My media stack runs on public torrent indexers, and a health check in September 2026 showed how badly that was going. Four of my ten indexers were dead or failing, and two of those had been removed from Prowlarr's supported list entirely. Sonarr and Radarr had **2,052 monitored items with no file** and **1,597 below their quality cutoff**, and my stall cleaner had marked **140 downloads as failed in 30 days**, most of them for lack of seeders. The blocklist had grown to 1,572 releases.
