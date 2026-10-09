@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { roles, education, skills, volunteering, interests, summary } from '../data/cv';
+import { roles, roleId, education, skills, volunteering, interests, summary } from '../data/cv';
 import { site } from '../data/site';
 import { personSchema } from '../data/schema';
 import { cvFileBase } from '../data/cv-filename.mjs';
@@ -33,7 +33,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   <div class="timeline fill-cycle">
     {
       roles.slice(0, 4).map((role) => (
-        <article>
+        <article id={roleId(role)}>
           <header>
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
@@ -54,7 +54,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
     {
       roles.slice(4).map((role) => (
-        <article>
+        <article id={roleId(role)}>
           <header>
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
@@ -148,6 +148,13 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   window.addEventListener('beforeprint', openAll);
   window.addEventListener('afterprint', restore);
+
+  // Arriving from a homepage career link (/cv/#news-uk-2020): expand that
+  // role's details so the reader lands on the full entry, not a summary line.
+  document.addEventListener('astro:page-load', () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id) document.getElementById(id)?.querySelector('details')?.setAttribute('open', '');
+  });
 </script>
 
 <style>
@@ -227,6 +234,10 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   }
 
   /* --border is ink on screen and light grey in print. */
+  .timeline article {
+    scroll-margin-top: 1.5rem;
+  }
+
   .timeline {
     display: grid;
     gap: 2rem;

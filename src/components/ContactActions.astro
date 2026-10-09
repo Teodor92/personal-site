@@ -1,0 +1,107 @@
+---
+// The two things an evaluator came for, as labelled actions: the CV and a way
+// to get in touch. Used in the homepage hero and the site-wide footer. The
+// address is shown as text too, since mailto: does nothing without a mail
+// client; the Copy button stays hidden until the Base script reveals it.
+import { site } from '../data/site';
+import { cvFileBase } from '../data/cv-filename.mjs';
+---
+
+<div class="contact-actions">
+  <div class="buttons">
+    <a class="brutal-btn cv" href={`/${cvFileBase}.pdf`} download>Download CV (PDF)</a>
+    <a class="brutal-btn email" href={`mailto:${site.email}`}>Email me</a>
+  </div>
+  <div class="reach">
+    <p class="address">
+      <span class="email-text">{site.email}</span>
+      <button class="copy-email brutal-btn" type="button" data-copy={site.email} hidden>
+        Copy
+      </button>
+      <span class="visually-hidden" role="status"></span>
+    </p>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .contact-actions {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .buttons a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--on-fill);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Same yellow / pink pairing as the download buttons on /cv/. */
+  .cv {
+    background: var(--yellow);
+  }
+
+  .email {
+    background: var(--pink);
+  }
+
+  .buttons a:hover {
+    color: var(--on-fill);
+  }
+
+  .reach {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .address {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--fg-muted);
+  }
+
+  .email-text {
+    user-select: all;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-email {
+    min-height: 2rem;
+    padding: 0.15rem 0.6rem;
+    background: var(--bg-raised);
+    color: var(--fg);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media (pointer: coarse) {
+    .copy-email {
+      min-height: 2.75rem;
+      padding-inline: 0.9rem;
+    }
+  }
+
+  .copy-email[data-copied] {
+    background: var(--green);
+    color: var(--on-fill);
+  }
+</style>

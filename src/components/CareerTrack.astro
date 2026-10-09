@@ -1,0 +1,558 @@
+---
+// Career "tenure track": a year axis from 2017 to now with every role as a
+// bar sized by how long it lasted. Full-time roles (cv.ts `highlight`) share
+// the main lane; part-time work runs in hatched side lanes underneath.
+//
+// The bars are a native radio group, so picking a role works by click, tap or
+// arrow keys and needs no JavaScript: the checked radio reveals the panel that
+// follows its label. The only script arms the one-off "playhead" entrance.
+import { roles, roleId, type Role } from '../data/cv';
+
+const AXIS_START = 2017;
+const today = new Date();
+const now = today.getFullYear() + (today.getMonth() + today.getDate() / 31) / 12;
+const span = now - AXIS_START;
+
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+// "Sept 2022" → 2022.67 (start of month), or the end of that month for an end date.
+function toYear(part: string, isEnd: boolean): number {
+  if (/present/i.test(part)) return now;
+  const m = part.match(/([a-z]{3})[a-z]*\s+(\d{4})/i);
+  if (!m) return now;
+  const month = MONTHS.indexOf(m[1].toLowerCase());
+  return Number(m[2]) + (month + (isEnd ? 1 : 0)) / 12;
+}
+
+function duration(months: number): string {
+  const y = Math.floor(months / 12);
+  const mo = months % 12;
+  const parts = [];
+  if (y) parts.push(`${y} ${y === 1 ? 'yr' : 'yrs'}`);
+  if (mo) parts.push(`${mo} ${mo === 1 ? 'mo' : 'mos'}`);
+  return parts.join(' ');
+}
+
+const pct = (year: number) => ((Math.max(year, AXIS_START) - AXIS_START) / span) * 100;
+
+// Whether a bar's label fits, decided here from its share of the axis rather
+// than with a per-bar container query (those blanked labels in Chromium when
+// focus moved between the radios). Estimates assume the homepage column
+// (~672px wide) and a phone (~340px); ellipsis still covers the margin.
+function labelFits(widthPct: number, chars: number, trackPx: number, charPx: number): boolean {
+  return (widthPct / 100) * trackPx - 22 >= chars * charPx;
+}
+const BRIGHTS = ['--yellow', '--pink', '--cyan', '--green'];
+
+interface Bar {
+  role: Role;
+  id: string;
+  start: number;
+  end: number;
+  lane: number;
+  side: boolean;
+  ongoing: boolean;
+}
+
+const inRange = roles
+  .map((role) => {
+    const [from, to = 'Present'] = role.period.split('–');
+    return {
+      role,
+      start: toYear(from, false),
+      end: toYear(to, true),
+      ongoing: /present/i.test(to),
+    };
+  })
+  .filter((r) => r.end > AXIS_START);
+
+// Main lane oldest → newest, so ArrowRight moves forward in time.
+const main: Bar[] = inRange
+  .filter((r) => r.role.highlight)
+  .sort((a, b) => a.start - b.start)
+  .map((r) => ({ ...r, id: roleId(r.role), lane: 0, side: false }));
+
+// Side lanes: greedy packing so overlapping part-time roles never collide.
+const laneEnds: number[] = [];
+const side: Bar[] = inRange
+  .filter((r) => !r.role.highlight)
+  .sort((a, b) => a.start - b.start)
+  .map((r) => {
+    let lane = laneEnds.findIndex((end) => end <= r.start);
+    if (lane === -1) lane = laneEnds.push(0) - 1;
+    laneEnds[lane] = r.end;
+    return { ...r, id: roleId(r.role), lane: lane + 1, side: true };
+  });
+
+const bars = [...main, ...side];
+const current = [...main].reverse().find((b) => b.ongoing) ?? main[main.length - 1];
+
+// Year ticks. The current year's label is dropped while it would collide with
+// the "now" pill at the right edge.
+const ticks: { year: number; label: boolean; near: boolean }[] = [];
+for (let y = AXIS_START; y <= Math.floor(now); y++)
+  ticks.push({ year: y, label: now - y >= 1, near: now - y < 2 });
+---
+
+<div class="track" id="career-track" style={`--lanes: ${laneEnds.length}; --year: ${100 / span}%`}>
+  <fieldset>
+    <legend class="visually-hidden">
+      Career from {AXIS_START} to now. Pick a role to see its highlights.
+    </legend>
+
+    <div class="axis" aria-hidden="true">
+      {
+        ticks.map(({ year, label, near }) => (
+          <span class:list={['tick', { near }]} style={`left: ${pct(year)}%`}>
+            {label && <span class="yr">{year}</span>}
+          </span>
+        ))
+      }
+      <span class="now"><span class="now-pill">now</span></span>
+    </div>
+
+    {
+      bars.map((b, i) => {
+        const s = pct(b.start);
+        const w = pct(b.end) - s;
+        const picks = (b.role.featured ?? [0, 1])
+          .map((n) => b.role.bullets[n])
+          .filter((t): t is string => Boolean(t));
+        const months = Math.round((b.end - b.start) * 12);
+        const label = b.role.trackLabel ?? (b.side ? b.role.title : b.role.company);
+        const since = b.start < AXIS_START ? `since ${Math.floor(b.start)}` : '';
+        const chars = label.length + (since ? since.length + 3 : 0);
+        const charPx = b.side ? 7 : 7.8;
+        return (
+          <>
+            <input
+              class="visually-hidden"
+              type="radio"
+              name="career-role"
+              id={`track-${b.id}`}
+              checked={b === current}
+              aria-label={`${b.role.title} at ${b.role.company}, ${b.role.period}`}
+            />
+            <label
+              for={`track-${b.id}`}
+              class:list={[
+                'bar',
+                {
+                  side: b.side,
+                  before: since !== '',
+                  'hide-wide': !labelFits(w, label.length, 672, charPx),
+                  'hide-narrow': !labelFits(w, label.length, 340, charPx * 0.82),
+                  'since-narrow': !labelFits(w, chars, 340, charPx * 0.82),
+                },
+              ]}
+              style={`--s: ${s}; --w: ${w}; --lane: ${b.lane}; --fill: var(${BRIGHTS[i % 4]})`}
+            >
+              <span class="name" aria-hidden="true">
+                {label}
+              </span>
+              {since && (
+                <span class="since" aria-hidden="true">
+                  {since}
+                </span>
+              )}
+            </label>
+            <div class="panel" style={`--caret: ${s + w / 2}%; --fill: var(${BRIGHTS[i % 4]})`}>
+              <p class="when">
+                {b.role.period} · {duration(months)}
+                {b.role.location && ` · ${b.role.location}`}
+              </p>
+              <h3>
+                {b.role.title} <span class="at">at {b.role.company}</span>
+              </h3>
+              {picks.length > 0 && (
+                <ul>
+                  {picks.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+              )}
+              <p class="more">
+                <a href={`/cv/#${b.id}`}>Full entry on the CV</a>
+              </p>
+            </div>
+          </>
+        );
+      })
+    }
+  </fieldset>
+</div>
+
+<script is:inline>
+  // Arm the playhead entrance before first paint, then play it once the track
+  // is on screen. Without JS, IntersectionObserver or with reduced motion, the
+  // track simply renders in its final state.
+  (() => {
+    const track = document.getElementById('career-track');
+    if (
+      !track ||
+      !('IntersectionObserver' in window) ||
+      matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
+    track.classList.add('armed');
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        track.classList.add('play');
+        io.disconnect();
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(track);
+  })();
+</script>
+
+<style>
+  .track {
+    --d: 1.15s; /* playhead sweep, 2017 → now */
+    --axis-h: 1.75rem;
+    --main-h: 2.85rem;
+    --side-h: 1.85rem;
+    --side-gap: 0.45rem;
+    --lanes-h: calc(
+      var(--axis-h) + var(--main-h) + 0.85rem + var(--lanes) * (var(--side-h) + var(--side-gap))
+    );
+    container: track / inline-size;
+  }
+
+  /* Touch screens: side lanes tall enough to tap. */
+  @media (pointer: coarse) {
+    .track {
+      --side-h: 2.4rem;
+    }
+  }
+
+  fieldset {
+    position: relative;
+    border: 0;
+    padding: var(--lanes-h) 0 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  /* ---- Axis: year ticks with faint gridlines down through the lanes. ---- */
+
+  .axis {
+    position: absolute;
+    inset: 0 0 auto;
+    height: calc(var(--lanes-h) - 0.5rem);
+    pointer-events: none;
+  }
+
+  .tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px dashed color-mix(in srgb, var(--ink) 28%, transparent);
+  }
+
+  .yr {
+    display: block;
+    padding-left: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.4;
+    color: var(--fg-muted);
+  }
+
+  /* Narrow tracks label every other year, and keep clear of the "now" pill. */
+  @container track (width < 34rem) {
+    .tick:nth-child(even) .yr,
+    .tick.near .yr {
+      visibility: hidden;
+    }
+  }
+
+  /* "Now" doubles as the playhead: it sweeps from 2017 and parks here. */
+  .now {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    border-left: 3px solid var(--ink);
+  }
+
+  .now-pill {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--green);
+    color: var(--on-fill);
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    padding: 0 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  /* ---- Bars ---- */
+
+  .bar {
+    position: absolute;
+    left: calc(var(--s) * 1%);
+    /* Never narrower than a 24px target, even for a months-long role. */
+    width: max(1.5rem, calc(var(--w) * 1% - 4px));
+    top: var(--axis-h);
+    height: var(--main-h);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0 0.45rem;
+    background: var(--bg-raised);
+    color: var(--fg);
+    border: 2px solid var(--ink);
+    border-radius: 7px;
+    box-shadow: 3px 3px 0 var(--fill);
+    cursor: pointer;
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease,
+      background-color 0.12s ease;
+  }
+
+  .bar.side {
+    top: calc(
+      var(--axis-h) + var(--main-h) + 0.85rem + (var(--lane) - 1) *
+        (var(--side-h) + var(--side-gap))
+    );
+    height: var(--side-h);
+    /* Hatched: part-time, alongside the main roles. */
+    background: repeating-linear-gradient(
+        135deg,
+        transparent 0 5px,
+        color-mix(in srgb, var(--ink) 14%, transparent) 5px 7px
+      )
+      var(--bg-raised);
+  }
+
+  /* Started before the axis: open left edge, the bar keeps going. */
+  .bar.before {
+    border-left-style: dashed;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .name {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .side .name {
+    font-size: 0.78rem;
+    background: var(--bg-raised);
+    padding: 0 0.2rem;
+    border-radius: 3px;
+  }
+
+  .since {
+    flex-shrink: 0;
+    margin-left: auto;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+    background: var(--bg-raised);
+    padding: 0 0.2rem;
+    border-radius: 3px;
+  }
+
+  /* Too narrow to read: no truncated stub, the panel names the role instead. */
+  .bar.hide-wide .name {
+    display: none;
+  }
+
+  /* Phones: tighter bars so short labels still fit. */
+  @container track (width < 34rem) {
+    .bar {
+      padding: 0 0.3rem;
+    }
+
+    .name {
+      font-size: 0.72rem;
+    }
+
+    .side .name {
+      font-size: 0.7rem;
+    }
+
+    .bar.hide-narrow .name,
+    .bar.since-narrow .since {
+      display: none;
+    }
+  }
+
+  .bar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--fill);
+  }
+
+  /* Picked: filled with its bright and pressed in. */
+  input:checked + .bar {
+    background: var(--fill);
+    color: var(--on-fill);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  input:checked + .bar .name,
+  input:checked + .bar .since {
+    background: transparent;
+  }
+
+  input:focus-visible + .bar {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ---- Detail panel for the picked role ---- */
+
+  .panel {
+    display: none;
+    position: relative;
+    margin-top: 0.4rem;
+    padding: 1.1rem 1.25rem 1.15rem;
+    background: var(--bg-raised);
+    border: var(--bw) solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 5px 5px 0 var(--fill);
+  }
+
+  input:checked + .bar + .panel {
+    display: block;
+    animation: panel-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Notch pointing up at the picked bar. */
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: clamp(0.9rem, var(--caret) - 8px, 100% - 1.9rem);
+    width: 14px;
+    height: 14px;
+    background: var(--fill);
+    border-top: var(--bw) solid var(--ink);
+    border-left: var(--bw) solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  .when {
+    font-size: var(--text-sm);
+    color: var(--fg-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel h3 {
+    margin: 0.2rem 0 0.6rem;
+    font-size: var(--text-lg);
+  }
+
+  .at {
+    color: var(--fg-muted);
+    font-weight: 600;
+  }
+
+  .panel ul {
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .more {
+    margin-top: 0.75rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  /* ---- Playhead entrance: the bars reveal as the playhead passes them. ---- */
+
+  .armed:not(.play) .bar {
+    clip-path: inset(-8px 100% -8px -8px);
+  }
+
+  .armed:not(.play) .now {
+    left: 0;
+  }
+
+  /* The pill appears with its stamp, so it never hangs off the left edge
+     while the playhead waits at 2017. */
+  .armed:not(.play) .now-pill {
+    opacity: 0;
+  }
+
+  .play .bar {
+    animation: reveal calc(var(--w) / 100 * var(--d)) linear calc(var(--s) / 100 * var(--d))
+      backwards;
+  }
+
+  .play .now {
+    animation: sweep var(--d) linear backwards;
+  }
+
+  .play .now-pill {
+    animation: stamp 0.35s cubic-bezier(0.16, 1, 0.3, 1) var(--d) backwards;
+  }
+
+  @keyframes reveal {
+    from {
+      clip-path: inset(-8px 100% -8px -8px);
+    }
+    to {
+      clip-path: inset(-8px -8px -8px -8px);
+    }
+  }
+
+  @keyframes sweep {
+    from {
+      left: 0;
+    }
+  }
+
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: scale(1.35) rotate(-6deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bar {
+      transition: none;
+    }
+
+    .bar:hover {
+      transform: none;
+    }
+
+    input:checked + .bar + .panel {
+      animation: panel-fade 0.2s ease;
+    }
+
+    @keyframes panel-fade {
+      from {
+        opacity: 0;
+      }
+    }
+  }
+</style>

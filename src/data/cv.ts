@@ -6,7 +6,19 @@ export interface Role {
   period: string;
   intro?: string;
   bullets: string[];
-  highlight?: boolean; // surfaces the role on the homepage
+  highlight?: boolean; // a full-time role on the main lane of the homepage career track
+  featured?: number[]; // indices into bullets shown when the role is picked on the career track
+  trackLabel?: string; // short bar label on the career track (defaults to company, or title for side roles)
+}
+
+// Stable anchor for a role on /cv/, e.g. "news-uk-2020". Company plus start
+// year, because one company (Software University) appears twice.
+export function roleId(role: Role): string {
+  const start = role.period.match(/\d{4}/)?.[0] ?? '';
+  return `${role.company}-${start}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 export const roles: Role[] = [
@@ -16,6 +28,7 @@ export const roles: Role[] = [
     title: 'Senior Applied AI Software Engineer',
     location: 'Remote',
     period: 'May 2025 – Present',
+    featured: [3, 2, 4],
     highlight: true,
     // NOTE: intentionally generic, no internal project/client specifics.
     bullets: [
@@ -36,6 +49,7 @@ export const roles: Role[] = [
     title: 'Engineering Manager',
     location: 'Remote',
     period: 'Jan 2024 – May 2025',
+    featured: [3, 2, 6],
     highlight: true,
     bullets: [
       'Led the development of critical FinTech features: a new billing framework, an invoicing architecture built for compliance and consistency, and a new pricing engine.',
@@ -54,6 +68,8 @@ export const roles: Role[] = [
     title: 'Senior Software Engineer',
     location: 'Remote',
     period: 'Jan 2022 – Jan 2024',
+    featured: [0, 1],
+    highlight: true,
     intro: 'Developed, deployed and maintained key features across Moteefe’s e-commerce platform.',
     bullets: [
       'Built and supported end-to-end features: payment integrations with Stripe and PayPal, headless CMS integration and cart-recovery emails.',
@@ -69,6 +85,8 @@ export const roles: Role[] = [
     title: 'Part-time Lecturer',
     location: 'Remote',
     period: 'May 2020 – Apr 2024',
+    trackLabel: 'Lecturer · SoftUni',
+    featured: [0, 2],
     bullets: [
       'Led the “Programming Basics”, “Programming Fundamentals” and “Programming Advanced” courses.',
       'Taught practical, hands-on programming from first steps through advanced coursework.',
@@ -81,6 +99,8 @@ export const roles: Role[] = [
     title: 'Mentor',
     location: 'Sofia, Bulgaria / Remote',
     period: 'Sept 2022 – Jan 2024',
+    trackLabel: 'Mentor',
+    featured: [0, 1],
     bullets: [
       'Mentored engineers in one-on-one sessions, tailoring guidance to each mentee’s goals.',
       'Helped mentees set achievable goals, track progress and act on feedback.',
@@ -92,6 +112,8 @@ export const roles: Role[] = [
     title: 'Software Engineer',
     location: '',
     period: 'Sept 2011 – Present',
+    trackLabel: 'Freelance',
+    featured: [0, 1],
     intro:
       'Building a wide range of applications with .NET, JavaScript/TypeScript/Node.js and Go, primarily in the web domain.',
     bullets: [
@@ -106,6 +128,8 @@ export const roles: Role[] = [
     title: 'Lead Software Engineer',
     location: 'Sofia, Bulgaria',
     period: 'Aug 2020 – Jan 2022',
+    featured: [0, 3],
+    highlight: true,
     intro:
       'As part of the MAIN Technology Group, I worked across the Monetization, Access and Identity verticals.',
     bullets: [
@@ -121,6 +145,9 @@ export const roles: Role[] = [
     title: 'Lead Software Engineer',
     location: 'Sofia, Bulgaria',
     period: 'Oct 2017 – Aug 2020',
+    trackLabel: 'Synchronoss',
+    featured: [0, 2, 5],
+    highlight: true,
     bullets: [
       'Set the code standards and practices used across all projects in the Bulgaria branch.',
       'Helped grow the team through recruitment.',
@@ -136,6 +163,9 @@ export const roles: Role[] = [
     title: 'Software Engineer / Researcher',
     location: 'Amsterdam, The Netherlands',
     period: 'Jan 2017 – Aug 2017',
+    trackLabel: 'SIG',
+    highlight: true,
+    featured: [3, 1],
     bullets: [
       'Researched refactoring options for architectural code smells.',
       'Developed a Visual Studio refactoring plugin using .NET and the Roslyn compiler.',

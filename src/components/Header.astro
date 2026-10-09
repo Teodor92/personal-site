@@ -2,9 +2,17 @@
 import ThemeToggle from './ThemeToggle.astro';
 import { site } from '../data/site';
 
+interface Props {
+  // Match <main>'s width so the header's left edge lines up with the content.
+  wide?: boolean;
+}
+
+const { wide = false } = Astro.props;
+
+// CV first: it's what most visitors who use the nav are looking for.
 const nav = [
-  { label: 'Blog', href: '/blog/' },
   { label: 'CV', href: '/cv/' },
+  { label: 'Blog', href: '/blog/' },
   { label: 'Uses', href: '/uses/' },
   { label: 'Now', href: '/now/' },
 ];
@@ -14,7 +22,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 ---
 
 <header>
-  <nav aria-label="Main">
+  <nav aria-label="Main" class:list={[{ wide }]}>
     <a class="home" href="/">{site.name}</a>
     <div class="links">
       {
@@ -41,13 +49,17 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   }
 
   nav {
-    width: min(100% - 2.5rem, var(--wide-width));
+    width: min(100% - 2.5rem, var(--content-width));
     margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding-block: 1.1rem;
+  }
+
+  nav.wide {
+    width: min(100% - 2.5rem, var(--wide-width));
   }
 
   .home {
@@ -99,6 +111,15 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   /* Pink cue for the current page in dark, where the bar isn't yellow. */
   :global([data-theme='dark']) .links a[aria-current='page'] {
     text-decoration-color: var(--pink);
+  }
+
+  /* Touch screens: 44px-tall targets with a little extra width, without
+     changing the bar's height. */
+  @media (pointer: coarse) {
+    .links a {
+      padding: 0.7rem 0.3rem;
+      margin: -0.7rem -0.3rem;
+    }
   }
 
   @media (max-width: 480px) {

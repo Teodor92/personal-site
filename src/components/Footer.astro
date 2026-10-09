@@ -1,14 +1,26 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import ContactActions from './ContactActions.astro';
 import { site } from '../data/site';
 
+interface Props {
+  wide?: boolean; // match <main>'s width, as the header does
+}
+
+const { wide = false } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer>
-  <div class="inner">
-    <small>© {year} {site.name} · <a href="/feed.xml">RSS</a></small>
-    <SocialLinks />
+  <div class:list={['inner', { wide }]}>
+    <div class="ask">
+      <p class="ask-line">Working on something in applied AI? I'd like to hear about it.</p>
+      <ContactActions />
+    </div>
+    <div class="base">
+      <small>© {year} {site.name} · <a href="/feed.xml">RSS</a></small>
+      <SocialLinks exclude={['email']} />
+    </div>
   </div>
 </footer>
 
@@ -20,13 +32,38 @@ const year = new Date().getFullYear();
   }
 
   .inner {
-    width: min(100% - 2.5rem, var(--wide-width));
+    width: min(100% - 2.5rem, var(--content-width));
     margin-inline: auto;
+    padding-block: 2.25rem 1.5rem;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .inner.wide {
+    width: min(100% - 2.5rem, var(--wide-width));
+  }
+
+  .ask {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .ask-line {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .base {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding-block: 1.5rem;
     flex-wrap: wrap;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--ink);
   }
 </style>

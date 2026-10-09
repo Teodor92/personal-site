@@ -3,6 +3,9 @@ export const site = {
   role: 'Senior Applied AI Software Engineer at YuLife',
   pitch:
     'I build AI-powered product features: agentic workflows, LLM evals and the unglamorous engineering that makes them reliable. Behind that sit 10+ years of full-stack development and engineering leadership.',
+  // One line of hard evidence under the pitch; figures from the public CV (cv.ts, Deel).
+  proof:
+    'Before YuLife I was an Engineering Manager at Deel: 13 direct reports, 4 new teams and billing features behind $2M in monthly revenue.',
   email: 'teodor.ivanov92@gmail.com',
   url: 'https://teodorkurtev.com',
   description:

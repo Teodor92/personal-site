@@ -99,25 +99,26 @@ const ogImage = new URL(image, site.url);
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
+    <Header wide={wide} />
     <main id="main" tabindex="-1" class:list={[{ wide }]}>
       <slot />
     </main>
-    <Footer />
+    <Footer wide={wide} />
 
     <script>
       // ---- Global interactions. Bound once; view transitions swap the DOM,
       // ---- so per-element work re-runs on astro:page-load and clicks are
       // ---- delegated from document instead of bound to nodes.
 
-      // Theme toggle (delegated): light → dark → system → light.
+      // Theme toggle (delegated). Every click flips what you see. Landing on
+      // the OS's own appearance stores nothing, so the site follows the OS
+      // again; an explicit choice is only kept when it differs from the OS.
       document.addEventListener('click', (e) => {
         const target = e.target as Element;
         if (!target.closest('#theme-toggle')) return;
-        const order = ['light', 'dark', 'system'];
-        const current = document.documentElement.dataset.themePref ?? 'system';
-        const next = order[(order.indexOf(current) + 1) % order.length];
-        if (next === 'system') localStorage.removeItem('theme');
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        const osDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        if ((next === 'dark') === osDark) localStorage.removeItem('theme');
         else localStorage.setItem('theme', next);
         (window as Window & { __applyTheme?: () => void }).__applyTheme?.();
       });
@@ -132,7 +133,34 @@ const ogImage = new URL(image, site.url);
         setTimeout(() => delete btn.dataset.copied, 1600);
       });
 
+      // Copy-email buttons (delegated). If the clipboard is unavailable, select
+      // the address instead so ⌘C / long-press still works.
+      document.addEventListener('click', async (e) => {
+        const btn = (e.target as Element).closest<HTMLButtonElement>('.copy-email');
+        if (!btn) return;
+        const status = btn.parentElement?.querySelector('[role="status"]');
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+          btn.dataset.copied = 'true';
+          btn.textContent = 'Copied';
+          if (status) status.textContent = 'Email address copied';
+          setTimeout(() => {
+            delete btn.dataset.copied;
+            btn.textContent = 'Copy';
+            if (status) status.textContent = '';
+          }, 1800);
+        } catch {
+          const text = btn.parentElement?.querySelector('.email-text');
+          if (text) getSelection()?.selectAllChildren(text);
+        }
+      });
+
       function initPage() {
+        // Copy-email buttons are hidden without JS, where they can't work.
+        document
+          .querySelectorAll<HTMLButtonElement>('.copy-email[hidden]')
+          .forEach((btn) => (btn.hidden = false));
+
         // Inject copy buttons.
         document.querySelectorAll('pre:not(:has(.copy-code))').forEach((pre) => {
           const btn = document.createElement('button');

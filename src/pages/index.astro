@@ -4,18 +4,27 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import ContactActions from '../components/ContactActions.astro';
+import CareerTrack from '../components/CareerTrack.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
 import { site } from '../data/site';
-import { roles } from '../data/cv';
 import { personSchema } from '../data/schema';
-// Rendered at 96px; astro:assets emits webp at 1x/2x instead of the 1536px
-// original (which stays in public/ for the og:image and JSON-LD Person schema).
-import avatar from '../assets/bio-photo.jpg';
+// Rendered at 96px from a head-and-shoulders crop of the bio photo (the full
+// 1536px original stays in public/ for the og:image and JSON-LD Person schema).
+import avatar from '../assets/bio-photo-face.jpg';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const published = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
-const highlights = roles.filter((r) => r.highlight);
+// Lead with the featured build, then the newest post from each pillar, so the
+// homepage shows both halves of the work rather than whatever was posted last.
+// Without curation it falls back to the three newest posts.
+const featured = published.find((p) => p.data.featured);
+const pillarPosts = (['ai', 'homelab'] as const)
+  .map((pillar) => published.find((p) => p.data.pillar === pillar && p !== featured))
+  .filter((p) => p !== undefined);
+const posts = featured ? pillarPosts : published.slice(0, 3);
 ---
 
 <Base
@@ -37,33 +46,39 @@ const highlights = roles.filter((r) => r.highlight);
       <h1>{site.name}</h1>
       <p class="role">{site.role}</p>
       <p class="pitch">{site.pitch}</p>
-      <SocialLinks />
+      <p class="proof">{site.proof}</p>
+      <ContactActions>
+        <SocialLinks exclude={['email']} />
+      </ContactActions>
     </div>
   </section>
 
   <section>
-    <h2>Recent roles</h2>
-    <ul class="highlights fill-cycle">
-      {
-        highlights.map((r) => (
-          <li>
-            <strong>
-              {r.title} · <a href={r.url}>{r.company}</a>
-            </strong>
-            <span class="meta"> · {r.period}</span>
-            <p class="muted">{r.bullets[0]}</p>
-          </li>
-        ))
-      }
-    </ul>
-    <p><a href="/cv/">Full CV →</a></p>
+    <h2>Career</h2>
+    <CareerTrack />
+    <a class="section-link brutal-btn" href="/cv/">
+      Full CV
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </a>
   </section>
 
-  <section>
-    <h2>Recent writing</h2>
-    <PostList posts={posts} />
-    <p class="all-posts"><a href="/blog/">All posts →</a></p>
-  </section>
+  {
+    (featured || posts.length > 0) && (
+      <section>
+        <h2>Writing</h2>
+        <div class="writing">
+          {featured && <FeaturedPost post={featured} />}
+          {posts.length > 0 && <PostList posts={posts} />}
+        </div>
+        <a class="section-link brutal-btn" href="/blog/">
+          All posts
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </section>
+    )
+  }
 </Base>
 
 <style>
@@ -71,7 +86,6 @@ const highlights = roles.filter((r) => r.highlight);
     display: flex;
     gap: 1.75rem;
     align-items: flex-start;
-    margin-bottom: 3.5rem;
   }
 
   /* Photo as a tilted polaroid-ish tile with a pink hard shadow. */
@@ -102,19 +116,30 @@ const highlights = roles.filter((r) => r.highlight);
     transform: rotate(-1deg);
   }
 
+  /* The pitch is the page's argument: full-strength ink, one step up. */
   .pitch {
-    color: var(--fg-muted);
+    color: var(--fg);
+    font-size: var(--text-lg);
+    line-height: 1.6;
     max-width: 36rem;
+    margin-bottom: 0.75rem;
   }
 
+  .proof {
+    color: var(--fg-muted);
+    max-width: 36rem;
+    margin-bottom: 1.6rem;
+  }
+
+  /* Distinct sections sit far apart; a heading hugs its own content. */
   section + section {
-    margin-top: 3rem;
+    margin-top: 4.5rem;
   }
 
   section h2 {
     font-size: var(--text-lg);
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   /* Section headings as yellow label tabs instead of the prose marker. */
@@ -129,25 +154,69 @@ const highlights = roles.filter((r) => r.highlight);
     text-decoration: none;
   }
 
-  .highlights {
-    list-style: none;
-    padding: 0;
+  /* "Full CV" / "All posts": real buttons, since they lead somewhere that matters. */
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    margin-top: 1.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--bg-raised);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .section-link:hover {
+    color: var(--fg);
+  }
+
+  .section-link svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.12s ease;
+  }
+
+  .section-link:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* On the homepage the post cards step back: outlined with a coloured
+     shadow (the dark-mode treatment), so the hero and career lead. The
+     featured card keeps its fill and stays the strongest of the three. */
+  .writing :global(.post-list a.card) {
+    --card-shadow: var(--fill);
+    background: var(--bg-raised);
+    color: var(--fg);
+  }
+
+  .writing {
     display: grid;
-    gap: 1.1rem;
+    gap: 1.4rem;
+    container-type: inline-size;
   }
 
-  /* Each role hangs off a thick bar in its own bright. */
-  .highlights li {
-    border-left: 6px solid var(--fill);
-    padding-left: 1rem;
+  /* The two pillar cards sit side by side under the featured post when there's room. */
+  @container (width > 36rem) {
+    .writing :global(.post-list) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .writing :global(.post-list > li) {
+      display: grid;
+    }
   }
 
-  .highlights p {
-    margin: 0.2rem 0 0;
-  }
-
-  .all-posts {
-    margin-top: 1.25rem;
+  @media (prefers-reduced-motion: reduce) {
+    .section-link svg {
+      transition: none;
+    }
   }
 
   @media (max-width: 540px) {

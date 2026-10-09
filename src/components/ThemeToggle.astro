@@ -1,5 +1,5 @@
 ---
-// Cycles the theme preference light → dark → system and persists it.
+// Flips between light and dark; matching the OS means "follow the system".
 // Click handling is delegated in Base.astro (survives view transitions); the
 // preference and resolved theme come from the inline head script there, which
 // sets [data-theme-pref] on <html>. The icon and the accessible name are both
@@ -55,8 +55,13 @@
   <!-- Only the span matching the current preference is displayed, so it alone
        becomes the button's accessible name. -->
   <span class="visually-hidden label light">Theme: light. Switch to dark</span>
-  <span class="visually-hidden label dark">Theme: dark. Switch to system</span>
-  <span class="visually-hidden label system">Theme: system. Switch to light</span>
+  <span class="visually-hidden label dark">Theme: dark. Switch to light</span>
+  <span class="visually-hidden label system system-light">
+    Theme: system (light). Switch to dark
+  </span>
+  <span class="visually-hidden label system system-dark">
+    Theme: system (dark). Switch to light
+  </span>
 </button>
 
 <style>
@@ -98,11 +103,20 @@
     transform: rotate(0) scale(1);
   }
 
-  :global(html:not([data-theme-pref])) .label.system,
+  :global(html:not([data-theme-pref])) .label.system-light,
   :global([data-theme-pref='light']) .label.light,
   :global([data-theme-pref='dark']) .label.dark,
-  :global([data-theme-pref='system']) .label.system {
+  :global([data-theme-pref='system']:not([data-theme='dark'])) .label.system-light,
+  :global([data-theme-pref='system'][data-theme='dark']) .label.system-dark {
     display: inline;
+  }
+
+  /* Touch screens get a full 44px target. */
+  @media (pointer: coarse) {
+    button {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
