@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T20:10:43+00:00",
+  "title": "Design System: teodorkurtev.com",
+  "extensions": {
+    "colorMeta": {
+      "signal-yellow": {
+        "role": "primary",
+        "displayName": "Signal Yellow",
+        "canonical": "#ffd23f",
+        "tonalRamp": [
+          "#120a00",
+          "#2e2200",
+          "#4f3d00",
+          "#725b07",
+          "#9b7d12",
+          "#c7a00a",
+          "#f2c52c",
+          "#feeebf"
+        ]
+      },
+      "electric-blue": {
+        "role": "secondary",
+        "displayName": "Electric Blue",
+        "canonical": "#2447f5",
+        "tonalRamp": [
+          "#020039",
+          "#060574",
+          "#1116b7",
+          "#1f3ceb",
+          "#4673fb",
+          "#7da1fa",
+          "#b5cafb",
+          "#e7efff"
+        ]
+      },
+      "electric-blue-lifted": {
+        "role": "secondary",
+        "displayName": "Lifted Electric Blue (dark)",
+        "canonical": "#6b86ff",
+        "tonalRamp": [
+          "#040037",
+          "#120470",
+          "#242a9d",
+          "#3c4ec1",
+          "#5b73ea",
+          "#879ff7",
+          "#b8c8fe",
+          "#e9eefe"
+        ]
+      },
+      "cream-paper": {
+        "role": "neutral",
+        "displayName": "Cream Paper",
+        "canonical": "#fffbea",
+        "tonalRamp": [
+          "#0e0b02",
+          "#272417",
+          "#434032",
+          "#615e4f",
+          "#848071",
+          "#a9a595",
+          "#cfcbba",
+          "#f3efde"
+        ]
+      },
+      "sunk-paper": {
+        "role": "neutral",
+        "displayName": "Sunk Paper",
+        "canonical": "#f6efd3",
+        "tonalRamp": [
+          "#100b00",
+          "#2a240d",
+          "#464029",
+          "#645e46",
+          "#878067",
+          "#aca58b",
+          "#d2cbb0",
+          "#f6efd3"
+        ]
+      },
+      "plate-white": {
+        "role": "neutral",
+        "displayName": "Plate White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#121110",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#252423",
+          "#413f3e",
+          "#5f5d5c",
+          "#81807e",
+          "#a6a4a3",
+          "#cccac9",
+          "#f0eeed"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#3b3830",
+        "tonalRamp": [
+          "#0d0b05",
+          "#27241c",
+          "#434037",
+          "#615d55",
+          "#838077",
+          "#a8a49b",
+          "#cecac0",
+          "#f2eee4"
+        ]
+      },
+      "code-slab": {
+        "role": "neutral",
+        "displayName": "Code Slab",
+        "canonical": "#16161a",
+        "tonalRamp": [
+          "#0b0b0e",
+          "#232428",
+          "#3f3f44",
+          "#5d5d62",
+          "#7f8085",
+          "#a4a4a9",
+          "#cacad0",
+          "#eeeef4"
+        ]
+      },
+      "dark-ground": {
+        "role": "neutral",
+        "displayName": "Dark Rack Ground",
+        "canonical": "#15140f",
+        "tonalRamp": [
+          "#0c0b07",
+          "#25241f",
+          "#41403a",
+          "#5f5e58",
+          "#82807a",
+          "#a6a59e",
+          "#cccbc4",
+          "#f0efe7"
+        ]
+      },
+      "dark-sunk": {
+        "role": "neutral",
+        "displayName": "Dark Rack Sunk",
+        "canonical": "#0f0e0b",
+        "tonalRamp": [
+          "#0c0b08",
+          "#252421",
+          "#41403c",
+          "#5f5d5a",
+          "#81807c",
+          "#a6a4a0",
+          "#cccac6",
+          "#f0eeea"
+        ]
+      },
+      "dark-plate": {
+        "role": "neutral",
+        "displayName": "Dark Plate",
+        "canonical": "#211f19",
+        "tonalRamp": [
+          "#0d0b06",
+          "#26241e",
+          "#424039",
+          "#605d56",
+          "#838079",
+          "#a7a49d",
+          "#cdcac2",
+          "#f1eee6"
+        ]
+      },
+      "paper-white-ink": {
+        "role": "neutral",
+        "displayName": "Paper-White Ink (dark)",
+        "canonical": "#f4efdc",
+        "tonalRamp": [
+          "#0f0b01",
+          "#282416",
+          "#444030",
+          "#625e4d",
+          "#85806f",
+          "#a9a593",
+          "#d0cbb8",
+          "#f4efdc"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted Ink",
+        "canonical": "#c8c2ad",
+        "tonalRamp": [
+          "#0f0b00",
+          "#292413",
+          "#45402e",
+          "#635e4b",
+          "#86806d",
+          "#aaa590",
+          "#d1cbb5",
+          "#f5efd9"
+        ]
+      },
+      "dark-inline-code": {
+        "role": "neutral",
+        "displayName": "Dark Inline Code",
+        "canonical": "#2a2821",
+        "tonalRamp": [
+          "#0d0b06",
+          "#26241d",
+          "#424038",
+          "#605e56",
+          "#838078",
+          "#a7a59c",
+          "#cdcac1",
+          "#f1eee5"
+        ]
+      },
+      "dark-code-slab": {
+        "role": "neutral",
+        "displayName": "Dark Code Slab",
+        "canonical": "#0b0b0d",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#808083",
+          "#a4a4a7",
+          "#cacacd",
+          "#eeeef1"
+        ]
+      },
+      "dark-rail": {
+        "role": "neutral",
+        "displayName": "Dark Rail",
+        "canonical": "#2e2b23",
+        "tonalRamp": [
+          "#0e0b05",
+          "#27241c",
+          "#434037",
+          "#615d54",
+          "#848076",
+          "#a8a49a",
+          "#cecac0",
+          "#f2eee4"
+        ]
+      },
+      "footer-slab-dark": {
+        "role": "neutral",
+        "displayName": "Footer Slab (dark)",
+        "canonical": "#29261e",
+        "tonalRamp": [
+          "#0e0b05",
+          "#27241c",
+          "#434037",
+          "#615d54",
+          "#848076",
+          "#a8a49a",
+          "#cecac0",
+          "#f2eee3"
+        ]
+      },
+      "footer-plate-dark": {
+        "role": "neutral",
+        "displayName": "Footer Plate (dark)",
+        "canonical": "#34302a",
+        "tonalRamp": [
+          "#0e0b06",
+          "#27231e",
+          "#433f39",
+          "#615d56",
+          "#847f78",
+          "#a9a49c",
+          "#cfcac2",
+          "#f3eee6"
+        ]
+      },
+      "diagram-yellow": {
+        "role": "tertiary",
+        "displayName": "Diagram Yellow (posts only)",
+        "canonical": "#ffde59",
+        "tonalRamp": [
+          "#110a00",
+          "#2c2300",
+          "#4c3f05",
+          "#6d5d14",
+          "#977e00",
+          "#bfa326",
+          "#eac940",
+          "#fdefb7"
+        ]
+      },
+      "diagram-pink": {
+        "role": "tertiary",
+        "displayName": "Diagram Pink (posts only)",
+        "canonical": "#ff6b9d",
+        "tonalRamp": [
+          "#200009",
+          "#490020",
+          "#78003a",
+          "#a91056",
+          "#d34278",
+          "#fe6a9c",
+          "#fcb3c6",
+          "#fee8ed"
+        ]
+      },
+      "diagram-cyan": {
+        "role": "tertiary",
+        "displayName": "Diagram Cyan (posts only)",
+        "canonical": "#5ce1e6",
+        "tonalRamp": [
+          "#000f10",
+          "#002a2c",
+          "#04494c",
+          "#156a6d",
+          "#239195",
+          "#27babf",
+          "#5ce1e6",
+          "#bffcfe"
+        ]
+      },
+      "diagram-green": {
+        "role": "tertiary",
+        "displayName": "Diagram Green (posts only)",
+        "canonical": "#7ed957",
+        "tonalRamp": [
+          "#001000",
+          "#0d2c00",
+          "#1e4c02",
+          "#326e11",
+          "#47961e",
+          "#64be3a",
+          "#8ae664",
+          "#cfffbd"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The two-line name in the homepage hero only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page h1; post titles tighten to 85% width."
+      },
+      "plate-title": {
+        "displayName": "Plate Title",
+        "purpose": "Section headings on faceplates and the footer closing line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Prose h2 and the featured card title."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "h3, list card titles, career panel role titles."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "The homepage pitch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, in a 42rem column."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, brand, stickers, onward buttons."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Dates, periods, years, figures, the email address."
+      }
+    },
+    "shadows": [
+      {
+        "name": "pin",
+        "value": "2px 2px 0 var(--ink)",
+        "purpose": "Tag pills in post headers."
+      },
+      {
+        "name": "bar",
+        "value": "3px 3px 0 var(--ink)",
+        "purpose": "Career bars, brand plate, tag cloud pills."
+      },
+      {
+        "name": "button",
+        "value": "4px 4px 0 var(--ink)",
+        "purpose": "Small brutal buttons, role sticker, skip link."
+      },
+      {
+        "name": "plate",
+        "value": "5px 5px 0 var(--fill)",
+        "purpose": "Cards, faceplates, career panel, blockquotes, code blocks, post images; colour follows the pillar."
+      },
+      {
+        "name": "lead",
+        "value": "6px 6px 0 var(--ink)",
+        "purpose": "The 56px contact buttons."
+      },
+      {
+        "name": "feature",
+        "value": "8px 8px 0 var(--fill)",
+        "purpose": "Featured post card and hero print."
+      }
+    ],
+    "motion": [
+      {
+        "name": "press",
+        "value": "transform 0.08s ease-out, box-shadow 0.08s ease-out",
+        "purpose": "Press-in on hover and active for buttons, cards, bars, pills."
+      },
+      {
+        "name": "fill-swap",
+        "value": "background-color 0.12s ease",
+        "purpose": "Yellow hover fills."
+      },
+      {
+        "name": "panel-in",
+        "value": "0.28s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Career panel reveal; fades only under reduced motion."
+      },
+      {
+        "name": "playhead-sweep",
+        "value": "1.15s linear",
+        "purpose": "Career track entrance; bars reveal as the playhead passes."
+      },
+      {
+        "name": "stamp",
+        "value": "0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The now pill lands after the sweep."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tiny",
+        "value": "360px"
+      },
+      {
+        "name": "nav-tight",
+        "value": "380px"
+      },
+      {
+        "name": "plate-tight",
+        "value": "420px"
+      },
+      {
+        "name": "header-compact",
+        "value": "520px"
+      },
+      {
+        "name": "hero-reflow",
+        "value": "640px"
+      },
+      {
+        "name": "rails",
+        "value": "1340px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The lead action (Download CV): yellow, 56px, 6px ink shadow, presses in.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Download CV (PDF)</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;min-height:3.5rem;padding:0.6rem 1.35rem;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-size:1.2rem;font-weight:800;border:3px solid var(--ink,#121110);border-radius:7px;box-shadow:6px 6px 0 var(--ink,#121110);color:var(--on-fill,#121110);text-decoration:none;transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-btn-primary{background:var(--ai,#ffd23f)}.ds-btn:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink,#121110)}.ds-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink,#121110)}.ds-btn:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Paired action (Email me): white plate, same size and press-in.",
+      "html": "<a class=\"ds-btn2\" href=\"#\">Email me</a>",
+      "css": ".ds-btn2{display:inline-flex;align-items:center;min-height:3.5rem;padding:0.6rem 1.35rem;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-size:1.2rem;font-weight:800;border:3px solid var(--ink,#121110);border-radius:7px;box-shadow:6px 6px 0 var(--ink,#121110);background:var(--bg-raised,#fff);color:var(--fg,#121110);text-decoration:none;transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-btn2:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink,#121110)}.ds-btn2:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink,#121110)}.ds-btn2:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}"
+    },
+    {
+      "name": "Data Field with Copy",
+      "kind": "input",
+      "refersTo": "data-field",
+      "description": "The email address as a mono field with Copy joined on one seam.",
+      "html": "<p class=\"ds-field\"><span class=\"ds-field-text\">name@example.com</span><button class=\"ds-field-copy\" type=\"button\">Copy</button></p>",
+      "css": ".ds-field{display:inline-flex;align-items:stretch;margin:0;font-size:.875rem}.ds-field-text{display:inline-flex;align-items:center;min-height:2.4rem;padding:.2rem .7rem;font-family:var(--font-mono,\"Atkinson Hyperlegible Mono Variable\",monospace);background:var(--bg-raised,#fff);color:var(--fg,#121110);border:3px solid var(--ink,#121110);border-right:0;border-radius:6px 0 0 6px}.ds-field-copy{min-height:2.4rem;padding:.15rem .8rem;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-weight:800;background:var(--bg-raised,#fff);color:var(--fg,#121110);border:3px solid var(--ink,#121110);border-radius:0 7px 7px 0;box-shadow:4px 4px 0 var(--ink,#121110);cursor:pointer;transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-field-copy:hover{transform:translate(1px,1px);box-shadow:3px 3px 0 var(--ink,#121110)}.ds-field-copy:active{transform:translate(4px,4px);box-shadow:none;background:var(--ai,#ffd23f)}.ds-field-copy:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "TK brand plate, bold links that outline on hover; current page keeps outline plus underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-mark\">TK</span>Teodor Kurtev</a><span class=\"ds-links\"><a href=\"#\" aria-current=\"page\">CV</a><a href=\"#\">Blog</a><a href=\"#\">Uses</a><a href=\"#\">Now</a></span></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1rem;background:var(--bg,#fffbea);border-bottom:3px solid var(--ink,#121110)}.ds-brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-weight:800;font-size:1.2rem;color:var(--fg,#121110);text-decoration:none}.ds-mark{display:grid;place-items:center;width:2.3rem;height:2.3rem;background:var(--ai,#ffd23f);color:var(--on-fill,#121110);border:3px solid var(--ink,#121110);border-radius:6px;box-shadow:3px 3px 0 var(--ink,#121110);font-size:.9rem}.ds-links{display:flex;gap:.25rem}.ds-links a{color:var(--fg,#121110);font-weight:700;font-size:.875rem;padding:.4rem .7rem;border:3px solid transparent;border-radius:6px;text-decoration:none}.ds-links a:hover{border-color:var(--ink,#121110);background:var(--bg-raised,#fff)}.ds-links a[aria-current=page]{border-color:var(--ink,#121110);background:var(--bg-raised,#fff);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px}.ds-links a:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}"
+    },
+    {
+      "name": "Pillar Stickers",
+      "kind": "chip",
+      "refersTo": "pillar-ai",
+      "description": "Meaning labels: yellow for applied AI, blue fill (the only blue fill) for homelab.",
+      "html": "<span class=\"ds-pillar ds-pillar-ai\">AI engineering</span> <span class=\"ds-pillar ds-pillar-lab\">Homelab</span>",
+      "css": ".ds-pillar{display:inline-block;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-size:.75rem;font-weight:800;line-height:1.35;padding:.05rem .4rem;border:2px solid var(--ink,#121110);border-radius:4px}.ds-pillar-ai{background:var(--ai,#ffd23f);color:var(--on-fill,#121110)}.ds-pillar-lab{background:var(--lab-fill,#2447f5);color:var(--on-lab,#fff)}"
+    },
+    {
+      "name": "Tag Pill",
+      "kind": "chip",
+      "refersTo": "tag-pill",
+      "description": "Round outlined tag link; hover fills yellow and presses in.",
+      "html": "<a class=\"ds-tag\" href=\"#\">homelab <span class=\"ds-count\">4</span></a>",
+      "css": ".ds-tag{display:inline-block;border:2px solid var(--ink,#121110);border-radius:999px;box-shadow:3px 3px 0 var(--ink,#121110);padding:.3rem 1rem;background:var(--bg-raised,#fff);color:var(--fg,#121110);font-size:.875rem;font-weight:700;text-decoration:none;transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-tag:hover{background:var(--ai,#ffd23f);color:var(--on-fill,#121110);transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink,#121110)}.ds-tag:active{transform:translate(3px,3px);box-shadow:none}.ds-tag:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}.ds-count{font-family:var(--font-mono,\"Atkinson Hyperlegible Mono Variable\",monospace)}"
+    },
+    {
+      "name": "Post Card (homelab)",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White plate, ink outline, hard shadow in the pillar colour; a measured result sits on a dashed rule.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-pillar-lab2\">Homelab</span> <time>2026-08-14</time><h3>Hardening my homelab MCP setup</h3><p>What changed after an audit, and what broke first.</p><p class=\"ds-result\"><b>12</b> services moved behind auth</p></a>",
+      "css": ".ds-card{display:block;padding:1.25rem 1.4rem;border:3px solid var(--ink,#121110);border-radius:8px;background:var(--bg-raised,#fff);color:var(--fg,#121110);box-shadow:5px 5px 0 var(--lab,#2447f5);text-decoration:none;font-family:var(--font-sans,\"Atkinson Hyperlegible Next Variable\",sans-serif);transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-card:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--lab,#2447f5)}.ds-card:active{transform:translate(5px,5px);box-shadow:none}.ds-card:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}.ds-card h3{margin:.3rem 0 .2rem;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-weight:800;font-stretch:92%;font-size:1.2rem;letter-spacing:-.02em}.ds-card p{margin:0}.ds-card time{font-family:var(--font-mono,\"Atkinson Hyperlegible Mono Variable\",monospace);font-size:.875rem;color:var(--fg-muted,#3b3830)}.ds-pillar-lab2{display:inline-block;font-family:var(--font-display,sans-serif);font-size:.75rem;font-weight:800;padding:.05rem .4rem;border:2px solid var(--ink,#121110);border-radius:4px;background:var(--lab-fill,#2447f5);color:var(--on-lab,#fff)}.ds-result{margin-top:.85rem!important;padding-top:.65rem;border-top:2px dashed var(--ink,#121110);font-size:.875rem;color:var(--fg-muted,#3b3830)}.ds-result b{color:var(--fg,#121110)}"
+    },
+    {
+      "name": "Faceplate Heading",
+      "kind": "custom",
+      "refersTo": "faceplate",
+      "description": "A section heading on a 1U rack plate: screws, pillar LEDs, vent grille, onward button.",
+      "html": "<div class=\"ds-plate\"><svg class=\"ds-screw\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8\"/><path d=\"M5.5 10h9M10 5.5v9\"/></svg><h2>Writing</h2><span class=\"ds-leds\"><span class=\"ds-led ds-led-ai\"></span><span class=\"ds-led ds-led-lab\"></span></span><span class=\"ds-vents\"></span><a class=\"ds-onward\" href=\"#\">All posts <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a><svg class=\"ds-screw\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8\"/><path d=\"M5.5 10h9M10 5.5v9\"/></svg></div>",
+      "css": ".ds-plate{display:flex;align-items:center;gap:.9rem;min-height:4.5rem;padding:.6rem 1rem;background:var(--bg-raised,#fff);border:3px solid var(--ink,#121110);border-radius:6px;box-shadow:5px 5px 0 var(--ink,#121110)}.ds-plate h2{margin:0;font-family:var(--font-display,\"Bricolage Grotesque Variable\",sans-serif);font-weight:800;font-size:2.1rem;font-stretch:85%;line-height:1;letter-spacing:-.025em;color:var(--fg,#121110)}.ds-screw{flex:none;width:1.15rem;height:1.15rem;fill:var(--bg-sunk,#f6efd3);stroke:var(--ink,#121110);stroke-width:2;stroke-linecap:round}.ds-leds{display:inline-flex;gap:.35rem}.ds-led{width:.75rem;height:.75rem;border:2px solid var(--ink,#121110);border-radius:50%}.ds-led-ai{background:var(--ai,#ffd23f)}.ds-led-lab{background:var(--lab,#2447f5)}.ds-vents{flex:1;min-width:1.5rem;height:1.35rem;background:repeating-linear-gradient(90deg,var(--ink,#121110) 0 3px,transparent 3px 8px);opacity:.85}.ds-onward{display:inline-flex;align-items:center;gap:.4rem;min-height:2.6rem;padding:.3rem .85rem;background:var(--bg-raised,#fff);color:var(--fg,#121110);font-family:var(--font-display,sans-serif);font-weight:800;border:3px solid var(--ink,#121110);border-radius:7px;box-shadow:4px 4px 0 var(--ink,#121110);text-decoration:none;white-space:nowrap;transition:transform .08s ease-out,box-shadow .08s ease-out}.ds-onward:hover{transform:translate(1px,1px);box-shadow:3px 3px 0 var(--ink,#121110)}.ds-onward:active{transform:translate(4px,4px);box-shadow:none}.ds-onward:focus-visible{outline:3px solid var(--accent,#121110);outline-offset:3px}.ds-onward svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Rack on Paper",
+    "overview": "The site is a practitioner's workbench drawn in ink on cream paper. Everything is outlined (3px), filled flat, and lifted by a hard offset shadow with no blur; anything clickable presses down into its own shadow. The hardware vocabulary of a homelab is the ornament: section headings are mounted on 1U faceplates with screws and a vent grille, and on wide screens the page hangs between two rack rails punched at real 1U hole spacing. Beyond the rack, the only ornaments are paper ones: a taped photo print, a highlighter marker, hatching.\n\nColour is meaning, not decoration. Two hues carry it: signal yellow says \"applied AI\" and electric blue says \"homelab\". Everything without a pillar stays ink on paper. Density is comfortable and editorial: one reading column for prose, a wider home column for the evaluator path, generous gaps between sections and tight grouping inside a plate.\n\nDark mode is a dark rack, not an inversion: a warm near-black ground, paper-white ink for outlines and shadows, and the same two meaning colours (blue lifted so it still reads as text and outline).",
+    "keyCharacteristics": [
+      "Ink outlines at 3px on every surface that holds content; 2px on small parts (stickers, pills, bars, LEDs).",
+      "Hard offset shadows in ink, or in the item's meaning colour.",
+      "Press-in interaction: hover sinks part-way, active sinks fully onto the shadow.",
+      "Two meaning colours only; the rest of the interface is ink, paper and white plates.",
+      "Heavy, width-condensed grotesque display over a hyperlegible body; a mono voice for dates and figures.",
+      "Server rack hardware (faceplates, screws, vents, LEDs, rails) as the main ornament."
+    ],
+    "rules": [
+      {
+        "name": "The Meaning-Only Rule",
+        "body": "A colour other than ink, paper or white appears only when it states a pillar: yellow for applied AI, blue for homelab. An element with no pillar stays ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Blue-Is-An-Accent Rule",
+        "body": "Blue draws outlines, shadows, LEDs and labels. The only blue fill is the small homelab pillar sticker.",
+        "section": "colors"
+      },
+      {
+        "name": "The On-Fill Rule",
+        "body": "Text on yellow is always ink, never an accent colour. Text on a blue fill is white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width-Axis Rule",
+        "body": "Display type gets narrower as it gets bigger: 92% for headings, 85% for plates and post titles, 75% for the poster name. Condensing is how the display face stays heavy without sprawling.",
+        "section": "typography"
+      },
+      {
+        "name": "The Data-Voice Rule",
+        "body": "Anything a reader might compare (a date, a duration, a figure, an address) is set in mono with tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Marker Rule",
+        "body": "Prose h2s carry a thick yellow marker underline behind the lower half of the line (0.4em). In dark the marker thins to 0.14em and drops below the baseline so paper-white text keeps contrast. Card titles and faceplate titles never carry it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Press-In Rule",
+        "body": "Interactive surfaces move toward their shadow, never away from it: hover translates by 1 to 2px and shrinks the shadow by the same amount; active translates the full shadow distance to 0. Transitions are 80ms ease-out. Reduced motion removes the movement.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Blur Rule",
+        "body": "Every shadow has a blur radius of 0.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** outline every content surface in 3px ink and give it a zero-blur offset shadow sized to its importance (2px to 8px).",
+      "**Do** set an item's `--fill` from its pillar (`.is-ai`, `.is-lab`) so shadow and accents follow meaning automatically.",
+      "**Do** make clickable surfaces press in on hover and active, and drop the movement under reduced motion.",
+      "**Do** keep text on yellow in ink and text on a blue fill in white.",
+      "**Do** set dates, periods, years and figures in Atkinson Hyperlegible Mono with tabular figures.",
+      "**Do** condense display type as it grows, using the width axis (92%, 85%, 75%).",
+      "**Do** give touch screens 44px targets and keep every page free of overflow at 320px.",
+      "**Do** keep the print stylesheet neutral: black on white, shadows and chrome removed, meaning colours flattened."
+    ],
+    "donts": [
+      "**Don't** use the diagram brights (yellow, pink, cyan, green) in the interface; they exist for post diagrams only.",
+      "**Don't** fill a large surface with blue; it is an accent and a label colour.",
+      "**Don't** add a colour that carries no pillar meaning.",
+      "**Don't** blur a shadow or add a gradient for depth.",
+      "**Don't** set anything at a resting angle other than the hero print and role sticker.",
+      "**Don't** put the yellow marker underline on card or faceplate titles.",
+      "**Don't** add ornament beyond the rack hardware (plates, screws, vents, LEDs, rails) and the paper set (taped print, marker, hatching)."
+    ]
+  }
+}
