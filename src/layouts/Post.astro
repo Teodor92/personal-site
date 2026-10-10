@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import { site } from '../data/site';
 import { slugify } from '../utils/slug';
+import { pillarLabels } from '../data/pillars';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const { post, minutesRead } = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage, tags } = post.data;
+const { title, description, pubDate, updatedDate, heroImage, tags, pillar } = post.data;
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -62,6 +63,7 @@ const schema = [
     <header>
       <h1>{title}</h1>
       <p class="meta">
+        {pillar && <span class:list={['pillar', pillar]}>{pillarLabels[pillar]}</span>}
         <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
         {minutesRead && <span> · {minutesRead}</span>}
         {
@@ -74,7 +76,7 @@ const schema = [
       </p>
       {
         tags.length > 0 && (
-          <ul class="tags fill-cycle">
+          <ul class="tags">
             {tags.map((tag) => (
               <li>
                 <a href={`/tags/${slugify(tag)}/`}>{tag}</a>
@@ -93,8 +95,20 @@ const schema = [
     margin-bottom: 2.5rem;
   }
 
+  article > header h1 {
+    font-size: var(--text-3xl);
+    font-stretch: 85%;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+
   .meta {
-    margin: 0.75rem 0 0;
+    margin: 0.9rem 0 0;
+  }
+
+  .meta .pillar {
+    margin-right: 0.5rem;
+    vertical-align: 0.1em;
   }
 
   .tags {
@@ -109,24 +123,24 @@ const schema = [
   .tags li a {
     text-decoration: none;
     display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--on-fill);
-    background: var(--fill);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--fg);
+    background: var(--bg-raised);
     border: 2px solid var(--ink);
     border-radius: 999px;
     box-shadow: 2px 2px 0 var(--ink);
     padding: 0.1rem 0.7rem;
     transition:
-      transform 0.12s ease,
-      box-shadow 0.12s ease;
+      transform 0.08s ease-out,
+      box-shadow 0.08s ease-out;
   }
 
   .tags li a:hover {
-    background: var(--fill);
+    background: var(--ai);
     color: var(--on-fill);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--ink);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--ink);
     text-decoration: none;
   }
 </style>

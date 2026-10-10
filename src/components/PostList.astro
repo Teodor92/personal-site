@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { pillarLabels } from '../data/pillars';
+import { postResults } from '../data/post-results';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -14,17 +15,32 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 
-<ul class="post-list fill-cycle">
+<ul class="post-list">
   {
     posts.map((post) => (
-      <li>
+      <li
+        class:list={{
+          'is-ai': post.data.pillar === 'ai',
+          'is-lab': post.data.pillar === 'homelab',
+        }}
+      >
         <a class="card" href={`/blog/${post.id}/`}>
           <Heading class="title">{post.data.title}</Heading>
           <div class="meta">
             <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
-            {post.data.pillar && <span class="pillar">{pillarLabels[post.data.pillar]}</span>}
+            {post.data.pillar && (
+              <span class:list={['pillar', post.data.pillar]}>
+                {pillarLabels[post.data.pillar]}
+              </span>
+            )}
           </div>
           <p class="muted">{post.data.description}</p>
+          {postResults[post.id] && (
+            <p class="result">
+              <span class="data figure">{postResults[post.id].figure}</span>{' '}
+              {postResults[post.id].label}
+            </p>
+          )}
         </a>
       </li>
     ))
@@ -54,17 +70,22 @@ const fmt = (d: Date) =>
     margin-bottom: 0.35rem;
   }
 
-  /* Pillar sticker, after the date (never as an eyebrow over the title). */
-  .pillar {
-    font-size: 0.75rem;
-    font-weight: 700;
-    line-height: 1.35;
-    padding: 0 0.35rem;
-    border: 2px solid currentColor;
-    border-radius: 4px;
-  }
-
   p {
     margin: 0;
+  }
+
+  /* The post's measured result, set inline on a dashed rule: proof, not a stat block. */
+  .result {
+    margin-top: 0.85rem;
+    padding-top: 0.65rem;
+    border-top: 2px dashed var(--ink);
+    font-size: var(--text-sm);
+    color: var(--fg-muted);
+  }
+
+  .figure {
+    font-weight: 700;
+    color: var(--fg);
+    margin-right: 0.15rem;
   }
 </style>

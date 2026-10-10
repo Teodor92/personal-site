@@ -36,28 +36,39 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     gap: 0.75rem;
   }
 
+  /* Big press-in buttons: 56px, 6px shadow. Hover sinks part-way, :active
+     all the way onto the shadow. */
   .buttons a {
     display: inline-flex;
     align-items: center;
-    min-height: 2.75rem;
-    padding: 0.5rem 1.1rem;
+    min-height: 3.5rem;
+    padding: 0.6rem 1.35rem;
     font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--on-fill);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    color: var(--fg);
+    background: var(--bg-raised);
     text-decoration: none;
     white-space: nowrap;
-  }
-
-  /* Same yellow / pink pairing as the download buttons on /cv/. */
-  .cv {
-    background: var(--yellow);
-  }
-
-  .email {
-    background: var(--pink);
+    box-shadow: 6px 6px 0 var(--ink);
   }
 
   .buttons a:hover {
+    color: var(--fg);
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .buttons a:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  /* The CV is the primary action, in the lead (AI) colour. */
+  .buttons a.cv,
+  .buttons a.cv:hover {
+    background: var(--ai);
     color: var(--on-fill);
   }
 
@@ -68,28 +79,46 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     gap: 0.75rem 1.25rem;
   }
 
+  /* The address as a mono data field, with Copy joined to its right edge. */
   .address {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-flex;
+    align-items: stretch;
+    max-width: 100%;
     margin: 0;
     font-size: var(--text-sm);
-    color: var(--fg-muted);
+    color: var(--fg);
   }
 
   .email-text {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.4rem;
+    padding: 0.2rem 0.7rem;
+    font-family: var(--font-mono);
+    background: var(--bg-raised);
+    border: var(--bw) solid var(--ink);
+    border-radius: 6px;
     user-select: all;
     overflow-wrap: anywhere;
   }
 
+  /* With JS, Copy appears and the two share one seam. */
+  .email-text:has(+ .copy-email:not([hidden])) {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .copy-email {
-    min-height: 2rem;
-    padding: 0.15rem 0.6rem;
+    min-height: 2.4rem;
+    padding: 0.15rem 0.8rem;
     background: var(--bg-raised);
     color: var(--fg);
     font: inherit;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 800;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     cursor: pointer;
   }
 
@@ -101,7 +130,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   }
 
   .copy-email[data-copied] {
-    background: var(--green);
+    background: var(--ai);
     color: var(--on-fill);
   }
 </style>

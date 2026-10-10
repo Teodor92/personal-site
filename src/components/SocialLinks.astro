@@ -22,7 +22,7 @@ const icons: Record<string, string> = {
 };
 ---
 
-<ul class="socials fill-cycle">
+<ul class="socials">
   {
     socials.map(({ label, url, icon }) => (
       <li>
@@ -62,9 +62,7 @@ const icons: Record<string, string> = {
     }
   }
 
-  /* Each button takes its own bright from .fill-cycle on hover. */
   .socials a:hover {
-    background: var(--fill);
-    color: var(--on-fill);
+    color: var(--fg);
   }
 </style>

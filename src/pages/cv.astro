@@ -30,10 +30,10 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </nav>
 
   <h2 id="experience">Experience</h2>
-  <div class="timeline fill-cycle">
+  <div class="timeline">
     {
       roles.slice(0, 4).map((role) => (
-        <article id={roleId(role)}>
+        <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
           <header>
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
@@ -54,7 +54,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     }
     {
       roles.slice(4).map((role) => (
-        <article id={roleId(role)}>
+        <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
           <header>
             <h3>
               {role.title} · <a href={role.url}>{role.company}</a>
@@ -79,7 +79,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </div>
 
   <h2 id="education">Education</h2>
-  <div class="timeline fill-cycle">
+  <div class="timeline">
     {
       education.map((e) => (
         <article>
@@ -110,7 +110,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
   </dl>
 
   <h2 id="volunteering">Volunteering</h2>
-  <div class="timeline fill-cycle">
+  <div class="timeline">
     {
       volunteering.map((v) => (
         <article>
@@ -199,20 +199,27 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   /* Styled as the button they replaced; they point at the build-time artifacts. */
   .downloads a {
-    background: var(--yellow);
-    color: var(--on-fill);
+    background: var(--bg-raised);
+    color: var(--fg);
+    font-family: var(--font-display);
     font-size: var(--text-sm);
-    font-weight: 600;
+    font-weight: 800;
     padding: 0.45rem 0.9rem;
     text-decoration: none;
     white-space: nowrap;
   }
 
-  .downloads a + a {
-    background: var(--pink);
+  /* The PDF is the primary download, in the lead (AI) colour. */
+  .downloads a:first-child {
+    background: var(--ai);
+    color: var(--on-fill);
   }
 
   .downloads a:hover {
+    color: var(--fg);
+  }
+
+  .downloads a:first-child:hover {
     color: var(--on-fill);
   }
 
@@ -230,6 +237,10 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
     .timeline article {
       break-inside: avoid;
+    }
+
+    .timeline article::before {
+      background: #ffffff;
     }
   }
 
@@ -259,7 +270,12 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     height: 14px;
     border-radius: 3px;
     border: 2px solid var(--ink);
-    background: var(--fill);
+    background: var(--bg-raised);
+  }
+
+  /* The applied AI role's marker carries the AI colour. */
+  .timeline article.is-ai::before {
+    background: var(--ai);
   }
 
   .timeline h3 {

@@ -18,7 +18,10 @@ const date = pubDate.toLocaleDateString('en-GB', {
 });
 ---
 
-<a class="card featured" href={`/blog/${post.id}/`}>
+<a
+  class:list={['card', 'featured', { 'is-ai': pillar === 'ai', 'is-lab': pillar === 'homelab' }]}
+  href={`/blog/${post.id}/`}
+>
   {
     heroImage && (
       <Image
@@ -34,16 +37,16 @@ const date = pubDate.toLocaleDateString('en-GB', {
     <h3 class="title">{title}</h3>
     <div class="meta">
       <time datetime={pubDate.toISOString()}>{date}</time>
-      {pillar && <span class="pillar">{pillarLabels[pillar]}</span>}
+      {pillar && <span class:list={['pillar', pillar]}>{pillarLabels[pillar]}</span>}
     </div>
     <p class="muted">{description}</p>
   </div>
 </a>
 
 <style>
-  /* Cyan, so it never matches the yellow first card of the list below. */
+  /* The lead card: same plate, a heavier shadow in its pillar colour. */
   .featured {
-    --fill: var(--cyan);
+    --shadow: 8px;
     padding: 0;
     overflow: hidden;
   }
@@ -75,15 +78,6 @@ const date = pubDate.toLocaleDateString('en-GB', {
     align-items: center;
     gap: 0.3rem 0.6rem;
     margin-bottom: 0.4rem;
-  }
-
-  .pillar {
-    font-size: 0.75rem;
-    font-weight: 700;
-    line-height: 1.35;
-    padding: 0 0.35rem;
-    border: 2px solid currentColor;
-    border-radius: 4px;
   }
 
   p {

@@ -1,0 +1,160 @@
+---
+// A section heading mounted on a 1U rack faceplate: screws at both ends, a
+// vent grille filling the slack, and the section's way onward (e.g. "Full
+// CV") as a button on the plate.
+interface Props {
+  title: string;
+  href?: string;
+  linkLabel?: string;
+  /** Status lights in the meaning colours, e.g. the two pillars on Writing. */
+  leds?: ('ai' | 'lab')[];
+}
+
+const { title, href, linkLabel, leds = [] } = Astro.props;
+---
+
+<div class="plate">
+  <svg class="screw" viewBox="0 0 20 20" aria-hidden="true">
+    <circle cx="10" cy="10" r="8"></circle>
+    <path d="M5.5 10h9M10 5.5v9"></path>
+  </svg>
+  <h2>{title}</h2>
+  {
+    leds.length > 0 && (
+      <span class="leds" aria-hidden="true">
+        {leds.map((led) => (
+          <span class:list={['led', led]} />
+        ))}
+      </span>
+    )
+  }
+  <span class="vents" aria-hidden="true"></span>
+  {
+    href && linkLabel && (
+      <a class="brutal-btn onward" href={href}>
+        {linkLabel}
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    )
+  }
+  <svg class="screw" viewBox="0 0 20 20" aria-hidden="true">
+    <circle cx="10" cy="10" r="8"></circle>
+    <path d="M5.5 10h9M10 5.5v9"></path>
+  </svg>
+</div>
+
+<style>
+  .plate {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 4.5rem;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1.75rem;
+    background: var(--bg-raised);
+    border: var(--bw) solid var(--ink);
+    border-radius: 6px;
+    box-shadow: var(--shadow) var(--shadow) 0 var(--ink);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-2xl);
+    font-stretch: 85%;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+  }
+
+  .screw {
+    flex: none;
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: var(--bg-sunk);
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .leds {
+    display: inline-flex;
+    gap: 0.35rem;
+  }
+
+  .led {
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+  }
+
+  .led.ai {
+    background: var(--ai);
+  }
+
+  .led.lab {
+    background: var(--lab);
+  }
+
+  /* Vent grille: the slack between heading and button. */
+  .vents {
+    flex: 1;
+    min-width: 1.5rem;
+    height: 1.35rem;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 8px);
+    opacity: 0.85;
+  }
+
+  .onward {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.6rem;
+    padding: 0.3rem 0.85rem;
+    background: var(--bg-raised);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .onward:hover {
+    color: var(--fg);
+  }
+
+  .onward svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (pointer: coarse) {
+    .onward {
+      min-height: 2.75rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .plate {
+      gap: 0.6rem;
+      padding-inline: 0.7rem;
+    }
+
+    .vents {
+      min-width: 0.5rem;
+    }
+  }
+
+  /* The narrowest phones keep the heading and button, not the hardware. */
+  @media (max-width: 360px) {
+    .screw {
+      display: none;
+    }
+  }
+</style>

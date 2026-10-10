@@ -25,28 +25,28 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     title: page.title,
     description: page.description,
     logo: { path: './public/icon-192.png', size: [96] },
-    // Neo-brutalist card: cream paper, thick pink edge, black type.
+    // Evolved neo-brutalist card: cream paper, a thick AI-yellow edge, ink type.
     bgGradient: [[255, 251, 234]],
-    border: { color: [255, 107, 157], width: 28, side: 'inline-start' },
+    border: { color: [255, 210, 63], width: 28, side: 'inline-start' },
     padding: 72,
-    // Same faces as the site: Space Grotesk headings, Inter body.
+    // Same faces as the site: Bricolage Grotesque headings, Atkinson Hyperlegible Next body.
     fonts: [
-      './node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2',
-      './node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',
+      './node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2',
+      './node_modules/@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2',
     ],
     font: {
       title: {
         size: 68,
-        weight: 'Bold',
-        color: [0, 0, 0],
-        lineHeight: 1.15,
-        families: ['Space Grotesk'],
+        weight: 'ExtraBold',
+        color: [18, 17, 16],
+        lineHeight: 1.1,
+        families: ['Bricolage Grotesque'],
       },
       description: {
         size: 30,
-        color: [51, 51, 51],
+        color: [59, 56, 48],
         lineHeight: 1.5,
-        families: ['Inter'],
+        families: ['Atkinson Hyperlegible Next'],
       },
     },
   }),

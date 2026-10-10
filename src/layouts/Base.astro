@@ -1,6 +1,8 @@
 ---
-import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/atkinson-hyperlegible-next';
+import '@fontsource-variable/atkinson-hyperlegible-mono';
+// Width + weight axes: headings use the narrower widths.
+import '@fontsource-variable/bricolage-grotesque/wdth.css';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
@@ -16,6 +18,8 @@ interface Props {
   publishedTime?: string;
   updatedTime?: string;
   wide?: boolean;
+  /** The homepage's wider column. */
+  home?: boolean;
   schema?: object;
 }
 
@@ -27,12 +31,14 @@ const {
   publishedTime,
   updatedTime,
   wide = false,
+  home = false,
   schema,
 } = Astro.props;
 
 // Canonical with trailing slash, matching the old Jekyll URLs.
 const canonical = new URL(Astro.url.pathname.replace(/\/?$/, '/'), site.url);
 const ogImage = new URL(image, site.url);
+const size = home ? 'home' : wide ? 'wide' : 'content';
 ---
 
 <!doctype html>
@@ -99,11 +105,11 @@ const ogImage = new URL(image, site.url);
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header wide={wide} />
-    <main id="main" tabindex="-1" class:list={[{ wide }]}>
+    <Header size={size} />
+    <main id="main" tabindex="-1" class:list={[{ wide, home }]}>
       <slot />
     </main>
-    <Footer wide={wide} />
+    <Footer size={size} />
 
     <script>
       // ---- Global interactions. Bound once; view transitions swap the DOM,

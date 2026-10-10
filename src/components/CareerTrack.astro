@@ -39,10 +39,16 @@ const pct = (year: number) => ((Math.max(year, AXIS_START) - AXIS_START) / span)
 // than with a per-bar container query (those blanked labels in Chromium when
 // focus moved between the radios). Estimates assume the homepage column
 // (~672px wide) and a phone (~340px); ellipsis still covers the margin.
-function labelFits(widthPct: number, chars: number, trackPx: number, charPx: number): boolean {
-  return (widthPct / 100) * trackPx - 22 >= chars * charPx;
+function labelFits(
+  widthPct: number,
+  chars: number,
+  trackPx: number,
+  charPx: number,
+  inset = 22,
+): boolean {
+  // Bars never render narrower than 24px (see .bar width).
+  return Math.max(24, (widthPct / 100) * trackPx - 4) - inset >= chars * charPx;
 }
-const BRIGHTS = ['--yellow', '--pink', '--cyan', '--green'];
 
 interface Bar {
   role: Role;
@@ -111,8 +117,18 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
       <span class="now"><span class="now-pill">now</span></span>
     </div>
 
+    <p class="key">
+      <span class="hint">Pick a role for its highlights</span>
+      <span class="item"><span class="sw sw-ai"></span>Applied AI</span>
+      <span class="item"><span class="sw sw-lead"></span>Leadership</span>
+      <span class="item">
+        <span class="sw sw-side"></span>
+        <span>Part-time<span class="long">, alongside</span></span>
+      </span>
+    </p>
+
     {
-      bars.map((b, i) => {
+      bars.map((b) => {
         const s = pct(b.start);
         const w = pct(b.end) - s;
         const picks = (b.role.featured ?? [0, 1])
@@ -123,6 +139,11 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
         const since = b.start < AXIS_START ? `since ${Math.floor(b.start)}` : '';
         const chars = label.length + (since ? since.length + 3 : 0);
         const charPx = b.side ? 7 : 7.8;
+        // Colour is meaning: the applied AI role is yellow; leadership roles
+        // carry a heavy ink top band. Everything else stays ink on plate.
+        const ai = /\bAI\b/.test(b.role.title);
+        const lead = !b.side && /\b(Lead|Manager)\b/.test(b.role.title);
+        const fill = ai ? 'var(--ai)' : 'var(--ink)';
         return (
           <>
             <input
@@ -140,12 +161,15 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
                 {
                   side: b.side,
                   before: since !== '',
-                  'hide-wide': !labelFits(w, label.length, 672, charPx),
-                  'hide-narrow': !labelFits(w, label.length, 340, charPx * 0.82),
-                  'since-narrow': !labelFits(w, chars, 340, charPx * 0.82),
+                  ai,
+                  lead,
+                  'hide-wide': !labelFits(w, label.length, 672, charPx, 18),
+                  // Phones set labels condensed and tight, so every bar keeps a name.
+                  'hide-narrow': !labelFits(w, label.length, 340, charPx * 0.6, 8),
+                  'since-narrow': !labelFits(w, chars, 340, charPx * 0.6, 8),
                 },
               ]}
-              style={`--s: ${s}; --w: ${w}; --lane: ${b.lane}; --fill: var(${BRIGHTS[i % 4]})`}
+              style={`--s: ${s}; --w: ${w}; --lane: ${b.lane}; --fill: ${fill}`}
             >
               <span class="name" aria-hidden="true">
                 {label}
@@ -156,14 +180,14 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
                 </span>
               )}
             </label>
-            <div class="panel" style={`--caret: ${s + w / 2}%; --fill: var(${BRIGHTS[i % 4]})`}>
+            <div class="panel" style={`--caret: ${s + w / 2}%; --fill: ${fill}`}>
+              <h3>
+                {b.role.title} <span class="at">at {b.role.company}</span>
+              </h3>
               <p class="when">
                 {b.role.period} · {duration(months)}
                 {b.role.location && ` · ${b.role.location}`}
               </p>
-              <h3>
-                {b.role.title} <span class="at">at {b.role.company}</span>
-              </h3>
               {picks.length > 0 && (
                 <ul>
                   {picks.map((t) => (
@@ -214,9 +238,7 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     --main-h: 2.85rem;
     --side-h: 1.85rem;
     --side-gap: 0.45rem;
-    --lanes-h: calc(
-      var(--axis-h) + var(--main-h) + 0.85rem + var(--lanes) * (var(--side-h) + var(--side-gap))
-    );
+    --key-h: 2.4rem;
     container: track / inline-size;
   }
 
@@ -227,7 +249,13 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     }
   }
 
+  /* Lane geometry lives on the fieldset so the narrow-track query below can
+     grow the key without the track querying itself. */
   fieldset {
+    --lanes-h: calc(
+      var(--axis-h) + var(--main-h) + 0.85rem + var(--lanes) * (var(--side-h) + var(--side-gap)) +
+        var(--key-h)
+    );
     position: relative;
     border: 0;
     padding: var(--lanes-h) 0 0;
@@ -240,7 +268,7 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
   .axis {
     position: absolute;
     inset: 0 0 auto;
-    height: calc(var(--lanes-h) - 0.5rem);
+    height: calc(var(--lanes-h) - var(--key-h) - 0.5rem);
     pointer-events: none;
   }
 
@@ -254,7 +282,7 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
   .yr {
     display: block;
     padding-left: 0.3rem;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
@@ -283,12 +311,12 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     position: absolute;
     top: 0;
     right: 0;
-    background: var(--green);
-    color: var(--on-fill);
+    background: var(--ink);
+    color: var(--bg);
     border: 2px solid var(--ink);
     border-radius: 5px;
     padding: 0 0.3rem;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.3;
@@ -310,13 +338,22 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     background: var(--bg-raised);
     color: var(--fg);
     border: 2px solid var(--ink);
-    border-radius: 7px;
-    box-shadow: 3px 3px 0 var(--fill);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--ink);
     cursor: pointer;
     transition:
-      transform 0.12s ease,
-      box-shadow 0.12s ease,
+      transform 0.08s ease-out,
+      box-shadow 0.08s ease-out,
       background-color 0.12s ease;
+  }
+
+  .bar.ai {
+    background: var(--ai);
+    color: var(--on-fill);
+  }
+
+  .bar.lead {
+    border-top-width: 7px;
   }
 
   .bar.side {
@@ -370,42 +407,80 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     border-radius: 3px;
   }
 
-  /* Too narrow to read: no truncated stub, the panel names the role instead. */
-  .bar.hide-wide .name {
-    display: none;
+  /* Too narrow to read: no truncated stub, the panel names the role instead.
+     Phones have their own condensed rule below. */
+  @container track (width >= 34rem) {
+    .bar.hide-wide .name {
+      display: none;
+    }
   }
 
-  /* Phones: tighter bars so short labels still fit. */
+  /* Phones: condensed, tight labels so every bar, the current role first of
+     all, keeps its name. */
   @container track (width < 34rem) {
     .bar {
-      padding: 0 0.3rem;
+      padding: 0 0.12rem;
+      justify-content: center;
     }
 
     .name {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
+      font-stretch: 75%;
+      text-overflow: clip;
     }
 
     .side .name {
       font-size: 0.7rem;
+      padding: 0 0.1rem;
+    }
+
+    .bar.before {
+      justify-content: space-between;
     }
 
     .bar.hide-narrow .name,
     .bar.since-narrow .since {
       display: none;
     }
+
+    /* The key wraps to two lines on phones. */
+    fieldset {
+      --key-h: 3.6rem;
+    }
+
+    .hint {
+      flex-basis: 100%;
+    }
+
+    .key .long {
+      display: none;
+    }
+  }
+
+  /* The smallest phones fit two key items per line. */
+  @container track (width < 22rem) {
+    fieldset {
+      --key-h: 5rem;
+    }
   }
 
   .bar:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 var(--fill);
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 
-  /* Picked: filled with its bright and pressed in. */
+  /* Picked: pressed fully in and inverted to ink (the AI role keeps its
+     yellow, since that colour is its meaning). */
   input:checked + .bar {
-    background: var(--fill);
+    background: var(--ink);
+    color: var(--bg);
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  input:checked + .bar.ai {
+    background: var(--ai);
     color: var(--on-fill);
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--ink);
   }
 
   input:checked + .bar .name,
@@ -444,20 +519,76 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     left: clamp(0.9rem, var(--caret) - 8px, 100% - 1.9rem);
     width: 14px;
     height: 14px;
-    background: var(--fill);
+    background: var(--bg-raised);
     border-top: var(--bw) solid var(--ink);
     border-left: var(--bw) solid var(--ink);
     transform: rotate(45deg);
   }
 
   .when {
+    font-family: var(--font-mono);
     font-size: var(--text-sm);
     color: var(--fg-muted);
     font-variant-numeric: tabular-nums;
+    margin: 0 0 0.75rem;
+  }
+
+  /* ---- Key: what the encodings mean, and that bars can be picked. ---- */
+
+  .key {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--lanes-h) - var(--key-h) + 0.2rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1.1rem;
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+  }
+
+  .hint {
+    font-weight: 700;
+    color: var(--fg);
+    margin-right: auto;
+  }
+
+  .item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sw {
+    display: inline-block;
+    width: 1.4rem;
+    height: 0.85rem;
+    border: 2px solid var(--ink);
+    border-radius: 3px;
+    background: var(--bg-raised);
+  }
+
+  .sw-ai {
+    background: var(--ai);
+  }
+
+  .sw-lead {
+    border-top-width: 5px;
+  }
+
+  .sw-side {
+    background: repeating-linear-gradient(
+        135deg,
+        transparent 0 3px,
+        color-mix(in srgb, var(--ink) 30%, transparent) 3px 5px
+      )
+      var(--bg-raised);
   }
 
   .panel h3 {
-    margin: 0.2rem 0 0.6rem;
+    margin: 0 0 0.3rem;
     font-size: var(--text-lg);
   }
 
