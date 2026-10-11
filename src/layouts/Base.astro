@@ -94,17 +94,19 @@ const size = home ? 'home' : wide ? 'wide' : 'content';
         dark.addEventListener('change', apply);
       })();
     </script>
-
     <!-- Cloudflare Web Analytics: cookieless, no consent banner needed. The
          beacon's SPA mode tracks ClientRouter navigations via the history API. -->
     <script
       is:inline
       type="module"
       src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon={JSON.stringify({ token: site.cfAnalyticsToken })}></script>
+      data-cf-beacon={JSON.stringify({ token: site.cfAnalyticsToken })}
+    ></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <Header size={size} />
     <main id="main" tabindex="-1" class:list={[{ wide, home }]}>
       <slot />

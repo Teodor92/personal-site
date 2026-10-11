@@ -22,17 +22,15 @@ const date = pubDate.toLocaleDateString('en-GB', {
   class:list={['card', 'featured', { 'is-ai': pillar === 'ai', 'is-lab': pillar === 'homelab' }]}
   href={`/blog/${post.id}/`}
 >
-  {
-    heroImage && (
-      <Image
-        src={heroImage}
-        alt=""
-        widths={[480, 760, 1200]}
-        sizes="(max-width: 46rem) 100vw, 42rem"
-        format="webp"
-      />
-    )
-  }
+  {heroImage && (
+    <Image
+      src={heroImage}
+      alt=""
+      widths={[480, 760, 1200]}
+      sizes="(max-width: 46rem) 100vw, 42rem"
+      format="webp"
+    />
+  )}
   <div class="body">
     <h3 class="title">{title}</h3>
     <div class="meta">

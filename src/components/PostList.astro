@@ -16,35 +16,31 @@ const fmt = (d: Date) =>
 ---
 
 <ul class="post-list">
-  {
-    posts.map((post) => (
-      <li
-        class:list={{
-          'is-ai': post.data.pillar === 'ai',
-          'is-lab': post.data.pillar === 'homelab',
-        }}
-      >
-        <a class="card" href={`/blog/${post.id}/`}>
-          <Heading class="title">{post.data.title}</Heading>
-          <div class="meta">
-            <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
-            {post.data.pillar && (
-              <span class:list={['pillar', post.data.pillar]}>
-                {pillarLabels[post.data.pillar]}
-              </span>
-            )}
-          </div>
-          <p class="muted">{post.data.description}</p>
-          {postResults[post.id] && (
-            <p class="result">
-              <span class="data figure">{postResults[post.id].figure}</span>{' '}
-              {postResults[post.id].label}
-            </p>
+  {posts.map((post) => (
+    <li
+      class:list={{
+        'is-ai': post.data.pillar === 'ai',
+        'is-lab': post.data.pillar === 'homelab',
+      }}
+    >
+      <a class="card" href={`/blog/${post.id}/`}>
+        <Heading class="title">{post.data.title}</Heading>
+        <div class="meta">
+          <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+          {post.data.pillar && (
+            <span class:list={['pillar', post.data.pillar]}>{pillarLabels[post.data.pillar]}</span>
           )}
-        </a>
-      </li>
-    ))
-  }
+        </div>
+        <p class="muted">{post.data.description}</p>
+        {postResults[post.id] && (
+          <p class="result">
+            <span class="data figure">{postResults[post.id].figure}</span>{' '}
+            {postResults[post.id].label}
+          </p>
+        )}
+      </a>
+    </li>
+  ))}
 </ul>
 
 <style>

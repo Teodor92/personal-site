@@ -66,25 +66,21 @@ const schema = [
         {pillar && <span class:list={['pillar', pillar]}>{pillarLabels[pillar]}</span>}
         <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
         {minutesRead && <span> · {minutesRead}</span>}
-        {
-          updatedOn && (
-            <span>
-              {' · '}Updated <time datetime={updatedOn.toISOString()}>{fmt(updatedOn)}</time>
-            </span>
-          )
-        }
+        {updatedOn && (
+          <span>
+            {' · '}Updated <time datetime={updatedOn.toISOString()}>{fmt(updatedOn)}</time>
+          </span>
+        )}
       </p>
-      {
-        tags.length > 0 && (
-          <ul class="tags">
-            {tags.map((tag) => (
-              <li>
-                <a href={`/tags/${slugify(tag)}/`}>{tag}</a>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      {tags.length > 0 && (
+        <ul class="tags">
+          {tags.map((tag) => (
+            <li>
+              <a href={`/tags/${slugify(tag)}/`}>{tag}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
     <slot />
   </article>

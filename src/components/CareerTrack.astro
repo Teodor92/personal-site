@@ -107,102 +107,106 @@ for (let y = AXIS_START; y <= Math.floor(now); y++)
     </legend>
 
     <div class="axis" aria-hidden="true">
-      {
-        ticks.map(({ year, label, near }) => (
-          <span class:list={['tick', { near }]} style={`left: ${pct(year)}%`}>
-            {label && <span class="yr">{year}</span>}
-          </span>
-        ))
-      }
-      <span class="now"><span class="now-pill">now</span></span>
+      {ticks.map(({ year, label, near }) => (
+        <span class:list={['tick', { near }]} style={`left: ${pct(year)}%`}>
+          {label && <span class="yr">{year}</span>}
+        </span>
+      ))}
+      <span class="now">
+        <span class="now-pill">now</span>
+      </span>
     </div>
 
     <p class="key">
       <span class="hint">Pick a role for its highlights</span>
-      <span class="item"><span class="sw sw-ai"></span>Applied AI</span>
-      <span class="item"><span class="sw sw-lead"></span>Leadership</span>
+      <span class="item">
+        <span class="sw sw-ai"></span>Applied AI
+      </span>
+      <span class="item">
+        <span class="sw sw-lead"></span>Leadership
+      </span>
       <span class="item">
         <span class="sw sw-side"></span>
-        <span>Part-time<span class="long">, alongside</span></span>
+        <span>
+          Part-time<span class="long">, alongside</span>
+        </span>
       </span>
     </p>
 
-    {
-      bars.map((b) => {
-        const s = pct(b.start);
-        const w = pct(b.end) - s;
-        const picks = (b.role.featured ?? [0, 1])
-          .map((n) => b.role.bullets[n])
-          .filter((t): t is string => Boolean(t));
-        const months = Math.round((b.end - b.start) * 12);
-        const label = b.role.trackLabel ?? (b.side ? b.role.title : b.role.company);
-        const since = b.start < AXIS_START ? `since ${Math.floor(b.start)}` : '';
-        const chars = label.length + (since ? since.length + 3 : 0);
-        const charPx = b.side ? 7 : 7.8;
-        // Colour is meaning: the applied AI role is yellow; leadership roles
-        // carry a heavy ink top band. Everything else stays ink on plate.
-        const ai = /\bAI\b/.test(b.role.title);
-        const lead = !b.side && /\b(Lead|Manager)\b/.test(b.role.title);
-        const fill = ai ? 'var(--ai)' : 'var(--ink)';
-        return (
-          <>
-            <input
-              class="visually-hidden"
-              type="radio"
-              name="career-role"
-              id={`track-${b.id}`}
-              checked={b === current}
-              aria-label={`${b.role.title} at ${b.role.company}, ${b.role.period}`}
-            />
-            <label
-              for={`track-${b.id}`}
-              class:list={[
-                'bar',
-                {
-                  side: b.side,
-                  before: since !== '',
-                  ai,
-                  lead,
-                  'hide-wide': !labelFits(w, label.length, 672, charPx, 18),
-                  // Phones set labels condensed and tight, so every bar keeps a name.
-                  'hide-narrow': !labelFits(w, label.length, 340, charPx * 0.6, 8),
-                  'since-narrow': !labelFits(w, chars, 340, charPx * 0.6, 8),
-                },
-              ]}
-              style={`--s: ${s}; --w: ${w}; --lane: ${b.lane}; --fill: ${fill}`}
-            >
-              <span class="name" aria-hidden="true">
-                {label}
+    {bars.map((b) => {
+      const s = pct(b.start);
+      const w = pct(b.end) - s;
+      const picks = (b.role.featured ?? [0, 1])
+        .map((n) => b.role.bullets[n])
+        .filter((t): t is string => Boolean(t));
+      const months = Math.round((b.end - b.start) * 12);
+      const label = b.role.trackLabel ?? (b.side ? b.role.title : b.role.company);
+      const since = b.start < AXIS_START ? `since ${Math.floor(b.start)}` : '';
+      const chars = label.length + (since ? since.length + 3 : 0);
+      const charPx = b.side ? 7 : 7.8;
+      // Colour is meaning: the applied AI role is yellow; leadership roles
+      // carry a heavy ink top band. Everything else stays ink on plate.
+      const ai = /\bAI\b/.test(b.role.title);
+      const lead = !b.side && /\b(Lead|Manager)\b/.test(b.role.title);
+      const fill = ai ? 'var(--ai)' : 'var(--ink)';
+      return (
+        <>
+          <input
+            class="visually-hidden"
+            type="radio"
+            name="career-role"
+            id={`track-${b.id}`}
+            checked={b === current}
+            aria-label={`${b.role.title} at ${b.role.company}, ${b.role.period}`}
+          />
+          <label
+            for={`track-${b.id}`}
+            class:list={[
+              'bar',
+              {
+                side: b.side,
+                before: since !== '',
+                ai,
+                lead,
+                'hide-wide': !labelFits(w, label.length, 672, charPx, 18),
+                // Phones set labels condensed and tight, so every bar keeps a name.
+                'hide-narrow': !labelFits(w, label.length, 340, charPx * 0.6, 8),
+                'since-narrow': !labelFits(w, chars, 340, charPx * 0.6, 8),
+              },
+            ]}
+            style={`--s: ${s}; --w: ${w}; --lane: ${b.lane}; --fill: ${fill}`}
+          >
+            <span class="name" aria-hidden="true">
+              {label}
+            </span>
+            {since && (
+              <span class="since" aria-hidden="true">
+                {since}
               </span>
-              {since && (
-                <span class="since" aria-hidden="true">
-                  {since}
-                </span>
-              )}
-            </label>
-            <div class="panel" style={`--caret: ${s + w / 2}%; --fill: ${fill}`}>
-              <h3>
-                {b.role.title} <span class="at">at {b.role.company}</span>
-              </h3>
-              <p class="when">
-                {b.role.period} · {duration(months)}
-                {b.role.location && ` · ${b.role.location}`}
-              </p>
-              {picks.length > 0 && (
-                <ul>
-                  {picks.map((t) => (
-                    <li>{t}</li>
-                  ))}
-                </ul>
-              )}
-              <p class="more">
-                <a href={`/cv/#${b.id}`}>Full entry on the CV</a>
-              </p>
-            </div>
-          </>
-        );
-      })
-    }
+            )}
+          </label>
+          <div class="panel" style={`--caret: ${s + w / 2}%; --fill: ${fill}`}>
+            <h3>
+              {b.role.title} <span class="at">at {b.role.company}</span>
+            </h3>
+            <p class="when">
+              {b.role.period} · {duration(months)}
+              {b.role.location && ` · ${b.role.location}`}
+            </p>
+            {picks.length > 0 && (
+              <ul>
+                {picks.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            )}
+            <p class="more">
+              <a href={`/cv/#${b.id}`}>Full entry on the CV</a>
+            </p>
+          </div>
+        </>
+      );
+    })}
   </fieldset>
 </div>
 

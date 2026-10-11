@@ -15,8 +15,12 @@ import { cvFileBase } from '../data/cv-filename.mjs';
       </p>
     </div>
     <div class="downloads">
-      <a class="brutal-btn" href={`/${cvFileBase}.pdf`}>Download PDF</a>
-      <a class="brutal-btn" href={`/${cvFileBase}.docx`}>Download DOCX</a>
+      <a class="brutal-btn" href={`/${cvFileBase}.pdf`}>
+        Download PDF
+      </a>
+      <a class="brutal-btn" href={`/${cvFileBase}.docx`}>
+        Download DOCX
+      </a>
     </div>
   </div>
 
@@ -31,98 +35,88 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
   <h2 id="experience">Experience</h2>
   <div class="timeline">
-    {
-      roles.slice(0, 4).map((role) => (
-        <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
-          <header>
-            <h3>
-              {role.title} · <a href={role.url}>{role.company}</a>
-            </h3>
-            <p class="meta">
-              {role.period}
-              {role.location && ` · ${role.location}`}
-            </p>
-          </header>
-          {role.intro && <p class="intro">{role.intro}</p>}
+    {roles.slice(0, 4).map((role) => (
+      <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
+        <header>
+          <h3>
+            {role.title} · <a href={role.url}>{role.company}</a>
+          </h3>
+          <p class="meta">
+            {role.period}
+            {role.location && ` · ${role.location}`}
+          </p>
+        </header>
+        {role.intro && <p class="intro">{role.intro}</p>}
+        <ul>
+          {role.bullets.map((b) => (
+            <li>{b}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+    {roles.slice(4).map((role) => (
+      <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
+        <header>
+          <h3>
+            {role.title} · <a href={role.url}>{role.company}</a>
+          </h3>
+          <p class="meta">
+            {role.period}
+            {role.location && ` · ${role.location}`}
+          </p>
+        </header>
+        {role.intro && <p class="intro">{role.intro}</p>}
+        <details>
+          <summary>Show details</summary>
           <ul>
             {role.bullets.map((b) => (
               <li>{b}</li>
             ))}
           </ul>
-        </article>
-      ))
-    }
-    {
-      roles.slice(4).map((role) => (
-        <article id={roleId(role)} class:list={{ 'is-ai': /\bAI\b/.test(role.title) }}>
-          <header>
-            <h3>
-              {role.title} · <a href={role.url}>{role.company}</a>
-            </h3>
-            <p class="meta">
-              {role.period}
-              {role.location && ` · ${role.location}`}
-            </p>
-          </header>
-          {role.intro && <p class="intro">{role.intro}</p>}
-          <details>
-            <summary>Show details</summary>
-            <ul>
-              {role.bullets.map((b) => (
-                <li>{b}</li>
-              ))}
-            </ul>
-          </details>
-        </article>
-      ))
-    }
+        </details>
+      </article>
+    ))}
   </div>
 
   <h2 id="education">Education</h2>
   <div class="timeline">
-    {
-      education.map((e) => (
-        <article>
-          <header>
-            <h3>
-              {e.degree} · <a href={e.url}>{e.school}</a>
-            </h3>
-            <p class="meta">
-              {e.location} · {e.note}
-            </p>
-          </header>
-          <p>{e.details}</p>
-        </article>
-      ))
-    }
+    {education.map((e) => (
+      <article>
+        <header>
+          <h3>
+            {e.degree} · <a href={e.url}>{e.school}</a>
+          </h3>
+          <p class="meta">
+            {e.location} · {e.note}
+          </p>
+        </header>
+        <p>{e.details}</p>
+      </article>
+    ))}
   </div>
 
   <h2 id="skills">Skills</h2>
   <dl class="skills">
-    {
-      skills.map((s) => (
-        <>
-          <dt>{s.group}</dt>
-          <dd class="muted">{s.items}</dd>
-        </>
-      ))
-    }
+    {skills.map((s) => (
+      <>
+        <dt>{s.group}</dt>
+        <dd class="muted">{s.items}</dd>
+      </>
+    ))}
   </dl>
 
   <h2 id="volunteering">Volunteering</h2>
   <div class="timeline">
-    {
-      volunteering.map((v) => (
-        <article>
-          <header>
-            <h3>
-              {v.role} · <a href={v.url}>{v.org}</a>
-            </h3>
-          </header>
-          <p>{v.details}</p>
-        </article>
-      ))
-    }
+    {volunteering.map((v) => (
+      <article>
+        <header>
+          <h3>
+            {v.role} · <a href={v.url}>{v.org}</a>
+          </h3>
+        </header>
+        <p>{v.details}</p>
+      </article>
+    ))}
   </div>
 
   <h2>Interests</h2>

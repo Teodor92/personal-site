@@ -19,26 +19,22 @@ const { title, href, linkLabel, leds = [] } = Astro.props;
     <path d="M5.5 10h9M10 5.5v9"></path>
   </svg>
   <h2>{title}</h2>
-  {
-    leds.length > 0 && (
-      <span class="leds" aria-hidden="true">
-        {leds.map((led) => (
-          <span class:list={['led', led]} />
-        ))}
-      </span>
-    )
-  }
+  {leds.length > 0 && (
+    <span class="leds" aria-hidden="true">
+      {leds.map((led) => (
+        <span class:list={['led', led]} />
+      ))}
+    </span>
+  )}
   <span class="vents" aria-hidden="true"></span>
-  {
-    href && linkLabel && (
-      <a class="brutal-btn onward" href={href}>
-        {linkLabel}
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </a>
-    )
-  }
+  {href && linkLabel && (
+    <a class="brutal-btn onward" href={href}>
+      {linkLabel}
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </a>
+  )}
   <svg class="screw" viewBox="0 0 20 20" aria-hidden="true">
     <circle cx="10" cy="10" r="8"></circle>
     <path d="M5.5 10h9M10 5.5v9"></path>

@@ -20,7 +20,9 @@ const year = new Date().getFullYear();
       <ContactActions />
     </div>
     <div class="base">
-      <small>© {year} {site.name} · <a href="/feed.xml">RSS</a></small>
+      <small>
+        © {year} {site.name} · <a href="/feed.xml">RSS</a>
+      </small>
       <SocialLinks exclude={['email']} />
     </div>
   </div>

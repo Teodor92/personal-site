@@ -24,17 +24,17 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 <header>
   <nav aria-label="Main" class={size}>
     <a class="brand" href="/">
-      <span class="mark" aria-hidden="true">TK</span>
+      <span class="mark" aria-hidden="true">
+        TK
+      </span>
       <span class="name">{site.name}</span>
     </a>
     <div class="links">
-      {
-        nav.map(({ label, href }) => (
-          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
-            {label}
-          </a>
-        ))
-      }
+      {nav.map(({ label, href }) => (
+        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+          {label}
+        </a>
+      ))}
       <ThemeToggle />
     </div>
   </nav>
