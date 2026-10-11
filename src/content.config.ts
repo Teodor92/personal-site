@@ -14,9 +14,11 @@ const blog = defineCollection({
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
       // Homepage curation: which of the two content pillars a post belongs to,
-      // and the one post shown as the featured build.
+      // the one post shown as the featured build, and an optional pin that makes
+      // a post its pillar's homepage pick instead of the newest one.
       pillar: z.enum(['ai', 'homelab']).optional(),
       featured: z.boolean().default(false),
+      pinned: z.boolean().default(false),
     }),
 });
 

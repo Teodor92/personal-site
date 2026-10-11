@@ -6,10 +6,12 @@ export const site = {
   // One line of hard evidence under the pitch; figures from the public CV (cv.ts, Deel).
   proof:
     'Before YuLife I was an Engineering Manager at Deel: 13 direct reports, 4 new teams and billing features behind $2M in monthly revenue.',
+  // What a visitor can get in touch about, shown under the hero's proof line.
+  openTo: 'Open to roles, consulting, talks and collaborations in applied AI.',
   email: 'teodor.ivanov92@gmail.com',
   url: 'https://teodorkurtev.com',
   description:
-    'Personal site and blog of Teodor Kurtev, Senior Applied AI Software Engineer, writing about AI-assisted engineering, tooling and teams.',
+    'Teodor Kurtev builds reliable AI product features: agentic workflows, LLM evals and the engineering behind them. CV, writing and how to get in touch.',
   cfAnalyticsToken: '17476ee016ba4519a0abad0663853a5e',
   avatar: '/assets/images/bio-photo.jpg',
   socials: [

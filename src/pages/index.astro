@@ -18,12 +18,15 @@ const published = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-// Lead with the featured build, then the newest post from each pillar, so the
-// homepage shows both halves of the work rather than whatever was posted last.
-// Without curation it falls back to the three newest posts.
+// Lead with the featured build, then one post from each pillar (its pinned post,
+// else its newest), so the homepage shows both halves of the work rather than
+// whatever was posted last. Without curation it falls back to the three newest.
 const featured = published.find((p) => p.data.featured);
 const pillarPosts = (['ai', 'homelab'] as const)
-  .map((pillar) => published.find((p) => p.data.pillar === pillar && p !== featured))
+  .map((pillar) => {
+    const candidates = published.filter((p) => p.data.pillar === pillar && p !== featured);
+    return candidates.find((p) => p.data.pinned) ?? candidates[0];
+  })
   .filter((p) => p !== undefined);
 const posts = featured ? pillarPosts : published.slice(0, 3);
 
@@ -39,12 +42,14 @@ const nameLines = site.name.split(' ');
 >
   <section class="hero">
     <h1 class="name">
-      {nameLines.map((line, i) => (
-        <>
-          {i > 0 && ' '}
-          <span>{line}</span>
-        </>
-      ))}
+      {
+        nameLines.map((line, i) => (
+          <>
+            {i > 0 && ' '}
+            <span>{line}</span>
+          </>
+        ))
+      }
     </h1>
     <figure class="print">
       <Image
@@ -61,6 +66,14 @@ const nameLines = site.name.split(' ');
       <p class="role">{site.role}</p>
       <p class="pitch">{site.pitch}</p>
       <p class="proof">{site.proof}</p>
+      {
+        featured && (
+          <p class="evidence">
+            Latest build: <a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
+          </p>
+        )
+      }
+      <p class="open-to">{site.openTo}</p>
       <ContactActions>
         <SocialLinks exclude={['email']} />
       </ContactActions>
@@ -72,15 +85,17 @@ const nameLines = site.name.split(' ');
     <CareerTrack />
   </section>
 
-  {(featured || posts.length > 0) && (
-    <section>
-      <Faceplate title="Writing" href="/blog/" linkLabel="All posts" leds={['ai', 'lab']} />
-      <div class="writing">
-        {featured && <FeaturedPost post={featured} />}
-        {posts.length > 0 && <PostList posts={posts} />}
-      </div>
-    </section>
-  )}
+  {
+    (featured || posts.length > 0) && (
+      <section>
+        <Faceplate title="Writing" href="/blog/" linkLabel="All posts" leds={['ai', 'lab']} />
+        <div class="writing">
+          {featured && <FeaturedPost post={featured} />}
+          {posts.length > 0 && <PostList posts={posts} />}
+        </div>
+      </section>
+    )
+  }
 </Base>
 
 <style>
@@ -185,6 +200,20 @@ const nameLines = site.name.split(' ');
 
   .proof {
     color: var(--fg-muted);
+    max-width: 36rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* A link from the pitch straight to the work that backs it up. */
+  .evidence {
+    max-width: 36rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* What to get in touch about, directly above the contact buttons. */
+  .open-to {
+    font-family: var(--font-display);
+    font-weight: 800;
     max-width: 36rem;
     margin-bottom: 1.6rem;
   }

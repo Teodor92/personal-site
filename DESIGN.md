@@ -194,7 +194,7 @@ A near-monochrome ink-on-cream system with two meaning colours and nothing else 
 
 ### Primary
 
-- **Signal Yellow** (`signal-yellow`): applied AI. Fills the primary action (Download CV), the TK brand plate, the role sticker, AI pillar stickers, the AI role bar and CV marker, selection, the reading progress bar, the skip link and every hover highlight (inline links, tag pills, icon buttons). Also the prose heading marker underline. Text on it is always ink.
+- **Signal Yellow** (`signal-yellow`): applied AI. Fills the primary action (Start a conversation), the TK brand plate, the role sticker, AI pillar stickers, the AI role bar and CV marker, selection, the reading progress bar, the skip link and every hover highlight (inline links, tag pills, icon buttons). Also the prose heading marker underline. Text on it is always ink.
 
 ### Secondary
 
@@ -291,7 +291,7 @@ Resting tilt is reserved for the two hero objects: the photo print (2.5deg) unde
 Chunky and tactile: an outline you can push.
 
 - **Shape:** 3px ink outline, 7px radius, ink shadow.
-- **Primary:** signal yellow with ink text, display face at 800, 56px tall with a 6px shadow (contact actions). The CV page's PDF download uses the same yellow at small size.
+- **Primary:** signal yellow with ink text, display face at 800, 56px tall with a 6px shadow (the contact actions' email button; Download CV beside it is secondary). The CV page's PDF download uses the same yellow at small size.
 - **Secondary:** plate white with ink text, same sizes.
 - **Icon (theme toggle, socials, copy):** 2.4rem square (2.75rem on touch), plate white; the theme toggle turns yellow on hover.
 - **Onward:** the faceplate's "next" button, plate white with an inline arrow drawn at 2.6 stroke.

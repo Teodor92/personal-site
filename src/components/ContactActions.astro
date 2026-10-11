@@ -9,12 +9,8 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
 <div class="contact-actions">
   <div class="buttons">
-    <a class="brutal-btn cv" href={`/${cvFileBase}.pdf`} download>
-      Download CV (PDF)
-    </a>
-    <a class="brutal-btn email" href={`mailto:${site.email}`}>
-      Email me
-    </a>
+    <a class="brutal-btn email" href={`mailto:${site.email}`}>Start a conversation</a>
+    <a class="brutal-btn cv" href={`/${cvFileBase}.pdf`} download>Download CV (PDF)</a>
   </div>
   <div class="reach">
     <p class="address">
@@ -69,9 +65,10 @@ import { cvFileBase } from '../data/cv-filename.mjs';
     box-shadow: 0 0 0 var(--ink);
   }
 
-  /* The CV is the primary action, in the lead (AI) colour. */
-  .buttons a.cv,
-  .buttons a.cv:hover {
+  /* Getting in touch is the primary action, in the lead (AI) colour; the CV
+     is a click away on /cv/ too, so it sits second. */
+  .buttons a.email,
+  .buttons a.email:hover {
     background: var(--ai);
     color: var(--on-fill);
   }
