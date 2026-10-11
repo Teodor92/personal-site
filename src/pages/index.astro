@@ -42,14 +42,12 @@ const nameLines = site.name.split(' ');
 >
   <section class="hero">
     <h1 class="name">
-      {
-        nameLines.map((line, i) => (
-          <>
-            {i > 0 && ' '}
-            <span>{line}</span>
-          </>
-        ))
-      }
+      {nameLines.map((line, i) => (
+        <>
+          {i > 0 && ' '}
+          <span>{line}</span>
+        </>
+      ))}
     </h1>
     <figure class="print">
       <Image
@@ -66,13 +64,11 @@ const nameLines = site.name.split(' ');
       <p class="role">{site.role}</p>
       <p class="pitch">{site.pitch}</p>
       <p class="proof">{site.proof}</p>
-      {
-        featured && (
-          <p class="evidence">
-            Latest build: <a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
-          </p>
-        )
-      }
+      {featured && (
+        <p class="evidence">
+          Latest build: <a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
+        </p>
+      )}
       <p class="open-to">{site.openTo}</p>
       <ContactActions>
         <SocialLinks exclude={['email']} />
@@ -85,17 +81,15 @@ const nameLines = site.name.split(' ');
     <CareerTrack />
   </section>
 
-  {
-    (featured || posts.length > 0) && (
-      <section>
-        <Faceplate title="Writing" href="/blog/" linkLabel="All posts" leds={['ai', 'lab']} />
-        <div class="writing">
-          {featured && <FeaturedPost post={featured} />}
-          {posts.length > 0 && <PostList posts={posts} />}
-        </div>
-      </section>
-    )
-  }
+  {(featured || posts.length > 0) && (
+    <section>
+      <Faceplate title="Writing" href="/blog/" linkLabel="All posts" leds={['ai', 'lab']} />
+      <div class="writing">
+        {featured && <FeaturedPost post={featured} />}
+        {posts.length > 0 && <PostList posts={posts} />}
+      </div>
+    </section>
+  )}
 </Base>
 
 <style>
