@@ -249,7 +249,7 @@ small {
   color: var(--fg-muted);
 }
 
-/* Dates, periods, locations, contact lines — small *and* quiet. */
+/* Dates, periods, locations, contact lines - small *and* quiet. */
 .meta {
   color: var(--fg-muted);
   font-size: var(--text-sm);
@@ -647,7 +647,7 @@ pre:hover .copy-code,
     background: #ffffff;
   }
 
-  /* Site chrome only — scoped to direct children of <body> so the <header>
+  /* Site chrome only - scoped to direct children of <body> so the <header>
      elements that wrap CV role and blog post headings keep printing. */
   body > header,
   body > footer,

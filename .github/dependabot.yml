@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # One grouped PR per ecosystem per week — the backlog of single-package PRs
+  # One grouped PR per ecosystem per week - the backlog of single-package PRs
   # was never going to be merged one at a time on a site this small.
   - package-ecosystem: 'npm'
     directory: '/'

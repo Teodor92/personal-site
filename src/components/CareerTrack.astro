@@ -62,7 +62,7 @@ interface Bar {
 
 const inRange = roles
   .map((role) => {
-    const [from, to = 'Present'] = role.period.split('–');
+    const [from, to = 'Present'] = role.period.split('-');
     return {
       role,
       start: toYear(from, false),

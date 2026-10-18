@@ -27,7 +27,7 @@ export const roles: Role[] = [
     url: 'https://yulife.com/',
     title: 'Senior Applied AI Software Engineer',
     location: 'Remote',
-    period: 'May 2025 – Present',
+    period: 'May 2025 - Present',
     featured: [3, 2, 4],
     highlight: true,
     // NOTE: intentionally generic, no internal project/client specifics.
@@ -48,7 +48,7 @@ export const roles: Role[] = [
     url: 'https://www.deel.com/',
     title: 'Engineering Manager',
     location: 'Remote',
-    period: 'Jan 2024 – May 2025',
+    period: 'Jan 2024 - May 2025',
     featured: [3, 2, 6],
     highlight: true,
     bullets: [
@@ -67,7 +67,7 @@ export const roles: Role[] = [
     url: 'https://moteefe.com/',
     title: 'Senior Software Engineer',
     location: 'Remote',
-    period: 'Jan 2022 – Jan 2024',
+    period: 'Jan 2022 - Jan 2024',
     featured: [0, 1],
     highlight: true,
     intro: "Developed, deployed and maintained key features across Moteefe's e-commerce platform.",
@@ -84,7 +84,7 @@ export const roles: Role[] = [
     url: 'https://softuni.bg/',
     title: 'Part-time Lecturer',
     location: 'Remote',
-    period: 'May 2020 – Apr 2024',
+    period: 'May 2020 - Apr 2024',
     trackLabel: 'Lecturer · SoftUni',
     featured: [0, 2],
     bullets: [
@@ -98,7 +98,7 @@ export const roles: Role[] = [
     url: 'https://www.mentortheyoung.com/',
     title: 'Mentor',
     location: 'Sofia, Bulgaria / Remote',
-    period: 'Sept 2022 – Jan 2024',
+    period: 'Sept 2022 - Jan 2024',
     trackLabel: 'Mentor',
     featured: [0, 1],
     bullets: [
@@ -111,7 +111,7 @@ export const roles: Role[] = [
     url: 'https://teodorkurtev.com/',
     title: 'Software Engineer',
     location: '',
-    period: 'Sept 2011 – Present',
+    period: 'Sept 2011 - Present',
     trackLabel: 'Freelance',
     featured: [0, 1],
     intro:
@@ -127,7 +127,7 @@ export const roles: Role[] = [
     url: 'https://www.news.co.uk/',
     title: 'Lead Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Aug 2020 – Jan 2022',
+    period: 'Aug 2020 - Jan 2022',
     featured: [0, 3],
     highlight: true,
     intro:
@@ -144,7 +144,7 @@ export const roles: Role[] = [
     url: 'https://synchronoss.com/',
     title: 'Lead Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Oct 2017 – Aug 2020',
+    period: 'Oct 2017 - Aug 2020',
     trackLabel: 'Synchronoss',
     featured: [0, 2, 5],
     highlight: true,
@@ -162,7 +162,7 @@ export const roles: Role[] = [
     url: 'https://www.softwareimprovementgroup.com/',
     title: 'Software Engineer / Researcher',
     location: 'Amsterdam, The Netherlands',
-    period: 'Jan 2017 – Aug 2017',
+    period: 'Jan 2017 - Aug 2017',
     trackLabel: 'SIG',
     highlight: true,
     featured: [3, 1],
@@ -178,7 +178,7 @@ export const roles: Role[] = [
     url: 'https://www.epam.com/',
     title: 'Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Mar 2016 – Aug 2016',
+    period: 'Mar 2016 - Aug 2016',
     bullets: [
       'Built back-end features with C#, MS SQL Server, Entity Framework and ASP.NET MVC.',
       'Implemented front-end features with Angular.js, jQuery and the Google Maps APIs.',
@@ -190,7 +190,7 @@ export const roles: Role[] = [
     url: 'https://www.sbtech.com/',
     title: 'Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Jan 2015 – Aug 2015',
+    period: 'Jan 2015 - Aug 2015',
     bullets: [
       'Developed new front-end and back-end features for the mobile and tablet betting solutions using .NET and JavaScript, helping bring the tablet solution to its initial release.',
       'Took part in code-quality initiatives: code reviews, CI, static analysis and refactoring.',
@@ -201,7 +201,7 @@ export const roles: Role[] = [
     url: 'https://softuni.bg/',
     title: 'Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Oct 2013 – Feb 2015',
+    period: 'Oct 2013 - Feb 2015',
     intro:
       'As the first developer at Software University, I designed, developed and tested the core modules of the Software University Learning System (SULS).',
     bullets: [
@@ -214,7 +214,7 @@ export const roles: Role[] = [
     url: 'https://www.telerikacademy.com/',
     title: 'Trainee Software Engineer',
     location: 'Sofia, Bulgaria',
-    period: 'Sept 2011 – Oct 2013',
+    period: 'Sept 2011 - Oct 2013',
     bullets: [
       'Practical introduction to technologies ranging from C# and JavaScript to frameworks like ASP.NET MVC, Angular.js, Kendo and WPF.',
       'Focused on writing high-quality code that follows OOP best practices such as SOLID, DRY and YAGNI.',

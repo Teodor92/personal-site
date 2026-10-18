@@ -9,7 +9,7 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: [sitemap()],
   redirects: {
-    // Old Jekyll archive routes — low traffic, point at the blog index
+    // Old Jekyll archive routes - low traffic, point at the blog index
     '/year-archive/': '/blog/',
     '/categories/': '/blog/',
     // The Jekyll theme's posts archive; still linked from somewhere and 404ing

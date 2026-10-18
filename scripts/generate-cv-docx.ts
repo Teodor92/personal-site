@@ -1,4 +1,4 @@
-// Builds dist/cv.docx straight from the CV data — no HTML in the loop.
+// Builds dist/cv.docx straight from the CV data - no HTML in the loop.
 //
 // Word's own semantics (Title/Heading styles, real bullet numbering, a proper
 // hyperlink field) are what ATS parsers read cleanly, so this composes the
@@ -40,7 +40,7 @@ const section = (text: string) =>
 const entry = (text: string) =>
   new Paragraph({ text, heading: HeadingLevel.HEADING_2, spacing: { before: 220, after: 0 } });
 
-// Dates / location / grade — the grey line under an entry title.
+// Dates / location / grade - the grey line under an entry title.
 const meta = (text: string) =>
   new Paragraph({
     children: [new TextRun({ text, color: MUTED, italics: true })],
@@ -103,7 +103,7 @@ const giving = volunteering.flatMap((item) => [
 
 const doc = new Document({
   creator: site.name,
-  title: `${site.name} — Curriculum Vitae`,
+  title: `${site.name} - Curriculum Vitae`,
   description: site.description,
   styles: {
     default: {

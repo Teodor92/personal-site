@@ -1,7 +1,7 @@
 // Renders the already-built /cv/ page to dist/cv.pdf with headless Chromium.
 //
 // Runs *after* `astro build` (it serves dist/, it doesn't create it), so a plain
-// `npm run build` stays Playwright-free — see the `build:pdf` npm script and the
+// `npm run build` stays Playwright-free - see the `build:pdf` npm script and the
 // deploy workflow. dist/ is served by a throwaway in-process static server on an
 // OS-assigned port: nothing to spawn, no port clashes, and no way to leak an
 // orphan process if this script dies. Any failure exits non-zero so CI is loud.
@@ -58,7 +58,7 @@ const server = createServer(async (req, res) => {
 async function generate() {
   const entry = path.join(root, 'cv', 'index.html');
   if (!(await stat(entry).catch(() => null))) {
-    throw new Error(`${entry} not found — run \`npm run build\` first.`);
+    throw new Error(`${entry} not found - run \`npm run build\` first.`);
   }
 
   await new Promise((resolve, reject) => {
@@ -79,7 +79,7 @@ async function generate() {
 
     // Collapsed <details> (the older roles) render nothing, and Chromium's
     // print-to-PDF never fires `beforeprint`, so the page's own handler can't
-    // help here — open them before printing so the PDF is the full CV.
+    // help here - open them before printing so the PDF is the full CV.
     await page.evaluate(() => {
       for (const details of document.querySelectorAll('details')) details.open = true;
     });

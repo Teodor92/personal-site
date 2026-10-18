@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
 const PORT = 4321;
 const baseURL = `http://localhost:${PORT}`;
 
-// `astro build` wipes dist/ — and by the time the deploy workflow runs the
+// `astro build` wipes dist/ - and by the time the deploy workflow runs the
 // tests, dist/ also holds the generated CV PDF and DOCX, which a rebuild would
 // delete before the Pages artifact is uploaded. So build only when there is
 // nothing to serve: CI (and anyone who ran `npm run build`) gets a plain

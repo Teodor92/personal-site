@@ -125,7 +125,7 @@ import { cvFileBase } from '../data/cv-filename.mjs';
 
 <script>
   // Closed <details> content doesn't print. Open everything when the reader hits
-  // ⌘P and restore afterwards. (The downloadable PDF is generated separately at build time —
+  // ⌘P and restore afterwards. (The downloadable PDF is generated separately at build time -
   // Chromium's print-to-PDF doesn't fire these events, so that script opens the
   // details itself; see scripts/generate-cv-pdf.mjs.)
   let touched: HTMLDetailsElement[] = [];

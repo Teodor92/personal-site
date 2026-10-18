@@ -14,7 +14,7 @@ test.describe('print stylesheet', () => {
     await expect(page.locator('.toc')).toBeHidden();
 
     // Roles past the fourth wrap their bullets in <details>, but the heading
-    // lives outside it — every one of them has to survive into the PDF.
+    // lives outside it - every one of them has to survive into the PDF.
     const headings = page.locator('.timeline article header h3');
     const count = await headings.count();
     expect(count).toBeGreaterThan(0);
@@ -45,7 +45,7 @@ test('the skip link is the first tab stop and moves focus to <main>', async ({ p
 });
 
 test.describe('without JavaScript', () => {
-  // A separate context with scripting off — the static HTML has to stand alone.
+  // A separate context with scripting off - the static HTML has to stand alone.
   test.use({ javaScriptEnabled: false });
 
   test('home page content is not hidden behind a script-driven reveal', async ({ page }) => {

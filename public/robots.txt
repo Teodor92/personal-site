@@ -3,7 +3,7 @@
 # Blocked below: crawlers that harvest pages to train models or resell scraped
 # content. Deliberately NOT blocked: user-triggered fetchers and AI search
 # indexers (ChatGPT-User, OAI-SearchBot, Claude-User, Claude-SearchBot,
-# PerplexityBot, Perplexity-User) — they answer a person's question and link
+# PerplexityBot, Perplexity-User) - they answer a person's question and link
 # back, so they're treated like any other search engine.
 
 # AI training / scraping crawlers: opted out.

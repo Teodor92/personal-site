@@ -13,7 +13,7 @@ test('the generated CV PDF is a real, non-empty document', async () => {
   const info = await stat(pdfPath).catch(() => null);
   test.skip(
     info === null,
-    `${cvFileBase}.pdf is not in dist/ — run \`npm run build && npm run build:pdf\` to cover it.`,
+    `${cvFileBase}.pdf is not in dist/ - run \`npm run build && npm run build:pdf\` to cover it.`,
   );
 
   // A CV that failed to render still writes a few kB of blank pages.
