@@ -33,7 +33,7 @@ metadatasource|https://api.bookinfo.pro
 
 `api.bookinfo.pro` is the hosted instance of rreading-glasses, which its README describes as a drop-in replacement for Readarr's defunct metadata service that "works with your existing installation" and is backwards-compatible with your library. It serves Goodreads-style data, or Hardcover data from a second endpoint.
 
-So "Readarr is broken" wasn't true for me. The accurate version is that Readarr will never get another release: no bug fixes, no security patches, nothing new. That's a slower problem than broken search, but it's still a problem, especially for something reachable from other containers on my network.
+So "Readarr is broken" wasn't true for me. What is true is that Readarr will never get another release: no bug fixes, no security patches, nothing new. That's a slower problem than broken search, but it's still a problem, especially for something reachable from other containers on my network.
 
 The library itself was small, which made the decision easy:
 
@@ -126,11 +126,11 @@ It also wrote a matching Unraid template, so I can still edit the container from
 - Bookshelf could reach the root folder `/data/media/books`.
 - The qBittorrent download client test passed.
 
-One thing looked wrong and wasn't. Bookshelf showed a health error saying all download clients were unavailable, even though the test passed. That warning was carried over in the copied database from Readarr's last health check, and it cleared on its own at the next one. Worth knowing before you go chasing it.
+One thing looked wrong and wasn't. Bookshelf showed a health error saying all download clients were unavailable, even though the test passed. That warning was carried over in the copied database from Readarr's last health check, and it cleared on its own at the next one, so don't go chasing it.
 
 ## Everything that pointed at the old container
 
-This is the part that takes the time, and it's where a migration that "works" can quietly leave things broken. Renaming the container from `readarr` to `bookshelf` breaks every URL that used the old name.
+This is the part that takes the time, and it's where a migration that "works" can leave things broken without you noticing. Renaming the container from `readarr` to `bookshelf` breaks every URL that used the old name.
 
 **Prowlarr.** I'd actually removed the Readarr app from Prowlarr earlier that day, when I still thought Readarr was dead: Readarr had been firing nightly RSS requests at two indexers Prowlarr no longer supported. So Bookshelf went back in as a new app of type Readarr, pointing at `http://bookshelf:8787`, with the book categories (3030 and 7000 to 7060) and full sync. The connection test passed before saving. Full sync makes Prowlarr the owner of the app's indexer list, so after the first sync Bookshelf had only the indexers that still work, and the two dead ones it inherited from Readarr were removed.
 
@@ -141,7 +141,7 @@ This is the part that takes the time, and it's where a migration that "works" ca
 - **Cleanuparr**, which keeps its \*arr instances in a SQLite database. I stopped it, backed up the database, changed the one row, and started it again. It logged the new instance as healthy straight away.
 - **Fetcharr**, which takes its instance URLs from environment variables. Changing one of those means recreating the container, the same thing Unraid's Apply button does.
 
-The Fetcharr recreation is where the agent slipped. It rebuilt the container from its live settings but missed a `--user=99:100` flag that lived in the Unraid template's extra parameters, not in the environment. The app started, connected to everything, and then couldn't write its own log file: `Permission denied`. A second recreation with the right user fixed it. The lesson generalises: when you recreate a container by hand, diff it against the template, not just against `docker inspect` of what you think matters.
+The Fetcharr recreation is where the agent slipped. It rebuilt the container from its live settings but missed a `--user=99:100` flag that lived in the Unraid template's extra parameters, not in the environment. The app started, connected to everything, and then couldn't write its own log file: `Permission denied`. A second recreation with the right user fixed it. So when you recreate a container by hand, diff it against the template, not just against `docker inspect` of what you think matters.
 
 ## Cleaning up Readarr
 

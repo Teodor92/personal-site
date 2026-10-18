@@ -1,6 +1,6 @@
 ---
 title: 'Planning a Usenet setup in 2026 from Eastern Europe: backbones, blocks and indexers'
-description: 'Why I am moving my media stack to Usenet first, what backbones and block accounts are, which providers and indexers made the cut, SABnzbd vs NZBGet, and what it costs.'
+description: "Why I'm moving my media stack to Usenet first: backbones, block accounts, the providers and indexers that made the cut, SABnzbd vs NZBGet, and the cost."
 pubDate: 2026-10-09T12:00:00+03:00
 tags:
   - homelab
@@ -17,12 +17,12 @@ The usual answer on homelab forums is "get Usenet". So I sat down with an AI age
 >
 > - The thing to understand is the **backbone**: many Usenet brands resell the same storage. A second account only helps if it sits on a different backbone. Eweka plus Tweaknews is the same data bought twice.
 > - My plan: **Eweka** as the unlimited primary (the longest retention, EU-based, about 32 ms from Sofia), one non-expiring **block account on UsenetExpress**, and **NZBGeek plus NZBFinder** as indexers. That works out to about **€7 to €9 a month** in the first year and **€7 to €8** after that.
-> - **SABnzbd** is still the right download client for a normal homelab. NZBGet has caught up on speed, but not enough to switch.
+> - **SABnzbd** is still the right download client for a normal homelab. NZBGet has caught up on speed, but that alone isn't a reason to switch.
 > - Usenet won't replace torrents for anime. The biggest torrent-to-Usenet mirror, AnimeTosho, stopped in May 2026, so Nyaa stays as a permanent fallback.
 
 ## Backbones are the thing to understand
 
-A backbone is the company that actually stores the articles your downloads are made of. The brand you pay (Newshosting, Eweka, Frugal and dozens of others) is often a reseller sitting on someone else's storage. That's the single most important thing to know, because it decides whether a second subscription adds anything.
+A backbone is the company that actually stores the articles your downloads are made of. The brand you pay (Newshosting, Eweka, Frugal and dozens of others) is often a reseller sitting on someone else's storage. That matters because it decides whether a second subscription adds anything.
 
 The community-maintained [Usenet Tree provider map](https://usenet.rexum.space/tree) and the [r/usenet providers wiki](https://web.archive.org/web/20260325180443/https://www.reddit.com/r/usenet/wiki/providers/) are the best sources I found for who sits where. Simplified, as of September 2026:
 
@@ -99,7 +99,7 @@ The community-maintained [Usenet Tree provider map](https://usenet.rexum.space/t
 
 The trap is the top box. Omicron Media owns the Omicron backbone, Eweka and Base IP. Eweka is a slightly special case: it runs its own brand, servers and takedown process in Amsterdam on top of Omicron's storage, which is why it gets its own box here. The r/usenet wiki describes Tweaknews's Amsterdam servers as a cached version of Eweka's, so buying Tweaknews as a "backup" to Eweka gets you almost nothing new.
 
-**Why diversity helps at all.** Articles go missing for several reasons: retention limits, storage failures and takedown notices, which each provider processes under its own rules. US providers follow the DMCA; Dutch providers like Eweka follow the Dutch notice-and-takedown code, where each provider sets its own process. That's also why two brands on the same storage can report slightly different availability. A backbone with independent storage has its own gaps in different places, so it can complete downloads the first one can't. That's the whole job of a second backbone: better completion rates, not more content.
+**Why diversity helps at all.** Articles go missing for several reasons: retention limits, storage failures and takedown notices, which each provider processes under its own rules. US providers follow the DMCA; Dutch providers like Eweka follow the Dutch notice-and-takedown code, where each provider sets its own process. That's also why two brands on the same storage can report slightly different availability. A backbone with independent storage has its own gaps in different places, so it can complete downloads the first one can't. That's all a second backbone is for: it raises completion rates rather than adding content.
 
 ## Picking the main account
 
@@ -179,7 +179,7 @@ Two paid indexers is where I'm starting. The Almanac guide's advice is the sensi
 
 ## SABnzbd is still the right download client
 
-For a normal homelab, yes. I compared the three realistic options:
+For a normal homelab, it is. I compared the three realistic options:
 
 | | SABnzbd 5.1.3 | NZBGet v26.3 | Streaming mounts (NZBDav, AltMount) |
 | --- | --- | --- | --- |
@@ -204,7 +204,7 @@ The agent set SABnzbd up on my Unraid server ahead of the subscriptions, followi
 - **Switches:** direct unpack on, jobs that can't complete abort, duplicates get tagged, encrypted archives fail the job, TRaSH's blacklist of risky file extensions fails the job, deobfuscation on, and sorting off.
 - **Access:** a login, a hostname whitelist, a Caddy route, and an Uptime Kuma monitor on SABnzbd's public version endpoint.
 
-The agent checked the meaning of each numeric switch against SABnzbd's source rather than guessing: in `sabnzbd.ini`, "tag duplicates" is `no_dupes = 4`, not 1. It's the kind of detail that's easy to get wrong from memory.
+The agent looked up each numeric switch in SABnzbd's source instead of working from memory, which matters for values like "tag duplicates": in `sabnzbd.ini` that's `no_dupes = 4`, not 1.
 
 When the accounts arrive, the remaining steps are:
 
@@ -214,9 +214,9 @@ When the accounts arrive, the remaining steps are:
 4. Add the indexers to Prowlarr at a higher priority than the torrent ones, with API limits set so I don't get banned.
 5. Set delay profiles to prefer Usenet and wait 60 minutes before grabbing a torrent, or 15 to 30 minutes for anime, because new anime usually lands on Nyaa before any Usenet mirror.
 
-One thing that surprised me: **delay profiles only help with new releases.** The delay counts from the upload time, so anything older is grabbed straight away, and Sonarr ranks releases by quality and custom-format score before protocol. A better-scored torrent still beats a Usenet release. For my backlog of 2,052 old items, the fix isn't a delay profile; it's having a Usenet source that finds them at all.
+One thing that surprised me: **delay profiles only help with new releases.** The delay counts from the upload time, so anything older is grabbed straight away, and Sonarr ranks releases by quality and custom-format score before protocol. A better-scored torrent still beats a Usenet release. For my backlog of 2,052 old items, a delay profile does nothing. What helps is a Usenet source that finds them at all.
 
-Also worth knowing: Cleanuparr, which I use to clear stalled torrents, has no Usenet support and says it won't add any. Sonarr and Radarr's own failed download handling covers SABnzbd instead.
+Cleanuparr, which I use to clear stalled torrents, has no Usenet support and says it won't add any, so Sonarr and Radarr's own failed download handling covers SABnzbd instead.
 
 ## What it costs
 
@@ -232,7 +232,7 @@ An NZBGeek lifetime membership (about $60 in its Black Friday sale) would be a o
 
 ## You don't need a VPN, but read the small print
 
-No. Usenet traffic over SSL on port 563 is encrypted between you and the provider, so your ISP can't see what you're downloading. Unlike BitTorrent, you're not uploading to strangers either. A VPN would additionally hide from your ISP that you use Usenet at all, and hide your home IP from the provider, but the provider still sees your account and what you download. It's a privacy choice, not a requirement.
+You don't need one for encryption: Usenet traffic over SSL on port 563 is encrypted between you and the provider, so your ISP can't see what you're downloading. Unlike BitTorrent, you're not uploading to strangers either. A VPN would additionally hide from your ISP that you use Usenet at all, and hide your home IP from the provider, but the provider still sees your account and what you download. That's worth paying for only if you want the extra privacy.
 
 What SSL doesn't change is the law. Usenet providers and indexers are legal businesses, but EU case law (the CJEU's _ACI Adam_ ruling in 2014) says private copying only covers lawful sources. Downloading unlicensed content isn't legal in Bulgaria or anywhere else in the EU, whatever protocol carries it.
 
@@ -240,8 +240,8 @@ What SSL doesn't change is the law. Usenet providers and indexers are legal busi
 
 The research took an evening; the decisions are simple once you understand backbones. One long-retention main account in the EU, one block on a different backbone, two indexers, SABnzbd, and torrents kept as the backup, especially for anime.
 
-The honest caveat is that everything above is a plan and a configured-but-idle download client. The follow-up will have the numbers that matter: how often Eweka alone completed a download, whether the block earned its place, and how much of that 2,052-item backlog actually came back.
+The catch is that everything above is a plan and a configured-but-idle download client. The follow-up will have the numbers that matter: how often Eweka alone completed a download, whether the block earned its place, and how much of that 2,052-item backlog actually came back.
 
-If you want to see how an AI agent can see and change a homelab like this, [the first post in this series](/blog/my-homelab-runs-on-mcp/) covers the MCP setup, and [the hardening follow-up](/blog/hardening-my-homelab-mcp-setup/) covers keeping the secrets out of reach.
+If you want to see how an AI agent can read and change a homelab like this, [the first post in this series](/blog/my-homelab-runs-on-mcp/) covers the MCP setup, and [the hardening follow-up](/blog/hardening-my-homelab-mcp-setup/) covers keeping the secrets out of reach.
 
 **Sources:** [SABnzbd releases](https://github.com/sabnzbd/sabnzbd/releases), [SABnzbd high-speed downloading guide](https://sabnzbd.org/wiki/advanced/highspeed-downloading), [NZBGet releases](https://github.com/nzbgetcom/nzbget/releases), [TRaSH Guides: SABnzbd basic setup](https://trash-guides.info/Downloaders/SABnzbd/Basic-Setup/), [Servarr wiki: delay profiles](https://wiki.servarr.com/sonarr/settings#delay-profiles), [Usenet Tree provider map](https://usenet.rexum.space/tree), [r/usenet providers wiki (archived March 2026)](https://web.archive.org/web/20260325180443/https://www.reddit.com/r/usenet/wiki/providers/), [r/usenet deals page (archived August 2026)](https://web.archive.org/web/20260811083703/https://old.reddit.com/r/usenet/wiki/providerdeals), [retention guide](https://usenet.rexum.space/docs/deal-selection/retention), [providers to avoid](https://usenet.rexum.space/docs/deal-selection/shady-practices), [Usenet Almanac indexers](https://usenetalmanac.com/indexers/), [AnimeTosho shutdown notice](https://animetosho.org/about/shutdown2), [Cleanuparr FAQ on Usenet](https://cleanuparr.github.io/Cleanuparr/docs/faq?usenet-support), [Eweka](https://www.eweka.nl/en), [Newshosting plans](https://www.newshosting.com/usenet-plans/), [NewsgroupDirect](https://www.newsgroupdirect.com/), [Sofia to Amsterdam latency](https://wondernetwork.com/pings/Sofia/Amsterdam).

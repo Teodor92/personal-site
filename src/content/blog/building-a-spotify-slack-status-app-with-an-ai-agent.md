@@ -15,14 +15,14 @@ I always have music on while I work, and I've always liked the little "now playi
 
 By Sunday evening I had **Hum**. It checks Spotify every minute and sets my Slack status to `Song - Artist`, with an emoji I pick per playlist or artist, and a 🔁 badge when I have something on repeat. It has an admin page and runs on Cloudflare's free plan. It deploys from a Git server on my NAS, and it works across more than one Slack workspace.
 
-This post is the honest version of how that went: what the agent did well, where it went wrong, and where we both hit a wall.
+Here's how it went: what the agent did well, where it went wrong, and where we both hit a wall.
 
 > **Key takeaways**
 >
-> - The most valuable hour came **before any code**: six AI agents fact-checked my spec and found real mistakes, including one that would have quietly broken the app after six months.
+> - The most valuable hour came **before any code**: six AI agents fact-checked my spec and found real mistakes, including one that would have broken the app after six months.
 > - My job was making decisions (scope, trade-offs, what to cut). The agent's job was everything else, including the boring bits I'd normally skip.
 > - Having **one agent review another** worked better than either alone. An independent design reviewer sent the redesign back twice, and both times it was right.
-> - The hard limits weren't technical. They were Spotify's developer rules and how Slack lets apps into a workspace.
+> - The hard limits were rules, not code: Spotify's developer rules and how Slack lets apps into a workspace.
 
 <figure>
 <div style="overflow-x:auto">
@@ -114,7 +114,7 @@ This post is the honest version of how that went: what the agent did well, where
 
 ## It started as a spec, not code
 
-I'd done the brainstorming in an earlier session: a single-user app, a [Cloudflare Worker](https://developers.cloudflare.com/workers/) on a once-a-minute timer, Spotify and Google Calendar as inputs, Slack status as the output. The spec ended with a list of unchecked assumptions, which is exactly where things get interesting.
+I'd done the brainstorming in an earlier session: a single-user app, a [Cloudflare Worker](https://developers.cloudflare.com/workers/) on a once-a-minute timer, Spotify and Google Calendar as inputs, Slack status as the output. The spec ended with a list of assumptions I hadn't checked yet.
 
 The first thing I asked for was small: connect Cloudflare's own MCP server, so the agent could read my Cloudflare account and docs directly instead of guessing. One command, one browser login, done. (If MCP is new to you, I wrote about [how my homelab runs on MCP](/blog/my-homelab-runs-on-mcp/) and [how I hardened that setup](/blog/hardening-my-homelab-mcp-setup/).)
 
@@ -280,7 +280,7 @@ _The icon is plain HTML and CSS, rendered to a PNG with headless Chrome._
 
 Slack tokens belong to one workspace each, so supporting several meant turning Hum into a properly distributed Slack app with an **Add workspace** button, built on [Slack's OAuth flow](https://docs.slack.dev/authentication/installing-with-oauth). Each workspace's token is encrypted at rest. Every minute Hum asks Spotify once, then updates each workspace independently, so a manual status or an outage in one never affects another.
 
-Each workspace also gets a share level: the full song, a vague "Listening to music", or nothing at all. I asked whether different emails for work and personal Slack would be a problem. They aren't: each workspace is linked separately, and Hum never matches accounts by email, which would be a security hole anyway.
+Each workspace also gets a share level: the full song, a vague "Listening to music", or nothing at all. I asked whether using a different email in each workspace would be a problem. They aren't: each workspace is linked separately, and Hum never matches accounts by email, which would be a security hole anyway.
 
 ## Where it stopped 🧱
 
@@ -288,7 +288,7 @@ The first real "Add workspace" attempt on a second workspace got Slack's generic
 
 I asked whether listing Hum on Slack's Marketplace would help. The agent checked [Slack's current Marketplace guidelines](https://docs.slack.dev/slack-marketplace/slack-marketplace-app-guidelines-and-requirements). You need **at least 10 active workspaces and 10 weekly active users** before you can even submit. On top of that come a public landing page, support and privacy pages, and a review. Invite-only apps are likely to be turned down. So Hum stays unlisted, and getting it into a locked-down workspace means asking its admins first.
 
-Sharing it with family and friends has its own wall: Spotify's five-user cap for apps in development. The workarounds (each friend registering their own Spotify app, or reading from Last.fm instead) all trade convenience for scale, so that's a decision for another weekend.
+Sharing it with family and friends has its own wall: Spotify's five-user cap for apps in development. The workarounds (each friend registering their own Spotify app, or reading from Last.fm instead) both trade convenience for scale, so that's a decision for another weekend.
 
 ## Where it stumbled 🙈
 

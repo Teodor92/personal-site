@@ -12,9 +12,9 @@ pinned: true
 
 Most people use AI assistants to _talk about_ their infrastructure. Mine can actually touch it.
 
-When I open a terminal on any of my machines, the agent comes up with tools for the whole homelab: it can query the NAS, control Home Assistant, inspect the UniFi network, build n8n workflows and manage uptime monitors. Not through copy-pasted `curl` commands I feed it, but through MCP servers that load automatically, with credentials the agent never sees.
+When I open a terminal on any of my machines, the agent comes up with tools for the whole homelab: it can query the NAS, control Home Assistant, inspect the UniFi network, build n8n workflows and manage uptime monitors. Those tools are MCP servers that load automatically, with credentials the agent never sees, so I'm not feeding it copy-pasted `curl` commands.
 
-A quick definition, since it's the backbone of everything here: [MCP](https://modelcontextprotocol.io/) (Model Context Protocol) is an open standard for connecting AI assistants to external systems. A small server wraps a system's API and exposes it as tools; any MCP-capable agent can then discover and call them. One protocol, any system.
+A quick definition, since it's the backbone of everything here: [MCP](https://modelcontextprotocol.io/) (Model Context Protocol) is an open standard for connecting AI assistants to external systems. A small server wraps a system's API and exposes it as tools; any MCP-capable agent can then discover and call them.
 
 Ever since [rebuilding this site with an AI agent](/blog/rebuilding-my-site-with-an-ai-agent/), I've been pushing the same way of working onto my infrastructure. This post is about how that's wired together, what the agent has actually done with it, and the sharp edges I hit along the way.
 
@@ -27,7 +27,7 @@ The lab is nothing exotic, which is rather the point: this setup makes _ordinary
 - **UniFi** networking with segmented VLANs for people, IoT and security devices.
 - **n8n** for workflow automation, **Uptime Kuma** for monitoring, and a self-hosted **Infisical** instance for secrets, all fronted by Caddy on a LAN-only internal domain with proper Let's Encrypt certificates.
 
-Each of those has an MCP server. Some are third-party ([`ha-mcp`](https://github.com/homeassistant-ai/ha-mcp), an Unraid GraphQL server, an Uptime Kuma one), n8n ships its own, and UniFi has a community server. The interesting part isn't any single server. It's how they're delivered and authenticated.
+Each of those has an MCP server. Some are third-party ([`ha-mcp`](https://github.com/homeassistant-ai/ha-mcp), an Unraid GraphQL server, an Uptime Kuma one), n8n ships its own, and UniFi has a community server. What's worth writing about is how they're delivered and authenticated.
 
 ## Delivering MCP servers with a private plugin marketplace
 
@@ -42,7 +42,7 @@ Setting up a new machine is four commands:
 /plugin install unraid-mcp@claude-homelab
 ```
 
-Restart the session and the agent knows the whole lab. The plugin also carries **skills**: instructions the agent loads for specific jobs, like Home Assistant best practices (use entity IDs not device IDs, prefer helpers over templates) or how to authenticate against the n8n instance. The MCP servers give it hands; the skills give it house rules.
+Restart the session and the agent knows the whole lab. The plugin also carries **skills**, which are the house rules to go with the hands: instructions the agent loads for specific jobs, like Home Assistant best practices (use entity IDs not device IDs, prefer helpers over templates) or how to authenticate against the n8n instance.
 
 ## Secrets: the part everyone gets wrong
 
@@ -67,7 +67,7 @@ Two wrinkles worth knowing:
 - **HTTP MCP servers can't be wrapped this way.** n8n's MCP server speaks HTTP with a Bearer header, and that header is expanded by the client, not by `infisical run`. The fix: bridge it to stdio with [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) and wrap _that_, so the token still comes from the vault.
 - **You've created a single point of failure, on purpose.** If the Infisical CLI isn't authenticated, every server fails together. I'll take one loud, obvious failure mode over five quiet ones.
 
-And yes, the agent helped build its own credential system, including the backup: a restore drill where we stood up a throwaway clone of the secrets store from a cold backup, read the secrets back to confirm the encryption key survived, and tore it down. Backups you haven't restored from are hopes, not backups.
+And yes, the agent helped build its own credential system, including the backup: a restore drill where we stood up a throwaway clone of the secrets store from a cold backup, read the secrets back to confirm the encryption key survived, and tore it down. I don't count a backup until I've restored from it.
 
 The whole chain, in one picture:
 
@@ -148,13 +148,13 @@ The whole chain, in one picture:
 
 ## What the agent actually does with all this
 
-The honest answer: mostly unglamorous things, which is exactly what infrastructure work is.
+Mostly unglamorous things, because that's what infrastructure work is.
 
 **It found a real security hole.** While working on the NAS it noticed Redis listening on `0.0.0.0` with no password and protected-mode off. We locked it to the Docker bridge with auth, tracked down which containers actually consumed it (one; two others just looked like they did), and updated the templates so the fix survives a GUI edit.
 
-**It diagnoses like a network engineer.** An alarm panel's IP module refused every connection method. The agent worked the problem from the UniFi side and found the module wasn't on the LAN at all. It was NAT'd behind a forgotten TP-Link travel router in the wall, its WAN side answering nothing. That's not "AI magic". It's methodical port-scanning and topology reasoning. But it turned a "this thing is haunted" problem into a one-line explanation and two clear fix options.
+**It diagnoses like a network engineer.** An alarm panel's IP module refused every connection method. The agent worked the problem from the UniFi side and found the module wasn't on the LAN at all. It was NAT'd behind a forgotten TP-Link travel router in the wall, its WAN side answering nothing. The method was plain port-scanning and topology reasoning, but it turned a "this thing is haunted" problem into a one-line explanation and two clear fix options.
 
-**It does the operational choreography.** Cold backups need a container stop, which trips the uptime monitor, which pings my phone. The agent's backup run pauses the right Uptime Kuma monitor first, does the copy, resumes it. Nobody gets paged for planned work.
+**It does the operational choreography.** Cold backups need a container stop, which trips the uptime monitor, which pings my phone. The agent's backup run pauses the right Uptime Kuma monitor first, does the copy and resumes it, so planned work doesn't page anyone.
 
 **It remembers.** Session-to-session memory means the agent knows the NAS rate-limits rapid SSH connections, that hand-created Docker networks get wiped on service restart because of an Unraid setting, and that a certain upstream MCP server has a bug where an empty-but-set env var silently overrides the `.env` file. Institutional knowledge, except it doesn't leave when the only engineer (me) forgets.
 
@@ -163,11 +163,11 @@ The honest answer: mostly unglamorous things, which is exactly what infrastructu
 - **MCP servers read config once, at session start.** Every credential or config change means a restart. You will forget this and debug a "broken" server that's simply running stale config.
 - **stdout is sacred.** stdio MCP servers speak JSON-RPC on stdout; anything else printed there breaks the protocol. `infisical run --silent` keeps its logging on stderr. Check the same for anything you wrap.
 - **Upstream quality varies.** One server hardcoded empty env vars in its manifest, which, thanks to `python-dotenv`'s `override=False`, silently beat the real values in `.env`. The error said "credentials not configured" while the credentials sat there, configured. Patching it locally works until the next plugin update wipes the patch.
-- **Give the agent its own identity.** It gets dedicated, least-privilege accounts: a local-only UniFi admin, a scoped API key on the NAS. Never my own logins. When something in the audit log did a thing, I want to know _which_ something.
+- **Give the agent its own identity.** It gets dedicated, least-privilege accounts: a local-only UniFi admin, a scoped API key on the NAS, never my own logins. When something in the audit log did a thing, I want to know _which_ something.
 
 ## Should you do this?
 
-If you have a homelab, genuinely: yes. It's the ideal training ground for working with AI agents. Real infrastructure with real consequences, but the blast radius is your own evening rather than production. The skills transfer directly to how I work at work, too: the same patterns of scoped credentials, skills-as-house-rules and verify-before-trust apply whether the agent is touching a smart home or a payment system.
+If you have a homelab, yes. It's the ideal training ground for working with AI agents. Real infrastructure with real consequences, but the blast radius is your own evening rather than production. The skills transfer directly to how I work at work, too: the same patterns of scoped credentials, skills-as-house-rules and verify-before-trust apply whether the agent is touching a smart home or a payment system.
 
 Start small: one MCP server, read-only, for the system you know best. You'll know within an hour whether this clicks for you. The plugin marketplace and the secrets plumbing can come later. They solve the problems you'll only have once you're hooked.
 

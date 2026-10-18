@@ -27,7 +27,7 @@ I planted in late May, and almost nothing went exactly to plan. This post covers
 
 The two numbers that shaped the whole project were the bearings. The west balcony faces 271°, almost exactly west, and its railing gets roughly 2.5 to 4.5 hours of direct sun, all of it in the afternoon and evening. The south balcony faces 193°, a touch west of due south, and gets strong sun for most of the day.
 
-On the first floor, the bearing is only half the story. How much of that sun actually reaches the railing depends on the buildings around you, so the useful number is the hours of direct sun you see, not the direction on a compass.
+On the first floor, the bearing tells you less than you'd hope. How much of that sun actually reaches the railing depends on the buildings around you, so the number worth having is the hours of direct sun the railing gets.
 
 <figure>
 <div style="overflow-x:auto">
@@ -176,9 +176,9 @@ The south balcony's weak point is the railing planters. At 16.7 cm deep, a shall
   <figcaption style="font-size:var(--text-sm);color:var(--fg-muted);text-align:center;margin-top:0.5rem">Depths as listed by the makers: box height for GarPet, soil depth above the reservoir for Lechuza. The elho Vibia, the deepest, isn't sold on amazon.de. Dashed line: what I already had.</figcaption>
 </figure>
 
-**Railing planters are shallow for a reason.** A deep box full of wet soil hanging off a railing is heavy, it acts as a lever on the railing, and it catches the wind. That's why everything I found tops out somewhere around 18 to 23 cm. The extra few centimetres buy maybe one or two days of water, which doesn't change much on a balcony that needs watering daily in summer.
+Railing planters are shallow for a reason. A deep box full of wet soil hanging off a railing is heavy, it acts as a lever on the railing, and it catches the wind. That's why everything I found tops out somewhere around 18 to 23 cm. The extra few centimetres buy maybe one or two days of water, which doesn't change much on a balcony that needs watering daily in summer.
 
-**The fix was cheaper than any of the planters.** I kept the planters I had and mixed water-retaining crystals (hydrogel) into the soil of every south planter, with the Gardena drip kit I'd bought the year before doing the daily watering. A 30 g pack of crystals cost about 1.33 €. The depth is a constraint to manage, not a problem to buy your way out of.
+The fix was cheaper than any of the planters. I kept the ones I had and mixed water-retaining crystals (hydrogel) into the soil of every south planter, with the Gardena drip kit I'd bought the year before doing the daily watering. A 30 g pack of crystals cost about 1.33 €.
 
 ## Shopping for balcony plants in Bulgaria in May
 
@@ -193,7 +193,7 @@ The orders ended up spread like this:
 
 I checked about ten other places too, from GradinaMax.bg and Semenata.bg to HotFarm.eu for hot peppers, Pro Plants Market (a physical garden centre in Sofia) and OLX.bg, where local growers sell surplus seedlings. No single shop had everything, so splitting the order wasn't a choice.
 
-One pattern stood out: herb and vegetable seedlings like hot peppers and cherry tomatoes are mostly sold in-store and rarely online. If chives are the problem, supermarkets (Kaufland, Billa, Lidl) sometimes have potted chives in the fresh herb section.
+Herb and vegetable seedlings like hot peppers and cherry tomatoes are mostly sold in-store and rarely online. If chives are the problem, supermarkets (Kaufland, Billa, Lidl) sometimes have potted chives in the fresh herb section.
 
 ### The substitution chain
 
@@ -223,9 +223,9 @@ Not every substitute was a good one:
 
 At one point my cart held **Органик Тученица**, which I'd added as the flowering moss rose. It's actually organic purslane, *Portulaca oleracea*: the edible one, the kind you put in a salad.
 
-The flower I wanted is **декоративна тученица**, "decorative" тученица, which is *Portulaca grandiflora*. Same Bulgarian root name, completely different plant. The only reliable check is the Latin name on the listing.
+The flower I wanted is **декоративна тученица**, "decorative" тученица, which is *Portulaca grandiflora*. The two share a Bulgarian root name but are completely different plants, and the only reliable check is the Latin name on the listing.
 
-And the twist: the seeds I sowed in south planter 7, sold as **калдъръмче кичесто**, are also *Portulaca grandiflora*. The moss rose I couldn't find as plants ended up in the cart anyway, under a third name.
+The seeds I sowed in south planter 7, sold as **калдъръмче кичесто**, turned out to be *Portulaca grandiflora* too. So the moss rose I couldn't find as plants ended up in the cart anyway, under a third name.
 
 ### Check every plant on delivery
 
@@ -237,9 +237,9 @@ Most of it was right: magenta calibrachoa with a yellow throat, orange gazania (
 
 Soil is easy to overthink. Three requirements shaped the choice:
 
-- **The bags had to be small enough to carry up the stairs.** That ruled out the 225 to 250 L bales, which weigh around 30 kg.
-- **I was reusing about half of the old soil,** so I only needed roughly half the original volume.
-- **Everything would be mixed anyway:** 50/50 old and new soil, plus perlite and the crystals.
+- The bags had to be small enough to carry up the stairs. That ruled out the 225 to 250 L bales, which weigh around 30 kg.
+- I was reusing about half of the old soil, so I only needed roughly half the original volume.
+- Everything would be mixed anyway: 50/50 old and new soil, plus perlite and the crystals.
 
 These are the options I compared:
 

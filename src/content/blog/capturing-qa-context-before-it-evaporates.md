@@ -14,7 +14,7 @@ featured: true
 
 Every ticket that reaches QA carries an invisible gap. The developer who built it knows which feature flag to enable, which migration to run first, and which edge case nearly broke them on Tuesday. The QA engineer picking it up knows none of that. They chase the developer on Slack, dig through merge requests, or test blind and file a bug that turns out to be a missing flag.
 
-That knowledge exists for a short window: the coding session itself. A week later, the developer has moved on and half of it is gone. At work, I built a small pipeline with my team to catch it in that window and deliver it where it is used. Two audits of real merge requests taught me more about writing notes for a tester than the design did, so that comes first. The plumbing follows.
+That knowledge exists for a short window: the coding session itself. A week later, the developer has moved on and half of it is gone. At work, I built a small pipeline with my team to catch it in that window and deliver it where it is used. Two audits of real merge requests taught me more about writing notes for a tester than the design did, so they come before the plumbing.
 
 > **Key takeaways**
 >
@@ -28,9 +28,9 @@ That knowledge exists for a short window: the coding session itself. A week late
 
 My v0 design had no humans in it. On merge, an agent would fetch the diff, spot newly added feature flags, and post advisory acceptance criteria to the Jira ticket. I built the Jira connector for it before realising it answered the wrong question.
 
-A diff tells you _what changed_. It does not tell you that the seed script needs re-running before the new screen renders anything, that the third-party sandbox returns stale data after 5pm, or that the migration ran fine locally against a table a fortieth the size of production. That information lives in the developer's head, and only for a few days. No amount of diff analysis recovers it.
+A diff tells you _what changed_. It does not tell you that the seed script needs re-running before the new screen renders anything, that the third-party sandbox returns stale data after 5pm, or that the migration ran fine locally against a table a fortieth the size of production. That information lives in the developer's head, only for a few days, and no amount of diff analysis recovers it.
 
-So I inverted the design. The developer writes the notes. The automation only moves them. The connector survived; everything else from v0 was discarded.
+So I inverted the design: the developer writes the notes and the automation only moves them. The connector survived; everything else from v0 was discarded.
 
 ## Capture at the source: the QA notes block
 
@@ -75,7 +75,7 @@ All four are useful to _someone_. None are useful to the person testing the depl
 
 Two weeks after launch, 91 merge requests carried notes, a cumulative count that includes the first 21. The tightening had half worked. Negative assertions and merge mechanics had all but vanished. Self-verification bullets held at 13% of the total, almost entirely "verified locally: 12/12 steps pass" on test-only merge requests, where the rules had left nothing else to say.
 
-The most useful bullets in the corpus were ones no rule had invited. They said what the developer could _not_ verify, and why: bullets shaped like "could not exercise the fallback path, staging has no sandbox for it" or "migration ran clean on my copy, not timed against production volume". That is exactly the information a tester needs and exactly what nobody volunteers.
+The most useful bullets in the corpus were ones no rule had invited. They said what the developer could _not_ verify, and why: bullets shaped like "could not exercise the fallback path, staging has no sandbox for it" or "migration ran clean on my copy, not timed against production volume". A tester needs exactly that, and nobody volunteers it.
 
 So the template gained its fourth line. A test-only merge request with nothing else to say now carries no list at all.
 
@@ -83,7 +83,7 @@ The setup rule was reframed too: a step belongs in the notes when the _tester_ n
 
 I then re-read every bullet in the 91-merge-request corpus against the rewritten rules. They excluded 32 of the 35 noise bullets. That is an in-sample number: the rules were written from this corpus and scored against it, so it measures fit, not generalisation. The three escapes were all maintainer-facing content, so the section now states the audience outright rather than listing exclusions.
 
-The rules got shorter, not longer. Two paragraphs where there had been four.
+The rules also got shorter: two paragraphs where there had been four.
 
 ## Trigger at the moment of use, not the moment of merge
 
@@ -237,4 +237,4 @@ The compiled comment on the ticket:
 _qa-notes digest:3f9a1c0be7d2_
 ```
 
-Duplicates merged, setup first, the unverified item kept and made specific. The footer is what lets the next run stop early.
+The compile step merged the duplicates, put setup first, and kept the unverified item while making it specific. The footer is what lets the next run stop early.

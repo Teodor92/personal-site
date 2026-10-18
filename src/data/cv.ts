@@ -32,7 +32,7 @@ export const roles: Role[] = [
     highlight: true,
     // NOTE: intentionally generic, no internal project/client specifics.
     bullets: [
-      'Designing and building AI-powered features across YuLife’s employer portal and insurance platform, from scoping through production.',
+      "Designing and building AI-powered features across YuLife's employer portal and insurance platform, from scoping through production.",
       'Building full-stack features end to end with AI-first tooling: Claude Code, OpenAI Codex and Cursor.',
       'Developing custom Claude Code skills and agentic workflows to automate engineering and business processes.',
       'Building evaluation pipelines and quality gates for LLM-powered features: acceptance test cases, scoring rubrics and regression evals.',
@@ -70,7 +70,7 @@ export const roles: Role[] = [
     period: 'Jan 2022 – Jan 2024',
     featured: [0, 1],
     highlight: true,
-    intro: 'Developed, deployed and maintained key features across Moteefe’s e-commerce platform.',
+    intro: "Developed, deployed and maintained key features across Moteefe's e-commerce platform.",
     bullets: [
       'Built and supported end-to-end features: payment integrations with Stripe and PayPal, headless CMS integration and cart-recovery emails.',
       'Created new microservices and split existing ones to improve performance and scalability.',
@@ -88,7 +88,7 @@ export const roles: Role[] = [
     trackLabel: 'Lecturer · SoftUni',
     featured: [0, 2],
     bullets: [
-      'Led the “Programming Basics”, “Programming Fundamentals” and “Programming Advanced” courses.',
+      'Led the "Programming Basics", "Programming Fundamentals" and "Programming Advanced" courses.',
       'Taught practical, hands-on programming from first steps through advanced coursework.',
       'Supported students beyond class with reading materials and guidance for independent study.',
     ],
@@ -102,7 +102,7 @@ export const roles: Role[] = [
     trackLabel: 'Mentor',
     featured: [0, 1],
     bullets: [
-      'Mentored engineers in one-on-one sessions, tailoring guidance to each mentee’s goals.',
+      "Mentored engineers in one-on-one sessions, tailoring guidance to each mentee's goals.",
       'Helped mentees set achievable goals, track progress and act on feedback.',
     ],
   },
@@ -170,7 +170,7 @@ export const roles: Role[] = [
       'Researched refactoring options for architectural code smells.',
       'Developed a Visual Studio refactoring plugin using .NET and the Roslyn compiler.',
       'Used R and Python for data analysis and visualization.',
-      'The research PoC improved the target quality metrics by 5–10%.',
+      'The research PoC improved the target quality metrics by 5-10%.',
     ],
   },
   {
@@ -217,7 +217,7 @@ export const roles: Role[] = [
     period: 'Sept 2011 – Oct 2013',
     bullets: [
       'Practical introduction to technologies ranging from C# and JavaScript to frameworks like ASP.NET MVC, Angular.js, Kendo and WPF.',
-      'Key focus on high-quality code in compliance with OOP best practices such as SOLID, DRY and YAGNI.',
+      'Focused on writing high-quality code that follows OOP best practices such as SOLID, DRY and YAGNI.',
     ],
   },
 ];
@@ -233,7 +233,7 @@ export const education = [
     location: 'Amsterdam, The Netherlands',
     note: '5.9/6 GPA',
     details:
-      'Intense one-year master’s programme focused on source-code analysis and transformation, software craftsmanship, software testing and software processes, with an essential role for scientific research and practical application.',
+      "Intense one-year master's programme focused on source-code analysis and transformation, software craftsmanship, software testing and software processes, with an emphasis on scientific research and practical application.",
   },
   {
     degree: 'BSc Business Informatics',
@@ -306,7 +306,7 @@ export const volunteering = [
     url: 'https://softuni.foundation/',
     role: 'Technical Writer',
     details:
-      'Wrote several chapters for the “Introduction to Programming” books published by the foundation.',
+      'Wrote several chapters for the "Introduction to Programming" books published by the foundation.',
   },
   {
     org: 'Telerik Academy',

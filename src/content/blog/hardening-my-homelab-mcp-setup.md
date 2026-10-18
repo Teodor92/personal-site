@@ -31,13 +31,13 @@ The fix I'd already written down in [the original post's "next up" list](/blog/m
 403: You are not a member of this project
 ```
 
-A 403 rather than a 401 was actually good news: the server knew exactly who the token belonged to. The identity existed at the organisation level but had never been added to the `homelab` project. One click in the UI, re-test, and all six secrets injected.
+A 403 instead of a 401 was good news, because it meant the server knew exactly who the token belonged to. The identity existed at the organisation level but had never been added to the `homelab` project. One click in the UI, re-test, and all six secrets injected.
 
 The catch surfaced a minute later: [Token Auth](https://infisical.com/docs/documentation/platform/identities/token-auth) on my instance caps the token lifetime at **90 days**. Better than three, but still a date in the calendar I'd eventually forget.
 
 **Attempt two: [Universal Auth](https://infisical.com/docs/documentation/platform/identities/universal-auth).** Here the identity gets a client ID and a client secret, and the secret can be created with **no expiry at all**. The client exchanges it for a short-lived access token whenever it needs one. `infisical run` only needs a token for the second it takes to fetch secrets at startup, so it doesn't matter how quickly the token expires.
 
-That is a real trade-off, and it walks back a claim from the first post. I wrote there that tokens exist nowhere on disk on any client machine. The homelab secrets still don't, but the key to the vault now does: the client secret sits in plain text in `~/.claude/settings.json` on each device, and a leaked one works until I revoke it, where a leaked 90-day token dies on its own. I took that trade because the identity is read-only, scoped to one project, and revocable in one click. Rotating quarterly forever is its own risk: the risk that I don't. (Moving it into the macOS Keychain would at least get it out of plain text.)
+That is a real trade-off, and it walks back a claim from the first post. I wrote there that tokens exist nowhere on disk on any client machine. The homelab secrets still don't, but the key to the vault now does: the client secret sits in plain text in `~/.claude/settings.json` on each device, and a leaked one works until I revoke it, where a leaked 90-day token dies on its own. I took that trade because the identity is read-only, scoped to one project, and revocable in one click. Rotating a token every quarter, forever, carries its own risk: one quarter I won't. (Moving it into the macOS Keychain would at least get it out of plain text.)
 
 ## One launcher instead of five copies of the same flags
 
@@ -58,7 +58,7 @@ In the first post, every server in the plugin's `.mcp.json` carried its own copy
 
 **It keeps credentials away from the servers.** This is the one I didn't plan. While writing the login step, the agent pointed out that every MCP server inherits the launcher's environment. Those servers are third-party packages pulled from PyPI and npm at launch. With the token setup I'd had for the previous hour, every one of them could read the vault token.
 
-So the launcher now drops the client secret before `infisical run` starts, and runs the server under `env -u INFISICAL_TOKEN`. The server gets the homelab secrets it actually needs, and nothing that could fetch more. We didn't trust the script to be right about this: the agent checked the live processes with `ps -E`, and the wrapper held only the short-lived token while the server held **no Infisical credential at all**.
+So the launcher now drops the client secret before `infisical run` starts, and runs the server under `env -u INFISICAL_TOKEN`. The server gets the homelab secrets it needs and nothing that could fetch more. We didn't trust the script to be right about this: the agent checked the live processes with `ps -E`, and the wrapper held only the short-lived token while the server held **no Infisical credential at all**.
 
 <figure>
 <svg data-diagram="architecture-delta" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hd-credentials-title hd-credentials-desc" class="hd" style="width:100%;height:auto;display:block">
@@ -159,7 +159,7 @@ So the launcher now drops the client secret before `infisical run` starts, and r
   <figcaption style="font-size:var(--text-sm);color:var(--fg-muted);text-align:center;margin-top:0.5rem">The credential used to stop nowhere. Now each layer holds only what it needs.</figcaption>
 </figure>
 
-One consequence worth knowing: with Universal Auth, a bare `infisical run` in a terminal no longer works as a quick test, because the CLI only swaps a client secret for a token when asked to. It falls back to the expired user login and fails for the wrong reason. Every manual check in the docs now goes through the launcher, the same way the servers do.
+With Universal Auth, a bare `infisical run` in a terminal no longer works as a quick test, because the CLI only swaps a client secret for a token when asked to. It falls back to the expired user login and fails for the wrong reason. Every manual check in the docs now goes through the launcher, the same way the servers do.
 
 ## The validator had a blind spot
 
@@ -167,11 +167,11 @@ The marketplace repo has a small validator that runs in CI and enforces the hous
 
 Asked to review the repo, the agent found the pin check only looked at the first word after `--` in each server's arguments. For the n8n server that word is `sh`, because the HTTP bridge lives inside a `sh -c '… mcp-remote@latest …'` string. So the one unapproved break from "pin everything" was in the one server the validator couldn't see.
 
-It now checks every word of every argument, including inside shell strings, and it also verifies the launcher exists, is executable and carries the right Infisical coordinates. To make sure the new rules actually fire, the agent ran the validator against four deliberately broken copies of the repo. Running it against the old config was the satisfying part: the old validator had passed it, and the new one flagged `mcp-remote@latest` straight away.
+It now checks every word of every argument, including inside shell strings, and it also verifies the launcher exists, is executable and carries the right Infisical coordinates. To make sure the new rules fire, the agent ran the validator against four deliberately broken copies of the repo. Running it against the old config was the satisfying part: the old validator had passed it, and the new one flagged `mcp-remote@latest` straight away.
 
 ## Versions that ship themselves
 
-Here's a failure mode I hadn't noticed yet but would have eventually. Claude Code [stores installed plugins by version](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces). If I push a change without raising the version number in the manifests, no device ever receives it: they already have "that version" cached. And there are two manifests that must agree: `plugin.json` and `marketplace.json`.
+There was also a failure mode I hadn't noticed yet but would have eventually. Claude Code [stores installed plugins by version](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces). If I push a change without raising the version number in the manifests, no device ever receives it: they already have "that version" cached. And there are two manifests that must agree: `plugin.json` and `marketplace.json`.
 
 The agent's first suggestion was the tidy one: remove `version` entirely and Claude Code falls back to the commit SHA, so every push ships. I said no, because I want to read "2.6.1" in `/plugin`, not a hash. So it built the other option:
 
@@ -193,7 +193,7 @@ Its very first run found two stale pins I had no idea about:
 
 CI can't test those, because it deliberately holds no homelab credentials. So the PR body carries the one command that matters, a local probe that starts every server and completes an MCP handshake. The agent had probed both new versions locally before I even triggered the bot, so I merged, and on the next update my Mac picked up the release (2.5.3 at that point; the evening ended on 2.6.1).
 
-Two details that took a moment to get right. The bot pushes with a personal access token rather than the built-in workflow token, because pushes made with the built-in token typically don't trigger other workflows, and I wanted CI to run on the bot's PR. It did. And `ha-mcp`, which the first post's config deliberately left on `@latest`, is now pinned too. With a bot doing the bumping, there was no reason left for the exception.
+Two details took a moment to get right. The bot pushes with a personal access token rather than the built-in workflow token, because pushes made with the built-in token typically don't trigger other workflows, and I wanted CI to run on the bot's PR. It did. And `ha-mcp`, which the first post's config deliberately left on `@latest`, is now pinned too. With a bot doing the bumping, there was no reason left for the exception.
 
 ## The sharp edges 🙈
 

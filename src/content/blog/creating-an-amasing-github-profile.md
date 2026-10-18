@@ -56,9 +56,9 @@ Another great way to improve your profile is to contribute to open source softwa
 
 You want to make sure that you have all of the relevant information on your profile. This includes your name, location, and contact information. You should also include a link to your resume or portfolio website if you have one (mine lives right here on this site's [CV page](/cv/)). If you don't have one yet, it's a good idea to create it so that potential employers can learn more about you and what you do. Include a link to your LinkedIn profile too. As for other social networks, it's up to you. I personally include them, but I don't think it's a must.
 
-Additionally, work on a short description that you can use as a bio. This should be a short paragraph that describes who you are and what you do.
+Also, work on a short description that you can use as a bio. This should be a short paragraph that describes who you are and what you do.
 
-Moreover, choose an appropriate profile image: something that shows your face and is not too distracting. Avoid fitness selfies, drunk bar photos or anything of that sort. All in all, use common sense. If the picture is not something that you want to show your potential employer, don't use it. You want to look professional and approachable.
+Choose an appropriate profile image: something that shows your face and is not too distracting. Avoid fitness selfies, drunk bar photos or anything of that sort. All in all, use common sense. If the picture is not something that you want to show your potential employer, don't use it. You want to look professional and approachable.
 
 After you've included everything you should have something like this:
 
@@ -80,7 +80,7 @@ Also, don't forget to add a description and tags to all of your repositories. Th
 
 A few years ago, GitHub introduced a new feature: the ability to create a README for your profile. This is a great way to showcase your work and let people know what you're all about. You can use this space to talk about yourself, your interests, and what you're working on, and include links to anything you want people to check out. It's the closest thing GitHub has to a personal homepage, so let your personality show. If you need more info about the feature, take a look at [GitHub's profile README docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
 
-Let's explore some awesome tools that generate amazing personal READMEs:
+Here are some awesome tools that generate amazing personal READMEs:
 
 - [GitHub Profile README Generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)
 - [GPRM, another great README generator](https://gprm.itsvg.in/)
@@ -93,7 +93,7 @@ Or you can just do it from scratch! Be creative, have fun and show your personal
 
 ![Following developers and repositories on GitHub](../../assets/blog/creating-an-amazing-github-profile/follow.jpeg)
 
-Following the repositories and people you find interesting keeps your feed alive and helps you stay current with the parts of software development you care about. It's also a quiet way to find new projects to work on and people to collaborate with. Not sure where to start? Try the projects you already use every day.
+Following the repositories and people you find interesting keeps your feed alive and helps you stay current with the parts of software development you care about. It's also an easy way to find new projects to work on and people to collaborate with. Not sure where to start? Try the projects you already use every day.
 
 For example, you can follow the [React repository](https://github.com/facebook/react) if you are interested in React development, or the [Selenium repository](https://github.com/SeleniumHQ/selenium) if test automation is your thing.
 
@@ -107,4 +107,4 @@ This is very easily achievable using GitHub Pages, and hosting is free. The only
 
 ## Conclusion
 
-Creating an amazing GitHub profile is not as hard as it sounds. It just takes some time and effort to make sure that all of the relevant information is in place. Work through the seven steps above and you'll have a profile that opens doors. Good luck! 🍀
+Creating an amazing GitHub profile is not as hard as it sounds. It just takes some time and effort to make sure that all of the relevant information is in place. Work through the seven steps above and you'll have a profile that stands out. Good luck! 🍀
