@@ -1,8 +1,8 @@
 ---
 title: 'Two balconies in Sofia: planting for west and south sun'
 description: 'Planning two balconies facing west and south in Sofia: why deeper railing planters barely exist, what May stock-outs did, and how the summer went.'
-pubDate: 2026-10-17T12:00:00+03:00
-draft: true
+pubDate: 2026-11-04T12:00:00+02:00
+draft: false
 tags:
   - gardening
   - balcony
