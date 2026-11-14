@@ -1,8 +1,8 @@
 ---
 title: 'Giving six self-hosted apps working email with one tiny relay'
 description: 'Forgejo couldn''t send a password reset, and neither could five other apps. One Postfix relay, a sending subdomain and Resend fixed it in an afternoon, with three short outages on the way.'
-pubDate: 2026-10-18T21:00:00+03:00
-draft: true
+pubDate: 2026-11-14T12:00:00+02:00
+draft: false
 tags:
   - homelab
   - Cloudflare
